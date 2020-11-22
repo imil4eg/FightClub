@@ -6,11 +6,14 @@
 
 #include "IMenu.h"
 #include "Menu.h"
-
+#include "libs/Hypodermic/Hypodermic.h"
 
 int main()
 {
-	auto menu{ std::make_unique<Menu>() };
+	Hypodermic::ContainerBuilder builder;
+	auto menu{ std::make_shared<Menu>() };
+
+	builder.registerInstance(menu);
 
 	menu->show();
 }
