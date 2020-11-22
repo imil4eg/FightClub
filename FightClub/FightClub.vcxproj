@@ -140,10 +140,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="CharacterStuff\Attributes.cpp" />
+    <ClCompile Include="Characters\Character.cpp" />
     <ClCompile Include="FightClub.cpp" />
     <ClCompile Include="Menu.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CharacterStuff\Attributes.h" />
+    <ClInclude Include="CharacterStuff\Equipment.h" />
+    <ClInclude Include="CharacterStuff\Weapon.h" />
+    <ClInclude Include="Characters\Character.h" />
     <ClInclude Include="IMenu.h" />
     <ClInclude Include="Menu.h" />
   </ItemGroup>
