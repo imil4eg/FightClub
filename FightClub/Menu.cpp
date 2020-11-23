@@ -9,7 +9,8 @@ void Menu::show() const
 	bool isExistCommand = false;
 	do
 	{
-		std::cout << "Please, enter the command\nCommands:\n1) Play\n2) Customize character\n3) Exit\n";
+		std::cout << "Please, enter the command\nCommands:\n1) Play\n2) Customize character\n3) Inventory\n4) Exit\n\n";
+		std::cout << "FightClub>";
 		std::string command;
 		std::cin >> command;
 		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
@@ -22,7 +23,11 @@ void Menu::show() const
 		{
 
 		}
-		else if (command == "3" || command == "Exit" || command == "exit")
+		else if (command == "3" || command == "Invetory" || command == "inventory")
+		{
+
+		}
+		else if (command == "4" || command == "Exit" || command == "exit")
 		{
 			isExistCommand = true;
 		}

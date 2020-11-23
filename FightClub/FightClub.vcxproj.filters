@@ -47,5 +47,8 @@
     <ClInclude Include="Characters\Character.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="CharacterStuff\Armor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

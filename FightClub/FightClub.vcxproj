@@ -149,6 +149,7 @@
     <ClCompile Include="Menu.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CharacterStuff\Armor.h" />
     <ClInclude Include="CharacterStuff\Attributes.h" />
     <ClInclude Include="CharacterStuff\Equipment.h" />
     <ClInclude Include="CharacterStuff\Weapon.h" />

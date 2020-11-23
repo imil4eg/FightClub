@@ -9,19 +9,20 @@ class Character
 {
 private:
 	Attributes m_attributes;
-	Equipment m_head;
-	Equipment m_body;
-	Equipment m_legs;
-	Equipment m_hands;
+	Equipment m_equipment;
 	Weapon m_weapon;
 
 public:
-	Character(Attributes attributes) : 
-		m_attributes {attributes}
+	Character(const Attributes& attributes, const Equipment& equipment, const Weapon& weapon) : 
+		m_attributes {attributes},
+		m_equipment{equipment},
+		m_weapon{weapon}
 	{
 	}
 
 	Attributes& getAttributes() { return m_attributes; }
+	Equipment& getEquipment() { return m_equipment; }
+	Weapon& getWeapon() { return m_weapon; }
 };
 
 #endif // !CHARACTER_H

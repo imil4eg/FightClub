@@ -8,15 +8,27 @@
 #include "Menu.h"
 #include "libs/Hypodermic/Hypodermic.h"
 
+std::shared_ptr<Hypodermic::Container> ResolveDependencies();
+
 int main()
 {
-	Hypodermic::ContainerBuilder builder;
-	auto menu{ std::make_shared<Menu>() };
+	auto container{ ResolveDependencies() };
 
-	builder.registerInstance(menu);
+	auto menu{ container->resolve<IMenu>() };
 
 	menu->show();
 }
+
+std::shared_ptr<Hypodermic::Container> ResolveDependencies()
+{
+	Hypodermic::ContainerBuilder builder;
+
+	builder.registerType<Menu>().as<IMenu>().singleInstance();
+
+	return builder.build();
+}
+
+
 
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
