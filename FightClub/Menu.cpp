@@ -1,40 +1,28 @@
 #include <iostream>
 
 #include "Menu.h"
+#include "Characters/Player.h"
+#include "IO/InputProcesser.h"
 
 void Menu::show() const 
 {
-	std::cout << "Welcom to the fight club, buddy!\n";
-
-	bool isExistCommand = false;
-	do
+	std::cout << "Welcome to the fight club, buddy!\n";
+	while (true)
 	{
-		std::cout << "Please, enter the command\nCommands:\n1) Play\n2) Customize character\n3) Inventory\n4) Exit\n\n";
-		std::cout << "FightClub>";
-		std::string command;
-		std::cin >> command;
-		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-
-		if (command == "1" || command == "Play" || command == "play")
+		switch (InputProcesser::askCommand())
 		{
-
-		}
-		else if (command == "2" || command == "Customize character" || command == "customize character")
+		case Command::play:
 		{
-
+			Player player{ new Attributes{100, 1, 1, 1}, new Equipment{}, new Weapon{10} };
+			m_battle->fightWithBot(player);
+			break;
 		}
-		else if (command == "3" || command == "Invetory" || command == "inventory")
-		{
-
+		case Command::customize_character:
+			break;
+		case Command::inventory:
+			break;
+		case Command::exit:
+			return;
 		}
-		else if (command == "4" || command == "Exit" || command == "exit")
-		{
-			isExistCommand = true;
-		}
-		else
-		{
-			std::cout << "Unrecognized command entered.\n";
-		}
-
-	} while (!isExistCommand);
+	}
 }

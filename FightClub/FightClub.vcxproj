@@ -143,19 +143,39 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Battle\Battle.cpp" />
+    <ClCompile Include="Battle\HitDirection.cpp" />
     <ClCompile Include="CharacterStuff\Attributes.cpp" />
+    <ClCompile Include="CharacterStuff\Equipment.cpp" />
+    <ClCompile Include="Characters\Bots\Bot.cpp" />
+    <ClCompile Include="Characters\Bots\BotFactory.cpp" />
     <ClCompile Include="Characters\Character.cpp" />
+    <ClCompile Include="Characters\Player.cpp" />
     <ClCompile Include="FightClub.cpp" />
+    <ClCompile Include="IO\InputProcesser.cpp" />
     <ClCompile Include="Menu.cpp" />
+    <ClCompile Include="Common\RandomGenerator.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Battle\Battle.h" />
+    <ClInclude Include="Battle\DamageCalculator.h" />
+    <ClInclude Include="Battle\HitDirection.h" />
+    <ClInclude Include="Battle\IBattle.h" />
     <ClInclude Include="CharacterStuff\Armor.h" />
     <ClInclude Include="CharacterStuff\Attributes.h" />
     <ClInclude Include="CharacterStuff\Equipment.h" />
     <ClInclude Include="CharacterStuff\Weapon.h" />
+    <ClInclude Include="Characters\Bots\Bot.h" />
+    <ClInclude Include="Characters\Bots\BotFactory.h" />
+    <ClInclude Include="Characters\Bots\IBotFactory.h" />
     <ClInclude Include="Characters\Character.h" />
+    <ClInclude Include="Characters\Player.h" />
+    <ClInclude Include="Common\Commands.h" />
+    <ClInclude Include="IO\InputProcesser.h" />
+    <ClInclude Include="IO\MessageDisplayer.h" />
     <ClInclude Include="IMenu.h" />
     <ClInclude Include="Menu.h" />
+    <ClInclude Include="Common\RandomGenerator.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

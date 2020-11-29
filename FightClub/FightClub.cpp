@@ -4,9 +4,14 @@
 #include <memory>
 #include <iostream>
 
-#include "IMenu.h"
+#include "Battle/Battle.h"
+#include "Characters/Bots/BotFactory.h"
 #include "Menu.h"
 #include "libs/Hypodermic/Hypodermic.h"
+
+#include "Battle/IBattle.h"
+#include "Characters/Bots/IBotFactory.h"
+#include "IMenu.h"
 
 std::shared_ptr<Hypodermic::Container> ResolveDependencies();
 
@@ -23,7 +28,11 @@ std::shared_ptr<Hypodermic::Container> ResolveDependencies()
 {
 	Hypodermic::ContainerBuilder builder;
 
+	builder.registerType<BotFactory>().as<IBotFactory>().singleInstance();
+	builder.registerType<Battle>().as<IBattle>().singleInstance();
 	builder.registerType<Menu>().as<IMenu>().singleInstance();
+	
+	srand(static_cast<unsigned int>(time(0)));
 
 	return builder.build();
 }
