@@ -13,14 +13,18 @@ private:
 	int m_agility{};
 	int m_stamina{};
 
-public:
-	Attributes(int hp, int level, int strength, int agility) : 
-		m_hp{hp},
-		m_level{level},
+	Attributes(int hp, int level, int damage, int strength, int agility, int stamina) :
+		m_hp{ hp },
+		m_level{ level },
+		m_damage{ damage },
 		m_stength{ strength },
-		m_agility{ agility }
+		m_agility{ agility },
+		m_stamina{ stamina }
 	{
 	}
+
+public:
+	friend class AttributesFactory;
 
 	int getHp() const { return m_hp; }
 	void setHp(int hp) { m_hp = hp; }
@@ -29,12 +33,6 @@ public:
 	int getStrength() const { return m_stength; }
 	int getAgility() const { return m_agility; }
 	int getStamina() const { return m_stamina; }
-
-	void setDamageFromWeapon(const Weapon* weapon)
-	{
-		if (weapon != nullptr)
-			m_damage += weapon->getDamage();
-	}
 };
 
 

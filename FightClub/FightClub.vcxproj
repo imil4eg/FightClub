@@ -145,7 +145,7 @@
   <ItemGroup>
     <ClCompile Include="Battle\Battle.cpp" />
     <ClCompile Include="Battle\HitDirection.cpp" />
-    <ClCompile Include="CharacterStuff\Attributes.cpp" />
+    <ClCompile Include="CharacterStuff\AttributesFactory.cpp" />
     <ClCompile Include="CharacterStuff\Equipment.cpp" />
     <ClCompile Include="Characters\Bots\Bot.cpp" />
     <ClCompile Include="Characters\Bots\BotFactory.cpp" />
@@ -163,7 +163,9 @@
     <ClInclude Include="Battle\IBattle.h" />
     <ClInclude Include="CharacterStuff\Armor.h" />
     <ClInclude Include="CharacterStuff\Attributes.h" />
+    <ClInclude Include="CharacterStuff\AttributesFactory.h" />
     <ClInclude Include="CharacterStuff\Equipment.h" />
+    <ClInclude Include="CharacterStuff\IAttributesFactory.h" />
     <ClInclude Include="CharacterStuff\Weapon.h" />
     <ClInclude Include="Characters\Bots\Bot.h" />
     <ClInclude Include="Characters\Bots\BotFactory.h" />
