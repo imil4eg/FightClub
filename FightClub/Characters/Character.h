@@ -3,6 +3,7 @@
 
 #include "../CharacterStuff/Attributes.h"
 #include "../CharacterStuff/Armor.h"
+#include "CharacterType.h"
 #include "../CharacterStuff/Equipment.h"
 #include "../Battle/HitDirection.h"
 #include "../CharacterStuff/Weapon.h"
@@ -13,12 +14,14 @@ private:
 	Attributes* m_attributes;
 	Equipment* m_equipment;
 	Weapon* m_weapon;
+	CharacterType m_characterType;
 
 public:
-	Character(Attributes* const attributes, Equipment* const equipment, Weapon* const weapon = nullptr) : 
+	Character(Attributes* const attributes, Equipment* const equipment, CharacterType characterType, Weapon* const weapon = nullptr) :
 		m_attributes {attributes},
 		m_equipment{equipment},
-		m_weapon{weapon}
+		m_weapon{weapon},
+		m_characterType{characterType}
 	{
 		attributes->setDamageFromWeapon(weapon);
 	}
@@ -33,6 +36,7 @@ public:
 	Attributes* getAttributes() { return m_attributes; }
 	Equipment* getEquipment(){ return m_equipment; }
 	Weapon* getWeapon() { return m_weapon; }
+	CharacterType getCharcterType() { return m_characterType; }
 
 	void restoreHp() { m_attributes->setHp(100); }
 	void hit(Character& enemy, int damage)

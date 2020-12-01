@@ -1,6 +1,7 @@
 #include "Bot.h"
 #include "BotFactory.h"
 #include "../Character.h"
+#include "../CharacterType.h"
 
 
 Bot BotFactory::create(const Character& player) const
@@ -10,5 +11,5 @@ Bot BotFactory::create(const Character& player) const
 	auto* const attribute = new Attributes{ 100, 1, 1, 1 };
 	auto* const equipment = new Equipment{};
 	auto* const weapon = new Weapon{ 10 };
-	return Bot{ attribute, equipment, weapon };
+	return Bot{ attribute, equipment, CharacterType::strong, weapon };
 }

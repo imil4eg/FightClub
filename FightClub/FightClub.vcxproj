@@ -169,6 +169,7 @@
     <ClInclude Include="Characters\Bots\BotFactory.h" />
     <ClInclude Include="Characters\Bots\IBotFactory.h" />
     <ClInclude Include="Characters\Character.h" />
+    <ClInclude Include="Characters\CharacterType.h" />
     <ClInclude Include="Characters\Player.h" />
     <ClInclude Include="Common\Commands.h" />
     <ClInclude Include="IO\InputProcesser.h" />

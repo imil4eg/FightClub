@@ -4,12 +4,13 @@
 #include <iostream>
 
 #include "Character.h"
+#include "CharacterType.h"
 
 class Player : public Character
 {
 public:
-	Player(Attributes* const attributes, Equipment* const equipment, Weapon* weapon = nullptr) :
-		Character{ attributes, equipment, weapon }
+	Player(Attributes* const attributes, Equipment* const equipment, CharacterType characterType, Weapon* weapon = nullptr) :
+		Character{ attributes, equipment, characterType, weapon }
 	{
 	}
 

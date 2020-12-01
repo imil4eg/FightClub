@@ -13,7 +13,7 @@ void Menu::show() const
 		{
 		case Command::play:
 		{
-			Player player{ new Attributes{100, 1, 1, 1}, new Equipment{}, new Weapon{10} };
+			Player player{ new Attributes{100, 1, 1, 1}, new Equipment{}, CharacterType::strong, new Weapon{10} };
 			m_battle->fightWithBot(player);
 			break;
 		}

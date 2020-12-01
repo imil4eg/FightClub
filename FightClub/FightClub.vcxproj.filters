@@ -110,5 +110,8 @@
     <ClInclude Include="Common\Commands.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Characters\CharacterType.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
