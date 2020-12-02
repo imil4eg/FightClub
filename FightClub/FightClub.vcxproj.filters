@@ -51,6 +51,9 @@
     <ClCompile Include="CharacterStuff\AttributesFactory.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CharacterStuff\WeaponStorage.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Menu.h">
@@ -117,6 +120,27 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CharacterStuff\IAttributesFactory.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CharacterStuff\Weapons\PoorBrassKnuckles.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CharacterStuff\Weapons\BrassKnucklesWithKnife.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CharacterStuff\Weapons\Knife.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CharacterStuff\Weapons\Claymore.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CharacterStuff\Weapons\Rapier.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CharacterStuff\WeaponStorage.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CharacterStuff\IWeaponStorage.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

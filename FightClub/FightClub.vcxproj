@@ -147,6 +147,7 @@
     <ClCompile Include="Battle\HitDirection.cpp" />
     <ClCompile Include="CharacterStuff\AttributesFactory.cpp" />
     <ClCompile Include="CharacterStuff\Equipment.cpp" />
+    <ClCompile Include="CharacterStuff\WeaponStorage.cpp" />
     <ClCompile Include="Characters\Bots\Bot.cpp" />
     <ClCompile Include="Characters\Bots\BotFactory.cpp" />
     <ClCompile Include="Characters\Character.cpp" />
@@ -166,7 +167,14 @@
     <ClInclude Include="CharacterStuff\AttributesFactory.h" />
     <ClInclude Include="CharacterStuff\Equipment.h" />
     <ClInclude Include="CharacterStuff\IAttributesFactory.h" />
+    <ClInclude Include="CharacterStuff\IWeaponStorage.h" />
     <ClInclude Include="CharacterStuff\Weapon.h" />
+    <ClInclude Include="CharacterStuff\WeaponStorage.h" />
+    <ClInclude Include="CharacterStuff\Weapons\BrassKnucklesWithKnife.h" />
+    <ClInclude Include="CharacterStuff\Weapons\Claymore.h" />
+    <ClInclude Include="CharacterStuff\Weapons\Knife.h" />
+    <ClInclude Include="CharacterStuff\Weapons\PoorBrassKnuckles.h" />
+    <ClInclude Include="CharacterStuff\Weapons\Rapier.h" />
     <ClInclude Include="Characters\Bots\Bot.h" />
     <ClInclude Include="Characters\Bots\BotFactory.h" />
     <ClInclude Include="Characters\Bots\IBotFactory.h" />
