@@ -13,14 +13,14 @@
 class WeaponStorage : public IWeaponStorage
 {
 private:
-	std::map<boost::uuids::uuid, Weapon> m_weapons;
+	std::map<boost::uuids::uuid, Weapon> m_weapons{};
 	std::vector<boost::uuids::uuid> m_weaponIds{};
 
 public:
 	WeaponStorage()
 	{
 		auto knucles{ BrassKnucklesWithKnife{} };
-		m_weapons.insert( std::make_pair(knucles.getId(), knucles));
+		m_weapons.insert(std::make_pair(knucles.getId(), knucles));
 		m_weaponIds.push_back(knucles.getId());
 		auto claymor{ Claymore{} };
 		m_weapons.insert(std::make_pair(claymor.getId(), claymor));
@@ -36,8 +36,8 @@ public:
 		m_weaponIds.push_back(rapier.getId());
 	}
 
-	const Weapon& getWeapon(const boost::uuids::uuid& id) const override;
-	const Weapon& getRandomWeapon() const override;
+	const Weapon* getWeapon(const boost::uuids::uuid& id) const override;
+	const Weapon* getRandomWeapon() const override;
 };
 
 #endif // !WEAPON_STORAGE_H

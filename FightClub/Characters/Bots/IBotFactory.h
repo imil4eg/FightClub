@@ -8,7 +8,7 @@ class IBotFactory
 {
 public:
 	virtual ~IBotFactory() noexcept = default;
-	virtual Bot create(const Character& player) const = 0;
+	virtual Bot create(const Character& player) = 0;
 };
 
 #endif // !BOT_FACTORY_H

@@ -1,15 +1,49 @@
-#include "Bot.h"
+#include <exception>
+#include <memory>
+
 #include "BotFactory.h"
-#include "../Character.h"
 #include "../CharacterType.h"
+#include "../../Common/RandomGenerator.h"
 
-
-Bot BotFactory::create(const Character& player) const
+void BotFactory::calculateAttributeValueToAdd(int& attributeValueToIncrease, int& attribueteValueToDecrease)
 {
-	//TODO: Generate bot depend on character attributes
+	int possibleValueToExchange{ attribueteValueToDecrease - ((attribueteValueToDecrease < m_attributeDependOnTypeExchangeValue) ? m_minAttributeValue : m_attributeDependOnTypeExchangeValue )};
+	
+	attributeValueToIncrease += possibleValueToExchange;
+	attribueteValueToDecrease -= possibleValueToExchange;
+}
 
-	auto* const attribute = new Attributes{ 100, 1, 1, 1 };
-	auto* const equipment = new Equipment{};
-	auto* const weapon = new Weapon{ 10 };
-	return Bot{ attribute, equipment, CharacterType::strong, weapon };
+void BotFactory::calculateAttributes(int& strength, int& agility, CharacterType botCharacterType)
+{
+	switch (botCharacterType)
+	{
+	case CharacterType::strong:
+	{
+		calculateAttributeValueToAdd(strength, agility);
+		break;
+	}
+	case CharacterType::smooth:
+		calculateAttributeValueToAdd(agility, strength);
+		break;
+	default:
+		throw std::out_of_range("Not implemented CharacterType.");
+	}
+}
+
+Bot BotFactory::create(const Character& player) 
+{
+	auto botCharacterType{ static_cast<CharacterType>(RandomGenerator::getBetween(0, static_cast<int>(CharacterType::max_character_type) - 1)) };
+
+	int strength = player.getAttributes()->getStrength();
+	int agility = player.getAttributes()->getAgility();
+
+	calculateAttributes(strength, agility, botCharacterType);
+
+	const Weapon* const weapon{ m_weaponStorage->getRandomWeapon() };
+	 
+	auto botAttributes{ m_attributeFactory->create(weapon, player.getAttributes()->getLevel(), strength, agility, botCharacterType) };
+	auto equipment{ Equipment{} };
+
+	 return Bot{ &botAttributes, &equipment, botCharacterType, weapon };
+	//TODO: Generate bot depend on character attributes
 }
