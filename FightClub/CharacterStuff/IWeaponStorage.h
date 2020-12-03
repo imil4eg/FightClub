@@ -10,7 +10,7 @@ class IWeaponStorage
 public:
 	virtual ~IWeaponStorage() noexcept = default;
 	virtual const Weapon* getWeapon(const boost::uuids::uuid& id) const = 0;
-	virtual const Weapon* getRandomWeapon() const = 0;
+	virtual Weapon* getRandomWeapon() const = 0;
 };
 
 #endif // !I_WEAPON_STORAGE_H

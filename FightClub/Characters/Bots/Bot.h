@@ -1,6 +1,7 @@
 #ifndef BOT_H
 #define BOT_H
 
+#include <memory>
 #include <iostream>
 
 #include "../../CharacterStuff/Attributes.h"
@@ -12,13 +13,13 @@
 class Bot : public Character
 {
 public:
-	Bot(Attributes* const attributes, Equipment* const equipment, CharacterType characterType, Weapon* const weapon = nullptr) :
+	Bot(Attributes* const attributes, Equipment* const equipment, CharacterType characterType, Weapon* weapon = nullptr) :
 		Character{ attributes, equipment, characterType, weapon }
 	{
 	}
 
-	Bot(Bot&& bot) noexcept :
-		Character{ bot.getAttributes(), bot.getEquipment(), bot.getCharcterType(), bot.getWeapon() }
+	Bot(Character&& character) noexcept :
+		Character{ std::move(character) }
 	{
 	}
 

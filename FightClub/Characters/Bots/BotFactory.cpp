@@ -39,7 +39,7 @@ Bot BotFactory::create(const Character& player)
 
 	calculateAttributes(strength, agility, botCharacterType);
 
-	const Weapon* const weapon{ m_weaponStorage->getRandomWeapon() };
+	Weapon* weapon{ m_weaponStorage->getRandomWeapon() };
 	 
 	auto botAttributes{ m_attributeFactory->create(weapon, player.getAttributes()->getLevel(), strength, agility, botCharacterType) };
 	auto equipment{ Equipment{} };

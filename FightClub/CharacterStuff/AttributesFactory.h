@@ -3,7 +3,7 @@
 
 #include "IAttributesFactory.h"
 
-class AttributesFactory : IAttributesFactory
+class AttributesFactory : public IAttributesFactory
 {
 private:
 	const int m_levelAttributesBonus{ 5 };
@@ -15,7 +15,7 @@ private:
 	const int m_staminaPerLevelBonus{ 5 };
 
 public:
-	Attributes create(Weapon* const weapon, int level, int strength, int agility, CharacterType characterType) override;
+	Attributes create(const Weapon* const weapon, int level, int stength, int agility, CharacterType characterType) override;
 };
 
 #endif // !ATTRIBUTES_FACTORY_H

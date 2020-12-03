@@ -17,13 +17,23 @@ private:
 	CharacterType m_characterType;
 
 public:
-	Character(Attributes* const attributes, Equipment* const equipment, CharacterType characterType, Weapon* const weapon = nullptr) :
+	Character(Attributes* attributes, Equipment* equipment, CharacterType characterType, Weapon* weapon = nullptr) :
 		m_attributes {attributes},
 		m_equipment{equipment},
 		m_weapon{weapon},
 		m_characterType{characterType}
 	{
-		attributes->setDamageFromWeapon(weapon);
+	}
+
+	Character(Character&& character) noexcept : 
+		m_attributes{character.m_attributes},
+		m_equipment{character.m_equipment},
+		m_weapon{ character.m_weapon },
+		m_characterType{ character.m_characterType }
+	{
+		character.m_attributes = nullptr;
+		character.m_equipment = nullptr;
+		character.m_weapon = nullptr;
 	}
 
 	virtual ~Character()
@@ -33,10 +43,10 @@ public:
 		delete m_weapon;
 	};
 
-	Attributes* getAttributes() { return m_attributes; }
-	Equipment* getEquipment(){ return m_equipment; }
-	Weapon* getWeapon() { return m_weapon; }
-	CharacterType getCharcterType() { return m_characterType; }
+	Attributes* getAttributes() const { return m_attributes; }
+	Equipment* getEquipment() const{ return m_equipment; }
+	Weapon* const getWeapon() { return m_weapon; }
+	CharacterType getCharcterType() const { return m_characterType; }
 
 	void restoreHp() { m_attributes->setHp(100); }
 	void hit(Character& enemy, int damage)

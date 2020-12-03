@@ -12,13 +12,13 @@ const Weapon* WeaponStorage::getWeapon(const boost::uuids::uuid& id) const
 		throw std::exception("Weapon with specified id not found.");
 	}
 
-	return &(m_weapons.at(id));
+	return m_weapons.at(id);
 }
 
 
-const Weapon* WeaponStorage::getRandomWeapon() const
+Weapon* WeaponStorage::getRandomWeapon() const
 {
 	auto randomWeaponId{ RandomGenerator::getBetween(0, static_cast<int>(m_weaponIds.size()) - 1) };
 
-	return &(m_weapons.at(m_weaponIds[randomWeaponId]));
+	return m_weapons.at(m_weaponIds[randomWeaponId]);
 }
