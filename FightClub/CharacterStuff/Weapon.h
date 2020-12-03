@@ -33,7 +33,7 @@ public:
 	virtual ~Weapon() noexcept = default;
 	int getDamage() const { return m_damage; }
 	const std::string& getName() const { return m_name; }
-	const boost::uuids::uuid& getId() const { return m_id; }
+	boost::uuids::uuid& getId() { return m_id; }
 };
 
 #endif // !WEAPON_H
