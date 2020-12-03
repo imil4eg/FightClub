@@ -51,6 +51,9 @@
     <ClCompile Include="CharacterStuff\AttributesFactory.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="IO\Savers\JsonGameSaver.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="CharacterStuff\WeaponStorage.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -137,10 +140,16 @@
     <ClInclude Include="CharacterStuff\Weapons\Rapier.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="CharacterStuff\WeaponStorage.h">
+    <ClInclude Include="CharacterStuff\IWeaponStorage.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="CharacterStuff\IWeaponStorage.h">
+    <ClInclude Include="IO\Savers\GameSaver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IO\Savers\JsonGameSaver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CharacterStuff\WeaponStorage.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
