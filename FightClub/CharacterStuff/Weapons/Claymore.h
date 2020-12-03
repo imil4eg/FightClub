@@ -5,11 +5,14 @@
 
 class Claymore : public Weapon
 {
-public:
+private:
 	Claymore() :
 		Weapon{ "Claymore", 30 }
 	{
 	}
+
+public:
+	friend class WeaponStorage;
 };
 
 #endif // !CLAYMORE

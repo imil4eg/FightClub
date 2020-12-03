@@ -5,11 +5,14 @@
 
 class Rapier : public Weapon
 {
-public:
+private:
 	Rapier() :
 		Weapon{ "Rapier", 25 }
 	{
 	}
+
+public:
+	friend class WeaponStorage;
 };
 
 #endif // !RAPIER_H

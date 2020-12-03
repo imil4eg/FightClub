@@ -5,11 +5,14 @@
 
 class BrassKnucklesWithKnife : public Weapon
 {
-public:
+private:
 	BrassKnucklesWithKnife() :
 		Weapon("Brass knuckles with knife", 10)
 	{
 	}
+
+public:
+	friend class WeaponStorage;
 };
 
 #endif // !BRASS_KNUCKLES_WITH_KNFIE
