@@ -19,6 +19,10 @@ public:
 	{
 	}
 
+
+	const Armor* getHelment() const { return m_head; }
+	const Armor* getCuirasse() const { return m_body; }
+	const Armor* getBoots() const { return m_legs; }
 	int getArmorValue(HitDirection hitDirection) const;
 };
 
