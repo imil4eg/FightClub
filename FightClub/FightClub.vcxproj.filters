@@ -57,6 +57,9 @@
     <ClCompile Include="IO\Savers\JsonGameDataProcesser.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CharacterStuff\Armors\ArmorStorage.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Menu.h">
@@ -150,6 +153,42 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CharacterStuff\Armors\Armor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CharacterStuff\Armors\Heads\PoorManHat.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CharacterStuff\Armors\Heads\AverageFighterHat.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CharacterStuff\Armors\Heads\RichGuyHat.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CharacterStuff\Armors\Cuirasses\PoorManCuirasse.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CharacterStuff\Armors\Cuirasses\AverageFighterCuirasse.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CharacterStuff\Armors\Cuirasses\RichGuyCuirasse.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CharacterStuff\Armors\Legs\PoorManLegs.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CharacterStuff\Armors\Legs\AverageFighterLegs.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CharacterStuff\Armors\Legs\RichGuyLegs.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CharacterStuff\Armors\IArmorStorage.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CharacterStuff\Armors\ArmorStorage.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CharacterStuff\Armors\Armors.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

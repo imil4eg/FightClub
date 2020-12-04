@@ -145,6 +145,7 @@
   <ItemGroup>
     <ClCompile Include="Battle\Battle.cpp" />
     <ClCompile Include="Battle\HitDirection.cpp" />
+    <ClCompile Include="CharacterStuff\Armors\ArmorStorage.cpp" />
     <ClCompile Include="CharacterStuff\AttributesFactory.cpp" />
     <ClCompile Include="CharacterStuff\Equipment.cpp" />
     <ClCompile Include="CharacterStuff\WeaponStorage.cpp" />
@@ -164,6 +165,18 @@
     <ClInclude Include="Battle\HitDirection.h" />
     <ClInclude Include="Battle\IBattle.h" />
     <ClInclude Include="CharacterStuff\Armors\Armor.h" />
+    <ClInclude Include="CharacterStuff\Armors\Armors.h" />
+    <ClInclude Include="CharacterStuff\Armors\ArmorStorage.h" />
+    <ClInclude Include="CharacterStuff\Armors\Cuirasses\AverageFighterCuirasse.h" />
+    <ClInclude Include="CharacterStuff\Armors\Cuirasses\PoorManCuirasse.h" />
+    <ClInclude Include="CharacterStuff\Armors\Cuirasses\RichGuyCuirasse.h" />
+    <ClInclude Include="CharacterStuff\Armors\Heads\AverageFighterHat.h" />
+    <ClInclude Include="CharacterStuff\Armors\Heads\PoorManHat.h" />
+    <ClInclude Include="CharacterStuff\Armors\Heads\RichGuyHat.h" />
+    <ClInclude Include="CharacterStuff\Armors\IArmorStorage.h" />
+    <ClInclude Include="CharacterStuff\Armors\Legs\AverageFighterLegs.h" />
+    <ClInclude Include="CharacterStuff\Armors\Legs\PoorManLegs.h" />
+    <ClInclude Include="CharacterStuff\Armors\Legs\RichGuyLegs.h" />
     <ClInclude Include="CharacterStuff\Attributes.h" />
     <ClInclude Include="CharacterStuff\AttributesFactory.h" />
     <ClInclude Include="CharacterStuff\Equipment.h" />

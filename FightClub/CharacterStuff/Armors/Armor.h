@@ -33,6 +33,11 @@ public:
 	{
 	}
 
+	virtual ~Armor()
+	{
+		delete m_attributes;
+	}
+
 	const boost::uuids::uuid getId() const { return m_id; }
 	const Attributes* getAttributes() { return m_attributes; }
 	Type getType() const { return m_type; }
