@@ -163,7 +163,7 @@
     <ClInclude Include="Battle\DamageCalculator.h" />
     <ClInclude Include="Battle\HitDirection.h" />
     <ClInclude Include="Battle\IBattle.h" />
-    <ClInclude Include="CharacterStuff\Armor.h" />
+    <ClInclude Include="CharacterStuff\Armors\Armor.h" />
     <ClInclude Include="CharacterStuff\Attributes.h" />
     <ClInclude Include="CharacterStuff\AttributesFactory.h" />
     <ClInclude Include="CharacterStuff\Equipment.h" />
