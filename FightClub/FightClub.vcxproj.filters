@@ -51,10 +51,10 @@
     <ClCompile Include="CharacterStuff\AttributesFactory.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="IO\Savers\JsonGameSaver.cpp">
+    <ClCompile Include="CharacterStuff\WeaponStorage.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CharacterStuff\WeaponStorage.cpp">
+    <ClCompile Include="IO\Savers\JsonGameDataProcesser.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -143,13 +143,13 @@
     <ClInclude Include="CharacterStuff\IWeaponStorage.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="IO\Savers\GameSaver.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="IO\Savers\JsonGameSaver.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="CharacterStuff\WeaponStorage.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IO\Savers\GameDataProcesser.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IO\Savers\JsonGameDataProcesser.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

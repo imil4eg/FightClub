@@ -154,7 +154,7 @@
     <ClCompile Include="Characters\Player.cpp" />
     <ClCompile Include="FightClub.cpp" />
     <ClCompile Include="IO\InputProcesser.cpp" />
-    <ClCompile Include="IO\Savers\JsonGameSaver.cpp" />
+    <ClCompile Include="IO\Savers\JsonGameDataProcesser.cpp" />
     <ClCompile Include="Menu.cpp" />
     <ClCompile Include="Common\RandomGenerator.cpp" />
   </ItemGroup>
@@ -186,8 +186,8 @@
     <ClInclude Include="IO\InputProcesser.h" />
     <ClInclude Include="IO\MessageDisplayer.h" />
     <ClInclude Include="IMenu.h" />
-    <ClInclude Include="IO\Savers\GameSaver.h" />
-    <ClInclude Include="IO\Savers\JsonGameSaver.h" />
+    <ClInclude Include="IO\Savers\GameDataProcesser.h" />
+    <ClInclude Include="IO\Savers\JsonGameDataProcesser.h" />
     <ClInclude Include="Menu.h" />
     <ClInclude Include="Common\RandomGenerator.h" />
   </ItemGroup>

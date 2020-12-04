@@ -1,9 +1,9 @@
 #ifndef JSON_GAME_SAVER_H
 #define JSON_GAME_SAVER_H
 
-#include "GameSaver.h"
+#include "GameDataProcesser.h"
 
-class JsonGameSaver : public GameSaver
+class JsonGameDataProcesser : public GameDataProcesser
 {
 public:
 	Character* load() override;

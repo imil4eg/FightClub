@@ -1,7 +1,7 @@
 #include <iomanip>
 #include <fstream>
 
-#include "JsonGameSaver.h"
+#include "JsonGameDataProcesser.h"
 
 #include "../../libs/nlohmann/json.hpp"
 
@@ -12,7 +12,7 @@ void addEquipmentAttribute(json& j, std::string attributeName, const Armor* armo
 	j["equipment"][attributeName] = armor == nullptr ? boost::uuids::nil_uuid() : armor->getId();
 }
 
-void JsonGameSaver::save(Character& character) const
+void JsonGameDataProcesser::save(Character& character) const
 {
 	json j;
 
@@ -33,9 +33,11 @@ void JsonGameSaver::save(Character& character) const
 	outFile << std::setw(4) << j << std::endl;
 }
 
-Character* JsonGameSaver::load()
+Character* GameDataProcesser::load()
 {
-	return nullptr;
+	std::ifstream input{ "file.json" };
+	json characterJson;
+	input >> characterJson;
 
-	// TODO: implement load logic.
+
 }

@@ -3,10 +3,10 @@
 
 #include "../../Characters/Character.h"
 
-class GameSaver
+class GameDataProcesser
 {
 public:
-	virtual ~GameSaver() = default;
+	virtual ~GameDataProcesser() = default;
 	virtual Character* load() = 0;
 	virtual void save(Character& character) const = 0;
 };
