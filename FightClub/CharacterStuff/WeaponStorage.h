@@ -44,7 +44,7 @@ public:
 		}
 	}
 
-	const Weapon* getWeapon(const boost::uuids::uuid& id) const override;
+	const Weapon* getWeaponOrDefault(const boost::uuids::uuid& id) const override;
 	Weapon* getRandomWeapon() const override;
 };
 

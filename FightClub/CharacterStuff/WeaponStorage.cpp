@@ -5,20 +5,19 @@
 #include "../Common/RandomGenerator.h"
 #include "WeaponStorage.h"
 
-const Weapon* WeaponStorage::getWeapon(const boost::uuids::uuid& id) const
-{
-	if (m_weapons.find(id) == m_weapons.end())
-	{
-		throw std::exception("Weapon with specified id not found.");
-	}
-
-	return m_weapons.at(id);
-}
-
-
 Weapon* WeaponStorage::getRandomWeapon() const
 {
 	auto randomWeaponId{ RandomGenerator::getBetween(0, static_cast<int>(m_weaponIds.size()) - 1) };
 
 	return m_weapons.at(m_weaponIds[randomWeaponId]);
+}
+
+const Weapon* WeaponStorage::getWeaponOrDefault(const boost::uuids::uuid& id) const
+{
+	if (m_weapons.find(id) == m_weapons.end())
+	{
+		return nullptr;
+	}
+
+	return m_weapons.at(id);
 }
