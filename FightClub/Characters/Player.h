@@ -9,7 +9,7 @@
 class Player : public Character
 {
 public:
-	Player(Attributes* const attributes, Equipment* const equipment, CharacterType characterType, Weapon* weapon = nullptr) :
+	Player(Attributes* attributes, Equipment* equipment, CharacterType characterType, const Weapon* weapon = nullptr) :
 		Character{ attributes, equipment, characterType, weapon }
 	{
 	}

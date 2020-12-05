@@ -2,7 +2,7 @@
 #define CHARACTER_H
 
 #include "../CharacterStuff/Attributes.h"
-#include "../CharacterStuff/Armor.h"
+#include "../CharacterStuff/Armors/Armor.h"
 #include "CharacterType.h"
 #include "../CharacterStuff/Equipment.h"
 #include "../Battle/HitDirection.h"
@@ -13,11 +13,11 @@ class Character
 private:
 	Attributes* m_attributes;
 	Equipment* m_equipment;
-	Weapon* m_weapon;
+	const Weapon* m_weapon;
 	CharacterType m_characterType;
 
 public:
-	Character(Attributes* attributes, Equipment* equipment, CharacterType characterType, Weapon* weapon = nullptr) :
+	Character(Attributes* attributes, Equipment* equipment, CharacterType characterType, const Weapon* weapon = nullptr) :
 		m_attributes {attributes},
 		m_equipment{equipment},
 		m_weapon{weapon},
@@ -45,7 +45,7 @@ public:
 
 	Attributes* getAttributes() const { return m_attributes; }
 	Equipment* getEquipment() const{ return m_equipment; }
-	Weapon* const getWeapon() { return m_weapon; }
+	const Weapon* const getWeapon() { return m_weapon; }
 	CharacterType getCharcterType() const { return m_characterType; }
 
 	void restoreHp() { m_attributes->setHp(100); }
