@@ -12,7 +12,7 @@
 
 class Bot : public Character
 {
-public:
+private:
 	Bot(Attributes* const attributes, Equipment* const equipment, CharacterType characterType, Weapon* weapon = nullptr) :
 		Character{ attributes, equipment, characterType, weapon }
 	{
@@ -22,6 +22,9 @@ public:
 		Character{ std::move(character) }
 	{
 	}
+
+public:
+	friend class BotFactory;
 
 	void playTurn(Character& player) override;
 	void hit(Character& enemy, HitDirection hitDirection) override;

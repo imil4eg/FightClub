@@ -25,7 +25,7 @@ private:
 	Type m_type{};
 	int m_armor{};
 
-public:
+protected:
 	Armor(const std::string& name, Type type, int armor, Attributes* attributes = nullptr) :
 		m_id{boost::uuids::random_generator()()},
 		m_name{name},
@@ -35,6 +35,7 @@ public:
 	{
 	}
 
+public:
 	virtual ~Armor()
 	{
 		delete m_attributes;

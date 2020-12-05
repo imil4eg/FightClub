@@ -5,11 +5,14 @@
 
 class PoorManCuirasse : public Armor
 {
-public:
+private:
 	PoorManCuirasse() :
 		Armor{ "Poor man Cuirasse", Armor::Type::body, 1 }
 	{
 	}
+
+public:
+	friend class ArmorStorage;
 };
 
 #endif // !POOR_MAN_CUIRASSE_H

@@ -5,11 +5,14 @@
 
 class AverageFighterCuirasse : public Armor
 {
-public:
+private:
 	AverageFighterCuirasse() :
 		Armor{ "Average Cuirasse", Armor::Type::body, 3 }
 	{
 	}
+
+public:
+	friend class ArmorStorage;
 };
 
 #endif // !AVERAGE_FIGHTER_CUIRASSE_H

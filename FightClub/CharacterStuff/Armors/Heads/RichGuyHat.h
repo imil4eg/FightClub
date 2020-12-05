@@ -5,11 +5,14 @@
 
 class RichGuyHat : public Armor
 {
-public:
+private:
 	RichGuyHat() :
 		Armor{ "Rich Guy Hat", Armor::Type::head, 5 }
 	{
 	}
+
+public:
+	friend class ArmorStorage;
 };
 
 #endif // !RICH_GUY_HAT_H

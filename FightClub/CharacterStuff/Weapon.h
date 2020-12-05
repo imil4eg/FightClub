@@ -12,7 +12,7 @@ private:
 	std::string m_name{};
 	int m_damage{};
 
-public:
+protected:
 	Weapon(std::string name, int damage) : 
 		m_id {boost::uuids::random_generator()()},
 		m_name{name},
@@ -30,10 +30,11 @@ public:
 		weapon.m_damage = 0;
 	}
 
+public:
 	virtual ~Weapon() noexcept = default;
 	int getDamage() const { return m_damage; }
 	const std::string& getName() const { return m_name; }
-	boost::uuids::uuid& getId() { return m_id; }
+	const boost::uuids::uuid& getId() const { return m_id; }
 };
 
 #endif // !WEAPON_H

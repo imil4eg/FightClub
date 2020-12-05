@@ -5,11 +5,14 @@
 
 class AverageFighterLegs : public Armor
 {
-public:
+private:
 	AverageFighterLegs() :
 		Armor{ "Average Fighter Boots", Armor::Type::legs, 3 }
 	{
 	}
+
+public:
+	friend class ArmorStorage;
 };
 
 #endif // !AVERAGE_FIGHTER_LEGS_H

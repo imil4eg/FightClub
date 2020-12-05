@@ -8,11 +8,14 @@
 
 class Player : public Character
 {
-public:
+private:
 	Player(Attributes* attributes, Equipment* equipment, CharacterType characterType, const Weapon* weapon = nullptr) :
 		Character{ attributes, equipment, characterType, weapon }
 	{
 	}
+
+public:
+	friend class JsonGameDataProcesser;
 
 	void playTurn(Character& target) override;
 

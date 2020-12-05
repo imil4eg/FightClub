@@ -5,11 +5,14 @@
 
 class AverageFighterHat : public Armor
 {
-public:
+private:
 	AverageFighterHat() :
 		Armor{ "Average Fighter Hat", Armor::Type::head, 3 }
 	{
 	}
+
+public:
+	friend class ArmorStorage;
 };
 
 #endif // !AVERAGE_FIGHTER_HAT_H

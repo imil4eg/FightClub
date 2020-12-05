@@ -1,24 +1,27 @@
 #ifndef EQUIPMENT_H
 #define EQUIPMENT_H
 
-#include "Armor.h"
+#include "Armors/Armor.h"
 #include "../Battle/HitDirection.h"
 
 class Equipment
 {
 private:
-	Armor* m_head;
-	Armor* m_body;
-	Armor* m_legs;
+	const Armor* m_head;
+	const Armor* m_body;
+	const Armor* m_legs;
 
-public:
-	Equipment(Armor* const head = nullptr, Armor* const body = nullptr, Armor* const legs = nullptr) : 
+private:
+	Equipment(const Armor* head = nullptr, const Armor* body = nullptr, const Armor* legs = nullptr) : 
 		m_head{head},
 		m_body{body},
 		m_legs{ legs }
 	{
 	}
 
+public:
+	friend class BotFactory;
+	friend class JsonGameDataProcesser;
 
 	const Armor* getHelment() const { return m_head; }
 	const Armor* getCuirasse() const { return m_body; }
