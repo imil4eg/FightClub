@@ -7,7 +7,7 @@ class AverageFighterHat : public Armor
 {
 public:
 	AverageFighterHat() :
-		Armor{ Armor::Type::head, 3 }
+		Armor{ "Average Fighter Hat", Armor::Type::head, 3 }
 	{
 	}
 };

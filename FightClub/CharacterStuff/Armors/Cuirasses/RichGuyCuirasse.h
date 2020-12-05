@@ -7,7 +7,7 @@ class RichGuyCuirasse : public Armor
 {
 public:
 	RichGuyCuirasse() :
-		Armor{ Armor::Type::body, 5 }
+		Armor{ "Rich Guy Cuirasse", Armor::Type::body, 5 }
 	{
 	}
 };

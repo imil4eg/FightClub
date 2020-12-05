@@ -20,13 +20,15 @@ public:
 
 private:
 	const boost::uuids::uuid m_id;
+	const std::string m_name;
 	Attributes* m_attributes;
 	Type m_type{};
 	int m_armor{};
 
 public:
-	Armor(Type type, int armor, Attributes* attributes = nullptr) :
+	Armor(const std::string& name, Type type, int armor, Attributes* attributes = nullptr) :
 		m_id{boost::uuids::random_generator()()},
+		m_name{name},
 		m_attributes{ attributes },
 		m_type {type},
 		m_armor{armor}
@@ -39,6 +41,7 @@ public:
 	}
 
 	const boost::uuids::uuid getId() const { return m_id; }
+	const std::string& getName() const { return m_name; }
 	const Attributes* getAttributes() { return m_attributes; }
 	Type getType() const { return m_type; }
 	int getArmor() const { return m_armor; }

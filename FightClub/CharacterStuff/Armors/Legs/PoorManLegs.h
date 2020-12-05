@@ -7,7 +7,7 @@ class PoorManLegs : public Armor
 {
 public:
 	PoorManLegs() :
-		Armor{ Armor::Type::legs, 1 }
+		Armor{ "Poorn Man Boots", Armor::Type::legs, 1 }
 	{
 	}
 };

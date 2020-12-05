@@ -7,7 +7,7 @@ class AverageFighterCuirasse : public Armor
 {
 public:
 	AverageFighterCuirasse() :
-		Armor{ Armor::Type::body, 3 }
+		Armor{ "Average Cuirasse", Armor::Type::body, 3 }
 	{
 	}
 };

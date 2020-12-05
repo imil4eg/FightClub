@@ -7,7 +7,7 @@ class PoorManHat : public Armor
 {
 public:
 	PoorManHat() :
-		Armor{ Armor::Type::head, 1 }
+		Armor{ "Poor Man Hat", Armor::Type::head, 1 }
 	{
 	}
 };
