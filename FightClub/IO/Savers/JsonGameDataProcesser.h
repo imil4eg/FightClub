@@ -18,7 +18,14 @@ class JsonGameDataProcesser : public GameDataProcesser
 private:
 	const std::string m_headAttribute{ "head" };
 	const std::string m_cuirasseAttribute{ "cuirasse" };
-	const std::string m_legsAttribute{ "legs" };
+	const std::string m_bootsAttribute{ "boots" };
+	const std::string m_attributesAttribute{ "attributes" };
+	const std::string m_strengthAttribute{ "strength" };
+	const std::string m_agilityAttribute{ "agility" };
+	const std::string m_levelAttribute{ "level" };
+	const std::string m_weaponAttribute{ "weapon" };
+	const std::string m_characterTypeAttribute{ "characterType" };
+	const std::string m_equipmentAttribute{ "equipment" };
 
 	std::shared_ptr<IAttributesFactory> m_attributesFactory;
 	std::shared_ptr<IWeaponStorage> m_weaponStorage;
