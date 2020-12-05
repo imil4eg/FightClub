@@ -9,7 +9,7 @@ public:
 	virtual ~IArmorStorage() = default;
 
 	virtual const Armor* getOrDefault(const boost::uuids::uuid& id) = 0;
-	virtual const Armor* getRandom() = 0;
+	virtual const Armor* getRandom(Armor::Type armorType) = 0;
 };
 
 #endif // !I_ARMOR_STORAGE_H
