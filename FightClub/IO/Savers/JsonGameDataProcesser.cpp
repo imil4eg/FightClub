@@ -1,10 +1,10 @@
+#include <boost/uuid/uuid_io.hpp>
+#include <boost/lexical_cast.hpp>
 #include <iomanip>
 #include <fstream>
 
-#include <boost/uuid/uuid_io.hpp>
-#include <boost/lexical_cast.hpp>
-
 #include "../../Characters/Player.h"
+#include "../../Common/ConfigKeys.h"
 #include "JsonGameDataProcesser.h"
 
 void addEquipmentAttribute(json& j, std::string attributeName, const Armor* armor)
@@ -36,13 +36,17 @@ void JsonGameDataProcesser::save(Character& character) const
 	j[m_weaponAttribute] = character.getWeapon() == nullptr ? boost::uuids::nil_uuid() : character.getWeapon()->getId();
 	j[m_characterTypeAttribute] = character.getCharcterType();
 
-	std::ofstream outFile{ "file.json" };
+	std::ofstream outFile{ m_config->get(ConfigKeys::saveFile) };
 	outFile << std::setw(4) << j << std::endl;
 }
 
 Character* JsonGameDataProcesser::load()
 {
-	std::ifstream input{ "file.json" };
+	std::ifstream input{ m_config->get(ConfigKeys::saveFile) };
+	
+	if (!input.good())
+		return nullptr;
+
 	json characterJson;
 	input >> characterJson;
 

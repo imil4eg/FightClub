@@ -7,6 +7,7 @@
 #include "../../CharacterStuff/IAttributesFactory.h"
 #include "../../CharacterStuff/IWeaponStorage.h"
 #include "../../CharacterStuff/Armors/IArmorStorage.h"
+#include "../../Common/Configs/IConfig.h"
 
 #include "../../libs/nlohmann/json.hpp"
 
@@ -30,14 +31,17 @@ private:
 	std::shared_ptr<IAttributesFactory> m_attributesFactory;
 	std::shared_ptr<IWeaponStorage> m_weaponStorage;
 	std::shared_ptr<IArmorStorage> m_armorStorage;
+	std::shared_ptr<IConfig> m_config;
 
 public:
 	JsonGameDataProcesser(const std::shared_ptr<IAttributesFactory>& attributeFactory, 
 		const std::shared_ptr<IWeaponStorage>& weaponStorage,
-		const std::shared_ptr<IArmorStorage>& armorStorage) :
+		const std::shared_ptr<IArmorStorage>& armorStorage,
+		const std::shared_ptr<IConfig>& config) :
 		m_attributesFactory{ attributeFactory },
 		m_weaponStorage{weaponStorage},
-		m_armorStorage{armorStorage}
+		m_armorStorage{armorStorage},
+		m_config{config}
 	{
 	}
 
