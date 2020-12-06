@@ -153,6 +153,7 @@
     <ClCompile Include="Characters\Bots\BotFactory.cpp" />
     <ClCompile Include="Characters\Character.cpp" />
     <ClCompile Include="Characters\Player.cpp" />
+    <ClCompile Include="Common\Config.cpp" />
     <ClCompile Include="FightClub.cpp" />
     <ClCompile Include="IO\InputProcesser.cpp" />
     <ClCompile Include="IO\Savers\JsonGameDataProcesser.cpp" />
@@ -196,6 +197,9 @@
     <ClInclude Include="Characters\CharacterType.h" />
     <ClInclude Include="Characters\Player.h" />
     <ClInclude Include="Common\Commands.h" />
+    <ClInclude Include="Common\Config.h" />
+    <ClInclude Include="Common\ConfigKeys.h" />
+    <ClInclude Include="Common\IConfig.h" />
     <ClInclude Include="IO\InputProcesser.h" />
     <ClInclude Include="IO\MessageDisplayer.h" />
     <ClInclude Include="IMenu.h" />
@@ -203,6 +207,9 @@
     <ClInclude Include="IO\Savers\JsonGameDataProcesser.h" />
     <ClInclude Include="Menu.h" />
     <ClInclude Include="Common\RandomGenerator.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="config.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
