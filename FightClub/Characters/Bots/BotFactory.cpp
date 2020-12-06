@@ -42,8 +42,11 @@ Bot BotFactory::create(const Character& player)
 	Weapon* weapon{ m_weaponStorage->getRandomWeapon() };
 	 
 	auto botAttributes{ m_attributeFactory->create(weapon, player.getAttributes()->getLevel(), strength, agility, botCharacterType) };
-	auto equipment{ Equipment{} };
+	
+	auto head{ m_armorStorage->getRandom(Armor::Type::head) };
+	auto cuirasse{ m_armorStorage->getRandom(Armor::Type::body) };
+	auto boots{ m_armorStorage->getRandom(Armor::Type::legs) };
+	Equipment equipment{ head, cuirasse, boots };
 
 	 return Bot{ &botAttributes, &equipment, botCharacterType, weapon };
-	//TODO: Generate bot depend on character attributes
 }

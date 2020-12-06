@@ -6,6 +6,7 @@
 #include "Bot.h"
 #include "IBotFactory.h"
 #include "../../CharacterStuff/IAttributesFactory.h"
+#include "../../CharacterStuff/Armors/IArmorStorage.h"
 #include "../../CharacterStuff/IWeaponStorage.h"
 
 class BotFactory : public IBotFactory
@@ -16,11 +17,15 @@ private:
 
 	const std::shared_ptr<IAttributesFactory> m_attributeFactory;
 	const std::shared_ptr<IWeaponStorage> m_weaponStorage;
+	const std::shared_ptr<IArmorStorage> m_armorStorage;
 
 public:
-	BotFactory(const std::shared_ptr<IAttributesFactory>& attributeFactory, const std::shared_ptr<IWeaponStorage>& weaponStorage) :
+	BotFactory(const std::shared_ptr<IAttributesFactory>& attributeFactory, 
+			   const std::shared_ptr<IWeaponStorage>& weaponStorage,
+			   const std::shared_ptr<IArmorStorage>& armorStorage) :
 		m_attributeFactory{ attributeFactory },
-		m_weaponStorage{weaponStorage}
+		m_weaponStorage{weaponStorage},
+		m_armorStorage{armorStorage}
 	{
 	}
 
