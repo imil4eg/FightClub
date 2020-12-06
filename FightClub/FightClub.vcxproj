@@ -155,7 +155,7 @@
     <ClCompile Include="Characters\CharacterFactory.cpp" />
     <ClCompile Include="Characters\Player.cpp" />
     <ClCompile Include="Common\Configs\Config.cpp" />
-    <ClCompile Include="Common\ConfigKeys.cpp" />
+    <ClCompile Include="Common\Configs\ConfigKeys.cpp" />
     <ClCompile Include="Common\Configs\PlayerConfig.cpp" />
     <ClCompile Include="FightClub.cpp" />
     <ClCompile Include="IO\InputProcesser.cpp" />
@@ -203,7 +203,7 @@
     <ClInclude Include="Characters\Player.h" />
     <ClInclude Include="Common\Commands.h" />
     <ClInclude Include="Common\Configs\Config.h" />
-    <ClInclude Include="Common\ConfigKeys.h" />
+    <ClInclude Include="Common\Configs\ConfigKeys.h" />
     <ClInclude Include="Common\Configs\IConfig.h" />
     <ClInclude Include="Common\Configs\IPlayerConfig.h" />
     <ClInclude Include="Common\Configs\PlayerConfig.h" />
