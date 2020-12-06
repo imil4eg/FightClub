@@ -155,6 +155,7 @@
     <ClCompile Include="Characters\Player.cpp" />
     <ClCompile Include="Common\Configs\Config.cpp" />
     <ClCompile Include="Common\ConfigKeys.cpp" />
+    <ClCompile Include="Common\Configs\PlayerConfig.cpp" />
     <ClCompile Include="FightClub.cpp" />
     <ClCompile Include="IO\InputProcesser.cpp" />
     <ClCompile Include="IO\Savers\JsonGameDataProcesser.cpp" />
@@ -201,6 +202,8 @@
     <ClInclude Include="Common\Configs\Config.h" />
     <ClInclude Include="Common\ConfigKeys.h" />
     <ClInclude Include="Common\Configs\IConfig.h" />
+    <ClInclude Include="Common\Configs\IPlayerConfig.h" />
+    <ClInclude Include="Common\Configs\PlayerConfig.h" />
     <ClInclude Include="IO\InputProcesser.h" />
     <ClInclude Include="IO\MessageDisplayer.h" />
     <ClInclude Include="IMenu.h" />
