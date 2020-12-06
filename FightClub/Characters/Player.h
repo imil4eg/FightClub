@@ -16,6 +16,7 @@ private:
 
 public:
 	friend class JsonGameDataProcesser;
+	friend class CharacterFactory;
 
 	void playTurn(Character& target) override;
 

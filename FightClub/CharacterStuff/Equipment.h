@@ -22,6 +22,7 @@ private:
 public:
 	friend class BotFactory;
 	friend class JsonGameDataProcesser;
+	friend class CharacterFactory;
 
 	const Armor* getHelment() const { return m_head; }
 	const Armor* getCuirasse() const { return m_body; }
