@@ -153,7 +153,8 @@
     <ClCompile Include="Characters\Bots\BotFactory.cpp" />
     <ClCompile Include="Characters\Character.cpp" />
     <ClCompile Include="Characters\Player.cpp" />
-    <ClCompile Include="Common\Config.cpp" />
+    <ClCompile Include="Common\Configs\Config.cpp" />
+    <ClCompile Include="Common\ConfigKeys.cpp" />
     <ClCompile Include="FightClub.cpp" />
     <ClCompile Include="IO\InputProcesser.cpp" />
     <ClCompile Include="IO\Savers\JsonGameDataProcesser.cpp" />
@@ -197,9 +198,9 @@
     <ClInclude Include="Characters\CharacterType.h" />
     <ClInclude Include="Characters\Player.h" />
     <ClInclude Include="Common\Commands.h" />
-    <ClInclude Include="Common\Config.h" />
+    <ClInclude Include="Common\Configs\Config.h" />
     <ClInclude Include="Common\ConfigKeys.h" />
-    <ClInclude Include="Common\IConfig.h" />
+    <ClInclude Include="Common\Configs\IConfig.h" />
     <ClInclude Include="IO\InputProcesser.h" />
     <ClInclude Include="IO\MessageDisplayer.h" />
     <ClInclude Include="IMenu.h" />
