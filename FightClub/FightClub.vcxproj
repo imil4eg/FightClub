@@ -152,6 +152,7 @@
     <ClCompile Include="Characters\Bots\Bot.cpp" />
     <ClCompile Include="Characters\Bots\BotFactory.cpp" />
     <ClCompile Include="Characters\Character.cpp" />
+    <ClCompile Include="Characters\CharacterFactory.cpp" />
     <ClCompile Include="Characters\Player.cpp" />
     <ClCompile Include="Common\Configs\Config.cpp" />
     <ClCompile Include="Common\ConfigKeys.cpp" />
@@ -196,7 +197,9 @@
     <ClInclude Include="Characters\Bots\BotFactory.h" />
     <ClInclude Include="Characters\Bots\IBotFactory.h" />
     <ClInclude Include="Characters\Character.h" />
+    <ClInclude Include="Characters\CharacterFactory.h" />
     <ClInclude Include="Characters\CharacterType.h" />
+    <ClInclude Include="Characters\ICharacterFactory.h" />
     <ClInclude Include="Characters\Player.h" />
     <ClInclude Include="Common\Commands.h" />
     <ClInclude Include="Common\Configs\Config.h" />
