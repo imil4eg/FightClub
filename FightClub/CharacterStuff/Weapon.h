@@ -31,6 +31,13 @@ protected:
 	}
 
 public:
+	Weapon(const Weapon* weapon) : 
+		m_id{weapon->m_id},
+		m_name{ weapon->m_name },
+		m_damage{ weapon->m_damage }
+	{
+	}
+
 	virtual ~Weapon() noexcept = default;
 	int getDamage() const { return m_damage; }
 	const std::string& getName() const { return m_name; }

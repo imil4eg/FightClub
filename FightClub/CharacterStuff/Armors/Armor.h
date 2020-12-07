@@ -36,6 +36,15 @@ protected:
 	}
 
 public:
+	Armor(const Armor* armor) : 
+		m_id{armor->m_id},
+		m_name{armor->m_name},
+		m_attributes{armor->m_attributes},
+		m_type{ armor->m_type },
+		m_armor{ armor->m_armor }
+	{
+	}
+
 	virtual ~Armor()
 	{
 		delete m_attributes;

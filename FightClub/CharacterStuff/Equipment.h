@@ -20,6 +20,17 @@ private:
 	}
 
 public:
+	~Equipment()
+	{
+		delete m_head;
+		delete m_body;
+		delete m_legs;
+
+		m_head = nullptr;
+		m_body = nullptr;
+		m_legs = nullptr;
+	}
+	
 	friend class BotFactory;
 	friend class JsonGameDataProcesser;
 	friend class CharacterFactory;

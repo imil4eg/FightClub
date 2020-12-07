@@ -10,7 +10,7 @@ const Armor* ArmorStorage::getOrDefault(const boost::uuids::uuid& id)
 		return nullptr;
 	}
 
-	return m_armors.at(id);
+	return new Armor{ m_armors.at(id) };
 }
 
 const Armor* ArmorStorage::getRandom(Armor::Type armorType)
@@ -42,7 +42,7 @@ const Armor* ArmorStorage::getRandom(Armor::Type armorType)
 		return nullptr;
 	}
 
-	return m_armors[m_armorIds[randomArmorId]];
+	return new Armor{ m_armors[m_armorIds[randomArmorId]] };
 }
 
 void ArmorStorage::initializeArmors()

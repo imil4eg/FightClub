@@ -1,4 +1,4 @@
-#include <boost/lexical_cast.hpp>
+	#include <boost/lexical_cast.hpp>
 #include <exception>
 #include <string>
 
@@ -9,7 +9,7 @@ Weapon* WeaponStorage::getRandomWeapon() const
 {
 	auto randomWeaponId{ RandomGenerator::getBetween(0, static_cast<int>(m_weaponIds.size()) - 1) };
 
-	return m_weapons.at(m_weaponIds[randomWeaponId]);
+	return new Weapon{ m_weapons.at(m_weaponIds[randomWeaponId]) };
 }
 
 const Weapon* WeaponStorage::getWeaponOrDefault(const boost::uuids::uuid& id) const
@@ -19,5 +19,5 @@ const Weapon* WeaponStorage::getWeaponOrDefault(const boost::uuids::uuid& id) co
 		return nullptr;
 	}
 
-	return m_weapons.at(id);
+	return new Weapon{ m_weapons.at(id) };
 }
