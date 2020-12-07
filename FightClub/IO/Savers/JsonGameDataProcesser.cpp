@@ -9,7 +9,8 @@
 
 void addEquipmentAttribute(json& j, std::string attributeName, const Armor* armor)
 {
-	j["equipment"][attributeName] = armor == nullptr ? boost::uuids::nil_uuid() : armor->getId();
+	auto equipmentId{ armor == nullptr ? boost::uuids::nil_uuid() : armor->getId() };
+	j["equipment"][attributeName] = boost::lexical_cast<std::string>(equipmentId);
 }
 
 const Armor* JsonGameDataProcesser::getArmor(json& j, const std::string& attributename)
@@ -33,7 +34,8 @@ void JsonGameDataProcesser::save(Character& character) const
 	addEquipmentAttribute(j, m_cuirasseAttribute, character.getEquipment()->getCuirasse());
 	addEquipmentAttribute(j, m_bootsAttribute, character.getEquipment()->getBoots());
 
-	j[m_weaponAttribute] = character.getWeapon() == nullptr ? boost::uuids::nil_uuid() : character.getWeapon()->getId();
+	auto weaponId{ character.getWeapon() == nullptr ? boost::uuids::nil_uuid() : character.getWeapon()->getId() };
+	j[m_weaponAttribute] = boost::lexical_cast<std::string>(weaponId);
 	j[m_characterTypeAttribute] = character.getCharcterType();
 
 	std::ofstream outFile{ m_config->get(ConfigKeys::saveFile) };
