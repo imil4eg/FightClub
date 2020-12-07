@@ -4,21 +4,34 @@
 #include <memory>
 #include <iostream>
 
+#include "CharacterStuff/AttributesFactory.h"
 #include "Battle/Battle.h"
 #include "Characters/Bots/BotFactory.h"
-#include "Menu.h"
+#include "IO/Savers/GameDataProcesser.h"
 #include "libs/Hypodermic/Hypodermic.h"
-
+#include "CharacterStuff/Armors/ArmorStorage.h"
+#include "CharacterStuff/IAttributesFactory.h"
+#include "CharacterStuff/Armors/IArmorStorage.h"
+#include "CharacterStuff/WeaponStorage.h"
+#include "Characters/ICharacterFactory.h"
+#include "Characters/CharacterFactory.h"
 #include "Battle/IBattle.h"
 #include "Characters/Bots/IBotFactory.h"
+#include "Common/Configs/Config.h"
+#include "Common/Configs/IConfig.h"
+#include "Common/Configs/IPlayerConfig.h"
+#include "Common/Configs/PlayerConfig.h"
 #include "IMenu.h"
+#include "CharacterStuff/IWeaponStorage.h"
+#include "IO/Savers/JsonGameDataProcesser.h"
+#include "Menu.h"
+
 
 std::shared_ptr<Hypodermic::Container> ResolveDependencies();
 
 int main()
 {
 	auto container{ ResolveDependencies() };
-
 	auto menu{ container->resolve<IMenu>() };
 
 	menu->show();
@@ -28,6 +41,15 @@ std::shared_ptr<Hypodermic::Container> ResolveDependencies()
 {
 	Hypodermic::ContainerBuilder builder;
 
+	auto config{ std::make_shared<Config>(Config{ "config.txt" }) };
+
+	builder.registerInstance(config).as<IConfig>();
+	builder.registerType<PlayerConfig>().as<IPlayerConfig>().singleInstance();
+	builder.registerType<ArmorStorage>().as<IArmorStorage>().singleInstance();
+	builder.registerType<JsonGameDataProcesser>().as<GameDataProcesser>().singleInstance();
+	builder.registerType<WeaponStorage>().as<IWeaponStorage>().singleInstance();
+	builder.registerType<AttributesFactory>().as<IAttributesFactory>().singleInstance();
+	builder.registerType<CharacterFactory>().as<ICharacterFactory>().singleInstance();
 	builder.registerType<BotFactory>().as<IBotFactory>().singleInstance();
 	builder.registerType<Battle>().as<IBattle>().singleInstance();
 	builder.registerType<Menu>().as<IMenu>().singleInstance();
