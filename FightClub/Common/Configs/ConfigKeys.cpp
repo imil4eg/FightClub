@@ -4,15 +4,11 @@
 
 std::string toString(ConfigKeys configKey)
 {
-	std::string result;
-
 	switch (configKey)
 	{
 	case ConfigKeys::saveFile:
-		result = "SaveFileDirectory";
+		return "SaveFileDirectory";
 	default:
 		throw std::exception("Specified config key not found.");
 	}
-
-	return result;
 }

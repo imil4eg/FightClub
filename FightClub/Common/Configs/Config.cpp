@@ -19,7 +19,7 @@ std::string Config::get(ConfigKeys key)
 		if (found != std::string::npos &&
 			text.substr(0, found) == wordToFind)
 		{
-			return text.substr(found, text.size() - found);
+			return text.substr(found + 1, text.size() - found);
 		}
 	}
 

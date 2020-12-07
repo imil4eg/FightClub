@@ -1,1 +1,1 @@
-SaveFileDirectiory=file.json
+SaveFileDirectory=file.json
