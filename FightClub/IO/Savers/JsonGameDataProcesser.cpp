@@ -4,7 +4,7 @@
 #include <fstream>
 
 #include "../../Characters/Player.h"
-#include "../../Common/ConfigKeys.h"
+#include "../../Common/Configs/ConfigKeys.h"
 #include "JsonGameDataProcesser.h"
 
 void addEquipmentAttribute(json& j, std::string attributeName, const Armor* armor)
@@ -66,5 +66,5 @@ Character* JsonGameDataProcesser::load()
 
 	auto equipment{ new Equipment{head, cuirass, legs} };
 
-	return new Player{ &attributes, equipment, characterType, weapon };
+	return new Player{ attributes, equipment, characterType, weapon };
 }

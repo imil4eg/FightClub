@@ -1,6 +1,6 @@
 #include "AttributesFactory.h"
 
-Attributes AttributesFactory::create(const Weapon* const weapon, int level, int strength, int agility, CharacterType characterType)
+Attributes* AttributesFactory::create(const Weapon* const weapon, int level, int strength, int agility, CharacterType characterType)
 {
 	int totalStrength = strength + (m_levelAttributesBonus * level);
 	int totalAgility = agility + (m_levelAttributesBonus * level);
@@ -9,5 +9,5 @@ Attributes AttributesFactory::create(const Weapon* const weapon, int level, int 
 	int hp = m_defaultHp + (m_bonusHPForStrengthMultiplier * totalStrength);
 	int stamina = m_defaultStamina + (m_staminaPerLevelBonus * level);
 
-	return Attributes{ hp, level, totalDamage, totalStrength, totalAgility, stamina };
+	return new Attributes{ hp, level, totalDamage, totalStrength, totalAgility, stamina };
 }

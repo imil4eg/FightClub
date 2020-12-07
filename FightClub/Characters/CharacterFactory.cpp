@@ -3,8 +3,8 @@
 
 Character* CharacterFactory::createDefaultPlayer()
 {
-	auto attributes{ m_attributesFactory->create(nullptr, 1, 0, 0, CharacterType::strong) };
-	auto equipment = new Equipment{};
+	auto* attributes{ m_attributesFactory->create(nullptr, 1, 0, 0, CharacterType::strong) };
+	auto* equipment = new Equipment{};
 
-	return new Player{&attributes, equipment, CharacterType::strong};
+	return new Player{attributes, equipment, CharacterType::strong};
 }

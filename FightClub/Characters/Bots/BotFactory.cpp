@@ -46,7 +46,7 @@ Bot BotFactory::create(const Character& player)
 	auto head{ m_armorStorage->getRandom(Armor::Type::head) };
 	auto cuirasse{ m_armorStorage->getRandom(Armor::Type::body) };
 	auto boots{ m_armorStorage->getRandom(Armor::Type::legs) };
-	Equipment equipment{ head, cuirasse, boots };
+	auto equipment{ new Equipment{ head, cuirasse, boots } };
 
-	 return Bot{ &botAttributes, &equipment, botCharacterType, weapon };
+	return Bot{ botAttributes, equipment, botCharacterType, weapon };
 }

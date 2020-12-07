@@ -9,7 +9,7 @@ class IAttributesFactory
 {
 public:
 	virtual ~IAttributesFactory() noexcept = default;
-	virtual Attributes create(const Weapon* const weapon, int level, int stength, int agility, CharacterType characterType) = 0;
+	virtual Attributes* create(const Weapon* const weapon, int level, int stength, int agility, CharacterType characterType) = 0;
 };
 
 
