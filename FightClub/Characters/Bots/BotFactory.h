@@ -15,14 +15,14 @@ private:
 	const int m_attributeDependOnTypeExchangeValue = 20;
 	const int m_minAttributeValue = 1;
 
-	const std::shared_ptr<IAttributesFactory> m_attributeFactory;
-	const std::shared_ptr<IWeaponStorage> m_weaponStorage;
-	const std::shared_ptr<IArmorStorage> m_armorStorage;
+	IAttributesFactory* m_attributeFactory;
+	IWeaponStorage* m_weaponStorage;
+	IArmorStorage* m_armorStorage;
 
 public:
-	BotFactory(const std::shared_ptr<IAttributesFactory>& attributeFactory, 
-			   const std::shared_ptr<IWeaponStorage>& weaponStorage,
-			   const std::shared_ptr<IArmorStorage>& armorStorage) :
+	BotFactory(IAttributesFactory* attributeFactory, 
+			   IWeaponStorage* weaponStorage,
+			   IArmorStorage* armorStorage) :
 		m_attributeFactory{ attributeFactory },
 		m_weaponStorage{weaponStorage},
 		m_armorStorage{armorStorage}

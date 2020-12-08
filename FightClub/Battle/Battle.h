@@ -10,10 +10,10 @@
 class Battle : public IBattle
 {
 private:
-	const std::shared_ptr<IBotFactory> m_botFactory;
+	IBotFactory* m_botFactory;
 
 public:
-	Battle(const std::shared_ptr<IBotFactory> botFactory) : m_botFactory{ botFactory }
+	Battle(IBotFactory* botFactory) : m_botFactory{ botFactory }
 	{
 	}
 

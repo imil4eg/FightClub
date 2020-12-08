@@ -28,16 +28,16 @@ private:
 	const std::string m_characterTypeAttribute{ "characterType" };
 	const std::string m_equipmentAttribute{ "equipment" };
 
-	std::shared_ptr<IAttributesFactory> m_attributesFactory;
-	std::shared_ptr<IWeaponStorage> m_weaponStorage;
-	std::shared_ptr<IArmorStorage> m_armorStorage;
-	std::shared_ptr<IConfig> m_config;
+	IAttributesFactory* m_attributesFactory;
+	IWeaponStorage* m_weaponStorage;
+	IArmorStorage* m_armorStorage;
+	IConfig* m_config;
 
 public:
-	JsonGameDataProcesser(const std::shared_ptr<IAttributesFactory>& attributeFactory, 
-		const std::shared_ptr<IWeaponStorage>& weaponStorage,
-		const std::shared_ptr<IArmorStorage>& armorStorage,
-		const std::shared_ptr<IConfig>& config) :
+	JsonGameDataProcesser(IAttributesFactory* attributeFactory, 
+		IWeaponStorage* weaponStorage,
+		IArmorStorage* armorStorage,
+		IConfig* config) :
 		m_attributesFactory{ attributeFactory },
 		m_weaponStorage{weaponStorage},
 		m_armorStorage{armorStorage},

@@ -9,10 +9,10 @@
 class CharacterFactory : public ICharacterFactory
 {
 private:
-	const std::shared_ptr<IAttributesFactory> m_attributesFactory;
+	IAttributesFactory* m_attributesFactory;
 
 public:
-	CharacterFactory(const std::shared_ptr<IAttributesFactory>& attributesFactory) :
+	CharacterFactory(IAttributesFactory* attributesFactory) :
 		m_attributesFactory{ attributesFactory }
 	{
 	}

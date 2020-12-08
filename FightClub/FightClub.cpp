@@ -8,7 +8,6 @@
 #include "Battle/Battle.h"
 #include "Characters/Bots/BotFactory.h"
 #include "IO/Savers/GameDataProcesser.h"
-#include "libs/Hypodermic/Hypodermic.h"
 #include "CharacterStuff/Armors/ArmorStorage.h"
 #include "CharacterStuff/IAttributesFactory.h"
 #include "CharacterStuff/Armors/IArmorStorage.h"
@@ -26,41 +25,24 @@
 #include "IO/Savers/JsonGameDataProcesser.h"
 #include "Menu.h"
 
-
-std::shared_ptr<Hypodermic::Container> ResolveDependencies();
-
 int main()
 {
-	auto container{ ResolveDependencies() };
-	auto menu{ container->resolve<IMenu>() };
 
-	menu->show();
-}
+	Config config{ "config.txt" };
+	AttributesFactory attributesFactory{};
+	WeaponStorage weaponStorage{};
+	ArmorStorage armorStorage{};
+	JsonGameDataProcesser jsonGameDataProcesser{ &attributesFactory, &weaponStorage, &armorStorage, &config };
+	CharacterFactory characterFactory{ &attributesFactory };
+	PlayerConfig playerConfig{ &jsonGameDataProcesser, &characterFactory };
+	BotFactory botFactory{ &attributesFactory, &weaponStorage, &armorStorage };
+	Battle battle{ &botFactory };
+	Menu menu{ &battle, &playerConfig, &jsonGameDataProcesser };
 
-std::shared_ptr<Hypodermic::Container> ResolveDependencies()
-{
-	Hypodermic::ContainerBuilder builder;
-
-	auto config{ std::make_shared<Config>(Config{ "config.txt" }) };
-
-	builder.registerInstance(config).as<IConfig>();
-	builder.registerType<PlayerConfig>().as<IPlayerConfig>().singleInstance();
-	builder.registerType<ArmorStorage>().as<IArmorStorage>().singleInstance();
-	builder.registerType<JsonGameDataProcesser>().as<GameDataProcesser>().singleInstance();
-	builder.registerType<WeaponStorage>().as<IWeaponStorage>().singleInstance();
-	builder.registerType<AttributesFactory>().as<IAttributesFactory>().singleInstance();
-	builder.registerType<CharacterFactory>().as<ICharacterFactory>().singleInstance();
-	builder.registerType<BotFactory>().as<IBotFactory>().singleInstance();
-	builder.registerType<Battle>().as<IBattle>().singleInstance();
-	builder.registerType<Menu>().as<IMenu>().singleInstance();
-	
 	srand(static_cast<unsigned int>(time(0)));
-
-	return builder.build();
+	
+	menu.show();
 }
-
-
-
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
 // Debug program: F5 or Debug > Start Debugging menu
