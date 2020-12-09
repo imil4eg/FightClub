@@ -8,23 +8,20 @@
 #include "../Character.h"
 #include "../CharacterType.h"
 #include "../../CharacterStuff/Equipment.h"
-#include "../../CharacterStuff/Weapon.h"
+#include "../../CharacterStuff/Weapons/Weapon.h"
 
 class Bot : public Character
 {
-private:
-	Bot(Attributes* const attributes, Equipment* const equipment, CharacterType characterType, Weapon* weapon = nullptr) :
-		Character{ attributes, equipment, characterType, weapon }
-	{
-	}
-
-	Bot(Character&& character) noexcept :
-		Character{ std::move(character) }
-	{
-	}
-
 public:
-	friend class BotFactory;
+	Bot(std::unique_ptr<Attributes> attributes, std::unique_ptr<Equipment> equipment, CharacterType characterType, std::unique_ptr<Weapon> weapon = {}) :
+		Character{ std::move(attributes), std::move(equipment), characterType, std::move(weapon) }
+	{
+	}
+
+	Bot(Bot&& bot) :
+		Character{ std::move(bot) }
+	{
+	}
 
 	void playTurn(Character& player) override;
 	void hit(Character& enemy, HitDirection hitDirection) override;

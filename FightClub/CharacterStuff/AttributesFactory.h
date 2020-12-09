@@ -15,7 +15,7 @@ private:
 	const int m_staminaPerLevelBonus{ 5 };
 
 public:
-	Attributes* create(const Weapon* const weapon, int level, int stength, int agility, CharacterType characterType) override;
+	std::unique_ptr<Attributes> create(const Weapon* const weapon, int level, int stength, int agility, CharacterType characterType) override;
 };
 
 #endif // !ATTRIBUTES_FACTORY_H

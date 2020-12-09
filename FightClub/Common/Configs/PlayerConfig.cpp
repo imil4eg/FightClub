@@ -12,5 +12,10 @@ Character* PlayerConfig::getCharacter()
 		}
 	}
 
-	return m_playerCharacter;
+	return m_playerCharacter.get();
+}
+
+void PlayerConfig::initialize()
+{
+	m_gameDataProcesser->load();
 }

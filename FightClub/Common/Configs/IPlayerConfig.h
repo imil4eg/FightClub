@@ -8,6 +8,7 @@ class IPlayerConfig
 public:
 	virtual ~IPlayerConfig() = default;
 	virtual Character* getCharacter() = 0;
+	virtual void initialize() = 0;
 };
 
 

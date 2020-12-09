@@ -11,7 +11,7 @@
 #include "CharacterStuff/Armors/ArmorStorage.h"
 #include "CharacterStuff/IAttributesFactory.h"
 #include "CharacterStuff/Armors/IArmorStorage.h"
-#include "CharacterStuff/WeaponStorage.h"
+#include "CharacterStuff/Weapons/WeaponStorage.h"
 #include "Characters/ICharacterFactory.h"
 #include "Characters/CharacterFactory.h"
 #include "Battle/IBattle.h"
@@ -21,7 +21,7 @@
 #include "Common/Configs/IPlayerConfig.h"
 #include "Common/Configs/PlayerConfig.h"
 #include "IMenu.h"
-#include "CharacterStuff/IWeaponStorage.h"
+#include "CharacterStuff/Weapons/IWeaponStorage.h"
 #include "IO/Savers/JsonGameDataProcesser.h"
 #include "Menu.h"
 
@@ -30,8 +30,8 @@ int main()
 
 	Config config{ "config.txt" };
 	AttributesFactory attributesFactory{};
-	WeaponStorage weaponStorage{};
-	ArmorStorage armorStorage{};
+	WeaponStorage weaponStorage{config};
+	ArmorStorage armorStorage{ config };
 	JsonGameDataProcesser jsonGameDataProcesser{ &attributesFactory, &weaponStorage, &armorStorage, &config };
 	CharacterFactory characterFactory{ &attributesFactory };
 	PlayerConfig playerConfig{ &jsonGameDataProcesser, &characterFactory };

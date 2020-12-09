@@ -6,46 +6,38 @@
 #include "CharacterType.h"
 #include "../CharacterStuff/Equipment.h"
 #include "../Battle/HitDirection.h"
-#include "../CharacterStuff/Weapon.h"
+#include "../CharacterStuff/Weapons/Weapon.h"
 
 class Character
 {
 private:
-	Attributes* m_attributes;
-	Equipment* m_equipment;
-	const Weapon* m_weapon;
+	std::unique_ptr<Attributes> m_attributes;
+	std::unique_ptr<Equipment> m_equipment;
+	std::unique_ptr<Weapon> m_weapon;
 	CharacterType m_characterType;
 
 public:
-	Character(Attributes* attributes, Equipment* equipment, CharacterType characterType, const Weapon* weapon = nullptr) :
-		m_attributes {attributes},
-		m_equipment{equipment},
-		m_weapon{weapon},
-		m_characterType{characterType}
+	Character(std::unique_ptr<Attributes> attributes, std::unique_ptr<Equipment> equipment, CharacterType characterType, std::unique_ptr<Weapon> weapon = {}) :
+		m_attributes {std::move(attributes)},
+		m_equipment {std::move(equipment)},
+		m_weapon {std::move(weapon)},
+		m_characterType {characterType}
 	{
 	}
 
-	Character(Character&& character) noexcept : 
-		m_attributes{character.m_attributes},
-		m_equipment{character.m_equipment},
-		m_weapon{ character.m_weapon },
+	Character(Character&& character) : 
+		m_attributes{std::move(character.m_attributes)},
+		m_equipment{std::move(character.m_equipment)},
+		m_weapon{ std::move(character.m_weapon) },
 		m_characterType{ character.m_characterType }
 	{
-		character.m_attributes = nullptr;
-		character.m_equipment = nullptr;
-		character.m_weapon = nullptr;
 	}
 
-	virtual ~Character()
-	{
-		delete m_attributes;
-		delete m_equipment;
-		delete m_weapon;
-	};
+	virtual ~Character(){};
 
-	Attributes* getAttributes() const { return m_attributes; }
-	Equipment* getEquipment() const{ return m_equipment; }
-	const Weapon* const getWeapon() { return m_weapon; }
+	Attributes* getAttributes() const { return m_attributes.get(); }
+	Equipment* getEquipment() const{ return m_equipment.get(); }
+	const Weapon* const getWeapon() { return m_weapon.get(); }
 	CharacterType getCharcterType() const { return m_characterType; }
 
 	void restoreHp() { m_attributes->setHp(100); }

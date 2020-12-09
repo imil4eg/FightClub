@@ -1,15 +1,17 @@
 #ifndef I_ATTRIBUTES_FACTORY_H
 #define I_ATTRIBUTES_FACTORY_H
 
+#include <memory>
+
 #include "Attributes.h"
 #include "../Characters/CharacterType.h"
-#include "Weapon.h"
+#include "Weapons/Weapon.h"
 
 class IAttributesFactory
 {
 public:
 	virtual ~IAttributesFactory() noexcept = default;
-	virtual Attributes* create(const Weapon* const weapon, int level, int stength, int agility, CharacterType characterType) = 0;
+	virtual std::unique_ptr<Attributes> create(const Weapon* const weapon, int level, int stength, int agility, CharacterType characterType) = 0;
 };
 
 

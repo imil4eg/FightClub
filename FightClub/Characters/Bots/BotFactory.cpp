@@ -39,14 +39,14 @@ Bot BotFactory::create(const Character& player)
 
 	calculateAttributes(strength, agility, botCharacterType);
 
-	Weapon* weapon{ m_weaponStorage->getRandomWeapon() };
+	auto weapon{ m_weaponStorage->getRandomWeapon() };
 	 
-	auto botAttributes{ m_attributeFactory->create(weapon, player.getAttributes()->getLevel(), strength, agility, botCharacterType) };
+	auto botAttributes{ m_attributeFactory->create(weapon.get(), player.getAttributes()->getLevel(), strength, agility, botCharacterType) };
 	
 	auto head{ m_armorStorage->getRandom(Armor::Type::head) };
 	auto cuirasse{ m_armorStorage->getRandom(Armor::Type::body) };
 	auto boots{ m_armorStorage->getRandom(Armor::Type::legs) };
-	auto equipment{ new Equipment{ head, cuirasse, boots } };
+	auto equipment{ std::make_unique<Equipment>(std::move(head), std::move(cuirasse), std::move(boots)) };
 
-	return Bot{ botAttributes, equipment, botCharacterType, weapon };
+	return Bot{ std::move(botAttributes), std::move(equipment), botCharacterType, std::move(weapon) };
 }

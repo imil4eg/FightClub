@@ -9,7 +9,7 @@ class ICharacterFactory
 {
 public:
 	virtual ~ICharacterFactory() noexcept = default;
-	virtual Character* createDefaultPlayer() = 0;
+	virtual std::unique_ptr<Character> createDefaultPlayer() = 0;
 };
 
 #endif // !I_CHARACTER_FACTORY_H

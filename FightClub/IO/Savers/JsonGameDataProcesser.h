@@ -1,11 +1,9 @@
 #ifndef JSON_GAME_SAVER_H
 #define JSON_GAME_SAVER_H
 
-#include <memory>
-
 #include "GameDataProcesser.h"
 #include "../../CharacterStuff/IAttributesFactory.h"
-#include "../../CharacterStuff/IWeaponStorage.h"
+#include "../../CharacterStuff/Weapons/IWeaponStorage.h"
 #include "../../CharacterStuff/Armors/IArmorStorage.h"
 #include "../../Common/Configs/IConfig.h"
 
@@ -45,11 +43,11 @@ public:
 	{
 	}
 
-	Character* load() override;
+	std::unique_ptr<Character> load() override;
 	void save(Character& character) const override;
 
 private:
-	const Armor* getArmor(json& j, const std::string& attributeName);
+	std::unique_ptr<Armor> getArmor(json& j, const std::string& attributeName);
 };
 
 

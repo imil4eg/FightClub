@@ -1,6 +1,7 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
+#include <memory>
 #include <iostream>
 
 #include "Character.h"
@@ -8,15 +9,11 @@
 
 class Player : public Character
 {
-private:
-	Player(Attributes* attributes, Equipment* equipment, CharacterType characterType, const Weapon* weapon = nullptr) :
-		Character{ attributes, equipment, characterType, weapon }
+public:
+	Player(std::unique_ptr<Attributes> attributes, std::unique_ptr<Equipment> equipment, CharacterType characterType, std::unique_ptr<Weapon> weapon = {}) :
+		Character{ std::move(attributes), std::move(equipment), characterType, std::move(weapon) }
 	{
 	}
-
-public:
-	friend class JsonGameDataProcesser;
-	friend class CharacterFactory;
 
 	void playTurn(Character& target) override;
 

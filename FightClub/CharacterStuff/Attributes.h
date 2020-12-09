@@ -1,7 +1,7 @@
 #ifndef ATTRIBUTES_H
 #define ATTRIBUTES_H
 
-#include "Weapon.h"
+#include "Weapons/Weapon.h"
 
 class Attributes
 {
@@ -13,6 +13,7 @@ private:
 	int m_agility{};
 	int m_stamina{};
 
+public:
 	Attributes(int hp, int level, int damage, int strength, int agility, int stamina) :
 		m_hp{ hp },
 		m_level{ level },
@@ -22,10 +23,7 @@ private:
 		m_stamina{ stamina }
 	{
 	}
-
-public:
-	friend class AttributesFactory;
-
+	
 	int getHp() const { return m_hp; }
 	void setHp(int hp) { m_hp = hp; }
 	int getDamage() const { return m_damage; }

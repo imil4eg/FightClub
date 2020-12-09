@@ -8,13 +8,13 @@ int Equipment::getArmorValue(HitDirection hitDirection) const
 	switch (hitDirection)
 	{
 	case HitDirection::head:
-		armor = this->m_head;
+		armor = this->m_head.get();
 		break;
 	case HitDirection::body:
-		armor = this->m_body;
+		armor = this->m_body.get();
 		break;
 	case HitDirection::legs:
-		armor = this->m_legs;
+		armor = this->m_legs.get();
 		break;
 	default:
 		throw std::out_of_range("Hit directory not implemented.");

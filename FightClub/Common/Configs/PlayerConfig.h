@@ -2,22 +2,25 @@
 #define PLAYER_CONFIG_H
 
 #include <memory>
+#include <vector>
 
 #include "IPlayerConfig.h"
 #include "../../Characters/ICharacterFactory.h"
+#include "../../CharacterStuff/Armors/Armor.h"
 #include "../../IO/Savers/GameDataProcesser.h"
 
 class PlayerConfig : public IPlayerConfig
 {
 private:
-	Character* m_playerCharacter;
+	std::unique_ptr<Character> m_playerCharacter;
+	std::vector<Armor> m_armors{};
 	
-	const std::shared_ptr<GameDataProcesser> m_gameDataProcesser;
-	const std::shared_ptr<ICharacterFactory> m_characterFactory;
+	GameDataProcesser* m_gameDataProcesser;
+	ICharacterFactory* m_characterFactory;
 
 public:
-	PlayerConfig(const std::shared_ptr<GameDataProcesser>& gameDataProcesser, 
-		const std::shared_ptr<ICharacterFactory>& characterFactory) :
+	PlayerConfig(GameDataProcesser* gameDataProcesser, 
+				ICharacterFactory* characterFactory) :
 		m_gameDataProcesser{gameDataProcesser},
 		m_characterFactory{characterFactory},
 		m_playerCharacter{ nullptr }
@@ -25,6 +28,7 @@ public:
 	}
 
 	Character* getCharacter() override;
+	void initialize() override;
 };
 
 #endif // !PLAYER_CONFIG_H

@@ -13,9 +13,9 @@ void addEquipmentAttribute(json& j, std::string attributeName, const Armor* armo
 	j["equipment"][attributeName] = boost::lexical_cast<std::string>(equipmentId);
 }
 
-const Armor* JsonGameDataProcesser::getArmor(json& j, const std::string& attributename)
+std::unique_ptr<Armor> JsonGameDataProcesser::getArmor(json& j, const std::string& attributename)
 {
-	auto id{ j[m_equipmentAttribute][attributename].get <std::string>() };
+	auto id{ j[m_equipmentAttribute][attributename].get<std::string>() };
 
 	return m_armorStorage->getOrDefault(boost::lexical_cast<boost::uuids::uuid>(id));
 }
@@ -42,7 +42,7 @@ void JsonGameDataProcesser::save(Character& character) const
 	outFile << std::setw(4) << j << std::endl;
 }
 
-Character* JsonGameDataProcesser::load()
+std::unique_ptr<Character> JsonGameDataProcesser::load()
 {
 	std::ifstream input{ m_config->get(ConfigKeys::saveFile) };
 	
@@ -60,13 +60,13 @@ Character* JsonGameDataProcesser::load()
 	auto weaponId{ boost::lexical_cast<boost::uuids::uuid>(characterJson[m_weaponAttribute].get<std::string>()) };
 	auto weapon{ m_weaponStorage->getWeaponOrDefault(weaponId) };
 
-	auto attributes{ m_attributesFactory->create(weapon, level, strength, agility, characterType) };
+	auto attributes{ m_attributesFactory->create(weapon.get(), level, strength, agility, characterType) };
 
 	auto head{ getArmor(characterJson, m_headAttribute) };
 	auto cuirass{ getArmor(characterJson, m_cuirasseAttribute) };
 	auto legs{ getArmor(characterJson, m_bootsAttribute) };
 
-	auto equipment{ new Equipment{head, cuirass, legs} };
+	auto equipment{ std::make_unique<Equipment>(std::move(head), std::move(cuirass), std::move(legs)) };
 
-	return new Player{ attributes, equipment, characterType, weapon };
+	return std::make_unique<Player>(std::move(attributes), std::move(equipment), characterType, std::move(weapon));
 }

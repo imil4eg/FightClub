@@ -7,7 +7,7 @@
 #include "IBotFactory.h"
 #include "../../CharacterStuff/IAttributesFactory.h"
 #include "../../CharacterStuff/Armors/IArmorStorage.h"
-#include "../../CharacterStuff/IWeaponStorage.h"
+#include "../../CharacterStuff/Weapons/IWeaponStorage.h"
 
 class BotFactory : public IBotFactory
 {
