@@ -8,6 +8,10 @@ std::string toString(ConfigKeys configKey)
 	{
 	case ConfigKeys::saveFile:
 		return "SaveFileDirectory";
+	case ConfigKeys::weaponsFile:
+		return "WeaponsFileDirectory";
+	case ConfigKeys::armorsFile:
+		return "ArmorsFileDirectory";
 	default:
 		throw std::exception("Specified config key not found.");
 	}

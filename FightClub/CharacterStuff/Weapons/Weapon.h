@@ -12,29 +12,25 @@ private:
 	std::string m_name{};
 	int m_damage{};
 
-protected:
-	Weapon(std::string name, int damage) : 
-		m_id {boost::uuids::random_generator()()},
+public:
+	Weapon(boost::uuids::uuid& uuid, std::string& name, int damage) : 
+		m_id {uuid},
 		m_name{name},
 		m_damage{ damage }
 	{
 	}
 
-	Weapon(Weapon&& weapon) noexcept : 
+	Weapon(Weapon& weapon) : 
 		m_id{weapon.m_id},
-		m_name{ weapon.m_name },
-		m_damage{ weapon.m_damage }
+		m_name{weapon.m_name},
+		m_damage{weapon.m_damage}
 	{
-		weapon.m_id = boost::uuids::nil_uuid();
-		weapon.m_name = nullptr;
-		weapon.m_damage = 0;
 	}
 
-public:
-	Weapon(const Weapon* weapon) : 
-		m_id{weapon->m_id},
-		m_name{ weapon->m_name },
-		m_damage{ weapon->m_damage }
+	Weapon(Weapon&& weapon) noexcept : 
+		m_id{std::move(weapon.m_id)},
+		m_name{ std::move(weapon.m_name) },
+		m_damage{ weapon.m_damage }
 	{
 	}
 

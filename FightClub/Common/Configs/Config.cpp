@@ -3,7 +3,7 @@
 
 #include "Config.h"
 
-std::string Config::get(ConfigKeys key)
+std::string Config::get(ConfigKeys key) const
 {
 	std::ifstream configFile{ m_configPath };
 

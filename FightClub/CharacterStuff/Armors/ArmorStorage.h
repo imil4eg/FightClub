@@ -5,32 +5,27 @@
 #include <vector>
 
 #include "IArmorStorage.h"
-#include "Armors.h"
+#include "../../Common/Configs/IConfig.h"
 
 class ArmorStorage : public IArmorStorage
 {
 private:
-	const int m_headStartIndex = 0;
-	const int m_headEndIndex = 2;
-	const int m_cuirasseStartIndex = 3;
-	const int m_cuirasseEndIndex = 5;
-	const int m_legsStartIndex = 6;
-	const int m_legsEndIndex = 8;
-	
-	std::map<boost::uuids::uuid, Armor*> m_armors{};
-	std::vector<boost::uuids::uuid> m_armorIds{};
+	const std::string m_armorsKey{ "armors" };
+	const std::string m_idKey{ "id" };
+	const std::string m_nameKey{ "name" };
+	const std::string m_typeKey{ "type" };
+	const std::string m_valueKey{ "value" };
+
+	const IConfig* m_confilg;
 
 public:
-	ArmorStorage()
+	ArmorStorage(const IConfig& config) :
+		m_confilg{ &config }
 	{
-		initializeArmors();
 	}
 
-	const Armor* getOrDefault(const boost::uuids::uuid& id) override;
-	const Armor* getRandom(Armor::Type armorType) override;
-
-private:
-	void initializeArmors();
+	std::unique_ptr<Armor> getOrDefault(const boost::uuids::uuid& id) override;
+	std::unique_ptr<Armor> getRandom(Armor::Type armorType) override;
 };
 
 #endif // !ARMOR_STORAGE_H

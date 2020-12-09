@@ -6,6 +6,8 @@
 enum class ConfigKeys
 {
 	saveFile,
+	weaponsFile,
+	armorsFile,
 	max_config_keys
 };
 

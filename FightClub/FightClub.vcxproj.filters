@@ -51,9 +51,6 @@
     <ClCompile Include="CharacterStuff\AttributesFactory.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CharacterStuff\WeaponStorage.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="IO\Savers\JsonGameDataProcesser.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -72,6 +69,9 @@
     <ClCompile Include="Common\Configs\ConfigKeys.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CharacterStuff\Weapons\WeaponStorage.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Menu.h">
@@ -84,9 +84,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CharacterStuff\Equipment.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="CharacterStuff\Weapon.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Characters\Character.h">
@@ -137,27 +134,6 @@
     <ClInclude Include="CharacterStuff\IAttributesFactory.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="CharacterStuff\Weapons\PoorBrassKnuckles.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="CharacterStuff\Weapons\BrassKnucklesWithKnife.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="CharacterStuff\Weapons\Knife.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="CharacterStuff\Weapons\Claymore.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="CharacterStuff\Weapons\Rapier.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="CharacterStuff\IWeaponStorage.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="CharacterStuff\WeaponStorage.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="IO\Savers\GameDataProcesser.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -167,40 +143,10 @@
     <ClInclude Include="CharacterStuff\Armors\Armor.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="CharacterStuff\Armors\Heads\PoorManHat.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="CharacterStuff\Armors\Heads\AverageFighterHat.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="CharacterStuff\Armors\Heads\RichGuyHat.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="CharacterStuff\Armors\Cuirasses\PoorManCuirasse.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="CharacterStuff\Armors\Cuirasses\AverageFighterCuirasse.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="CharacterStuff\Armors\Cuirasses\RichGuyCuirasse.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="CharacterStuff\Armors\Legs\PoorManLegs.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="CharacterStuff\Armors\Legs\AverageFighterLegs.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="CharacterStuff\Armors\Legs\RichGuyLegs.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="CharacterStuff\Armors\IArmorStorage.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CharacterStuff\Armors\ArmorStorage.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="CharacterStuff\Armors\Armors.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Common\Configs\Config.h">
@@ -222,6 +168,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Common\Configs\ConfigKeys.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CharacterStuff\Weapons\WeaponStorage.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CharacterStuff\Weapons\Weapon.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CharacterStuff\Weapons\IWeaponStorage.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

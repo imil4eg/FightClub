@@ -1,1 +1,3 @@
-SaveFileDirectory=file.json
+SaveFileDirectory=Common/Data/file.json
+WeaponsFileDirectory=Common/Data/Weapons.json
+ArmorsFileDirectory=Common/Data/Armors.json

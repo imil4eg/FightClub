@@ -15,7 +15,7 @@ public:
 	{
 	}
 
-	std::string get(ConfigKeys key) override;
+	std::string get(ConfigKeys key) const override;
 };
 
 

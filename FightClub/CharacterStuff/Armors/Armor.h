@@ -3,6 +3,7 @@
 
 #include <boost/uuid/uuid.hpp>
 #include <boost/uuid/uuid_generators.hpp>
+#include <memory>
 
 #include "../Attributes.h"
 
@@ -19,40 +20,43 @@ public:
 	};
 
 private:
-	const boost::uuids::uuid m_id;
-	const std::string m_name;
-	Attributes* m_attributes;
+	boost::uuids::uuid m_id;
+	std::string m_name;
+	std::unique_ptr<Attributes> m_attributes;
 	Type m_type{};
 	int m_armor{};
 
-protected:
-	Armor(const std::string& name, Type type, int armor, Attributes* attributes = nullptr) :
-		m_id{boost::uuids::random_generator()()},
-		m_name{name},
-		m_attributes{ attributes },
-		m_type {type},
-		m_armor{armor}
-	{
-	}
-
 public:
-	Armor(const Armor* armor) : 
-		m_id{armor->m_id},
-		m_name{armor->m_name},
-		m_attributes{armor->m_attributes},
-		m_type{ armor->m_type },
-		m_armor{ armor->m_armor }
+	Armor(boost::uuids::uuid id, const std::string& name, Type type, int armor, std::unique_ptr<Attributes> attributes = {}) :
+		m_id{ id },
+		m_name{ name },
+		m_attributes{ std::move(attributes) },
+		m_type{ type },
+		m_armor{ armor }
 	{
 	}
 
-	virtual ~Armor()
+	Armor(const Armor& armor) : 
+		m_id{armor.m_id},
+		m_name{armor.m_name},
+		m_type{ armor.m_type },
+		m_armor{ armor.m_armor }
 	{
-		delete m_attributes;
+	}
+
+	Armor(Armor&& armor) noexcept : 
+		m_id{ std::move(armor.m_id)},
+		m_name{std::move(armor.m_name)},
+		m_attributes{std::move(armor.m_attributes.get())},
+		m_type{armor.m_type},
+		m_armor{armor.m_armor}
+	{
+
 	}
 
 	const boost::uuids::uuid getId() const { return m_id; }
 	const std::string& getName() const { return m_name; }
-	const Attributes* getAttributes() { return m_attributes; }
+	const Attributes* getAttributes() { return m_attributes.get(); }
 	Type getType() const { return m_type; }
 	int getArmor() const { return m_armor; }
 };
