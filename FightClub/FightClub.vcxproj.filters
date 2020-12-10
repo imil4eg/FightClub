@@ -183,4 +183,8 @@
   <ItemGroup>
     <Text Include="config.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Common\Data\Armors.json" />
+    <None Include="Common\Data\Weapons.json" />
+  </ItemGroup>
 </Project>
