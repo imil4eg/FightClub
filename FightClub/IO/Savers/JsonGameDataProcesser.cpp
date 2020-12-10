@@ -70,3 +70,33 @@ std::unique_ptr<Character> JsonGameDataProcesser::load()
 
 	return std::make_unique<Player>(std::move(attributes), std::move(equipment), characterType, std::move(weapon));
 }
+
+std::unique_ptr<Character> JsonGameDataProcesser::loadCharacter(json saveFileJson)
+{
+	int strength = saveFileJson[m_attributesAttribute][m_strengthAttribute].get<int>();
+	int agility =  saveFileJson[m_attributesAttribute][m_agilityAttribute].get<int>();	
+	int level =	   saveFileJson[m_attributesAttribute][m_levelAttribute].get<int>();
+	auto characterType = static_cast<CharacterType>(saveFileJson[m_characterTypeAttribute].get<int>());
+
+	auto weaponId{ boost::lexical_cast<boost::uuids::uuid>(saveFileJson[m_weaponAttribute].get<std::string>()) };
+	auto weapon{ m_weaponStorage->getWeaponOrDefault(weaponId) };
+
+	auto attributes{ m_attributesFactory->create(weapon.get(), level, strength, agility, characterType) };
+
+	auto head{    getArmor(saveFileJson, m_headAttribute) };
+	auto cuirass{ getArmor(saveFileJson, m_cuirasseAttribute) };
+	auto legs{    getArmor(saveFileJson, m_bootsAttribute) };
+
+	auto equipment{ std::make_unique<Equipment>(std::move(head), std::move(cuirass), std::move(legs)) };
+
+	return std::make_unique<Player>(std::move(attributes), std::move(equipment), characterType, std::move(weapon));
+}
+
+//std::vector<std::unique_ptr<Armor>> JsonGameDataProcesser::loadInventory(json saveFile)
+//{
+//	std::vector<std::unique_ptr<Armor>> armors{};
+//	for (auto& armor : saveFile["inventory"].items())
+//	{
+//		m_armorStorage->getOrDefault(boost::lexical_cast<boost::uuids::uuid>(saveFile[""])
+//	}
+//}

@@ -5,6 +5,7 @@
 
 #include "CharacterStuff/Armors/ArmorStorage.h"
 #include "Common/RandomGenerator.h"
+#include "IO/JsonAttributes.h"
 
 #include "../../libs/nlohmann/json.hpp"
 
@@ -21,17 +22,17 @@ std::unique_ptr<Armor> ArmorStorage::getOrDefault(const boost::uuids::uuid& id)
 	armorsFile >> armorsJson;
 
 	auto idStr{ boost::lexical_cast<std::string>(id) };
-	for (auto& armor : armorsJson[m_armorsKey].items())
+	for (auto& armor : armorsJson[fightclub::io::JsonAttributes::Armors].items())
 	{
-		if (idStr != armor.value()[m_idKey].get<std::string>())
+		if (idStr != armor.value()[fightclub::io::JsonAttributes::Id].get<std::string>())
 		{
 			continue;
 		}
 
-		auto id{ boost::lexical_cast<boost::uuids::uuid>(armor.value()[m_idKey].get<std::string>()) };
-		auto name{ armor.value()[m_nameKey].get<std::string>() };
-		auto type{ static_cast<Armor::Type>(armor.value()[m_typeKey].get<int>()) };
-		auto armorValue{ armor.value()[m_valueKey].get<int>() };
+		auto id{ boost::lexical_cast<boost::uuids::uuid>(armor.value()[fightclub::io::JsonAttributes::Id].get<std::string>()) };
+		auto name{ armor.value()[fightclub::io::JsonAttributes::Name].get<std::string>() };
+		auto type{ static_cast<Armor::Type>(armor.value()[fightclub::io::JsonAttributes::Type].get<int>()) };
+		auto armorValue{ armor.value()[fightclub::io::JsonAttributes::Value].get<int>() };
 
 		return std::make_unique<Armor>(id, name, type, armorValue);
 	}
@@ -50,17 +51,17 @@ std::unique_ptr<Armor> ArmorStorage::getRandom(Armor::Type armorType)
 
 	auto armorTypeInt{ static_cast<int>(armorType) };
 	std::vector<Armor> armors{};
-	for (auto& armor : armorsJson[m_armorsKey].items())
+	for (auto& armor : armorsJson[fightclub::io::JsonAttributes::Armors].items())
 	{
-		if (armorTypeInt != armor.value()[m_typeKey].get<int>())
+		if (armorTypeInt != armor.value()[fightclub::io::JsonAttributes::Type].get<int>())
 		{
 			continue;
 		}
 
-		auto id{ boost::lexical_cast<boost::uuids::uuid>(armor.value()[m_idKey].get<std::string>()) };
-		auto name{ armor.value()[m_nameKey].get<std::string>() };
-		auto type{ static_cast<Armor::Type>(armor.value()[m_typeKey].get<int>()) };
-		auto armorValue{ armor.value()[m_valueKey].get<int>() };
+		auto id{ boost::lexical_cast<boost::uuids::uuid>(armor.value()[fightclub::io::JsonAttributes::Id].get<std::string>()) };
+		auto name{ armor.value()[fightclub::io::JsonAttributes::Name].get<std::string>() };
+		auto type{ static_cast<Armor::Type>(armor.value()[fightclub::io::JsonAttributes::Type].get<int>()) };
+		auto armorValue{ armor.value()[fightclub::io::JsonAttributes::Value].get<int>() };
 
 		Armor armor{ id, name, type, armorValue };
 		armors.push_back(armor);

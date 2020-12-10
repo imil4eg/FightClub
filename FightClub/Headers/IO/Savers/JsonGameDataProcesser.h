@@ -44,6 +44,8 @@ public:
 	}
 
 	std::unique_ptr<Character> load() override;
+	std::unique_ptr<Character> loadCharacter(json saveFileJson);
+	/*std::vector<Armor> loadInventory(json saveFileJson);*/
 	void save(Character& character) const override;
 
 private:

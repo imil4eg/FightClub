@@ -159,6 +159,7 @@
     <ClCompile Include="Common\Configs\PlayerConfig.cpp" />
     <ClCompile Include="FightClub.cpp" />
     <ClCompile Include="IO\InputProcesser.cpp" />
+    <ClCompile Include="IO\JsonAttributes.cpp" />
     <ClCompile Include="IO\Savers\JsonGameDataProcesser.cpp" />
     <ClCompile Include="Menu.cpp" />
     <ClCompile Include="Common\RandomGenerator.cpp" />
@@ -193,6 +194,7 @@
     <ClInclude Include="Headers\Common\Configs\IPlayerConfig.h" />
     <ClInclude Include="Headers\Common\Configs\PlayerConfig.h" />
     <ClInclude Include="Headers\IO\InputProcesser.h" />
+    <ClInclude Include="Headers\IO\JsonAttributes.h" />
     <ClInclude Include="Headers\IO\MessageDisplayer.h" />
     <ClInclude Include="Headers\IMenu.h" />
     <ClInclude Include="Headers\IO\Savers\GameDataProcesser.h" />

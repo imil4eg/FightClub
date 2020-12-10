@@ -10,12 +10,6 @@
 class ArmorStorage : public IArmorStorage
 {
 private:
-	const std::string m_armorsKey{ "armors" };
-	const std::string m_idKey{ "id" };
-	const std::string m_nameKey{ "name" };
-	const std::string m_typeKey{ "type" };
-	const std::string m_valueKey{ "value" };
-
 	const IConfig* m_confilg;
 
 public:

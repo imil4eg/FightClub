@@ -72,6 +72,9 @@
     <ClCompile Include="CharacterStuff\Weapons\WeaponStorage.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="IO\JsonAttributes.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Headers\IO\Savers\JsonGameDataProcesser.h">
@@ -177,6 +180,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Headers\Common\Commands.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\IO\JsonAttributes.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

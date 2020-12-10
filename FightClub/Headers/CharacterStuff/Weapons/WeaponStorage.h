@@ -9,11 +9,6 @@
 class WeaponStorage : public IWeaponStorage
 {
 private:
-	const std::string m_weaponsKey{ "weapons" };
-	const std::string m_idKey{ "id" };
-	const std::string m_nameKey{ "name" };
-	const std::string m_damageKey{ "damage" };
-
 	const IConfig* m_config;
 
 public:

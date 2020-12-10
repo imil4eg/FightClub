@@ -6,6 +6,7 @@
 
 #include "Common/RandomGenerator.h"
 #include "CharacterStuff/Weapons/WeaponStorage.h"
+#include "IO/JsonAttributes.h";
 
 #include "nlohmann/json.hpp"
 
@@ -22,11 +23,11 @@ std::unique_ptr<Weapon> WeaponStorage::getRandomWeapon() const
 	input >> weaponsJson;
 
 	std::vector<Weapon> weapons{};
-	for (auto& weapon : weaponsJson[m_weaponsKey].items())
+	for (auto& weapon : weaponsJson[fightclub::io::JsonAttributes::Weapons].items())
 	{
-		auto id{ boost::lexical_cast<boost::uuids::uuid>(weapon.value()[m_idKey].get<std::string>()) };
-		auto name{ weapon.value()[m_nameKey].get<std::string>() };
-		int damage{ weapon.value()[m_damageKey].get<int>() };
+		auto id{ boost::lexical_cast<boost::uuids::uuid>(weapon.value()[fightclub::io::JsonAttributes::Id].get<std::string>()) };
+		auto name{ weapon.value()[fightclub::io::JsonAttributes::Name].get<std::string>() };
+		int damage{ weapon.value()[fightclub::io::JsonAttributes::Damage].get<int>() };
 
 		weapons.push_back(Weapon{id, name, damage});
 	}
@@ -47,16 +48,16 @@ std::unique_ptr<Weapon> WeaponStorage::getWeaponOrDefault(const boost::uuids::uu
 	input >> weaponsJson;
 
 	auto idStr{ boost::lexical_cast<std::string>(id) };
-	for (auto& weapon : weaponsJson[m_weaponsKey].items())
+	for (auto& weapon : weaponsJson[fightclub::io::JsonAttributes::Weapons].items())
 	{
-		if (idStr != weapon.value()[m_idKey].get<std::string>())
+		if (idStr != weapon.value()[fightclub::io::JsonAttributes::Id].get<std::string>())
 		{
 			continue;
 		}
 
-		auto id{ boost::lexical_cast<boost::uuids::uuid>(weapon.value()[m_idKey].get<std::string>()) };
-		auto name{ weapon.value()[m_nameKey].get<std::string>() };
-		int damage{ weapon.value()[m_damageKey].get<int>() };
+		auto id{ boost::lexical_cast<boost::uuids::uuid>(weapon.value()[fightclub::io::JsonAttributes::Id].get<std::string>()) };
+		auto name{ weapon.value()[fightclub::io::JsonAttributes::Name].get<std::string>() };
+		int damage{ weapon.value()[fightclub::io::JsonAttributes::Damage].get<int>() };
 
 		return std::make_unique<Weapon>(id, name, damage);
 	}
