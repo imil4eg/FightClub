@@ -9,6 +9,7 @@ class IPlayerConfig
 {
 public:
 	virtual ~IPlayerConfig() = default;
+	virtual void initialize() = 0;
 	virtual Character* getCharacter() = 0;
 	virtual fightclub::models::UserDataModel& getUserModelData() = 0;
 };

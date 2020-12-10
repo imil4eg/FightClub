@@ -25,6 +25,7 @@ public:
 	{
 	}
 
+	void initialize() override;
 	Character* getCharacter() override;
 	fightclub::models::UserDataModel& getUserModelData() override
 	{

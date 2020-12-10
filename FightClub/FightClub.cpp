@@ -40,7 +40,9 @@ int main()
 	Menu menu{ &battle, &playerConfig, &jsonGameDataProcesser };
 
 	srand(static_cast<unsigned int>(time(0)));
-	
+
+	playerConfig.initialize();
+
 	menu.show();
 }
 
