@@ -34,6 +34,13 @@ public:
 	{
 	}
 
+	Weapon(const std::unique_ptr<Weapon>&& weapon) : 
+		m_id{std::move(weapon->m_id)},
+		m_name{ std::move(weapon->m_name) },
+		m_damage{ weapon->m_damage }
+	{
+	}
+
 	virtual ~Weapon() noexcept = default;
 	int getDamage() const { return m_damage; }
 	const std::string& getName() const { return m_name; }

@@ -51,7 +51,15 @@ public:
 		m_type{armor.m_type},
 		m_armor{armor.m_armor}
 	{
+	}
 
+	Armor(const std::unique_ptr<Armor>&& armor) : 
+		m_id{std::move(armor->m_id)},
+		m_name{std::move(armor->m_name)},
+		m_attributes{std::move(armor->m_attributes)},
+		m_type{ static_cast<Armor::Type>(armor->m_type) },
+		m_armor{ armor->m_armor }
+	{
 	}
 
 	const boost::uuids::uuid getId() const { return m_id; }

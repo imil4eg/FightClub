@@ -201,6 +201,7 @@
     <ClInclude Include="Headers\IO\Savers\JsonGameDataProcesser.h" />
     <ClInclude Include="Headers\Menu.h" />
     <ClInclude Include="Headers\Common\RandomGenerator.h" />
+    <ClInclude Include="Headers\Models\UserDataModel.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="config.txt" />

@@ -2,20 +2,16 @@
 
 Character* PlayerConfig::getCharacter()
 {
-	if (m_playerCharacter == nullptr)
+	if (m_userDataModel == nullptr)
 	{
-		m_playerCharacter = m_gameDataProcesser->load();
-
-		if (m_playerCharacter == nullptr)
+		m_userDataModel = m_gameDataProcesser->load();
+	
+		if (m_userDataModel == nullptr)
 		{
-			m_playerCharacter = m_characterFactory->createDefaultPlayer();
+			m_userDataModel = std::make_unique<fightclub::models::UserDataModel>();
+			m_userDataModel->character = m_characterFactory->createDefaultPlayer();
 		}
 	}
-
-	return m_playerCharacter.get();
-}
-
-void PlayerConfig::initialize()
-{
-	m_gameDataProcesser->load();
+	
+	return m_userDataModel->character.get();
 }

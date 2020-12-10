@@ -3,14 +3,15 @@
 
 #include <memory>
 
+#include "Models/UserDataModel.h"
 #include "../../Characters/Character.h"
 
 class GameDataProcesser
 {
 public:
 	virtual ~GameDataProcesser() = default;
-	virtual std::unique_ptr<Character> load() = 0;
-	virtual void save(Character& character) const = 0;
+	virtual std::unique_ptr<fightclub::models::UserDataModel> load() = 0;
+	virtual void save(fightclub::models::UserDataModel& userDataModel) const = 0;
 };
 
 
