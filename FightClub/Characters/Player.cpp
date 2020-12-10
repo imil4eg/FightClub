@@ -1,9 +1,9 @@
 #include <boost/lexical_cast.hpp>
 
-#include "../Battle/DamageCalculator.h"
-#include "../IO/MessageDisplayer.h"
-#include "../IO/InputProcesser.h"
-#include "Player.h"
+#include "Battle/DamageCalculator.h"
+#include "IO/MessageDisplayer.h"
+#include "IO/InputProcesser.h"
+#include "Characters/Player.h"
 
 void Player::playTurn(Character& target)
 {

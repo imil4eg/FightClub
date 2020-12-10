@@ -1,4 +1,4 @@
-#include "PlayerConfig.h"
+#include "Common/Configs/PlayerConfig.h"
 
 Character* PlayerConfig::getCharacter()
 {

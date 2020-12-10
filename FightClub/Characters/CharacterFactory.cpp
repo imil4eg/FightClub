@@ -1,5 +1,5 @@
-#include "CharacterFactory.h"
-#include "Player.h"
+#include "Characters/CharacterFactory.h"
+#include "Characters/Player.h"
 
 std::unique_ptr<Character> CharacterFactory::createDefaultPlayer()
 {

@@ -1,9 +1,9 @@
 #include <exception>
 #include <memory>
 
-#include "BotFactory.h"
-#include "../CharacterType.h"
-#include "../../Common/RandomGenerator.h"
+#include "Characters/Bots/BotFactory.h"
+#include "Characters/CharacterType.h"
+#include "Common/RandomGenerator.h"
 
 void BotFactory::calculateAttributeValueToAdd(int& attributeValueToIncrease, int& attribueteValueToDecrease)
 {

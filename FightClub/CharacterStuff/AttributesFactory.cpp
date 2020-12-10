@@ -1,4 +1,4 @@
-#include "AttributesFactory.h"
+#include "CharacterStuff/AttributesFactory.h"
 
 std::unique_ptr<Attributes> AttributesFactory::create(const Weapon* const weapon, int level, int strength, int agility, CharacterType characterType)
 {

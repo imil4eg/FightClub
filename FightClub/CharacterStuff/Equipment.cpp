@@ -1,6 +1,6 @@
 #include <stdexcept>
 
-#include "Equipment.h"
+#include "CharacterStuff/Equipment.h"
 
 int Equipment::getArmorValue(HitDirection hitDirection) const
 {

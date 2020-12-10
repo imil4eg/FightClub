@@ -1,7 +1,7 @@
 #include <iostream>
 #include <fstream>
 
-#include "Config.h"
+#include "Common/Configs/Config.h"
 
 std::string Config::get(ConfigKeys key) const
 {

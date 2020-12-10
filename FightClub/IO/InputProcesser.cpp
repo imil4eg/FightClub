@@ -1,9 +1,9 @@
 #include <iostream>
 #include <fstream>
 
-#include "../Characters/Character.h"
-#include "MessageDisplayer.h"
-#include "InputProcesser.h"
+#include "Characters/Character.h"
+#include "IO/MessageDisplayer.h"
+#include "IO/InputProcesser.h"
 
 HitDirection InputProcesser::askHitDirection()
 {

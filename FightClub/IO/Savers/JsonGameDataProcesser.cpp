@@ -3,9 +3,9 @@
 #include <iomanip>
 #include <fstream>
 
-#include "../../Characters/Player.h"
-#include "../../Common/Configs/ConfigKeys.h"
-#include "JsonGameDataProcesser.h"
+#include "Characters/Player.h"
+#include "Common/Configs/ConfigKeys.h"
+#include "IO/Savers/JsonGameDataProcesser.h"
 
 void addEquipmentAttribute(json& j, std::string attributeName, const Armor* armor)
 {

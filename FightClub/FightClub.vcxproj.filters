@@ -74,109 +74,109 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Menu.h">
+    <ClInclude Include="Headers\IO\Savers\JsonGameDataProcesser.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="IMenu.h">
+    <ClInclude Include="Headers\IO\InputProcesser.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="CharacterStuff\Attributes.h">
+    <ClInclude Include="Headers\Common\Configs\Config.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="CharacterStuff\Equipment.h">
+    <ClInclude Include="Headers\Common\Configs\ConfigKeys.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Characters\Character.h">
+    <ClInclude Include="Headers\Common\Configs\IPlayerConfig.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Battle\Battle.h">
+    <ClInclude Include="Headers\Common\Configs\PlayerConfig.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Battle\IBattle.h">
+    <ClInclude Include="Headers\Common\RandomGenerator.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Battle\DamageCalculator.h">
+    <ClInclude Include="Headers\CharacterStuff\Armors\Armor.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Characters\Bots\Bot.h">
+    <ClInclude Include="Headers\CharacterStuff\Armors\ArmorStorage.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Characters\Bots\BotFactory.h">
+    <ClInclude Include="Headers\CharacterStuff\Armors\IArmorStorage.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Characters\Bots\IBotFactory.h">
+    <ClInclude Include="Headers\CharacterStuff\Weapons\IWeaponStorage.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Battle\HitDirection.h">
+    <ClInclude Include="Headers\CharacterStuff\Weapons\Weapon.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Characters\Player.h">
+    <ClInclude Include="Headers\CharacterStuff\Weapons\WeaponStorage.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="IO\MessageDisplayer.h">
+    <ClInclude Include="Headers\CharacterStuff\Equipment.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="IO\InputProcesser.h">
+    <ClInclude Include="Headers\CharacterStuff\AttributesFactory.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Common\RandomGenerator.h">
+    <ClInclude Include="Headers\CharacterStuff\Attributes.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Common\Commands.h">
+    <ClInclude Include="Headers\IO\Savers\GameDataProcesser.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Characters\CharacterType.h">
+    <ClInclude Include="Headers\CharacterStuff\IAttributesFactory.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="CharacterStuff\AttributesFactory.h">
+    <ClInclude Include="Headers\Common\Configs\IConfig.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="CharacterStuff\IAttributesFactory.h">
+    <ClInclude Include="Headers\Characters\Character.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="IO\Savers\GameDataProcesser.h">
+    <ClInclude Include="Headers\Characters\CharacterFactory.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="IO\Savers\JsonGameDataProcesser.h">
+    <ClInclude Include="Headers\Characters\CharacterType.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="CharacterStuff\Armors\Armor.h">
+    <ClInclude Include="Headers\Characters\ICharacterFactory.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="CharacterStuff\Armors\IArmorStorage.h">
+    <ClInclude Include="Headers\Characters\Player.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="CharacterStuff\Armors\ArmorStorage.h">
+    <ClInclude Include="Headers\Characters\Bots\Bot.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Common\Configs\Config.h">
+    <ClInclude Include="Headers\Characters\Bots\BotFactory.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Common\Configs\IConfig.h">
+    <ClInclude Include="Headers\Characters\Bots\IBotFactory.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Common\Configs\IPlayerConfig.h">
+    <ClInclude Include="Headers\Battle\IBattle.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Common\Configs\PlayerConfig.h">
+    <ClInclude Include="Headers\Battle\HitDirection.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Characters\ICharacterFactory.h">
+    <ClInclude Include="Headers\Battle\DamageCalculator.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Characters\CharacterFactory.h">
+    <ClInclude Include="Headers\Battle\Battle.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Common\Configs\ConfigKeys.h">
+    <ClInclude Include="Headers\IMenu.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="CharacterStuff\Weapons\WeaponStorage.h">
+    <ClInclude Include="Headers\Menu.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="CharacterStuff\Weapons\Weapon.h">
+    <ClInclude Include="Headers\IO\MessageDisplayer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="CharacterStuff\Weapons\IWeaponStorage.h">
+    <ClInclude Include="Headers\Common\Commands.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

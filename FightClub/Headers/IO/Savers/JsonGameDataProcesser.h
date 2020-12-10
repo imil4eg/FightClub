@@ -2,12 +2,12 @@
 #define JSON_GAME_SAVER_H
 
 #include "GameDataProcesser.h"
-#include "../../CharacterStuff/IAttributesFactory.h"
-#include "../../CharacterStuff/Weapons/IWeaponStorage.h"
-#include "../../CharacterStuff/Armors/IArmorStorage.h"
-#include "../../Common/Configs/IConfig.h"
+#include "CharacterStuff/IAttributesFactory.h"
+#include "CharacterStuff/Weapons/IWeaponStorage.h"
+#include "CharacterStuff/Armors/IArmorStorage.h"
+#include "Common/Configs/IConfig.h"
 
-#include "../../libs/nlohmann/json.hpp"
+#include "nlohmann/json.hpp"
 
 using json = nlohmann::json;
 

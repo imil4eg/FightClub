@@ -1,8 +1,8 @@
-#include "Bot.h"
-#include "../../Battle/DamageCalculator.h"
-#include "../../IO/MessageDisplayer.h"
-#include "../../Battle/HitDirection.h"
-#include "../../Common/RandomGenerator.h"
+#include "Characters/Bots/Bot.h"
+#include "Battle/DamageCalculator.h"
+#include "IO/MessageDisplayer.h"
+#include "Battle/HitDirection.h"
+#include "Common/RandomGenerator.h"
 
 void Bot::hit(Character& enemy, HitDirection hitDirection)
 {

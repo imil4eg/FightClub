@@ -1,6 +1,6 @@
 #include <random>
 
-#include "RandomGenerator.h"
+#include "Common/RandomGenerator.h"
 
 int RandomGenerator::getBetween(int min, int max)
 {

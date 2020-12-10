@@ -4,10 +4,10 @@
 #include <string>
 #include <fstream>
 
-#include "../../Common/RandomGenerator.h"
-#include "WeaponStorage.h"
+#include "Common/RandomGenerator.h"
+#include "CharacterStuff/Weapons/WeaponStorage.h"
 
-#include "../../libs/nlohmann/json.hpp"
+#include "nlohmann/json.hpp"
 
 using json = nlohmann::json;
 

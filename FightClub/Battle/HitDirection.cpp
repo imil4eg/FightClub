@@ -1,4 +1,4 @@
-#include "HitDirection.h"
+#include "Battle/HitDirection.h"
 
 std::ostream& operator<<(std::ostream& out, HitDirection hd)
 {

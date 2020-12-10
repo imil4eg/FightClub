@@ -1,10 +1,10 @@
 #include <exception>
 #include <iostream>
 
-#include "Battle.h"
-#include "../Characters/Bots/Bot.h"
-#include "../IO/MessageDisplayer.h"
-#include "HitDirection.h"
+#include "Battle/Battle.h"
+#include "Battle/HitDirection.h"
+#include "Characters/Bots/Bot.h"
+#include "IO/MessageDisplayer.h"
 
 void FightPreparation(Character& player, Character& enemy)
 {

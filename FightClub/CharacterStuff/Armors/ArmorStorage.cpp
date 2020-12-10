@@ -3,8 +3,8 @@
 #include <fstream>
 #include <exception>
 
-#include "ArmorStorage.h"
-#include "../../Common/RandomGenerator.h"
+#include "CharacterStuff/Armors/ArmorStorage.h"
+#include "Common/RandomGenerator.h"
 
 #include "../../libs/nlohmann/json.hpp"
 

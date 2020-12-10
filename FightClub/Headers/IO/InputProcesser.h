@@ -1,8 +1,8 @@
 #ifndef INPUT_PROCESSER_H
 #define INPUT_PROCESSER_H
 
-#include "../Common/Commands.h"
-#include "../Battle/HitDirection.h"
+#include "Common/Commands.h"
+#include "Battle/HitDirection.h"
 
 class InputProcesser
 {
