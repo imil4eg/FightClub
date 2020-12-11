@@ -9,6 +9,7 @@ class InputProcesser
 public:
 	static HitDirection askHitDirection();
 	static Command askCommand();
+	static Command askMenuCommand();
 };
 
 #endif // !INPUT_PROCESSER_H

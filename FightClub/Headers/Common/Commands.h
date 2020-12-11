@@ -6,6 +6,9 @@ enum class Command
 	play,
 	customize_character,
 	inventory,
+	weapons,
+	armors,
+	equipment,
 	exit,
 	max_commands
 };

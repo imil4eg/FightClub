@@ -148,6 +148,7 @@
     <ClCompile Include="CharacterStuff\Armors\ArmorStorage.cpp" />
     <ClCompile Include="CharacterStuff\AttributesFactory.cpp" />
     <ClCompile Include="CharacterStuff\Equipment.cpp" />
+    <ClCompile Include="CharacterStuff\InventoryManager.cpp" />
     <ClCompile Include="CharacterStuff\Weapons\WeaponStorage.cpp" />
     <ClCompile Include="Characters\Bots\Bot.cpp" />
     <ClCompile Include="Characters\Bots\BotFactory.cpp" />
@@ -176,6 +177,8 @@
     <ClInclude Include="Headers\CharacterStuff\AttributesFactory.h" />
     <ClInclude Include="Headers\CharacterStuff\Equipment.h" />
     <ClInclude Include="Headers\CharacterStuff\IAttributesFactory.h" />
+    <ClInclude Include="Headers\CharacterStuff\IInventoryManager.h" />
+    <ClInclude Include="Headers\CharacterStuff\InventoryManager.h" />
     <ClInclude Include="Headers\CharacterStuff\Weapons\IWeaponStorage.h" />
     <ClInclude Include="Headers\CharacterStuff\Weapons\Weapon.h" />
     <ClInclude Include="Headers\CharacterStuff\Weapons\WeaponStorage.h" />

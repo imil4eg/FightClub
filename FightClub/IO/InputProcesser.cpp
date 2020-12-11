@@ -71,3 +71,37 @@ Command InputProcesser::askCommand()
 
 	} while (true);
 }
+
+Command InputProcesser::askMenuCommand()
+{
+	do
+	{
+		std::cout << "Please, enter the command\nCommands:\n1) Weapons\n2) Armors\n 3) Exit\n\n";
+		MessageDisplayer::cmdLineBeggining();
+		std::string command;
+		std::cin >> command;
+		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+		if (command == "1" || command == "Weapons" || command == "weapons")
+		{
+			return Command::weapons;
+		}
+		else if (command == "2" || command == "Armors" || command == "armors")
+		{
+			return Command::armors;
+		}
+		else if (command == "3" || command == "Equipment" || command == "equipment")
+		{
+			return Command::equipment;
+		}
+		else if (command == "4" || command == "Exit" || command == "exit")
+		{
+			return Command::exit;
+		}
+		else
+		{
+			std::cout << "Unrecognized command entered.\n";
+		}
+
+	} while (true);
+}
