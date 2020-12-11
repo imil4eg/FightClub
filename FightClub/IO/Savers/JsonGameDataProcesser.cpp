@@ -87,9 +87,9 @@ std::unique_ptr<Player> JsonGameDataProcesser::load()
 	auto characterType = static_cast<CharacterType>(characterJson[m_characterTypeAttribute].get<int>());
 
 	auto weaponId{ boost::lexical_cast<boost::uuids::uuid>(characterJson[m_weaponAttribute].get<std::string>()) };
-	auto weapon{ m_weaponStorage->getWeaponOrDefault(weaponId) };
+	auto weapon{ inventory->getWeaponById(weaponId) };
 
-	auto attributes{ m_attributesFactory->create(weapon.get(), level, strength, agility, characterType) };
+	auto attributes{ m_attributesFactory->create(weapon, level, strength, agility, characterType) };
 
 	auto head{    getArmor(characterJson, m_headAttribute) };
 	auto cuirass{ getArmor(characterJson, m_cuirasseAttribute) };
@@ -97,19 +97,19 @@ std::unique_ptr<Player> JsonGameDataProcesser::load()
 
 	auto equipment{ std::make_unique<Equipment>(std::move(head), std::move(cuirass), std::move(legs)) };
 
-	return std::make_unique<Player>(std::move(attributes), std::move(equipment), characterType, std::move(inventory), std::move(weapon));
+	return std::make_unique<Player>(std::move(attributes), std::move(equipment), characterType, std::move(inventory), weapon);
 }
 
 std::unique_ptr<fightclub::characterstuff::Inventory> JsonGameDataProcesser::loadInventory(json& saveFile)
 {
 	auto inventory{ std::make_unique<fightclub::characterstuff::Inventory>() };
-	for (auto& armor : saveFile["inventory"][fightclub::io::JsonAttributes::Armors].items())
+	for (auto& armor : saveFile[fightclub::io::JsonAttributes::Armors].items())
 	{
 		auto armorId{ boost::lexical_cast<boost::uuids::uuid>(armor.value()[fightclub::io::JsonAttributes::Id].get<std::string>()) };
 		inventory->getArmors().push_back(std::move(m_armorStorage->getOrDefault(armorId)));
 	}
 
-	for (auto& weapon : saveFile["inventory"][fightclub::io::JsonAttributes::Weapons].items())
+	for (auto& weapon : saveFile[fightclub::io::JsonAttributes::Weapons].items())
 	{
 		auto weaponId{ boost::lexical_cast<boost::uuids::uuid>(weapon.value()[fightclub::io::JsonAttributes::Id].get<std::string>()) };
 		inventory->getWeapons().push_back(std::move(m_weaponStorage->getWeaponOrDefault(weaponId)));

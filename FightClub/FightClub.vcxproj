@@ -148,6 +148,7 @@
     <ClCompile Include="CharacterStuff\Armors\ArmorStorage.cpp" />
     <ClCompile Include="CharacterStuff\AttributesFactory.cpp" />
     <ClCompile Include="CharacterStuff\Equipment.cpp" />
+    <ClCompile Include="CharacterStuff\Inventory.cpp" />
     <ClCompile Include="CharacterStuff\InventoryManager.cpp" />
     <ClCompile Include="CharacterStuff\Weapons\WeaponStorage.cpp" />
     <ClCompile Include="Characters\Bots\Bot.cpp" />

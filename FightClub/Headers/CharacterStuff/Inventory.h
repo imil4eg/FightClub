@@ -27,6 +27,7 @@ namespace fightclub
 
 			std::vector<std::unique_ptr<Armor>>& getArmors() { return m_armors; }
 			std::vector<std::unique_ptr<Weapon>>& getWeapons() { return m_weapons; }
+			const Weapon* const getWeaponById(boost::uuids::uuid& id);
 		};
 	}
 }
