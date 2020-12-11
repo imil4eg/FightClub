@@ -43,15 +43,14 @@ public:
 	{
 	}
 
-	std::unique_ptr<fightclub::models::UserDataModel> load() override;
-	void save(fightclub::models::UserDataModel& userDataModel) const override;
+	std::unique_ptr<Player> load() override;
+	void save(Player& player) const override;
 
 private:
 	std::unique_ptr<Armor> getArmor(json& j, const std::string& attributeName);
 	void characterToJson(json& json, Character& character) const;
-	void inventoryToJson(json& json, fightclub::models::UserDataModel& userDataModel) const;
-	std::unique_ptr<Character> loadCharacter(json& saveFileJson);
-	void loadInventory(fightclub::models::UserDataModel& userDataModel, json& saveFileJson);
+	void inventoryToJson(json& json, fightclub::characterstuff::Inventory& inventory) const;
+	std::unique_ptr<fightclub::characterstuff::Inventory> loadInventory(json& saveFileJson);
 };
 
 

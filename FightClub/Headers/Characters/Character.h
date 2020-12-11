@@ -33,11 +33,20 @@ public:
 	{
 	}
 
+	Character(std::unique_ptr<Character> character) : 
+		m_attributes{std::move(character->m_attributes)},
+		m_equipment{std::move(character->m_equipment)},
+		m_weapon{ std::move(character->m_weapon) },
+		m_characterType{ character->m_characterType }
+	{
+	}
+
 	virtual ~Character(){};
 
 	Attributes* getAttributes() const { return m_attributes.get(); }
 	Equipment* getEquipment() const{ return m_equipment.get(); }
 	const Weapon* const getWeapon() { return m_weapon.get(); }
+	//void setWeapon(Weapon* weapon) { m_weapon = std::make_unique<Weapon>(weapon); }
 	CharacterType getCharcterType() const { return m_characterType; }
 
 	void restoreHp() { m_attributes->setHp(100); }

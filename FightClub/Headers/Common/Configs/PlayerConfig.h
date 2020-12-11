@@ -12,7 +12,7 @@
 class PlayerConfig : public IPlayerConfig
 {
 private:
-	std::unique_ptr<fightclub::models::UserDataModel> m_userDataModel;
+	std::unique_ptr<Player> m_player;
 	
 	GameDataProcesser* m_gameDataProcesser;
 	ICharacterFactory* m_characterFactory;
@@ -26,11 +26,7 @@ public:
 	}
 
 	void initialize() override;
-	Character* getCharacter() override;
-	fightclub::models::UserDataModel& getUserModelData() override
-	{
-		return *(m_userDataModel.get());
-	};
+	Player* getCharacter() override;
 };
 
 #endif // !PLAYER_CONFIG_H

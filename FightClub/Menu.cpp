@@ -22,8 +22,7 @@ void Menu::show() const
 		case Command::inventory:
 			break;
 		case Command::exit:
-			auto& userData{ m_playerConfig->getUserModelData() };
-			m_gameDataProcesser->save(userData);
+			m_gameDataProcesser->save(*(m_playerConfig->getCharacter()));
 			return;
 		}
 	}

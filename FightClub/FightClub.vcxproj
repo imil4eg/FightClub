@@ -178,6 +178,7 @@
     <ClInclude Include="Headers\CharacterStuff\Equipment.h" />
     <ClInclude Include="Headers\CharacterStuff\IAttributesFactory.h" />
     <ClInclude Include="Headers\CharacterStuff\IInventoryManager.h" />
+    <ClInclude Include="Headers\CharacterStuff\Inventory.h" />
     <ClInclude Include="Headers\CharacterStuff\InventoryManager.h" />
     <ClInclude Include="Headers\CharacterStuff\Weapons\IWeaponStorage.h" />
     <ClInclude Include="Headers\CharacterStuff\Weapons\Weapon.h" />
@@ -204,7 +205,6 @@
     <ClInclude Include="Headers\IO\Savers\JsonGameDataProcesser.h" />
     <ClInclude Include="Headers\Menu.h" />
     <ClInclude Include="Headers\Common\RandomGenerator.h" />
-    <ClInclude Include="Headers\Models\UserDataModel.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="config.txt" />

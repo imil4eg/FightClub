@@ -18,7 +18,7 @@ public:
 	}
 
 public:
-	std::unique_ptr<Character> createDefaultPlayer() override;
+	std::unique_ptr<Player> createDefaultPlayer() override;
 
 };
 

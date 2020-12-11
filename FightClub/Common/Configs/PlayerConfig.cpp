@@ -1,17 +1,16 @@
 #include "Common/Configs/PlayerConfig.h"
 
-Character* PlayerConfig::getCharacter()
+Player* PlayerConfig::getCharacter()
 {
-	if (m_userDataModel == nullptr)
+	if (m_player == nullptr)
 	{
-		m_userDataModel = std::make_unique<fightclub::models::UserDataModel>();
-		m_userDataModel->character = m_characterFactory->createDefaultPlayer();
+		m_player = m_characterFactory->createDefaultPlayer();
 	}
 
-	return m_userDataModel->character.get();
+	return m_player.get();
 }
 
 void PlayerConfig::initialize()
 {
-	m_userDataModel = m_gameDataProcesser->load();
+	m_player = m_gameDataProcesser->load();
 }

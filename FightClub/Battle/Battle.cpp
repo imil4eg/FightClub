@@ -11,7 +11,7 @@ void FightPreparation(Character& player, Character& enemy)
 	player.restoreHp();
 	enemy.restoreHp();
 }
-
+	
 void Battle::fightWithBot(Character& player)
 {
 	auto bot{ m_botFactory->create(player) };

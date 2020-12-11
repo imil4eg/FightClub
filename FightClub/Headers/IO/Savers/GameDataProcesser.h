@@ -4,14 +4,14 @@
 #include <memory>
 
 #include "Models/UserDataModel.h"
-#include "../../Characters/Character.h"
+#include "Characters/Player.h"
 
 class GameDataProcesser
 {
 public:
 	virtual ~GameDataProcesser() = default;
-	virtual std::unique_ptr<fightclub::models::UserDataModel> load() = 0;
-	virtual void save(fightclub::models::UserDataModel& userDataModel) const = 0;
+	virtual std::unique_ptr<Player> load() = 0;
+	virtual void save(Player& player) const = 0;
 };
 
 

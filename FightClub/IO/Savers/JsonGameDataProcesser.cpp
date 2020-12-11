@@ -21,12 +21,12 @@ std::unique_ptr<Armor> JsonGameDataProcesser::getArmor(json& j, const std::strin
 	return m_armorStorage->getOrDefault(boost::lexical_cast<boost::uuids::uuid>(id));
 }
 
-void JsonGameDataProcesser::save(fightclub::models::UserDataModel& userDataModel) const
+void JsonGameDataProcesser::save(Player& player) const
 {
 	json j;
 
-	characterToJson(j, *userDataModel.character);
-	inventoryToJson(j, userDataModel);
+	characterToJson(j, player);
+	inventoryToJson(j, player.getInventory());
 
 	std::ofstream outFile{ m_config->get(ConfigKeys::saveFile) };
 	outFile << std::setw(4) << j << std::endl;
@@ -49,10 +49,10 @@ void JsonGameDataProcesser::characterToJson(json& json, Character& character) co
 	json[m_characterTypeAttribute] = character.getCharcterType();
 }
 
-void JsonGameDataProcesser::inventoryToJson(json& json, fightclub::models::UserDataModel& userDataModel) const
+void JsonGameDataProcesser::inventoryToJson(json& json, fightclub::characterstuff::Inventory& inventory) const
 {
 	std::vector<boost::uuids::uuid> itemIds{};
-	for (auto& weapon : userDataModel.weapons)
+	for (auto& weapon : inventory.getWeapons())
 	{
 		itemIds.push_back(weapon->getId());
 	}
@@ -61,7 +61,7 @@ void JsonGameDataProcesser::inventoryToJson(json& json, fightclub::models::UserD
 
 	itemIds.clear();
 
-	for (auto& armor : userDataModel.armors)
+	for (auto& armor : inventory.getArmors())
 	{
 		itemIds.push_back(armor->getId());
 	}
@@ -69,7 +69,7 @@ void JsonGameDataProcesser::inventoryToJson(json& json, fightclub::models::UserD
 	json[fightclub::io::JsonAttributes::Armors] = itemIds;
 }
 
-std::unique_ptr<fightclub::models::UserDataModel> JsonGameDataProcesser::load()
+std::unique_ptr<Player> JsonGameDataProcesser::load()
 {
 	std::ifstream input{ m_config->get(ConfigKeys::saveFile) };
 	
@@ -79,46 +79,41 @@ std::unique_ptr<fightclub::models::UserDataModel> JsonGameDataProcesser::load()
 	json characterJson;
 	input >> characterJson;
 
-	auto userDataModel{ std::make_unique<fightclub::models::UserDataModel>() };
-	userDataModel->character = loadCharacter(characterJson);
-	loadInventory(*userDataModel, characterJson);
+	auto inventory{ loadInventory(characterJson) };
 
-	return userDataModel;
-}
+	int strength = characterJson[m_attributesAttribute][m_strengthAttribute].get<int>();
+	int agility =  characterJson[m_attributesAttribute][m_agilityAttribute].get<int>();
+	int level =    characterJson[m_attributesAttribute][m_levelAttribute].get<int>();
+	auto characterType = static_cast<CharacterType>(characterJson[m_characterTypeAttribute].get<int>());
 
-std::unique_ptr<Character> JsonGameDataProcesser::loadCharacter(json& saveFileJson)
-{
-	int strength = saveFileJson[m_attributesAttribute][m_strengthAttribute].get<int>();
-	int agility =  saveFileJson[m_attributesAttribute][m_agilityAttribute].get<int>();	
-	int level =	   saveFileJson[m_attributesAttribute][m_levelAttribute].get<int>();
-	auto characterType = static_cast<CharacterType>(saveFileJson[m_characterTypeAttribute].get<int>());
-
-	auto weaponId{ boost::lexical_cast<boost::uuids::uuid>(saveFileJson[m_weaponAttribute].get<std::string>()) };
+	auto weaponId{ boost::lexical_cast<boost::uuids::uuid>(characterJson[m_weaponAttribute].get<std::string>()) };
 	auto weapon{ m_weaponStorage->getWeaponOrDefault(weaponId) };
 
 	auto attributes{ m_attributesFactory->create(weapon.get(), level, strength, agility, characterType) };
 
-	auto head{    getArmor(saveFileJson, m_headAttribute) };
-	auto cuirass{ getArmor(saveFileJson, m_cuirasseAttribute) };
-	auto legs{    getArmor(saveFileJson, m_bootsAttribute) };
+	auto head{    getArmor(characterJson, m_headAttribute) };
+	auto cuirass{ getArmor(characterJson, m_cuirasseAttribute) };
+	auto legs{	  getArmor(characterJson, m_bootsAttribute) };
 
 	auto equipment{ std::make_unique<Equipment>(std::move(head), std::move(cuirass), std::move(legs)) };
 
-	return std::make_unique<Player>(std::move(attributes), std::move(equipment), characterType, std::move(weapon));
+	return std::make_unique<Player>(std::move(attributes), std::move(equipment), characterType, std::move(inventory), std::move(weapon));
 }
 
-void JsonGameDataProcesser::loadInventory(fightclub::models::UserDataModel& userDataModel, json& saveFile)
+std::unique_ptr<fightclub::characterstuff::Inventory> JsonGameDataProcesser::loadInventory(json& saveFile)
 {
-	std::vector<std::unique_ptr<Armor>> armors{};
+	auto inventory{ std::make_unique<fightclub::characterstuff::Inventory>() };
 	for (auto& armor : saveFile["inventory"][fightclub::io::JsonAttributes::Armors].items())
 	{
 		auto armorId{ boost::lexical_cast<boost::uuids::uuid>(armor.value()[fightclub::io::JsonAttributes::Id].get<std::string>()) };
-		userDataModel.armors.push_back(std::move(m_armorStorage->getOrDefault(armorId)));
+		inventory->getArmors().push_back(std::move(m_armorStorage->getOrDefault(armorId)));
 	}
 
 	for (auto& weapon : saveFile["inventory"][fightclub::io::JsonAttributes::Weapons].items())
 	{
 		auto weaponId{ boost::lexical_cast<boost::uuids::uuid>(weapon.value()[fightclub::io::JsonAttributes::Id].get<std::string>()) };
-		userDataModel.weapons.push_back(std::move(m_weaponStorage->getWeaponOrDefault(weaponId)));
+		inventory->getWeapons().push_back(std::move(m_weaponStorage->getWeaponOrDefault(weaponId)));
 	}
+
+	return inventory;
 }

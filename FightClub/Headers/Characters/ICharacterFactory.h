@@ -3,13 +3,13 @@
 
 #include <string>
 
-#include "Character.h"
+#include "Player.h"
 
 class ICharacterFactory
 {
 public:
 	virtual ~ICharacterFactory() noexcept = default;
-	virtual std::unique_ptr<Character> createDefaultPlayer() = 0;
+	virtual std::unique_ptr<Player> createDefaultPlayer() = 0;
 };
 
 #endif // !I_CHARACTER_FACTORY_H
