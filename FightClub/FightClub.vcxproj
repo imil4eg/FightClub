@@ -146,6 +146,7 @@
     <ClCompile Include="Battle\Battle.cpp" />
     <ClCompile Include="Battle\HitDirection.cpp" />
     <ClCompile Include="CharacterStuff\Armors\ArmorStorage.cpp" />
+    <ClCompile Include="CharacterStuff\Armors\ArmorType.cpp" />
     <ClCompile Include="CharacterStuff\AttributesFactory.cpp" />
     <ClCompile Include="CharacterStuff\Equipment.cpp" />
     <ClCompile Include="CharacterStuff\Inventory.cpp" />
@@ -173,6 +174,7 @@
     <ClInclude Include="Headers\Battle\IBattle.h" />
     <ClInclude Include="Headers\CharacterStuff\Armors\Armor.h" />
     <ClInclude Include="Headers\CharacterStuff\Armors\ArmorStorage.h" />
+    <ClInclude Include="Headers\CharacterStuff\Armors\ArmorType.h" />
     <ClInclude Include="Headers\CharacterStuff\Armors\IArmorStorage.h" />
     <ClInclude Include="Headers\CharacterStuff\Attributes.h" />
     <ClInclude Include="Headers\CharacterStuff\AttributesFactory.h" />

@@ -6,28 +6,19 @@
 #include <memory>
 
 #include "../Attributes.h"
+#include "ArmorType.h"
 
 class Armor
 {
-public:
-	enum class Type
-	{
-		head,
-		body,
-		hands,
-		legs,
-		max_equipment_types
-	};
-
 private:
 	boost::uuids::uuid m_id;
 	std::string m_name;
 	std::unique_ptr<Attributes> m_attributes;
-	Type m_type{};
+	fightclub::characterstuff::armors::ArmorType m_type{};
 	int m_armor{};
 
 public:
-	Armor(boost::uuids::uuid id, const std::string& name, Type type, int armor, std::unique_ptr<Attributes> attributes = {}) :
+	Armor(boost::uuids::uuid id, const std::string& name, fightclub::characterstuff::armors::ArmorType type, int armor, std::unique_ptr<Attributes> attributes = {}) :
 		m_id{ id },
 		m_name{ name },
 		m_attributes{ std::move(attributes) },
@@ -57,7 +48,7 @@ public:
 		m_id{std::move(armor->m_id)},
 		m_name{std::move(armor->m_name)},
 		m_attributes{std::move(armor->m_attributes)},
-		m_type{ static_cast<Armor::Type>(armor->m_type) },
+		m_type{ static_cast<fightclub::characterstuff::armors::ArmorType>(armor->m_type) },
 		m_armor{ armor->m_armor }
 	{
 	}
@@ -65,7 +56,7 @@ public:
 	const boost::uuids::uuid getId() const { return m_id; }
 	const std::string& getName() const { return m_name; }
 	const Attributes* getAttributes() { return m_attributes.get(); }
-	Type getType() const { return m_type; }
+	fightclub::characterstuff::armors::ArmorType getType() const { return m_type; }
 	int getArmor() const { return m_armor; }
 };
 

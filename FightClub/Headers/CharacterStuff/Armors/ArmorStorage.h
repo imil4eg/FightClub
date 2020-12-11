@@ -19,7 +19,7 @@ public:
 	}
 
 	std::unique_ptr<Armor> getOrDefault(const boost::uuids::uuid& id) override;
-	std::unique_ptr<Armor> getRandom(Armor::Type armorType) override;
+	std::unique_ptr<Armor> getRandom(fightclub::characterstuff::armors::ArmorType armorType) override;
 };
 
 #endif // !ARMOR_STORAGE_H

@@ -43,9 +43,9 @@ Bot BotFactory::create(const Character& player)
 	 
 	auto botAttributes{ m_attributeFactory->create(weapon.get(), player.getAttributes()->getLevel(), strength, agility, botCharacterType) };
 	
-	auto head{ m_armorStorage->getRandom(Armor::Type::head) };
-	auto cuirasse{ m_armorStorage->getRandom(Armor::Type::body) };
-	auto boots{ m_armorStorage->getRandom(Armor::Type::legs) };
+	auto head{ m_armorStorage->getRandom(fightclub::characterstuff::armors::ArmorType::head) };
+	auto cuirasse{ m_armorStorage->getRandom(fightclub::characterstuff::armors::ArmorType::body) };
+	auto boots{ m_armorStorage->getRandom(fightclub::characterstuff::armors::ArmorType::legs) };
 	auto equipment{ std::make_unique<Equipment>(std::move(head), std::move(cuirasse), std::move(boots)) };
 
 	return Bot{ std::move(botAttributes), std::move(equipment), botCharacterType, std::move(weapon) };

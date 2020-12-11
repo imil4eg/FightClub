@@ -81,6 +81,9 @@
     <ClCompile Include="CharacterStuff\Inventory.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CharacterStuff\Armors\ArmorType.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Headers\IO\Savers\JsonGameDataProcesser.h">
@@ -198,6 +201,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Headers\CharacterStuff\Inventory.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\CharacterStuff\Armors\ArmorType.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

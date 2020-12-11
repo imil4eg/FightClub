@@ -31,7 +31,7 @@ std::unique_ptr<Armor> ArmorStorage::getOrDefault(const boost::uuids::uuid& id)
 
 		auto id{ boost::lexical_cast<boost::uuids::uuid>(armor.value()[fightclub::io::JsonAttributes::Id].get<std::string>()) };
 		auto name{ armor.value()[fightclub::io::JsonAttributes::Name].get<std::string>() };
-		auto type{ static_cast<Armor::Type>(armor.value()[fightclub::io::JsonAttributes::Type].get<int>()) };
+		auto type{ static_cast<fightclub::characterstuff::armors::ArmorType>(armor.value()[fightclub::io::JsonAttributes::Type].get<int>()) };
 		auto armorValue{ armor.value()[fightclub::io::JsonAttributes::Value].get<int>() };
 
 		return std::make_unique<Armor>(id, name, type, armorValue);
@@ -40,7 +40,7 @@ std::unique_ptr<Armor> ArmorStorage::getOrDefault(const boost::uuids::uuid& id)
 	return nullptr;
 }
 
-std::unique_ptr<Armor> ArmorStorage::getRandom(Armor::Type armorType)
+std::unique_ptr<Armor> ArmorStorage::getRandom(fightclub::characterstuff::armors::ArmorType armorType)
 {
 	std::ifstream armorsFile{ m_confilg->get(ConfigKeys::armorsFile) };
 
@@ -60,7 +60,7 @@ std::unique_ptr<Armor> ArmorStorage::getRandom(Armor::Type armorType)
 
 		auto id{ boost::lexical_cast<boost::uuids::uuid>(armor.value()[fightclub::io::JsonAttributes::Id].get<std::string>()) };
 		auto name{ armor.value()[fightclub::io::JsonAttributes::Name].get<std::string>() };
-		auto type{ static_cast<Armor::Type>(armor.value()[fightclub::io::JsonAttributes::Type].get<int>()) };
+		auto type{ static_cast<fightclub::characterstuff::armors::ArmorType>(armor.value()[fightclub::io::JsonAttributes::Type].get<int>()) };
 		auto armorValue{ armor.value()[fightclub::io::JsonAttributes::Value].get<int>() };
 
 		Armor armor{ id, name, type, armorValue };
