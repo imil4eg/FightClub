@@ -5,14 +5,19 @@
 #include "../Characters/Character.h"
 #include "../Battle/HitDirection.h"
 
-class DamageCalculator
+namespace fightclub
 {
-public:
-	static int Calculate(Character& character, Character& target, HitDirection hitDirection)
+	namespace battle
 	{
-		return character.getAttributes()->getDamage() - target.getEquipment()->getArmorValue(hitDirection);
+		class DamageCalculator
+		{
+		public:
+			static int Calculate(characters::Character& character, characters::Character& target, HitDirection hitDirection)
+			{
+				return character.getAttributes()->getDamage() - target.getEquipment()->getArmorValue(hitDirection);
+			}
+		};
 	}
-};
-
+}
 
 #endif // !DAMAGECALCULATOR_H

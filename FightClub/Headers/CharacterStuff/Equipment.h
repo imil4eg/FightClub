@@ -6,26 +6,32 @@
 #include "Armors/Armor.h"
 #include "../Battle/HitDirection.h"
 
-class Equipment
+namespace fightclub
 {
-private:
-	std::unique_ptr<Armor> m_head;
-	std::unique_ptr<Armor> m_body;
-	std::unique_ptr<Armor> m_legs;
-
-public:
-	Equipment(std::unique_ptr<Armor> head = {}, std::unique_ptr<Armor> body = {}, std::unique_ptr<Armor> legs = {}) :
-		m_head{ std::move(head) },
-		m_body{ std::move(body) },
-		m_legs{ std::move(legs) }
+	namespace characterstuff
 	{
-	}
+		class Equipment
+		{
+		private:
+			std::unique_ptr<armors::Armor> m_head;
+			std::unique_ptr<armors::Armor> m_body;
+			std::unique_ptr<armors::Armor> m_legs;
 
-	const Armor* getHelment() const { return m_head.get(); }
-	const Armor* getCuirasse() const { return m_body.get(); }
-	const Armor* getBoots() const { return m_legs.get(); }
-	int getArmorValue(HitDirection hitDirection) const;
-};
+		public:
+			Equipment(std::unique_ptr<armors::Armor> head = {}, std::unique_ptr<armors::Armor> body = {}, std::unique_ptr<armors::Armor> legs = {}) :
+				m_head{ std::move(head) },
+				m_body{ std::move(body) },
+				m_legs{ std::move(legs) }
+			{
+			}
+
+			const armors::Armor* getHelment() const { return m_head.get(); }
+			const armors::Armor* getCuirasse() const { return m_body.get(); }
+			const armors::Armor* getBoots() const { return m_legs.get(); }
+			int getArmorValue(battle::HitDirection hitDirection) const;
+		};
+	}
+}
 
 #endif // !EQUIPMENT_H
 

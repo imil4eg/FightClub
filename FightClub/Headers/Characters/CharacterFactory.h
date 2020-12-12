@@ -6,21 +6,27 @@
 #include "../CharacterStuff/IAttributesFactory.h"
 #include "ICharacterFactory.h"
 
-class CharacterFactory : public ICharacterFactory
+namespace fightclub
 {
-private:
-	IAttributesFactory* m_attributesFactory;
-
-public:
-	CharacterFactory(IAttributesFactory* attributesFactory) :
-		m_attributesFactory{ attributesFactory }
+	namespace characters
 	{
+		class CharacterFactory : public ICharacterFactory
+		{
+		private:
+			characterstuff::IAttributesFactory* m_attributesFactory;
+
+		public:
+			CharacterFactory(characterstuff::IAttributesFactory* attributesFactory) :
+				m_attributesFactory{ attributesFactory }
+			{
+			}
+
+		public:
+			std::unique_ptr<Player> createDefaultPlayer() override;
+
+		};
 	}
-
-public:
-	std::unique_ptr<Player> createDefaultPlayer() override;
-
-};
+}
 
 #endif // !CHARACTER_FACTORY_H
 

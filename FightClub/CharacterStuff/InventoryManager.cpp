@@ -12,20 +12,20 @@ namespace fightclub
 		{
 			while (true)
 			{
-				Command command{ InputProcesser::askMenuCommand() };
+				common::Command command{ io::InputProcesser::askMenuCommand() };
 
 				switch (command)
 				{
-				case Command::weapons:
+				case common::Command::weapons:
 					displayWeapons();
 					break;
-				case Command::armors:
+				case common::Command::armors:
 					displayArmors();
 					break;
-				case Command::equipment:
+				case common::Command::equipment:
 					displayCurrentEquipment();
 					break;
-				case Command::exit:
+				case common::Command::exit:
 					return;
 				default:
 					throw std::exception("Not implemented menu command type.");
@@ -51,16 +51,16 @@ namespace fightclub
 
 		void InventoryManager::displayWeapons()
 		{
-			display<std::unique_ptr<Weapon>> (m_playerConfig->getUserModelData().weapons, "weapons",
-				[](std::unique_ptr<Weapon>& weapon) {
+			display<std::unique_ptr<characterstuff::weapons::Weapon>> (m_playerConfig->getUserModelData().weapons, "weapons",
+				[](std::unique_ptr<characterstuff::weapons::Weapon>& weapon) {
 					std::cout << weapon->getName() << " | weapon: " << weapon->getDamage();
 				});
 		}
 
 		void InventoryManager::displayArmors()
 		{
-			display<std::unique_ptr<Armor>>(m_playerConfig->getUserModelData().armors, "armors",
-				[](std::unique_ptr<Armor>& armor)
+			display<std::unique_ptr<characterstuff::armors::Armor>>(m_playerConfig->getUserModelData().armors, "armors",
+				[](std::unique_ptr<characterstuff::armors::Armor>& armor)
 				{
 					std::cout << armor->getName() << " | armor: " << armor->getArmor();
 				});

@@ -25,25 +25,28 @@
 #include "IO/Savers/JsonGameDataProcesser.h"
 #include "Menu.h"
 
-int main()
+namespace fightclub
 {
+	int main()
+	{
 
-	Config config{ "config.txt" };
-	AttributesFactory attributesFactory{};
-	WeaponStorage weaponStorage{config};
-	ArmorStorage armorStorage{ config };
-	JsonGameDataProcesser jsonGameDataProcesser{ &attributesFactory, &weaponStorage, &armorStorage, &config };
-	CharacterFactory characterFactory{ &attributesFactory };
-	PlayerConfig playerConfig{ &jsonGameDataProcesser, &characterFactory };
-	BotFactory botFactory{ &attributesFactory, &weaponStorage, &armorStorage };
-	Battle battle{ &botFactory };
-	Menu menu{ &battle, &playerConfig, &jsonGameDataProcesser };
+		common::configs::Config config{ "config.txt" };
+		characterstuff::AttributesFactory attributesFactory{};
+		characterstuff::weapons::WeaponStorage weaponStorage{ config };
+		characterstuff::armors::ArmorStorage armorStorage{ config };
+		io::savers::JsonGameDataProcesser jsonGameDataProcesser{ &attributesFactory, &weaponStorage, &armorStorage, &config };
+		characters::CharacterFactory characterFactory{ &attributesFactory };
+		common::configs::PlayerConfig playerConfig{ &jsonGameDataProcesser, &characterFactory };
+		characters::bots::BotFactory botFactory{ &attributesFactory, &weaponStorage, &armorStorage };
+		battle::Battle battle{ &botFactory };
+		Menu menu{ &battle, &playerConfig, &jsonGameDataProcesser };
 
-	srand(static_cast<unsigned int>(time(0)));
+		srand(static_cast<unsigned int>(time(0)));
 
-	playerConfig.initialize();
+		playerConfig.initialize();
 
-	menu.show();
+		menu.show();
+	}
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu

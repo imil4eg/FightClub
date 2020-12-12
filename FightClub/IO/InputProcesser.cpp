@@ -5,103 +5,109 @@
 #include "IO/MessageDisplayer.h"
 #include "IO/InputProcesser.h"
 
-HitDirection InputProcesser::askHitDirection()
+namespace fightclub
 {
-	HitDirection hitDirection{};
-	do
+	namespace io
 	{
-		std::cout << "Choose where will you hit the opponen:\n1) Head\n2) Body\n3) Legs\n";
-		MessageDisplayer::cmdLineBeggining();
-		std::string input;
-		std::cin >> input;
-		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		battle::HitDirection InputProcesser::askHitDirection()
+		{
+			battle::HitDirection hitDirection{};
+			do
+			{
+				std::cout << "Choose where will you hit the opponen:\n1) Head\n2) Body\n3) Legs\n";
+				MessageDisplayer::cmdLineBeggining();
+				std::string input;
+				std::cin >> input;
+				std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
-		if (input == "Head")
-		{
-			hitDirection = HitDirection::head;
-		}
-		else if (input == "Body")
-		{
-			hitDirection = HitDirection::body;
-		}
-		else if (input == "Legs")
-		{
-			hitDirection = HitDirection::legs;
-		}
-		else
-		{
-			hitDirection = HitDirection::max_hit_direction;
-		}
+				if (input == "Head")
+				{
+					hitDirection = battle::HitDirection::head;
+				}
+				else if (input == "Body")
+				{
+					hitDirection = battle::HitDirection::body;
+				}
+				else if (input == "Legs")
+				{
+					hitDirection = battle::HitDirection::legs;
+				}
+				else
+				{
+					hitDirection = battle::HitDirection::max_hit_direction;
+				}
 
-	} while (hitDirection == HitDirection::max_hit_direction);
+			} while (hitDirection == battle::HitDirection::max_hit_direction);
 
-	return static_cast<HitDirection>(hitDirection);
-}
-
-Command InputProcesser::askCommand()
-{
-	do
-	{
-		std::cout << "Please, enter the command\nCommands:\n1) Play\n2) Customize character\n3) Inventory\n4) Exit\n\n";
-		MessageDisplayer::cmdLineBeggining();
-		std::string command;
-		std::cin >> command;
-		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-
-		if (command == "1" || command == "Play" || command == "play")
-		{
-			return Command::play;
-		}
-		else if (command == "2" || command == "Customize character" || command == "customize character")
-		{
-			return Command::customize_character;
-		}
-		else if (command == "3" || command == "Invetory" || command == "inventory")
-		{
-			return Command::inventory;
-		}
-		else if (command == "4" || command == "Exit" || command == "exit")
-		{
-			return Command::exit;
-		}
-		else
-		{
-			std::cout << "Unrecognized command entered.\n";
+			return static_cast<battle::HitDirection>(hitDirection);
 		}
 
-	} while (true);
-}
+		common::Command InputProcesser::askCommand()
+		{
+			do
+			{
+				std::cout << "Please, enter the command\nCommands:\n1) Play\n2) Customize character\n3) Inventory\n4) Exit\n\n";
+				MessageDisplayer::cmdLineBeggining();
+				std::string command;
+				std::cin >> command;
+				std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
-Command InputProcesser::askMenuCommand()
-{
-	do
-	{
-		std::cout << "Please, enter the command\nCommands:\n1) Weapons\n2) Armors\n 3) Exit\n\n";
-		MessageDisplayer::cmdLineBeggining();
-		std::string command;
-		std::cin >> command;
-		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+				if (command == "1" || command == "Play" || command == "play")
+				{
+					return common::Command::play;
+				}
+				else if (command == "2" || command == "Customize character" || command == "customize character")
+				{
+					return common::Command::customize_character;
+				}
+				else if (command == "3" || command == "Invetory" || command == "inventory")
+				{
+					return common::Command::inventory;
+				}
+				else if (command == "4" || command == "Exit" || command == "exit")
+				{
+					return common::Command::exit;
+				}
+				else
+				{
+					std::cout << "Unrecognized command entered.\n";
+				}
 
-		if (command == "1" || command == "Weapons" || command == "weapons")
-		{
-			return Command::weapons;
-		}
-		else if (command == "2" || command == "Armors" || command == "armors")
-		{
-			return Command::armors;
-		}
-		else if (command == "3" || command == "Equipment" || command == "equipment")
-		{
-			return Command::equipment;
-		}
-		else if (command == "4" || command == "Exit" || command == "exit")
-		{
-			return Command::exit;
-		}
-		else
-		{
-			std::cout << "Unrecognized command entered.\n";
+			} while (true);
 		}
 
-	} while (true);
+		common::Command InputProcesser::askMenuCommand()
+		{
+			do
+			{
+				std::cout << "Please, enter the command\nCommands:\n1) Weapons\n2) Armors\n 3) Exit\n\n";
+				MessageDisplayer::cmdLineBeggining();
+				std::string command;
+				std::cin >> command;
+				std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+				if (command == "1" || command == "Weapons" || command == "weapons")
+				{
+					return common::Command::weapons;
+				}
+				else if (command == "2" || command == "Armors" || command == "armors")
+				{
+					return common::Command::armors;
+				}
+				else if (command == "3" || command == "Equipment" || command == "equipment")
+				{
+					return common::Command::equipment;
+				}
+				else if (command == "4" || command == "Exit" || command == "exit")
+				{
+					return common::Command::exit;
+				}
+				else
+				{
+					std::cout << "Unrecognized command entered.\n";
+				}
+
+			} while (true);
+		}
+	}
 }

@@ -7,14 +7,23 @@
 #include "Armor.h"
 #include "ArmorType.h"
 
-class IArmorStorage
+namespace fightclub
 {
-public:
-	virtual ~IArmorStorage() = default;
+	namespace characterstuff
+	{
+		namespace armors
+		{
+			class IArmorStorage
+			{
+			public:
+				virtual ~IArmorStorage() = default;
 
-	virtual std::unique_ptr<Armor> getOrDefault(const boost::uuids::uuid& id) = 0;
-	virtual std::unique_ptr<Armor> getRandom(fightclub::characterstuff::armors::ArmorType armorType) = 0;
-};
+				virtual std::unique_ptr<Armor> getOrDefault(const boost::uuids::uuid& id) = 0;
+				virtual std::unique_ptr<Armor> getRandom(fightclub::characterstuff::armors::ArmorType armorType) = 0;
+			};
+		}
+	}
+}
 
 #endif // !I_ARMOR_STORAGE_H
 

@@ -6,7 +6,7 @@ namespace fightclub
 {
 	namespace characterstuff
 	{
-		const Weapon* const Inventory::getWeaponById(boost::uuids::uuid& id)
+		const characterstuff::weapons::Weapon* const Inventory::getWeaponById(boost::uuids::uuid& id)
 		{
 			if (id == boost::uuids::nil_uuid())
 			{
@@ -14,7 +14,7 @@ namespace fightclub
 			}
 
 			auto weaponIt{ std::find_if(m_weapons.begin(), m_weapons.end(),
-				[id](std::unique_ptr<Weapon>& weapon)
+				[id](std::unique_ptr<characterstuff::weapons::Weapon>& weapon)
 				{
 					return weapon->getId() == id;
 				}) };

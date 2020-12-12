@@ -5,13 +5,22 @@
 
 #include "ConfigKeys.h"
 
-class IConfig
+namespace fightclub
 {
-public:
-	virtual ~IConfig() = default;
+	namespace common
+	{
+		namespace configs
+		{
+			class IConfig
+			{
+			public:
+				virtual ~IConfig() = default;
 
-	virtual std::string get(ConfigKeys key) const = 0;
-};
+				virtual std::string get(ConfigKeys key) const = 0;
+			};
+		}
+	}
+}
 
 #endif // !I_CONFIG_H
 

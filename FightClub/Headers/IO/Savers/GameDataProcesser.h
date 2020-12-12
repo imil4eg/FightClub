@@ -5,14 +5,22 @@
 
 #include "Characters/Player.h"
 
-class GameDataProcesser
+namespace fightclub
 {
-public:
-	virtual ~GameDataProcesser() = default;
-	virtual std::unique_ptr<Player> load() = 0;
-	virtual void save(Player& player) const = 0;
-};
-
+	namespace io
+	{
+		namespace savers
+		{
+			class GameDataProcesser
+			{
+			public:
+				virtual ~GameDataProcesser() = default;
+				virtual std::unique_ptr<characters::Player> load() = 0;
+				virtual void save(characters::Player& player) const = 0;
+			};
+		}
+	}
+}
 
 #endif // !GAME_SAVER_H
 

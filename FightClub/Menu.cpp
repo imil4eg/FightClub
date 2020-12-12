@@ -4,26 +4,29 @@
 #include "Characters/Player.h"
 #include "IO/InputProcesser.h"
 
-void Menu::show() const 
+namespace fightclub
 {
-	std::cout << "Welcome to the fight club, buddy!\n";
-	while (true)
+	void Menu::show() const
 	{
-		switch (InputProcesser::askCommand())
+		std::cout << "Welcome to the fight club, buddy!\n";
+		while (true)
 		{
-		case Command::play:
-		{
-			auto player{ m_playerConfig->getCharacter() };
-			m_battle->fightWithBot(*player);
-			break;
-		}
-		case Command::customize_character:
-			break;
-		case Command::inventory:
-			break;
-		case Command::exit:
-			m_gameDataProcesser->save(*(m_playerConfig->getCharacter()));
-			return;
+			switch (io::InputProcesser::askCommand())
+			{
+			case common::Command::play:
+			{
+				auto player{ m_playerConfig->getCharacter() };
+				m_battle->fightWithBot(*player);
+				break;
+			}
+			case common::Command::customize_character:
+				break;
+			case common::Command::inventory:
+				break;
+			case common::Command::exit:
+				m_gameDataProcesser->save(*(m_playerConfig->getCharacter()));
+				return;
+			}
 		}
 	}
 }

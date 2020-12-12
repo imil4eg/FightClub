@@ -13,21 +13,21 @@ namespace fightclub
 		class Inventory
 		{
 		private:
-			std::vector<std::unique_ptr<Armor>> m_armors{};
-			std::vector<std::unique_ptr<Weapon>> m_weapons{};
+			std::vector<std::unique_ptr<armors::Armor>> m_armors{};
+			std::vector<std::unique_ptr<weapons::Weapon>> m_weapons{};
 
 		public:
 			Inventory() = default;
 
-			Inventory(std::vector<std::unique_ptr<Armor>>&& armors, std::vector<std::unique_ptr<Weapon>>&& weapons) : 
+			Inventory(std::vector<std::unique_ptr<armors::Armor>>&& armors, std::vector<std::unique_ptr<weapons::Weapon>>&& weapons) : 
 				m_armors{ std::move(armors) },
 				m_weapons{ std::move(weapons) }
 			{
 			}
 
-			std::vector<std::unique_ptr<Armor>>& getArmors() { return m_armors; }
-			std::vector<std::unique_ptr<Weapon>>& getWeapons() { return m_weapons; }
-			const Weapon* const getWeaponById(boost::uuids::uuid& id);
+			std::vector<std::unique_ptr<armors::Armor>>& getArmors() { return m_armors; }
+			std::vector<std::unique_ptr<weapons::Weapon>>& getWeapons() { return m_weapons; }
+			const weapons::Weapon* const getWeaponById(boost::uuids::uuid& id);
 		};
 	}
 }

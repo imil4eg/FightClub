@@ -9,25 +9,34 @@
 #include "CharacterStuff/Armors/Armor.h"
 #include "IO/Savers/GameDataProcesser.h"
 
-class PlayerConfig : public IPlayerConfig
+namespace fightclub
 {
-private:
-	std::unique_ptr<Player> m_player;
-	
-	GameDataProcesser* m_gameDataProcesser;
-	ICharacterFactory* m_characterFactory;
-
-public:
-	PlayerConfig(GameDataProcesser* gameDataProcesser, 
-				ICharacterFactory* characterFactory) :
-		m_gameDataProcesser{gameDataProcesser},
-		m_characterFactory{characterFactory}
+	namespace common
 	{
-	}
+		namespace configs
+		{
+			class PlayerConfig : public IPlayerConfig
+			{
+			private:
+				std::unique_ptr<characters::Player> m_player;
 
-	void initialize() override;
-	Player* getCharacter() override;
-};
+				io::savers::GameDataProcesser* m_gameDataProcesser;
+				characters::ICharacterFactory* m_characterFactory;
+
+			public:
+				PlayerConfig(io::savers::GameDataProcesser* gameDataProcesser,
+					characters::ICharacterFactory* characterFactory) :
+					m_gameDataProcesser{ gameDataProcesser },
+					m_characterFactory{ characterFactory }
+				{
+				}
+
+				void initialize() override;
+				characters::Player* getCharacter() override;
+			};
+		}
+	}
+}
 
 #endif // !PLAYER_CONFIG_H
 

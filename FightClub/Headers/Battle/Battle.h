@@ -7,18 +7,25 @@
 #include "../Characters/Character.h"
 #include "IBattle.h"
 
-class Battle : public IBattle
+namespace fightclub
 {
-private:
-	IBotFactory* m_botFactory;
-
-public:
-	Battle(IBotFactory* botFactory) : m_botFactory{ botFactory }
+	namespace battle
 	{
-	}
+		class Battle : public IBattle
+		{
+		private:
+			characters::bots::IBotFactory* m_botFactory;
 
-	void fightWithBot(Character& player) override;
-};
+		public:
+			Battle(characters::bots::IBotFactory* botFactory) : m_botFactory{ botFactory }
+			{
+			}
+
+			void fightWithBot(characters::Character& player) override;
+		};
+
+	}
+}
 
 #endif // !BATTLE_H
 

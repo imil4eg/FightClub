@@ -1,16 +1,25 @@
 #include "Common/Configs/PlayerConfig.h"
 
-Player* PlayerConfig::getCharacter()
+namespace fightclub
 {
-	if (m_player == nullptr)
+	namespace common
 	{
-		m_player = m_characterFactory->createDefaultPlayer();
+		namespace configs
+		{
+			characters::Player* PlayerConfig::getCharacter()
+			{
+				if (m_player == nullptr)
+				{
+					m_player = m_characterFactory->createDefaultPlayer();
+				}
+
+				return m_player.get();
+			}
+
+			void PlayerConfig::initialize()
+			{
+				m_player = m_gameDataProcesser->load();
+			}
+		}
 	}
-
-	return m_player.get();
-}
-
-void PlayerConfig::initialize()
-{
-	m_player = m_gameDataProcesser->load();
 }

@@ -5,22 +5,28 @@
 #include "IO/InputProcesser.h"
 #include "Characters/Player.h"
 
-void Player::playTurn(Character& target)
+namespace fightclub
 {
-	MessageDisplayer::displayPlayerTurn();
+	namespace characters
+	{
+		void Player::playTurn(characters::Character& target)
+		{
+			io::MessageDisplayer::displayPlayerTurn();
 
-	auto hitDirection{ InputProcesser::askHitDirection() };
+			auto hitDirection{ io::InputProcesser::askHitDirection() };
 
-	this->hit(target, hitDirection);
-}
+			this->hit(target, hitDirection);
+		}
 
-void Player::hit(Character& enemy, HitDirection hitDirection)
-{
-	int damage = DamageCalculator::Calculate(*this, enemy, hitDirection);
-	
-	MessageDisplayer::displayPlayerHit(damage, hitDirection);
+		void Player::hit(Character& enemy, battle::HitDirection hitDirection)
+		{
+			int damage = battle::DamageCalculator::Calculate(*this, enemy, hitDirection);
 
-	Character::hit(enemy, damage);
+			io::MessageDisplayer::displayPlayerHit(damage, hitDirection);
 
-	MessageDisplayer::displayEnemyHP(enemy.getAttributes()->getHp());
+			Character::hit(enemy, damage);
+
+			io::MessageDisplayer::displayEnemyHP(enemy.getAttributes()->getHp());
+		}
+	}
 }

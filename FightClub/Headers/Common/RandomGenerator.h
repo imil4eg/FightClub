@@ -4,14 +4,19 @@
 #include <ctime>
 #include <random>
 
-class RandomGenerator
+namespace fightclub
 {
-private:
-	static std::mt19937 gen;
+	namespace common
+	{
+		class RandomGenerator
+		{
+		private:
+			static std::mt19937 gen;
 
-public:
-	static int getBetween(int min, int max);
-};
-
+		public:
+			static int getBetween(int min, int max);
+		};
+	}
+}
 
 #endif // !RANDOM_GENERATOR_H

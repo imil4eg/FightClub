@@ -12,10 +12,10 @@ namespace fightclub
 		class InventoryManager : public IInventoryManager
 		{
 		private:
-			IPlayerConfig* m_playerConfig;
+			common::configs::IPlayerConfig* m_playerConfig;
 
 		public:
-			InventoryManager(IPlayerConfig& playerConfig) :
+			InventoryManager(common::configs::IPlayerConfig& playerConfig) :
 				m_playerConfig{ &playerConfig }
 			{
 			}

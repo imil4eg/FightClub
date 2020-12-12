@@ -1,10 +1,16 @@
 #include "Characters/CharacterFactory.h"
 #include "Characters/Player.h"
 
-std::unique_ptr<Player> CharacterFactory::createDefaultPlayer()
+namespace fightclub
 {
-	auto attributes{ m_attributesFactory->create(nullptr, 1, 0, 0, CharacterType::strong) };
-	auto equipment{ std::make_unique<Equipment>() };
+	namespace characters
+	{
+		std::unique_ptr<Player> CharacterFactory::createDefaultPlayer()
+		{
+			auto attributes{ m_attributesFactory->create(nullptr, 1, 0, 0, CharacterType::strong) };
+			auto equipment{ std::make_unique<characterstuff::Equipment>() };
 
-	return std::make_unique<Player>(std::move(attributes), std::move(equipment), CharacterType::strong, std::move(nullptr));
+			return std::make_unique<Player>(std::move(attributes), std::move(equipment), CharacterType::strong, std::move(nullptr));
+		}
+	}
 }

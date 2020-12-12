@@ -1,17 +1,23 @@
 #ifndef COMMANDS_H
 #define COMMANDS_H
 
-enum class Command
+namespace fightclub
 {
-	play,
-	customize_character,
-	inventory,
-	weapons,
-	armors,
-	equipment,
-	exit,
-	max_commands
-};
+	namespace common
+	{
+		enum class Command
+		{
+			play,
+			customize_character,
+			inventory,
+			weapons,
+			armors,
+			equipment,
+			exit,
+			max_commands
+		};
+	}
+}
 
 #endif // !COMMANDS_H
 

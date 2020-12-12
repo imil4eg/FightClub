@@ -6,38 +6,44 @@
 #include "Characters/Bots/Bot.h"
 #include "IO/MessageDisplayer.h"
 
-void FightPreparation(Character& player, Character& enemy)
+namespace fightclub
 {
-	player.restoreHp();
-	enemy.restoreHp();
-}
-	
-void Battle::fightWithBot(Character& player)
-{
-	auto bot{ m_botFactory->create(player) };
-	
-	MessageDisplayer::startFighting();
-	
-	FightPreparation(player, bot);
-
-	bool playerWon{};
-	while (true)
+	namespace battle
 	{
-		player.playTurn(bot);
-
-		if (bot.getAttributes()->getHp() <= 0)
+		void FightPreparation(characters::Character& player, characters::Character& enemy)
 		{
-			playerWon = true;
-			break;
+			player.restoreHp();
+			enemy.restoreHp();
 		}
 
-		bot.playTurn(player);
-
-		if (player.getAttributes()->getHp() <= 0)
+		void Battle::fightWithBot(characters::Character& player)
 		{
-			break;
+			auto bot{ m_botFactory->create(player) };
+
+			io::MessageDisplayer::startFighting();
+
+			FightPreparation(player, bot);
+
+			bool playerWon{};
+			while (true)
+			{
+				player.playTurn(bot);
+
+				if (bot.getAttributes()->getHp() <= 0)
+				{
+					playerWon = true;
+					break;
+				}
+
+				bot.playTurn(player);
+
+				if (player.getAttributes()->getHp() <= 0)
+				{
+					break;
+				}
+			}
+
+			io::MessageDisplayer::battleResult(playerWon);
 		}
 	}
-
-	MessageDisplayer::battleResult(playerWon);
 }

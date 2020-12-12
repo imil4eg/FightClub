@@ -4,19 +4,28 @@
 #include "Battle/HitDirection.h"
 #include "Common/RandomGenerator.h"
 
-void Bot::hit(Character& enemy, HitDirection hitDirection)
+namespace fightclub
 {
-	int damage = DamageCalculator::Calculate(*this, enemy, hitDirection);
-	MessageDisplayer::displayEnemyHit(damage, hitDirection);
+	namespace characters
+	{
+		namespace bots
+		{
+			void Bot::hit(Character& enemy, battle::HitDirection hitDirection)
+			{
+				int damage = battle::DamageCalculator::Calculate(*this, enemy, hitDirection);
+				io::MessageDisplayer::displayEnemyHit(damage, hitDirection);
 
-	Character::hit(enemy, damage);
+				Character::hit(enemy, damage);
 
-	MessageDisplayer::displayPlayerHP(enemy.getAttributes()->getHp());
-}
+				io::MessageDisplayer::displayPlayerHP(enemy.getAttributes()->getHp());
+			}
 
-void Bot::playTurn(Character& player)
-{
-	auto hitDirection{ static_cast<HitDirection>(RandomGenerator::getBetween(0, static_cast<int>(HitDirection::max_hit_direction) - 1)) };
+			void Bot::playTurn(Character& player)
+			{
+				auto hitDirection{ static_cast<battle::HitDirection>(common::RandomGenerator::getBetween(0, static_cast<int>(battle::HitDirection::max_hit_direction) - 1)) };
 
-	this->hit(player, hitDirection);
+				this->hit(player, hitDirection);
+			}
+		}
+	}
 }

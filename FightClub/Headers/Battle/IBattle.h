@@ -3,12 +3,18 @@
 
 #include "../Characters/Character.h"
 
-class IBattle
+namespace fightclub
 {
-public:
-	virtual ~IBattle() noexcept = default;
-	virtual void fightWithBot(Character& player) = 0;
-};
+	namespace battle
+	{
+		class IBattle
+		{
+		public:
+			virtual ~IBattle() noexcept = default;
+			virtual void fightWithBot(characters::Character& player) = 0;
+		};
+	}
+}
 
 #endif // !IBATTLE_H
 

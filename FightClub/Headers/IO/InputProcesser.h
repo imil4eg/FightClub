@@ -4,13 +4,19 @@
 #include "Common/Commands.h"
 #include "Battle/HitDirection.h"
 
-class InputProcesser
+namespace fightclub
 {
-public:
-	static HitDirection askHitDirection();
-	static Command askCommand();
-	static Command askMenuCommand();
-};
+	namespace io
+	{
+		class InputProcesser
+		{
+		public:
+			static battle::HitDirection askHitDirection();
+			static common::Command askCommand();
+			static common::Command askMenuCommand();
+		};
+	}
+}
 
 #endif // !INPUT_PROCESSER_H
 

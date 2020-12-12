@@ -12,55 +12,64 @@
 
 using json = nlohmann::json;
 
-std::unique_ptr<Weapon> WeaponStorage::getRandomWeapon() const
+namespace fightclub
 {
-	std::ifstream input{ m_config->get(ConfigKeys::weaponsFile) };
-
-	if (!input.good())
-		return nullptr;
-
-	json weaponsJson;
-	input >> weaponsJson;
-
-	std::vector<Weapon> weapons{};
-	for (auto& weapon : weaponsJson[fightclub::io::JsonAttributes::Weapons].items())
+	namespace characterstuff
 	{
-		auto id{ boost::lexical_cast<boost::uuids::uuid>(weapon.value()[fightclub::io::JsonAttributes::Id].get<std::string>()) };
-		auto name{ weapon.value()[fightclub::io::JsonAttributes::Name].get<std::string>() };
-		int damage{ weapon.value()[fightclub::io::JsonAttributes::Damage].get<int>() };
-
-		weapons.push_back(Weapon{id, name, damage});
-	}
-
-	auto randomWeaponId{ RandomGenerator::getBetween(0, static_cast<int>(weapons.size()) - 1) };
-
-	return std::make_unique<Weapon>(weapons[randomWeaponId]);
-}
-
-std::unique_ptr<Weapon> WeaponStorage::getWeaponOrDefault(const boost::uuids::uuid& id) const
-{
-	std::ifstream input{ m_config->get(ConfigKeys::weaponsFile) };
-
-	if (!input.good())
-		return nullptr;
-
-	json weaponsJson;
-	input >> weaponsJson;
-
-	auto idStr{ boost::lexical_cast<std::string>(id) };
-	for (auto& weapon : weaponsJson[fightclub::io::JsonAttributes::Weapons].items())
-	{
-		if (idStr != weapon.value()[fightclub::io::JsonAttributes::Id].get<std::string>())
+		namespace weapons
 		{
-			continue;
+			std::unique_ptr<Weapon> WeaponStorage::getRandomWeapon() const
+			{
+				std::ifstream input{ m_config->get(common::configs::ConfigKeys::weaponsFile) };
+
+				if (!input.good())
+					return nullptr;
+
+				json weaponsJson;
+				input >> weaponsJson;
+
+				std::vector<Weapon> weapons{};
+				for (auto& weapon : weaponsJson[fightclub::io::JsonAttributes::Weapons].items())
+				{
+					auto id{ boost::lexical_cast<boost::uuids::uuid>(weapon.value()[fightclub::io::JsonAttributes::Id].get<std::string>()) };
+					auto name{ weapon.value()[fightclub::io::JsonAttributes::Name].get<std::string>() };
+					int damage{ weapon.value()[fightclub::io::JsonAttributes::Damage].get<int>() };
+
+					weapons.push_back(Weapon{ id, name, damage });
+				}
+
+				auto randomWeaponId{ common::RandomGenerator::getBetween(0, static_cast<int>(weapons.size()) - 1) };
+
+				return std::make_unique<Weapon>(weapons[randomWeaponId]);
+			}
+
+			std::unique_ptr<Weapon> WeaponStorage::getWeaponOrDefault(const boost::uuids::uuid& id) const
+			{
+				std::ifstream input{ m_config->get(common::configs::ConfigKeys::weaponsFile) };
+
+				if (!input.good())
+					return nullptr;
+
+				json weaponsJson;
+				input >> weaponsJson;
+
+				auto idStr{ boost::lexical_cast<std::string>(id) };
+				for (auto& weapon : weaponsJson[fightclub::io::JsonAttributes::Weapons].items())
+				{
+					if (idStr != weapon.value()[fightclub::io::JsonAttributes::Id].get<std::string>())
+					{
+						continue;
+					}
+
+					auto id{ boost::lexical_cast<boost::uuids::uuid>(weapon.value()[fightclub::io::JsonAttributes::Id].get<std::string>()) };
+					auto name{ weapon.value()[fightclub::io::JsonAttributes::Name].get<std::string>() };
+					int damage{ weapon.value()[fightclub::io::JsonAttributes::Damage].get<int>() };
+
+					return std::make_unique<Weapon>(id, name, damage);
+				}
+
+				return nullptr;
+			}
 		}
-
-		auto id{ boost::lexical_cast<boost::uuids::uuid>(weapon.value()[fightclub::io::JsonAttributes::Id].get<std::string>()) };
-		auto name{ weapon.value()[fightclub::io::JsonAttributes::Name].get<std::string>() };
-		int damage{ weapon.value()[fightclub::io::JsonAttributes::Damage].get<int>() };
-
-		return std::make_unique<Weapon>(id, name, damage);
 	}
-
-	return nullptr;
 }

@@ -7,12 +7,18 @@
 #include "../Characters/CharacterType.h"
 #include "Weapons/Weapon.h"
 
-class IAttributesFactory
+namespace fightclub
 {
-public:
-	virtual ~IAttributesFactory() noexcept = default;
-	virtual std::unique_ptr<Attributes> create(const Weapon* const weapon, int level, int stength, int agility, CharacterType characterType) = 0;
-};
+	namespace characterstuff
+	{
+		class IAttributesFactory
+		{
+		public:
+			virtual ~IAttributesFactory() noexcept = default;
+			virtual std::unique_ptr<Attributes> create(const weapons::Weapon* const weapon, int level, int stength, int agility, characters::CharacterType characterType) = 0;
+		};
+	}
+}
 
 
 #endif // !IATTRIBUTES_FACTORY_H

@@ -3,15 +3,20 @@
 
 #include <iostream>
 
-enum class HitDirection
+namespace fightclub
 {
-	head,
-	body,
-	legs,
-	max_hit_direction
-};
+	namespace battle
+	{
+		enum class HitDirection
+		{
+			head,
+			body,
+			legs,
+			max_hit_direction
+		};
 
-std::ostream& operator<<(std::ostream& out, HitDirection hd);
-
+		std::ostream& operator<<(std::ostream& out, HitDirection hd);
+	}
+}
 
 #endif // !HIT_DIRECTION_H

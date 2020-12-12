@@ -3,15 +3,24 @@
 
 #include <string>
 
-enum class ConfigKeys
+namespace fightclub
 {
-	saveFile,
-	weaponsFile,
-	armorsFile,
-	max_config_keys
-};
+	namespace common
+	{
+		namespace configs
+		{
+			enum class ConfigKeys
+			{
+				saveFile,
+				weaponsFile,
+				armorsFile,
+				max_config_keys
+			};
 
-std::string toString(ConfigKeys configKey);
+			std::string toString(ConfigKeys configKey);
+		}
+	}
+}
 
 #endif // !CONFIG_KEYS_H
 

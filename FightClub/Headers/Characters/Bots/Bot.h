@@ -10,28 +10,38 @@
 #include "../../CharacterStuff/Equipment.h"
 #include "../../CharacterStuff/Weapons/Weapon.h"
 
-class Bot : public Character
+namespace fightclub
 {
-private:
-	std::unique_ptr<Weapon> m_weapon;
-
-public:
-	Bot(std::unique_ptr<Attributes> attributes, std::unique_ptr<Equipment> equipment, CharacterType characterType, std::unique_ptr<Weapon> weapon = {}) :
-		Character{ std::move(attributes), std::move(equipment), characterType },
-		m_weapon{std::move(weapon)}
+	namespace characters
 	{
-	}
+		namespace bots
+		{
+			class Bot : public Character
+			{
+			private:
+				std::unique_ptr<characterstuff::weapons::Weapon> m_weapon;
 
-	Bot(Bot&& bot) :
-		Character{ std::move(bot) },
-		m_weapon{std::move(bot.m_weapon) }
-	{
-	}
+			public:
+				Bot(std::unique_ptr<characterstuff::Attributes> attributes, std::unique_ptr<characterstuff::Equipment> equipment, 
+					CharacterType characterType, std::unique_ptr<characterstuff::weapons::Weapon> weapon = {}) :
+					Character{ std::move(attributes), std::move(equipment), characterType },
+					m_weapon{ std::move(weapon) }
+				{
+				}
 
-	void playTurn(Character& player) override;
-	void hit(Character& enemy, HitDirection hitDirection) override;
-	const Weapon* const getWeapon() const override { return m_weapon.get(); }
-};
+				Bot(Bot&& bot) :
+					Character{ std::move(bot) },
+					m_weapon{ std::move(bot.m_weapon) }
+				{
+				}
+
+				void playTurn(Character& player) override;
+				void hit(Character& enemy, battle::HitDirection hitDirection) override;
+				const characterstuff::weapons::Weapon* const getWeapon() const override { return m_weapon.get(); }
+			};
+		}
+	}
+}
 
 #endif // !BOT_H
 
