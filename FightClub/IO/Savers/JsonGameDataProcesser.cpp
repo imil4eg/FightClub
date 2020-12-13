@@ -20,11 +20,11 @@ namespace fightclub
 				j["equipment"][attributeName] = boost::lexical_cast<std::string>(equipmentId);
 			}
 
-			std::unique_ptr<characterstuff::armors::Armor> JsonGameDataProcesser::getArmor(json& j, const std::string& attributename)
+			const characterstuff::armors::Armor* JsonGameDataProcesser::getArmor(characterstuff::Inventory& inventory, json& j, const std::string& attributename)
 			{
-				auto id{ j[m_equipmentAttribute][attributename].get<std::string>() };
+				auto id{ boost::lexical_cast<boost::uuids::uuid>(j[m_equipmentAttribute][attributename].get<std::string>()) };
 
-				return m_armorStorage->getOrDefault(boost::lexical_cast<boost::uuids::uuid>(id));
+				return inventory.getArmorById(id);
 			}
 
 			void JsonGameDataProcesser::save(characters::Player& player) const
@@ -46,7 +46,7 @@ namespace fightclub
 				json[m_attributesAttribute][m_levelAttribute] = character.getAttributes()->getLevel();
 
 				json[m_equipmentAttribute] = nullptr;
-				addEquipmentAttribute(json, m_headAttribute, character.getEquipment()->getHelment());
+				addEquipmentAttribute(json, m_headAttribute, character.getEquipment()->getHelmet());
 				addEquipmentAttribute(json, m_cuirasseAttribute, character.getEquipment()->getCuirasse());
 				addEquipmentAttribute(json, m_bootsAttribute, character.getEquipment()->getBoots());
 
@@ -85,23 +85,23 @@ namespace fightclub
 				json characterJson;
 				input >> characterJson;
 
-				auto inventory{ loadInventory(characterJson) };
-
 				int strength = characterJson[m_attributesAttribute][m_strengthAttribute].get<int>();
 				int agility = characterJson[m_attributesAttribute][m_agilityAttribute].get<int>();
 				int level = characterJson[m_attributesAttribute][m_levelAttribute].get<int>();
 				auto characterType = static_cast<characters::CharacterType>(characterJson[m_characterTypeAttribute].get<int>());
+
+				auto inventory{ loadInventory(characterJson) };
 
 				auto weaponId{ boost::lexical_cast<boost::uuids::uuid>(characterJson[m_weaponAttribute].get<std::string>()) };
 				auto weapon{ inventory->getWeaponById(weaponId) };
 
 				auto attributes{ m_attributesFactory->create(weapon, level, strength, agility, characterType) };
 
-				auto head{ getArmor(characterJson, m_headAttribute) };
-				auto cuirass{ getArmor(characterJson, m_cuirasseAttribute) };
-				auto legs{ getArmor(characterJson, m_bootsAttribute) };
+				auto head{ getArmor(*inventory.get(), characterJson, m_headAttribute) };
+				auto cuirass{ getArmor(*inventory.get(), characterJson, m_cuirasseAttribute) };
+				auto legs{ getArmor(*inventory.get(), characterJson, m_bootsAttribute) };
 
-				auto equipment{ std::make_unique<characterstuff::Equipment>(std::move(head), std::move(cuirass), std::move(legs)) };
+				auto equipment{ std::make_unique<characterstuff::DynamicEquipment>(head, cuirass, legs) };
 
 				return std::make_unique<characters::Player>(std::move(attributes), std::move(equipment), characterType, std::move(inventory), weapon);
 			}

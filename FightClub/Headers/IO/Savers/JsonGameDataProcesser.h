@@ -5,6 +5,7 @@
 #include "CharacterStuff/IAttributesFactory.h"
 #include "CharacterStuff/Weapons/IWeaponStorage.h"
 #include "CharacterStuff/Armors/IArmorStorage.h"
+#include "CharacterStuff/Inventory.h"
 #include "Common/Configs/IConfig.h"
 
 #include "nlohmann/json.hpp"
@@ -52,7 +53,7 @@ namespace fightclub
 				void save(characters::Player& player) const override;
 
 			private:
-				std::unique_ptr<characterstuff::armors::Armor> getArmor(json& j, const std::string& attributeName);
+				const characterstuff::armors::Armor* getArmor(characterstuff::Inventory& inventory, json& j, const std::string& attributeName);
 				void characterToJson(json& json, characters::Character& character) const;
 				void inventoryToJson(json& json, fightclub::characterstuff::Inventory& inventory) const;
 				std::unique_ptr<fightclub::characterstuff::Inventory> loadInventory(json& saveFileJson);

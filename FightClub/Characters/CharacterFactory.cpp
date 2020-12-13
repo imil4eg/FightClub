@@ -8,7 +8,7 @@ namespace fightclub
 		std::unique_ptr<Player> CharacterFactory::createDefaultPlayer()
 		{
 			auto attributes{ m_attributesFactory->create(nullptr, 1, 0, 0, CharacterType::strong) };
-			auto equipment{ std::make_unique<characterstuff::Equipment>() };
+			auto equipment{ std::make_unique<characterstuff::DynamicEquipment>() };
 
 			return std::make_unique<Player>(std::move(attributes), std::move(equipment), CharacterType::strong, std::move(nullptr));
 		}

@@ -13,13 +13,29 @@ namespace fightclub
 				return nullptr;
 			}
 
-			auto weaponIt{ std::find_if(m_weapons.begin(), m_weapons.end(),
-				[id](std::unique_ptr<characterstuff::weapons::Weapon>& weapon)
+			return getById(m_weapons, id);
+		}
+
+		const armors::Armor* const Inventory::getArmorById(boost::uuids::uuid& id)
+		{
+			if (id == boost::uuids::nil_uuid())
+			{
+				return nullptr;
+			}
+
+			return getById(m_armors, id);
+		}
+
+		template<typename T>
+		T* Inventory::getById(std::vector<std::unique_ptr<T>>& container, boost::uuids::uuid& itemId)
+		{
+			auto it{ std::find_if(container.begin(), container.end(),
+				[itemId](std::unique_ptr<T>& item)
 				{
-					return weapon->getId() == id;
+					return item->getId() == itemId;
 				}) };
 
-			return weaponIt == m_weapons.end() ? nullptr : weaponIt->get();
+			return it == container.end() ? nullptr : it->get();
 		}
 	}
 }
