@@ -16,32 +16,23 @@ namespace fightclub
 		{
 		private:
 			std::unique_ptr<characterstuff::Attributes> m_attributes;
-			std::unique_ptr<characterstuff::Equipment> m_equipment;
-			std::unique_ptr<characterstuff::weapons::Weapon> m_weapon;
 			CharacterType m_characterType;
 
 		public:
-			Character(std::unique_ptr<characterstuff::Attributes> attributes, std::unique_ptr<characterstuff::Equipment> equipment, 
-				CharacterType characterType, std::unique_ptr<characterstuff::weapons::Weapon> weapon = {}) :
+			Character(std::unique_ptr<characterstuff::Attributes> attributes, CharacterType characterType) :
 				m_attributes{ std::move(attributes) },
-				m_equipment{ std::move(equipment) },
-				m_weapon{ std::move(weapon) },
 				m_characterType{ characterType }
 			{
 			}
 
-			Character(Character&& character) :
-				m_attributes{ std::move(character.m_attributes) },
-				m_equipment{ std::move(character.m_equipment) },
-				m_weapon{ std::move(character.m_weapon) },
+			Character(Character&& character) : 
+				m_attributes{std::move(character.m_attributes)},
 				m_characterType{ character.m_characterType }
 			{
 			}
 
-			Character(std::unique_ptr<Character> character) :
-				m_attributes{ std::move(character->m_attributes) },
-				m_equipment{ std::move(character->m_equipment) },
-				m_weapon{ std::move(character->m_weapon) },
+			Character(std::unique_ptr<Character> character) : 
+				m_attributes{std::move(character->m_attributes)},
 				m_characterType{ character->m_characterType }
 			{
 			}
@@ -49,9 +40,8 @@ namespace fightclub
 			virtual ~Character() {};
 
 			characterstuff::Attributes* getAttributes() const { return m_attributes.get(); }
-			characterstuff::Equipment* getEquipment() const { return m_equipment.get(); }
-			const characterstuff::weapons::Weapon* const getWeapon() { return m_weapon.get(); }
-			//void setWeapon(Weapon* weapon) { m_weapon = std::make_unique<Weapon>(weapon); }
+			virtual characterstuff::Equipment* getEquipment() const = 0;
+			virtual const characterstuff::weapons::Weapon* const getWeapon() const = 0;
 			CharacterType getCharcterType() const { return m_characterType; }
 
 			void restoreHp() { m_attributes->setHp(100); }

@@ -12,13 +12,13 @@ namespace fightclub
 			switch (hitDirection)
 			{
 			case battle::HitDirection::head:
-				armor = this->m_head.get();
+				armor = this->getHelmet();
 				break;
 			case battle::HitDirection::body:
-				armor = this->m_body.get();
+				armor = this->getCuirasse();
 				break;
 			case battle::HitDirection::legs:
-				armor = this->m_legs.get();
+				armor = this->getBoots();
 				break;
 			default:
 				throw std::out_of_range("Hit directory not implemented.");
