@@ -35,6 +35,9 @@ namespace fightclub
 					break;
 				case common::Command::change_boots:
 					break;
+				case common::Command::current_equipment:
+					displayCurrentEquipment(player);
+					break;
 				case common::Command::exit:
 					return;
 				default:
@@ -57,6 +60,8 @@ namespace fightclub
 
 			auto* boots{ equipment->getBoots() };
 			std::cout << "Boots: " << ((boots == nullptr) ? "empty" : boots->getName()) << '\n';
+
+			std::cout << "Total damage: " << ((weapon == nullptr) ? 0 : weapon->getDamage()) << "\n" << "Total armor: " << equipment->getTotalArmor() << '\n';
 		}
 
 		void InventoryManager::displayWeapons(std::vector<std::unique_ptr<characterstuff::weapons::Weapon>>& weapons)

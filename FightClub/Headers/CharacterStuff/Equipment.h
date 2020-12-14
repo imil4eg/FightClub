@@ -15,6 +15,10 @@ namespace fightclub
 			virtual const armors::Armor* getCuirasse() const = 0;
 			virtual const armors::Armor* getBoots() const = 0;
 			int getArmorValue(battle::HitDirection hitDirection) const;
+			int getTotalArmor() const;
+
+		private:
+			int getArmorValue(const armors::Armor* armor) const;
 		};
 	}
 }

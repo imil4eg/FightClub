@@ -33,5 +33,15 @@ namespace fightclub
 				return armor->getArmor();
 			}
 		}
+
+		int Equipment::getTotalArmor() const
+		{
+			return getArmorValue(this->getHelmet()) + getArmorValue(this->getCuirasse()) + getArmorValue(this->getBoots());
+		}
+
+		int Equipment::getArmorValue(const armors::Armor* armor) const
+		{
+			return armor == nullptr ? 0 : armor->getArmor();
+		}
 	}
 }

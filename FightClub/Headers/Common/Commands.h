@@ -17,6 +17,7 @@ namespace fightclub
 			change_helmet,
 			change_cuirass,
 			change_boots,
+			current_equipment,
 			exit,
 			max_commands
 		};
