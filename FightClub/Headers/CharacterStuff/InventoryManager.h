@@ -2,7 +2,6 @@
 
 #include <functional>
 
-#include "Common/Configs/IPlayerConfig.h"
 #include "IInventoryManager.h"
 
 namespace fightclub
@@ -11,23 +10,20 @@ namespace fightclub
 	{
 		class InventoryManager : public IInventoryManager
 		{
-		private:
-			common::configs::IPlayerConfig* m_playerConfig;
-
 		public:
-			InventoryManager(common::configs::IPlayerConfig& playerConfig) :
-				m_playerConfig{ &playerConfig }
-			{
-			}
-
-			void enterMenu() override;
-			void displayCurrentEquipment() override;
-			void displayWeapons() override;
-			void displayArmors() override;
+			void enterMenu(characters::Player& player) override;
+			void displayCurrentEquipment(characters::Character& character);
+			void displayWeapons(std::vector<std::unique_ptr<characterstuff::weapons::Weapon>>& weapons);
+			void displayArmors(std::vector<std::unique_ptr<characterstuff::armors::Armor>>& armors);
+			void changeWeapon(std::vector<std::unique_ptr<characterstuff::weapons::Weapon>>& weapons, characters::Player& character);
 
 		private:
 			template<typename T>
 			void display(std::vector<T>& elements, std::string itemName, std::function<void(T&)> displayFunc);
+			void changeHelment(std::vector<std::unique_ptr<characterstuff::armors::Armor>>& armors, characters::Player& player);
+			void changeCuirass(std::vector<std::unique_ptr<characterstuff::armors::Armor>>& armors, characters::Player& player);
+			void changeBoots(std::vector<std::unique_ptr<characterstuff::armors::Armor>>& armors, characters::Player& player);
+			void changeArmor(std::vector<std::unique_ptr<characterstuff::armors::Armor>>& armors, characters::Player& player, fightclub::characterstuff::armors::ArmorType armorType);
 		};
 	}
 }

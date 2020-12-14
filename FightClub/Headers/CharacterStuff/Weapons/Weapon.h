@@ -40,17 +40,12 @@ namespace fightclub
 				{
 				}
 
-				Weapon(const std::unique_ptr<Weapon>&& weapon) :
-					m_id{ std::move(weapon->m_id) },
-					m_name{ std::move(weapon->m_name) },
-					m_damage{ weapon->m_damage }
-				{
-				}
-
 				virtual ~Weapon() noexcept = default;
 				int getDamage() const { return m_damage; }
 				const std::string& getName() const { return m_name; }
 				const boost::uuids::uuid& getId() const { return m_id; }
+
+				friend std::ostream& operator<<(std::ostream& out, const Weapon& weapon);
 			};
 		}
 	}

@@ -60,7 +60,7 @@ namespace fightclub
 				{
 					return common::Command::customize_character;
 				}
-				else if (command == "3" || command == "Invetory" || command == "inventory")
+				else if (command == "3" || command == "Inventory" || command == "inventory")
 				{
 					return common::Command::inventory;
 				}
@@ -80,12 +80,11 @@ namespace fightclub
 		{
 			do
 			{
-				std::cout << "Please, enter the command\nCommands:\n1) Weapons\n2) Armors\n 3) Exit\n\n";
+				std::cout << "Please, enter the command\nCommands:\n1) Weapons\n2) Armors\n3) Equipment \n5) Change weapon\n5) Exit\n\n";
 				MessageDisplayer::cmdLineBeggining();
 				std::string command;
-				std::cin >> command;
-				std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-
+				std::getline(std::cin, command);
+				
 				if (command == "1" || command == "Weapons" || command == "weapons")
 				{
 					return common::Command::weapons;
@@ -98,7 +97,11 @@ namespace fightclub
 				{
 					return common::Command::equipment;
 				}
-				else if (command == "4" || command == "Exit" || command == "exit")
+				else if (command == "4" || command == "Change weapon" || command == "change weapon")
+				{
+					return common::Command::change_weapon;
+				}
+				else if (command == "5" || command == "Exit" || command == "exit")
 				{
 					return common::Command::exit;
 				}

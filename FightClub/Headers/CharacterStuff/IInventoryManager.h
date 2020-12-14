@@ -1,5 +1,7 @@
 #pragma once
 
+#include "Characters/Player.h"
+
 namespace fightclub 
 {
 	namespace characterstuff 
@@ -8,10 +10,7 @@ namespace fightclub
 		{
 		public:
 			virtual ~IInventoryManager() = default;
-			virtual void enterMenu() = 0;
-			virtual void displayCurrentEquipment() = 0;
-			virtual void displayWeapons() = 0;
-			virtual void displayArmors() = 0;
+			virtual void enterMenu(characters::Player& player) = 0;
 		};
 	}
 }

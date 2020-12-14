@@ -84,6 +84,12 @@
     <ClCompile Include="CharacterStuff\Armors\ArmorType.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CharacterStuff\Weapons\Weapon.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CharacterStuff\Armors\Armor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Headers\IO\Savers\JsonGameDataProcesser.h">

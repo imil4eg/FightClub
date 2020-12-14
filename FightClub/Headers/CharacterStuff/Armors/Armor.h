@@ -4,6 +4,7 @@
 #include <boost/uuid/uuid.hpp>
 #include <boost/uuid/uuid_generators.hpp>
 #include <memory>
+#include <iostream>
 
 #include "../Attributes.h"
 #include "ArmorType.h"
@@ -64,6 +65,8 @@ namespace fightclub
 				const Attributes* getAttributes() { return m_attributes.get(); }
 				fightclub::characterstuff::armors::ArmorType getType() const { return m_type; }
 				int getArmor() const { return m_armor; }
+
+				friend std::ostream& operator<<(std::ostream& out, const Armor& armor);
 			};
 		}
 	}

@@ -13,6 +13,10 @@ namespace fightclub
 			weapons,
 			armors,
 			equipment,
+			change_weapon,
+			change_helmet,
+			change_cuirass,
+			change_boots,
 			exit,
 			max_commands
 		};

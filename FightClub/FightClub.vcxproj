@@ -145,12 +145,14 @@
   <ItemGroup>
     <ClCompile Include="Battle\Battle.cpp" />
     <ClCompile Include="Battle\HitDirection.cpp" />
+    <ClCompile Include="CharacterStuff\Armors\Armor.cpp" />
     <ClCompile Include="CharacterStuff\Armors\ArmorStorage.cpp" />
     <ClCompile Include="CharacterStuff\Armors\ArmorType.cpp" />
     <ClCompile Include="CharacterStuff\AttributesFactory.cpp" />
     <ClCompile Include="CharacterStuff\Equipment.cpp" />
     <ClCompile Include="CharacterStuff\Inventory.cpp" />
     <ClCompile Include="CharacterStuff\InventoryManager.cpp" />
+    <ClCompile Include="CharacterStuff\Weapons\Weapon.cpp" />
     <ClCompile Include="CharacterStuff\Weapons\WeaponStorage.cpp" />
     <ClCompile Include="Characters\Bots\Bot.cpp" />
     <ClCompile Include="Characters\Bots\BotFactory.cpp" />
