@@ -1,3 +1,4 @@
+#include <boost/algorithm/string.hpp>
 #include <iostream>
 #include <fstream>
 
@@ -20,15 +21,15 @@ namespace fightclub
 				std::cin >> input;
 				std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
-				if (input == "Head")
+				if (boost::iequals(input, "head"))
 				{
 					hitDirection = battle::HitDirection::head;
 				}
-				else if (input == "Body")
+				else if (boost::iequals(input, "body"))
 				{
 					hitDirection = battle::HitDirection::body;
 				}
-				else if (input == "Legs")
+				else if (boost::iequals(input, "legs"))
 				{
 					hitDirection = battle::HitDirection::legs;
 				}
@@ -52,19 +53,19 @@ namespace fightclub
 				std::cin >> command;
 				std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
-				if (command == "1" || command == "Play" || command == "play")
+				if (command == "1" || boost::iequals(command, "play"))
 				{
 					return common::Command::play;
 				}
-				else if (command == "2" || command == "Customize character" || command == "customize character")
+				else if (command == "2" || boost::iequals(command, "customize character"))
 				{
 					return common::Command::customize_character;
 				}
-				else if (command == "3" || command == "Inventory" || command == "inventory")
+				else if (command == "3" || boost::iequals(command, "inventory"))
 				{
 					return common::Command::inventory;
 				}
-				else if (command == "4" || command == "Exit" || command == "exit")
+				else if (command == "4" || boost::iequals(command, "exit"))
 				{
 					return common::Command::exit;
 				}
@@ -86,35 +87,35 @@ namespace fightclub
 				std::string command;
 				std::getline(std::cin, command);
 				
-				if (command == "1" || command == "Weapons" || command == "weapons")
+				if (command == "1" || boost::iequals(command, "weapons"))
 				{
 					return common::Command::weapons;
 				}
-				else if (command == "2" || command == "Armors" || command == "armors")
+				else if (command == "2"  || boost::iequals(command, "armors"))
 				{
 					return common::Command::armors;
 				}
-				else if (command == "3" || command == "Equipment" || command == "equipment")
+				else if (command == "3" || boost::iequals(command, "equipment"))
 				{
 					return common::Command::equipment;
 				}
-				else if (command == "4" || command == "Change weapon" || command == "change weapon")
+				else if (command == "4" || boost::iequals(command, "change weapon"))
 				{
 					return common::Command::change_weapon;
 				}
-				else if (command == "5" || command == "Change helmet" || command == "change helmet")
+				else if (command == "5" || boost::iequals(command, "change helmet"))
 				{
 					return common::Command::change_helmet;
 				}
-				else if (command == "6" || command == "Change cuirasse" || command == "change cuirasse")
+				else if (command == "6" || boost::iequals(command, "change cuirasse"))
 				{
 					return common::Command::change_cuirasse;
 				}
-				else if (command == "7" || command == "Change boots" || command == "change boots")
+				else if (command == "7" || boost::iequals(command, "change boots"))
 				{
 					return common::Command::change_boots;
 				}
-				else if (command == "8" || command == "Exit" || command == "exit")
+				else if (command == "8" || boost::iequals(command, "exit"))
 				{
 					return common::Command::exit;
 				}
