@@ -22,6 +22,7 @@ namespace fightclub
 					break;
 				case ArmorType::legs:
 					armorTypeStr = "boots";
+					break;
 				default:
 					throw std::exception("Not implemented armor type.");
 				}

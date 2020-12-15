@@ -38,9 +38,7 @@ namespace fightclub
 					changeCuirasse(player);
 					break;
 				case common::Command::change_boots:
-					break;
-				case common::Command::current_equipment:
-					displayCurrentEquipment(player);
+					changeBoots(player);
 					break;
 				case common::Command::exit:
 					return;
