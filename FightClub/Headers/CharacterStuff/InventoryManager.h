@@ -20,10 +20,10 @@ namespace fightclub
 		private:
 			template<typename T>
 			void display(std::vector<T>& elements, std::string itemName, std::function<void(T&)> displayFunc);
-			void changeHelment(std::vector<std::unique_ptr<characterstuff::armors::Armor>>& armors, characters::Player& player);
-			void changeCuirass(std::vector<std::unique_ptr<characterstuff::armors::Armor>>& armors, characters::Player& player);
-			void changeBoots(std::vector<std::unique_ptr<characterstuff::armors::Armor>>& armors, characters::Player& player);
-			void changeArmor(std::vector<std::unique_ptr<characterstuff::armors::Armor>>& armors, characters::Player& player, fightclub::characterstuff::armors::ArmorType armorType);
+			void changeHelment(characters::Player& player);
+			void changeCuirass(characters::Player& player);
+			void changeBoots(characters::Player& player);
+			void changeArmor(characters::Player& player, fightclub::characterstuff::armors::ArmorType armorType);
 		};
 	}
 }

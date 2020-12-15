@@ -24,6 +24,23 @@ namespace fightclub
 			const armors::Armor* getHelmet() const override { return m_helmet; }
 			const armors::Armor* getCuirasse() const override { return m_cuirass; }
 			const armors::Armor* getBoots() const override { return m_boots; }
+			void changeArmor(const armors::Armor* armor, armors::ArmorType armorType)
+			{
+				switch (armorType)
+				{
+				case armors::ArmorType::head:
+					m_helmet = armor;
+					break;
+				case armors::ArmorType::body:
+					m_cuirass = armor;
+					break;
+				case armors::ArmorType::legs:
+					m_boots = armor;
+					break;
+				default:
+					throw std::exception("Specified armor type not implemented.");
+				}
+			}
 		};
 	}
 }

@@ -30,6 +30,7 @@ namespace fightclub
 					changeWeapon(player.getInventory().getWeapons(), player);
 					break;
 				case common::Command::change_helmet:
+					changeHelment(player);
 					break;
 				case common::Command::change_cuirass:
 					break;
@@ -115,55 +116,34 @@ namespace fightclub
 			}
 		}
 
-		void InventoryManager::changeHelment(std::vector<std::unique_ptr<characterstuff::armors::Armor>>& armors, characters::Player& player)
+		void InventoryManager::changeHelment(characters::Player& player)
 		{
-			changeArmor(armors, player, armors::ArmorType::head);
+			changeArmor(player, armors::ArmorType::head);
 		}
 
-		void InventoryManager::changeCuirass(std::vector<std::unique_ptr<characterstuff::armors::Armor>>& armors, characters::Player& player)
+		void InventoryManager::changeCuirass(characters::Player& player)
 		{
-			changeArmor(armors, player, armors::ArmorType::body);
+			changeArmor(player, armors::ArmorType::body);
 		}
 
-		void InventoryManager::changeBoots(std::vector<std::unique_ptr<characterstuff::armors::Armor>>& armors, characters::Player& player)
+		void InventoryManager::changeBoots(characters::Player& player)
 		{
-			changeArmor(armors, player, armors::ArmorType::legs);
+			changeArmor(player, armors::ArmorType::legs);
 		}
 
-		void InventoryManager::changeArmor(std::vector<std::unique_ptr<characterstuff::armors::Armor>>& armors, characters::Player& player, fightclub::characterstuff::armors::ArmorType armorType)
+		void InventoryManager::changeArmor(characters::Player& player, fightclub::characterstuff::armors::ArmorType armorType)
 		{	
-			const characterstuff::armors::Armor* currentArmor;
-
-			switch (armorType)
-			{
-			case armors::ArmorType::head:
-				currentArmor = player.getEquipment()->getHelmet();
-				break;
-			case armors::ArmorType::body:
-				currentArmor = player.getEquipment()->getCuirasse();
-				break;
-			case armors::ArmorType::legs:
-				currentArmor = player.getEquipment()->getBoots();
-				break;
-			default:
-				throw std::exception("Not implemented armor type.");
-			}
-
 			while (true)
 			{
-				std::cout << "Current " << armorType << " is " << currentArmor << '\n';
+				const characterstuff::armors::Armor* currentArmor{ player.getEquipment()->getArmor(armorType) };
+
+				std::cout << "Current " << armorType << " is " << *currentArmor << '\n';
 
 				std::cout << "Enter the name of " << armorType << " that you want to wear\nWrite clear to take off current " << armorType << " \nWrite exit if you want to leave this menu\n";
 
-				for (auto& armor : armors)
-				{
-					if (armor->getType() == armorType)
-					{
-						std::cout << armor;
-						std::cout << '\n';
-					}
-				}
+				displayArmors(player.getInventory().getArmors());
 
+				io::MessageDisplayer::cmdLineBeggining();
 				std::string armorName{};
 				std::getline(std::cin, armorName);
 
@@ -171,10 +151,22 @@ namespace fightclub
 				{
 					return;
 				}
-				else if (armorName == "Clear" || armorName == "clear")
-				{
 
+				auto foundArmor{ player.getInventory().getArmorByName(armorName) };
+
+				if (foundArmor == nullptr)
+				{
+					std::cout << "Armor with name " << armorName << " not found.\n";
 				}
+				else
+				{
+					auto playerEquipment{ static_cast<DynamicEquipment*>(player.getEquipment()) };
+					playerEquipment->changeArmor(foundArmor, armorType);
+					std::cout << "Change from " << ((currentArmor == nullptr) ? "empty" : currentArmor->getName()) <<
+						         " to " << player.getEquipment()->getArmor(armorType)->getName() << ".\n";
+				}
+
+				std::cout << '\n';
 			}
 		}
 

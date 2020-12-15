@@ -26,6 +26,14 @@ namespace fightclub
 			return getById(m_armors, id);
 		}
 
+		const armors::Armor* Inventory::getArmorByName(std::string& name)
+		{
+			return getBy<armors::Armor>(this->m_armors, [name](std::unique_ptr<armors::Armor>& armor)
+				{
+					return armor->getName() == name;
+				});
+		}
+
 		template<typename T>
 		T* Inventory::getById(std::vector<std::unique_ptr<T>>& container, boost::uuids::uuid& itemId)
 		{
@@ -36,6 +44,20 @@ namespace fightclub
 				}) };
 
 			return it == container.end() ? nullptr : it->get();
+		}
+
+		template<typename T>
+		T* Inventory::getBy(std::vector<std::unique_ptr<T>>& container, std::function<bool(std::unique_ptr<T>&) > condition) const
+		{
+			for (auto& element : container)
+			{
+				if (condition(element))
+				{
+					return element.get();
+				}
+			}
+
+			return nullptr;
 		}
 	}
 }
