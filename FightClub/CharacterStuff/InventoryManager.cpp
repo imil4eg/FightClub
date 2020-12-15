@@ -13,6 +13,8 @@ namespace fightclub
 		{
 			while (true)
 			{
+				std::cout << '\n';
+
 				common::Command command{ io::InputProcesser::askMenuCommand() };
 
 				switch (command)
@@ -32,7 +34,8 @@ namespace fightclub
 				case common::Command::change_helmet:
 					changeHelment(player);
 					break;
-				case common::Command::change_cuirass:
+				case common::Command::change_cuirasse:
+					changeCuirasse(player);
 					break;
 				case common::Command::change_boots:
 					break;
@@ -44,6 +47,8 @@ namespace fightclub
 				default:
 					throw std::exception("Not implemented menu command type.");
 				}
+
+				std::cout << '\n';
 			}
 		}
 
@@ -62,7 +67,7 @@ namespace fightclub
 			auto* boots{ equipment->getBoots() };
 			std::cout << "Boots: " << ((boots == nullptr) ? "empty" : boots->getName()) << '\n';
 
-			std::cout << "Total damage: " << ((weapon == nullptr) ? 0 : weapon->getDamage()) << "\n" << "Total armor: " << equipment->getTotalArmor() << '\n';
+			std::cout << "Total damage: " << ((weapon == nullptr) ? 0 : weapon->getDamage()) << "\n" << "Total armor: " << equipment->getTotalArmor();
 		}
 
 		void InventoryManager::displayWeapons(std::vector<std::unique_ptr<characterstuff::weapons::Weapon>>& weapons)
@@ -73,12 +78,13 @@ namespace fightclub
 				});
 		}
 
-		void InventoryManager::displayArmors(std::vector<std::unique_ptr<characterstuff::armors::Armor>>& armors)
+		void InventoryManager::displayArmors(std::vector<std::unique_ptr<characterstuff::armors::Armor>>& armors, armors::ArmorType armorType)
 		{
 			display<std::unique_ptr<characterstuff::armors::Armor>>(armors, "armors",
-				[](std::unique_ptr<characterstuff::armors::Armor>& armor)
+				[armorType](std::unique_ptr<characterstuff::armors::Armor>& armor)
 				{
-					std::cout << *armor;
+					if (armor->getType() == armorType)
+						std::cout << *armor << '\n';
 				});
 		}
 
@@ -88,7 +94,7 @@ namespace fightclub
 			{
 				std::cout << "Current weapon " << *player.getWeapon() << '\n';
 
-				std::cout << "Enter the name of weapon that you want to wear\nWrite exit if you want to leave this menu:\n";
+				std::cout << "Enter the name of weapon that you want to wear\nWrite exit if you want to leave this menu:\n\n";
 
 				displayWeapons(weapons);
 
@@ -121,7 +127,7 @@ namespace fightclub
 			changeArmor(player, armors::ArmorType::head);
 		}
 
-		void InventoryManager::changeCuirass(characters::Player& player)
+		void InventoryManager::changeCuirasse(characters::Player& player)
 		{
 			changeArmor(player, armors::ArmorType::body);
 		}
@@ -141,7 +147,7 @@ namespace fightclub
 
 				std::cout << "Enter the name of " << armorType << " that you want to wear\nWrite clear to take off current " << armorType << " \nWrite exit if you want to leave this menu\n";
 
-				displayArmors(player.getInventory().getArmors());
+				displayArmors(player.getInventory().getArmors(), armorType);
 
 				io::MessageDisplayer::cmdLineBeggining();
 				std::string armorName{};
@@ -165,8 +171,6 @@ namespace fightclub
 					std::cout << "Change from " << ((currentArmor == nullptr) ? "empty" : currentArmor->getName()) <<
 						         " to " << player.getEquipment()->getArmor(armorType)->getName() << ".\n";
 				}
-
-				std::cout << '\n';
 			}
 		}
 
@@ -178,7 +182,6 @@ namespace fightclub
 			for (auto& element : elements)
 			{
 				displayFunc(element);
-				std::cout << "\n";
 			}
 		}
 	}

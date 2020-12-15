@@ -80,7 +80,7 @@ namespace fightclub
 		{
 			do
 			{
-				std::cout << "Please, enter the command\nCommands:\n1) Weapons\n2) Armors\n3) Equipment \n4) Change weapon\n5) Change helmet\n6) Current equipment\n6) Exit\n\n";
+				std::cout << "Please, enter the command\nCommands:\n1) Weapons\n2) Armors\n3) Equipment \n4) Change weapon\n5) Change helmet\n6) Change cuirasse\n6) Current equipment\n6) Exit\n\n";
 				MessageDisplayer::cmdLineBeggining();
 				std::string command;
 				std::getline(std::cin, command);
@@ -104,6 +104,10 @@ namespace fightclub
 				else if (command == "5" || command == "Change helmet" || command == "change helmet")
 				{
 					return common::Command::change_helmet;
+				}
+				else if (command == "6" || command == "Change cuirasse" || command == "change cuirasse")
+				{
+					return common::Command::change_cuirasse;
 				}
 				else if (command == "6" || command == "Current equipment" || command == "current equipment")
 				{

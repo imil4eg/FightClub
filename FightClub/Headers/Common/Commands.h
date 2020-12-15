@@ -15,7 +15,7 @@ namespace fightclub
 			equipment,
 			change_weapon,
 			change_helmet,
-			change_cuirass,
+			change_cuirasse,
 			change_boots,
 			current_equipment,
 			exit,
