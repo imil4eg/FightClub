@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{e5e7db68-241b-41da-8bd2-f6fa2b6f20e4}</ProjectGuid>
-    <RootNamespace>FightClub</RootNamespace>
+    <ProjectGuid>{54cc4f3e-d969-4b40-b8f1-8e01ed6c97c2}</ProjectGuid>
+    <RootNamespace>FightClubCore</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -40,7 +40,7 @@
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
@@ -72,15 +72,13 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>C:\Users\kudryavii\source\repos\Hypodermic-master;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <LibraryPath>C:\Program Files\boost\boost_1_74_0\boost;$(LibraryPath)</LibraryPath>
-    <IncludePath>$(ProjectDir)\libs;$(ProjectDir)\Headers;C:\Program Files\boost\boost_1_74_0\boost;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir)\libs;$(ProjectDir)\headers;$(ProjectDir)\include;C:\Program Files\boost\boost_1_74_0\boost;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
@@ -119,15 +117,12 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)\FightClub.Core\include;C:\Program Files\boost\boost_1_74_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Program Files\boost\boost_1_74_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
-    <PostBuildEvent>
-      <Command>xcopy /y /d "$(SolutionDir)FightClub.Core\$(IntDir)FightClub.Core.dll" "$(OutDir)"</Command>
-    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -146,24 +141,58 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="FightClub.cpp" />
-    <ClCompile Include="IO\InputProcesser.cpp" />
-    <ClCompile Include="Menu.cpp" />
+    <ClInclude Include="headers\Battle\DamageCalculator.h" />
+    <ClInclude Include="headers\Battle\HitDirection.h" />
+    <ClInclude Include="headers\CharacterStuff\DynamicEquipment.h" />
+    <ClInclude Include="headers\CharacterStuff\Equipment.h" />
+    <ClInclude Include="headers\CharacterStuff\Inventory.h" />
+    <ClInclude Include="headers\CharacterStuff\StaticEquipment.h" />
+    <ClInclude Include="headers\Characters\Character.h" />
+    <ClInclude Include="headers\Characters\CharacterType.h" />
+    <ClInclude Include="headers\Common\Configs\ConfigKeys.h" />
+    <ClInclude Include="headers\Common\RandomGenerator.h" />
+    <ClInclude Include="headers\IO\JsonAttributes.h" />
+    <ClInclude Include="include\Battle\Battle.h" />
+    <ClInclude Include="include\Battle\IBattle.h" />
+    <ClInclude Include="include\CharacterStuff\Armors\Armor.h" />
+    <ClInclude Include="include\CharacterStuff\Armors\ArmorStorage.h" />
+    <ClInclude Include="include\CharacterStuff\Armors\ArmorType.h" />
+    <ClInclude Include="include\CharacterStuff\Armors\IArmorStorage.h" />
+    <ClInclude Include="include\CharacterStuff\Attributes.h" />
+    <ClInclude Include="include\CharacterStuff\AttributesFactory.h" />
+    <ClInclude Include="include\CharacterStuff\IAttributesFactory.h" />
+    <ClInclude Include="include\CharacterStuff\Weapons\IWeaponStorage.h" />
+    <ClInclude Include="include\CharacterStuff\Weapons\Weapon.h" />
+    <ClInclude Include="include\CharacterStuff\Weapons\WeaponStorage.h" />
+    <ClInclude Include="include\Characters\Bots\Bot.h" />
+    <ClInclude Include="include\Characters\Bots\BotFactory.h" />
+    <ClInclude Include="include\Characters\Bots\IBotFactory.h" />
+    <ClInclude Include="include\Characters\CharacterFactory.h" />
+    <ClInclude Include="include\Characters\ICharacterFactory.h" />
+    <ClInclude Include="include\Characters\Player.h" />
+    <ClInclude Include="include\Common\Configs\Config.h" />
+    <ClInclude Include="include\Common\Configs\IConfig.h" />
+    <ClInclude Include="include\Common\Configs\IPlayerConfig.h" />
+    <ClInclude Include="include\Common\Configs\PlayerConfig.h" />
+    <ClInclude Include="include\IO\IInputProcesser.h" />
+    <ClInclude Include="include\IO\IMessageDisplayer.h" />
+    <ClInclude Include="include\IO\Savers\GameDataProcesser.h" />
+    <ClInclude Include="include\IO\Savers\JsonGameDataProcesser.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Headers\Common\Commands.h" />
-    <ClInclude Include="Headers\IO\InputProcesser.h" />
-    <ClInclude Include="Headers\IO\JsonAttributes.h" />
-    <ClInclude Include="Headers\IO\MessageDisplayer.h" />
-    <ClInclude Include="Headers\IMenu.h" />
-    <ClInclude Include="Headers\Menu.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="config.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Common\Data\Armors.json" />
-    <None Include="Common\Data\Weapons.json" />
+    <ClCompile Include="src\Battle\Battle.cpp" />
+    <ClCompile Include="src\CharacterStuff\Armors\ArmorStorage.cpp" />
+    <ClCompile Include="src\CharacterStuff\Inventory.cpp" />
+    <ClCompile Include="src\CharacterStuff\Weapons\WeaponStorage.cpp" />
+    <ClCompile Include="src\Characters\Bots\BotFactory.cpp" />
+    <ClCompile Include="src\Characters\CharacterFactory.cpp" />
+    <ClCompile Include="src\Characters\Player.cpp" />
+    <ClCompile Include="src\Common\Configs\Config.cpp" />
+    <ClCompile Include="src\Common\Configs\ConfigKeys.cpp" />
+    <ClCompile Include="src\Common\Configs\PlayerConfig.cpp" />
+    <ClCompile Include="src\Common\RandomGenerator.cpp" />
+    <ClCompile Include="src\IO\JsonAttributes.cpp" />
+    <ClCompile Include="src\IO\Savers\JsonGameDataProcesser.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

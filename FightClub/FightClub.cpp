@@ -12,6 +12,7 @@
 #include "CharacterStuff/IAttributesFactory.h"
 #include "CharacterStuff/Armors/IArmorStorage.h"
 #include "CharacterStuff/Weapons/WeaponStorage.h"
+#include "CharacterStuff/InventoryManager.h"
 #include "Characters/ICharacterFactory.h"
 #include "Characters/CharacterFactory.h"
 #include "Battle/IBattle.h"
@@ -25,28 +26,26 @@
 #include "IO/Savers/JsonGameDataProcesser.h"
 #include "Menu.h"
 
-namespace fightclub
+int main()
 {
-	int main()
-	{
 
-		common::configs::Config config{ "config.txt" };
-		characterstuff::AttributesFactory attributesFactory{};
-		characterstuff::weapons::WeaponStorage weaponStorage{ config };
-		characterstuff::armors::ArmorStorage armorStorage{ config };
-		io::savers::JsonGameDataProcesser jsonGameDataProcesser{ &attributesFactory, &weaponStorage, &armorStorage, &config };
-		characters::CharacterFactory characterFactory{ &attributesFactory };
-		common::configs::PlayerConfig playerConfig{ &jsonGameDataProcesser, &characterFactory };
-		characters::bots::BotFactory botFactory{ &attributesFactory, &weaponStorage, &armorStorage };
-		battle::Battle battle{ &botFactory };
-		Menu menu{ &battle, &playerConfig, &jsonGameDataProcesser };
+	fightclub::common::configs::Config config{ "config.txt" };
+	fightclub::characterstuff::InventoryManager inventoryManager{};
+	fightclub::characterstuff::AttributesFactory attributesFactory{};
+	fightclub::characterstuff::weapons::WeaponStorage weaponStorage{ config };
+	fightclub::characterstuff::armors::ArmorStorage armorStorage{ config };
+	fightclub::io::savers::JsonGameDataProcesser jsonGameDataProcesser{ &attributesFactory, &weaponStorage, &armorStorage, &config };
+	fightclub::characters::CharacterFactory characterFactory{ &attributesFactory };
+	fightclub::common::configs::PlayerConfig playerConfig{ &jsonGameDataProcesser, &characterFactory };
+	fightclub::characters::bots::BotFactory botFactory{ &attributesFactory, &weaponStorage, &armorStorage };
+	fightclub::battle::Battle battle{ &botFactory };
+	fightclub::Menu menu{ &battle, &playerConfig, &jsonGameDataProcesser, &inventoryManager };
 
-		srand(static_cast<unsigned int>(time(0)));
+	srand(static_cast<unsigned int>(time(0)));
 
-		playerConfig.initialize();
+	playerConfig.initialize();
 
-		menu.show();
-	}
+	menu.show();
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu

@@ -22,6 +22,7 @@ namespace fightclub
 			case common::Command::customize_character:
 				break;
 			case common::Command::inventory:
+				m_inventoryManager->enterMenu(*m_playerConfig->getCharacter());
 				break;
 			case common::Command::exit:
 				m_gameDataProcesser->save(*(m_playerConfig->getCharacter()));
