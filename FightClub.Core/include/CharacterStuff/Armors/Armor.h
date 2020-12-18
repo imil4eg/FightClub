@@ -67,8 +67,6 @@ namespace fightclub
 					const characterstuff::Attributes* getAttributes() { return m_attributes.get(); }
 					characterstuff::armors::ArmorType getType() const { return m_type; }
 					int getArmor() const { return m_armor; }
-
-					friend std::ostream& operator<<(std::ostream& out, const Armor& armor);
 				};
 			}
 		}

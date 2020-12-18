@@ -1,8 +1,9 @@
 #pragma once
 
-#include "IO/IMessageDisplayer.h"
 #include "Characters/Bots/IBotFactory.h"
+#include "Fighters/IFighterFactory.h"
 #include "IBattle.h"
+#include "IO/IMessageDisplayer.h"
 
 namespace fightclub
 {
@@ -14,12 +15,15 @@ namespace fightclub
 			{
 			private:
 				characters::bots::IBotFactory* m_botFactory;
+				fighters::IFighterFactory* m_fighterFactory;
 				io::IMessageDisplayer* m_messageDisplayer;
 
 			public:
-				Battle(characters::bots::IBotFactory& botFactory, io::IMessageDisplayer& messageDisplayer) :
+				Battle(characters::bots::IBotFactory& botFactory, fighters::IFighterFactory& fighterFactory,
+					   io::IMessageDisplayer& messageDisplayer) :
 					m_botFactory{ &botFactory },
-					m_messageDisplayer{ &messageDisplayer }
+					m_fighterFactory{&fighterFactory},
+					m_messageDisplayer{&messageDisplayer}
 				{
 				}
 

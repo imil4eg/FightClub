@@ -1,4 +1,7 @@
 #include "Battle/Battle.h"
+#include "Characters/Player.h"
+#include "Characters/Character.h"
+#include "Common/RandomGenerator.h"
 
 namespace fightclub
 {
@@ -16,14 +19,15 @@ namespace fightclub
 			{
 				auto bot{ m_botFactory->create(player) };
 
-				m_messageDisplayer->display("The fighting beggins!\n\n");
+				auto botFighter{ m_fighterFactory->create(bot) };
+				auto playerFighter{ m_fighterFactory->create(player) };
 
 				FightPreparation(player, bot);
 
 				bool playerWon{};
 				while (true)
 				{
-					player.playTurn(bot);
+					playerFighter->playTurn(*botFighter.get());
 
 					if (bot.getAttributes()->getHp() <= 0)
 					{
@@ -31,7 +35,7 @@ namespace fightclub
 						break;
 					}
 
-					bot.playTurn(player);
+					botFighter->playTurn(*playerFighter.get());
 
 					if (player.getAttributes()->getHp() <= 0)
 					{

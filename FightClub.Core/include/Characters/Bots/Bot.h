@@ -33,8 +33,6 @@ namespace fightclub
 					{
 					}
 
-					void playTurn(Character& player) override;
-					void hit(Character& enemy, battle::HitDirection hitDirection) override;
 					const characterstuff::weapons::Weapon* const getWeapon() const override { return m_weapon.get(); }
 					characterstuff::Equipment* getEquipment() const { return m_equipment.get(); }
 				};

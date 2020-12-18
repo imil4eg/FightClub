@@ -1,29 +1,30 @@
-#pragma once
-
-#include <functional>
-
-#include "IInventoryManager.h"
-
-namespace fightclub
-{
-	namespace characterstuff
-	{
-		class InventoryManager : public IInventoryManager
-		{
-		public:
-			void enterMenu(characters::Player& player) override;
-			void displayCurrentEquipment(characters::Character& character);
-			void displayWeapons(std::vector<std::unique_ptr<characterstuff::weapons::Weapon>>& weapons);
-			void displayArmors(std::vector<std::unique_ptr<characterstuff::armors::Armor>>& armors, armors::ArmorType armorType = armors::ArmorType::max_equipment_types);
-			void changeWeapon(std::vector<std::unique_ptr<characterstuff::weapons::Weapon>>& weapons, characters::Player& character);
-
-		private:
-			template<typename T>
-			void display(std::vector<T>& elements, std::string itemName, std::function<void(T&)> displayFunc);
-			void changeHelment(characters::Player& player);
-			void changeCuirasse(characters::Player& player);
-			void changeBoots(characters::Player& player);
-			void changeArmor(characters::Player& player, fightclub::characterstuff::armors::ArmorType armorType);
-		};
-	}
-}
+//#pragma once
+//
+//#include <functional>
+//
+//#include "Characters/Character.h"
+//#include "IInventoryManager.h"
+//
+//namespace fightclub
+//{
+//	namespace characterstuff
+//	{
+//		class InventoryManager : public IInventoryManager
+//		{
+//		public:
+//			void enterMenu(core::characters::Player& player) override;
+//			void displayCurrentEquipment(core::characters::Character& character);
+//			void displayWeapons(std::vector<std::unique_ptr<core::characterstuff::weapons::Weapon>>& weapons);
+//			void displayArmors(std::vector<std::unique_ptr<core::characterstuff::armors::Armor>>& armors, core::characterstuff::armors::ArmorType armorType = core::characterstuff::armors::ArmorType::max_equipment_types);
+//			void changeWeapon(std::vector<std::unique_ptr<core::characterstuff::weapons::Weapon>>& weapons, core::characters::Player& character);
+//
+//		private:
+//			template<typename T>
+//			void display(std::vector<T>& elements, std::string itemName, std::function<void(T&)> displayFunc);
+//			void changeHelment( core::characters::Player& player);
+//			void changeCuirasse(core::characters::Player& player);
+//			void changeBoots(   core::characters::Player& player);
+//			void changeArmor(   core::characters::Player& player, core::characterstuff::armors::ArmorType armorType);
+//		};
+//	}
+//}

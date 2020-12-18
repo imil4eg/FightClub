@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Battle/HitDirection.h"
+#include <string>
 
 namespace fightclub
 {
@@ -12,7 +12,7 @@ namespace fightclub
 			{
 			public:
 				virtual ~IInputProcesser() = default;
-				virtual battle::HitDirection getHitDirection() = 0;
+				virtual std::string getLine() = 0;
 			};
 		}
 	}

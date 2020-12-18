@@ -1,19 +1,29 @@
 #ifndef INPUT_PROCESSER_H
 #define INPUT_PROCESSER_H
 
-#include "Common/Commands.h"
-#include "Battle/HitDirection.h"
+#include <iostream>
+
+#include "IO/IInputProcesser.h"
 
 namespace fightclub
 {
 	namespace io
 	{
-		class InputProcesser
+		class InputProcesser : public core::io::IInputProcesser
 		{
+		private:
+			const std::string m_lineBeggining{ "FightClub>" };
+
 		public:
-			static battle::HitDirection askHitDirection();
-			static common::Command askCommand();
-			static common::Command askMenuCommand();
+			std::string getLine() override
+			{
+				std::cout << m_lineBeggining;
+
+				std::string input;
+				std::getline(std::cin, input);
+
+				return input;
+			}
 		};
 	}
 }

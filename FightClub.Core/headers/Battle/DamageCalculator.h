@@ -11,7 +11,7 @@ namespace fightclub
 			class DamageCalculator
 			{
 			public:
-				static int Calculate(characters::Character& character, characters::Character& target, HitDirection hitDirection)
+				static int Calculate(const characters::Character& character, const characters::Character& target, HitDirection hitDirection)
 				{
 					return character.getAttributes()->getDamage() - target.getEquipment()->getArmorValue(hitDirection);
 				}

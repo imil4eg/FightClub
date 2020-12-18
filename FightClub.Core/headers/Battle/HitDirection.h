@@ -1,5 +1,7 @@
 #pragma once
 
+#include <string>
+
 namespace fightclub
 {
 	namespace core
@@ -13,6 +15,8 @@ namespace fightclub
 				legs,
 				max_hit_direction
 			};
+
+			std::string operator+(std::string value, HitDirection hitDirection);
 		}
 	}
 }

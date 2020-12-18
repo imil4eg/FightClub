@@ -46,12 +46,6 @@ namespace fightclub
 				CharacterType getCharcterType() const { return m_characterType; }
 
 				void restoreHp() { m_attributes->setHp(100); }
-				void hit(Character& enemy, int damage)
-				{
-					enemy.getAttributes()->setHp(enemy.getAttributes()->getHp() - damage);
-				}
-				virtual void hit(Character& enemy, battle::HitDirection hitDirection) = 0;
-				virtual void playTurn(Character& target) = 0;
 			};
 		}
 	}

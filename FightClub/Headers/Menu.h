@@ -14,20 +14,21 @@ namespace fightclub
 	class Menu : public IMenu
 	{
 	private:
-		battle::IBattle* m_battle;
-		common::configs::IPlayerConfig* m_playerConfig;
-		io::savers::GameDataProcesser* m_gameDataProcesser;
-		fightclub::characterstuff::IInventoryManager* m_inventoryManager;
+		core::battle::IBattle* m_battle;
+		core::common::configs::IPlayerConfig* m_playerConfig;
+		core::io::savers::GameDataProcesser* m_gameDataProcesser;
+		core::io::IInputProcesser* m_inputProcesser;
+		//fightclub::characterstuff::IInventoryManager* m_inventoryManager;
 
 	public:
-		Menu(battle::IBattle* battle,
-			common::configs::IPlayerConfig* playerConfig,
-			io::savers::GameDataProcesser* gameDataProcesser,
-			fightclub::characterstuff::IInventoryManager* inventoryManager) :
-			m_battle{ battle },
-			m_playerConfig{ playerConfig },
-			m_gameDataProcesser{ gameDataProcesser },
-			m_inventoryManager{ inventoryManager }
+		Menu(core::battle::IBattle& battle,
+			core::common::configs::IPlayerConfig& playerConfig,
+			core::io::savers::GameDataProcesser& gameDataProcesser,
+			core::io::IInputProcesser& inputProcesser):
+			m_battle{ &battle },
+			m_playerConfig{ &playerConfig },
+			m_gameDataProcesser{ &gameDataProcesser },
+			m_inputProcesser{ &inputProcesser }
 		{
 		}
 

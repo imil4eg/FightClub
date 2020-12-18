@@ -4,41 +4,38 @@
 #include <memory>
 #include <iostream>
 
-#include "CharacterStuff/AttributesFactory.h"
-#include "Battle/Battle.h"
-#include "Characters/Bots/BotFactory.h"
-#include "IO/Savers/GameDataProcesser.h"
-#include "CharacterStuff/Armors/ArmorStorage.h"
-#include "CharacterStuff/IAttributesFactory.h"
-#include "CharacterStuff/Armors/IArmorStorage.h"
-#include "CharacterStuff/Weapons/WeaponStorage.h"
-#include "CharacterStuff/InventoryManager.h"
-#include "Characters/ICharacterFactory.h"
-#include "Characters/CharacterFactory.h"
-#include "Battle/IBattle.h"
-#include "Characters/Bots/IBotFactory.h"
-#include "Common/Configs/Config.h"
-#include "Common/Configs/IConfig.h"
-#include "Common/Configs/IPlayerConfig.h"
-#include "Common/Configs/PlayerConfig.h"
-#include "IMenu.h"
-#include "CharacterStuff/Weapons/IWeaponStorage.h"
-#include "IO/Savers/JsonGameDataProcesser.h"
 #include "Menu.h"
+#include "Battle/Battle.h"
+#include "Battle/Fighters/FighterFactory.h"
+#include "Characters/Character.h"
+#include "Characters/CharacterFactory.h"
+#include "Characters/Bots/BotFactory.h"
+#include "CharacterStuff/InventoryManager.h"
+#include "CharacterStuff/AttributesFactory.h"
+#include "CharacterStuff/Weapons/WeaponStorage.h"
+#include "CharacterStuff/Armors/ArmorStorage.h"
+#include "Common/Configs/Config.h"
+#include "Common/Configs/PlayerConfig.h"
+#include "IO/MessageDisplayer.h"
+#include "IO/InputProcesser.h"
+#include "IO/Savers/JsonGameDataProcesser.h"
 
 int main()
 {
 
-	fightclub::common::configs::Config config{ "config.txt" };
-	fightclub::characterstuff::InventoryManager inventoryManager{};
-	fightclub::characterstuff::AttributesFactory attributesFactory{};
-	fightclub::characterstuff::weapons::WeaponStorage weaponStorage{ config };
-	fightclub::characterstuff::armors::ArmorStorage armorStorage{ config };
-	fightclub::io::savers::JsonGameDataProcesser jsonGameDataProcesser{ &attributesFactory, &weaponStorage, &armorStorage, &config };
-	fightclub::characters::CharacterFactory characterFactory{ &attributesFactory };
-	fightclub::common::configs::PlayerConfig playerConfig{ &jsonGameDataProcesser, &characterFactory };
-	fightclub::characters::bots::BotFactory botFactory{ &attributesFactory, &weaponStorage, &armorStorage };
-	fightclub::battle::Battle battle{ &botFactory };
+	fightclub::core::common::configs::Config config{ "config.txt" };
+	//fightclub::characterstuff::InventoryManager inventoryManager{};
+	fightclub::io::MessageDisplayer messageDisplayer{};
+	fightclub::io::InputProcesser inputProcesser{};
+	fightclub::core::battle::fighters::FighterFactory fighterFactory{messageDisplayer, inputProcesser};
+	fightclub::core::characterstuff::AttributesFactory attributesFactory{};
+	fightclub::core::characterstuff::weapons::WeaponStorage weaponStorage{ config };
+	fightclub::core::characterstuff::armors::ArmorStorage armorStorage{ config };
+	fightclub::core::io::savers::JsonGameDataProcesser jsonGameDataProcesser{ &attributesFactory, &weaponStorage, &armorStorage, &config };
+	fightclub::core::characters::CharacterFactory characterFactory{ &attributesFactory };
+	fightclub::core::common::configs::PlayerConfig playerConfig{ &jsonGameDataProcesser, &characterFactory };
+	fightclub::core::characters::bots::BotFactory botFactory{ &attributesFactory, &weaponStorage, &armorStorage };
+	fightclub::core::battle::Battle battle{ &botFactory, &fighterFactory, &messageDisplayer };
 	fightclub::Menu menu{ &battle, &playerConfig, &jsonGameDataProcesser, &inventoryManager };
 
 	srand(static_cast<unsigned int>(time(0)));

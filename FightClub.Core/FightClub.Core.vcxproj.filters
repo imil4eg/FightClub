@@ -57,9 +57,6 @@
     <ClInclude Include="include\CharacterStuff\IAttributesFactory.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="headers\Characters\Character.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="headers\Characters\CharacterType.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -126,6 +123,24 @@
     <ClInclude Include="include\IO\IInputProcesser.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="headers\Battle\Fighters\BotFighter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="headers\Battle\Fighters\Fighter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="headers\Battle\Fighters\PlayerFighter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Battle\Fighters\FighterFactory.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Battle\Fighters\IFighterFactory.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="headers\Characters\Character.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\CharacterStuff\Armors\ArmorStorage.cpp">
@@ -149,9 +164,6 @@
     <ClCompile Include="src\CharacterStuff\Inventory.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Characters\Player.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\Characters\CharacterFactory.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -165,6 +177,21 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Common\Configs\PlayerConfig.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Battle\HitDirection.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Battle\Fighters\BotFighter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Battle\Fighters\Fighter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Battle\Fighters\PlayerFighter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\CharacterStuff\Equipment.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

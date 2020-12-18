@@ -124,9 +124,11 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>FightClub.Core.dll;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$..\..\FightClub.Core\$(IntDir);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy /y /d "$(SolutionDir)FightClub.Core\$(IntDir)FightClub.Core.dll" "$(OutDir)"</Command>
+      <Command>xcopy /y /d "..\..\FightClub.Core\$(IntDir)FightClub.Core.dll" "$(OutDir)"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -147,13 +149,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="FightClub.cpp" />
-    <ClCompile Include="IO\InputProcesser.cpp" />
     <ClCompile Include="Menu.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Headers\Common\Commands.h" />
     <ClInclude Include="Headers\IO\InputProcesser.h" />
-    <ClInclude Include="Headers\IO\JsonAttributes.h" />
     <ClInclude Include="Headers\IO\MessageDisplayer.h" />
     <ClInclude Include="Headers\IMenu.h" />
     <ClInclude Include="Headers\Menu.h" />
