@@ -15,7 +15,7 @@ namespace fightclub
 			const std::string m_lineBeggining{ "FightClub>" };
 
 		public:
-			std::string getLine() override
+			std::string getLine() const override
 			{
 				std::cout << m_lineBeggining;
 

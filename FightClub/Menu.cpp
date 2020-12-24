@@ -18,7 +18,7 @@ namespace fightclub
 			if (boost::iequals(commandStr, "play"))
 			{
 				auto player{ m_playerConfig->getCharacter() };
-				m_battle->fightWithBot(player);
+				m_battle->fightWithBot(*player);
 			}
 			else if (boost::iequals(commandStr, "customize character"))
 			{

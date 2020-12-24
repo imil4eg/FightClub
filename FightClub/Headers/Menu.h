@@ -8,6 +8,7 @@
 #include "CharacterStuff/IInventoryManager.h"
 #include "IMenu.h"
 #include "IO/Savers/GameDataProcesser.h"
+#include "IO/IInputProcesser.h"
 
 namespace fightclub
 {

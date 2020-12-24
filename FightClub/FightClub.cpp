@@ -7,7 +7,6 @@
 #include "Menu.h"
 #include "Battle/Battle.h"
 #include "Battle/Fighters/FighterFactory.h"
-#include "Characters/Character.h"
 #include "Characters/CharacterFactory.h"
 #include "Characters/Bots/BotFactory.h"
 #include "CharacterStuff/InventoryManager.h"
@@ -31,12 +30,12 @@ int main()
 	fightclub::core::characterstuff::AttributesFactory attributesFactory{};
 	fightclub::core::characterstuff::weapons::WeaponStorage weaponStorage{ config };
 	fightclub::core::characterstuff::armors::ArmorStorage armorStorage{ config };
-	fightclub::core::io::savers::JsonGameDataProcesser jsonGameDataProcesser{ &attributesFactory, &weaponStorage, &armorStorage, &config };
-	fightclub::core::characters::CharacterFactory characterFactory{ &attributesFactory };
-	fightclub::core::common::configs::PlayerConfig playerConfig{ &jsonGameDataProcesser, &characterFactory };
-	fightclub::core::characters::bots::BotFactory botFactory{ &attributesFactory, &weaponStorage, &armorStorage };
-	fightclub::core::battle::Battle battle{ &botFactory, &fighterFactory, &messageDisplayer };
-	fightclub::Menu menu{ &battle, &playerConfig, &jsonGameDataProcesser, &inventoryManager };
+	fightclub::core::io::savers::JsonGameDataProcesser jsonGameDataProcesser{ attributesFactory, weaponStorage, armorStorage, config };
+	fightclub::core::characters::CharacterFactory characterFactory{ attributesFactory };
+	fightclub::core::common::configs::PlayerConfig playerConfig{ jsonGameDataProcesser, characterFactory };
+	fightclub::core::characters::bots::BotFactory botFactory{ attributesFactory, weaponStorage, armorStorage };
+	fightclub::core::battle::Battle battle{ botFactory, fighterFactory, messageDisplayer };
+	fightclub::Menu menu{ battle, playerConfig, jsonGameDataProcesser, inputProcesser };
 
 	srand(static_cast<unsigned int>(time(0)));
 
