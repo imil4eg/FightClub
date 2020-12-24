@@ -141,6 +141,9 @@
     <ClInclude Include="include\Common\Configs\ConfigKeys.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="include\CharacterStuff\IInventoryManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\CharacterStuff\Armors\ArmorStorage.cpp">

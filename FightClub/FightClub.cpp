@@ -23,9 +23,9 @@ int main()
 {
 
 	fightclub::core::common::configs::Config config{ "config.txt" };
-	//fightclub::characterstuff::InventoryManager inventoryManager{};
-	fightclub::io::MessageDisplayer messageDisplayer{};
 	fightclub::io::InputProcesser inputProcesser{};
+	fightclub::characterstuff::InventoryManager inventoryManager{inputProcesser};
+	fightclub::io::MessageDisplayer messageDisplayer{};
 	fightclub::core::battle::fighters::FighterFactory fighterFactory{messageDisplayer, inputProcesser};
 	fightclub::core::characterstuff::AttributesFactory attributesFactory{};
 	fightclub::core::characterstuff::weapons::WeaponStorage weaponStorage{ config };
@@ -35,7 +35,7 @@ int main()
 	fightclub::core::common::configs::PlayerConfig playerConfig{ jsonGameDataProcesser, characterFactory };
 	fightclub::core::characters::bots::BotFactory botFactory{ attributesFactory, weaponStorage, armorStorage };
 	fightclub::core::battle::Battle battle{ botFactory, fighterFactory, messageDisplayer };
-	fightclub::Menu menu{ battle, playerConfig, jsonGameDataProcesser, inputProcesser };
+	fightclub::Menu menu{ battle, playerConfig, jsonGameDataProcesser, inputProcesser, inventoryManager };
 
 	srand(static_cast<unsigned int>(time(0)));
 

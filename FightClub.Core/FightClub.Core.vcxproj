@@ -142,6 +142,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="include\CharacterStuff\IInventoryManager.h" />
     <ClInclude Include="src\headers\Battle\DamageCalculator.h" />
     <ClInclude Include="include\Battle\Fighters\FighterFactory.h" />
     <ClInclude Include="include\Battle\Fighters\IFighterFactory.h" />

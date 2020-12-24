@@ -1,30 +1,37 @@
-//#pragma once
-//
-//#include <functional>
-//
-//#include "Characters/Character.h"
-//#include "IInventoryManager.h"
-//
-//namespace fightclub
-//{
-//	namespace characterstuff
-//	{
-//		class InventoryManager : public IInventoryManager
-//		{
-//		public:
-//			void enterMenu(core::characters::Player& player) override;
-//			void displayCurrentEquipment(core::characters::Character& character);
-//			void displayWeapons(std::vector<std::unique_ptr<core::characterstuff::weapons::Weapon>>& weapons);
-//			void displayArmors(std::vector<std::unique_ptr<core::characterstuff::armors::Armor>>& armors, core::characterstuff::armors::ArmorType armorType = core::characterstuff::armors::ArmorType::max_equipment_types);
-//			void changeWeapon(std::vector<std::unique_ptr<core::characterstuff::weapons::Weapon>>& weapons, core::characters::Player& character);
-//
-//		private:
-//			template<typename T>
-//			void display(std::vector<T>& elements, std::string itemName, std::function<void(T&)> displayFunc);
-//			void changeHelment( core::characters::Player& player);
-//			void changeCuirasse(core::characters::Player& player);
-//			void changeBoots(   core::characters::Player& player);
-//			void changeArmor(   core::characters::Player& player, core::characterstuff::armors::ArmorType armorType);
-//		};
-//	}
-//}
+#pragma once
+
+#include "Characters/Player.h"
+#include "CharacterStuff/Armors/Armor.h"
+#include "CharacterStuff/Weapons/Weapon.h"
+#include "CharacterStuff/IInventoryManager.h"
+#include "IO/IInputProcesser.h"
+
+namespace fightclub
+{
+	namespace characterstuff
+	{
+		class InventoryManager : public core::characterstuff::IInventoryManager
+		{
+		private:
+			const core::io::IInputProcesser* m_inputProcesser;
+
+		public:
+			InventoryManager(const core::io::IInputProcesser& inputProcesser) :
+				m_inputProcesser{ &inputProcesser }
+			{
+			}
+
+			void enterInventory(core::characters::Player& player) override;
+			void displayArmors(const std::vector<std::unique_ptr<core::characterstuff::armors::Armor>>& armors,
+									   core::characterstuff::armors::ArmorType armorType = core::characterstuff::armors::ArmorType::max_equipment_types) const override;
+			void displayWeapons(const std::vector<std::unique_ptr<core::characterstuff::weapons::Weapon>>& weapons) const override;
+			void displayCurrentEquipment(const core::characters::Character& character) const override;
+			void changeArmor(core::characters::Player& player, core::characterstuff::armors::ArmorType armorType) override;
+			void changeWeapon(core::characters::Player& player) override;
+
+		private:
+			template<typename T>
+			void display(const std::vector<T>& elements, std::string itemName, std::function<void(T&)> displayFunc) const;
+		};
+	}
+}

@@ -26,7 +26,7 @@ namespace fightclub
 			}
 			else if (boost::iequals(commandStr, "inventory"))
 			{
-
+				m_inventoryManager->enterInventory(*m_playerConfig->getCharacter());
 			}
 			else if (boost::iequals(commandStr, "exit"))
 			{

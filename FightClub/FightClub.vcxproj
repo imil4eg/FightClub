@@ -152,10 +152,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="CharacterStuff\InventoryManager.cpp" />
     <ClCompile Include="FightClub.cpp" />
     <ClCompile Include="Menu.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Headers\CharacterStuff\InventoryManager.h" />
     <ClInclude Include="Headers\Common\Commands.h" />
     <ClInclude Include="Headers\IO\InputProcesser.h" />
     <ClInclude Include="Headers\IO\MessageDisplayer.h" />
