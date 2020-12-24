@@ -13,37 +13,22 @@ namespace fightclub
 			class Player : public Character
 			{
 			private:
-				std::unique_ptr<characterstuff::Inventory> m_inventory{};
-				std::unique_ptr<characterstuff::DynamicEquipment> m_equipment;
-				const characterstuff::weapons::Weapon* m_weapon;
+				struct Impl;
+				std::unique_ptr<Impl> pImpl;
 
 			public:
 				Player(std::unique_ptr<characterstuff::Attributes> attributes,
 					std::unique_ptr<characterstuff::DynamicEquipment> equipment,
 					CharacterType characterType,
 					std::unique_ptr<characterstuff::Inventory> inventory,
-					const characterstuff::weapons::Weapon* weapon = nullptr) :
-					Character{ std::move(attributes), characterType },
-					m_inventory{ std::move(inventory) },
-					m_equipment{ std::move(equipment) },
-					m_weapon{ weapon }
-				{
-				}
+					const characterstuff::weapons::Weapon* weapon = nullptr);
 
-				Player(std::unique_ptr<Character>&& character, std::unique_ptr<characterstuff::Inventory>&& inventory,
-					std::unique_ptr<characterstuff::DynamicEquipment>&& equipment, const characterstuff::weapons::Weapon* weapon) :
-					Character{ std::move(character) },
-					m_inventory{ std::move(inventory) },
-					m_equipment{ std::move(equipment) },
-					m_weapon{ weapon }
-				{
-				}
+				~Player();
 
-				characterstuff::Inventory& getInventory() { return *m_inventory.get(); }
-				characterstuff::Equipment* getEquipment() const override { return m_equipment.get(); }
-
-				const characterstuff::weapons::Weapon* const getWeapon() const override { return m_weapon; }
-				void changeWeapon(characterstuff::weapons::Weapon* weapon) { m_weapon = weapon; }
+				characterstuff::Inventory& getInventory();
+				
+				const characterstuff::weapons::Weapon* const getWeapon() const override;
+				void changeWeapon(characterstuff::weapons::Weapon* weapon);
 			};
 		}
 	}

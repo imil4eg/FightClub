@@ -9,29 +9,55 @@ namespace fightclub
 		{
 			namespace bots
 			{
-				void BotFactory::calculateAttributeValueToAdd(int& attributeValueToIncrease, int& attribueteValueToDecrease)
+				struct BotFactory::Impl
 				{
-					int possibleValueToExchange{ attribueteValueToDecrease - ((attribueteValueToDecrease < m_attributeDependOnTypeExchangeValue) ? m_minAttributeValue : m_attributeDependOnTypeExchangeValue) };
+					const int m_attributeDependOnTypeExchangeValue = 20;
+					const int m_minAttributeValue = 1;
 
-					attributeValueToIncrease += possibleValueToExchange;
-					attribueteValueToDecrease -= possibleValueToExchange;
-				}
+					characterstuff::IAttributesFactory* m_attributeFactory;
+					characterstuff::weapons::IWeaponStorage* m_weaponStorage;
+					characterstuff::armors::IArmorStorage* m_armorStorage;
 
-				void BotFactory::calculateAttributes(int& strength, int& agility, CharacterType botCharacterType)
+					Impl(characterstuff::IAttributesFactory& attributeFactory,
+						characterstuff::weapons::IWeaponStorage& weaponStorage,
+						characterstuff::armors::IArmorStorage& armorStorage) : 
+						m_attributeFactory{ &attributeFactory },
+						m_weaponStorage{ &weaponStorage },
+						m_armorStorage{ &armorStorage }
+					{
+					}
+
+					void calculateAttributeValueToAdd(int& attributeValueToIncrease, int& attribueteValueToDecrease)
+					{
+						int possibleValueToExchange{ attribueteValueToDecrease - ((attribueteValueToDecrease < m_attributeDependOnTypeExchangeValue) ? m_minAttributeValue : m_attributeDependOnTypeExchangeValue) };
+
+						attributeValueToIncrease += possibleValueToExchange;
+						attribueteValueToDecrease -= possibleValueToExchange;
+					}
+
+					void calculateAttributes(int& strength, int& agility, CharacterType botCharacterType)
+					{
+						switch (botCharacterType)
+						{
+						case CharacterType::strong:
+						{
+							calculateAttributeValueToAdd(strength, agility);
+							break;
+						}
+						case CharacterType::smooth:
+							calculateAttributeValueToAdd(agility, strength);
+							break;
+						default:
+							throw std::out_of_range("Not implemented CharacterType.");
+						}
+					}
+				};
+
+				BotFactory::BotFactory(characterstuff::IAttributesFactory& attributeFactory,
+					characterstuff::weapons::IWeaponStorage& weaponStorage,
+					characterstuff::armors::IArmorStorage& armorStorage) :
+					pImpl(std::make_unique<Impl>(attributeFactory, weaponStorage, armorStorage))
 				{
-					switch (botCharacterType)
-					{
-					case CharacterType::strong:
-					{
-						calculateAttributeValueToAdd(strength, agility);
-						break;
-					}
-					case CharacterType::smooth:
-						calculateAttributeValueToAdd(agility, strength);
-						break;
-					default:
-						throw std::out_of_range("Not implemented CharacterType.");
-					}
 				}
 
 				Bot BotFactory::create(const Character& player)
@@ -41,15 +67,15 @@ namespace fightclub
 					int strength = player.getAttributes()->getStrength();
 					int agility = player.getAttributes()->getAgility();
 
-					calculateAttributes(strength, agility, botCharacterType);
+					pImpl->calculateAttributes(strength, agility, botCharacterType);
 
-					auto weapon{ m_weaponStorage->getRandomWeapon() };
+					auto weapon{ pImpl->m_weaponStorage->getRandomWeapon() };
 
-					auto botAttributes{ m_attributeFactory->create(weapon.get(), player.getAttributes()->getLevel(), strength, agility, botCharacterType) };
+					auto botAttributes{ pImpl->m_attributeFactory->create(weapon.get(), player.getAttributes()->getLevel(), strength, agility, botCharacterType) };
 
-					auto head{ m_armorStorage->getRandom(characterstuff::armors::ArmorType::head) };
-					auto cuirasse{ m_armorStorage->getRandom(characterstuff::armors::ArmorType::body) };
-					auto boots{ m_armorStorage->getRandom(characterstuff::armors::ArmorType::legs) };
+					auto head{	   pImpl->m_armorStorage->getRandom(characterstuff::armors::ArmorType::head) };
+					auto cuirasse{ pImpl->m_armorStorage->getRandom(characterstuff::armors::ArmorType::body) };
+					auto boots{	   pImpl->m_armorStorage->getRandom(characterstuff::armors::ArmorType::legs) };
 					auto equipment{ std::make_unique<characterstuff::StaticEquipment>(std::move(head), std::move(cuirasse), std::move(boots)) };
 
 					return Bot{ std::move(botAttributes), std::move(equipment), botCharacterType, std::move(weapon) };

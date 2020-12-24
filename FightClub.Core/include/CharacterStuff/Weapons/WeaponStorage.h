@@ -14,13 +14,12 @@ namespace fightclub
 				class WeaponStorage : public IWeaponStorage
 				{
 				private:
-					const common::configs::IConfig* m_config;
+					struct Impl;
+					std::unique_ptr<Impl> pImpl;
 
 				public:
-					WeaponStorage(const common::configs::IConfig& config) :
-						m_config{ &config }
-					{
-					}
+					WeaponStorage(const common::configs::IConfig& config);
+					~WeaponStorage();
 
 					std::unique_ptr<Weapon> getWeaponOrDefault(const boost::uuids::uuid& id) const override;
 					std::unique_ptr<Weapon> getRandomWeapon() const override;

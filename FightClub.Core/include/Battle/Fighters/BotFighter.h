@@ -14,7 +14,7 @@ namespace fightclub
 				class BotFighter : public Fighter
 				{
 				public:
-					BotFighter(io::IMessageDisplayer& messageDisplayer, characters::Character& bot) :
+					BotFighter(const io::IMessageDisplayer& messageDisplayer, const characters::Character& bot) :
 						Fighter(messageDisplayer, bot, "Enemy")
 					{
 					}

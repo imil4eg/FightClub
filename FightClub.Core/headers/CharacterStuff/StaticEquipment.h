@@ -2,7 +2,7 @@
 
 #include <memory>
 
-#include "Equipment.h"
+#include "CharacterStuff/Equipment.h"
 
 namespace fightclub
 {

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Equipment.h"
+#include "CharacterStuff/Equipment.h"
 
 namespace fightclub
 {

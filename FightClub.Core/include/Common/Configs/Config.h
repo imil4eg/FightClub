@@ -13,14 +13,12 @@ namespace fightclub
 				class Config : public IConfig
 				{
 				private:
-					const std::string m_delimeter = "=";
-					const std::string m_configPath;
+					struct Impl;
+					std::unique_ptr<Impl> pImpl;
 
 				public:
-					Config(const std::string& configPath) :
-						m_configPath{ configPath }
-					{
-					}
+					Config(const std::string& configPath); 
+					~Config();
 
 					std::string get(ConfigKeys key) const override;
 				};

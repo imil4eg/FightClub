@@ -14,18 +14,12 @@ namespace fightclub
 			class Battle : public IBattle
 			{
 			private:
-				characters::bots::IBotFactory* m_botFactory;
-				fighters::IFighterFactory* m_fighterFactory;
-				io::IMessageDisplayer* m_messageDisplayer;
+				struct Impl;
+				std::unique_ptr<Impl> pImpl;
 
 			public:
 				Battle(characters::bots::IBotFactory& botFactory, fighters::IFighterFactory& fighterFactory,
-					   io::IMessageDisplayer& messageDisplayer) :
-					m_botFactory{ &botFactory },
-					m_fighterFactory{&fighterFactory},
-					m_messageDisplayer{&messageDisplayer}
-				{
-				}
+					io::IMessageDisplayer& messageDisplayer);
 
 				void fightWithBot(characters::Character& player) override;
 			};

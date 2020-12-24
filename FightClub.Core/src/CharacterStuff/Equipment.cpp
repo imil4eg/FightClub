@@ -1,3 +1,5 @@
+#include <memory>
+
 #include "CharacterStuff/Equipment.h"
 
 namespace fightclub
@@ -6,6 +8,25 @@ namespace fightclub
 	{
 		namespace characterstuff
 		{
+			struct Equipment::Impl
+			{
+				Impl();
+
+				int getArmorValue(const armors::Armor* armor) const
+				{
+					return armor == nullptr ? 0 : armor->getArmor();
+				}
+
+				~Impl();
+			};
+
+			Equipment::Equipment() :
+				pImpl{ std::make_unique<Impl>() }
+			{
+			}
+
+			Equipment::~Equipment() = default;
+
 			const armors::Armor* Equipment::getArmor(armors::ArmorType armorType) const
 			{
 				switch (armorType)
@@ -51,12 +72,7 @@ namespace fightclub
 
 			int Equipment::getTotalArmor() const
 			{
-				return getArmorValue(this->getHelmet()) + getArmorValue(this->getCuirasse()) + getArmorValue(this->getBoots());
-			}
-
-			int Equipment::getArmorValue(const armors::Armor* armor) const
-			{
-				return armor == nullptr ? 0 : armor->getArmor();
+				return pImpl->getArmorValue(this->getHelmet()) + pImpl->getArmorValue(this->getCuirasse()) + pImpl->getArmorValue(this->getBoots());
 			}
 		}
 	}

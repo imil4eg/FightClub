@@ -57,12 +57,6 @@
     <ClInclude Include="include\CharacterStuff\IAttributesFactory.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="headers\Characters\CharacterType.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="headers\CharacterStuff\Equipment.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="headers\Battle\HitDirection.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -73,9 +67,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\CharacterStuff\AttributesFactory.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="headers\CharacterStuff\Inventory.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\Characters\Player.h">
@@ -123,22 +114,31 @@
     <ClInclude Include="include\IO\IInputProcesser.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="headers\Battle\Fighters\BotFighter.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="headers\Battle\Fighters\Fighter.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="headers\Battle\Fighters\PlayerFighter.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="include\Battle\Fighters\FighterFactory.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\Battle\Fighters\IFighterFactory.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="headers\Characters\Character.h">
+    <ClInclude Include="include\Characters\Character.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Characters\CharacterType.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CharacterStuff\Equipment.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Battle\Fighters\BotFighter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Battle\Fighters\Fighter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Battle\Fighters\PlayerFighter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CharacterStuff\Inventory.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -192,6 +192,30 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\CharacterStuff\Equipment.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\CharacterStuff\AttributesFactory.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Characters\Character.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Battle\Fighters\FighterFactory.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Characters\Player.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Characters\Bots\Bot.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\CharacterStuff\Armors\Armor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\CharacterStuff\Weapons\Weapon.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\CharacterStuff\Attributes.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

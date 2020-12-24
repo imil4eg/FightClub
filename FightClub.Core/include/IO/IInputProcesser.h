@@ -12,7 +12,7 @@ namespace fightclub
 			{
 			public:
 				virtual ~IInputProcesser() = default;
-				virtual std::string getLine() = 0;
+				virtual std::string getLine() const = 0;
 			};
 		}
 	}

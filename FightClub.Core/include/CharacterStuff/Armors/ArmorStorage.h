@@ -14,13 +14,12 @@ namespace fightclub
 				class ArmorStorage : public IArmorStorage
 				{
 				private:
-					const common::configs::IConfig* m_confilg;
-
+					struct Impl;
+					std::unique_ptr<Impl> pImpl;
+					
 				public:
-					ArmorStorage(const common::configs::IConfig& config) :
-						m_confilg{ &config }
-					{
-					}
+					ArmorStorage(const common::configs::IConfig& config);
+					~ArmorStorage();
 
 					std::unique_ptr<Armor> getOrDefault(const boost::uuids::uuid& id) override;
 					std::unique_ptr<Armor> getRandom(ArmorType armorType) override;

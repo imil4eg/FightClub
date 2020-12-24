@@ -10,9 +10,24 @@ namespace fightclub
 		{
 			namespace configs
 			{
+				struct Config::Impl
+				{
+					const std::string m_delimeter = "=";
+					const std::string m_configPath;
+
+					Impl(const std::string& configPath) :
+						m_configPath{ configPath }
+					{
+					}
+					
+					~Impl();
+				};
+
+				Config::~Config() = default;
+
 				std::string Config::get(ConfigKeys key) const
 				{
-					std::ifstream configFile{ m_configPath };
+					std::ifstream configFile{ pImpl->m_configPath };
 
 					if (!configFile.good())
 						return "";
@@ -22,7 +37,7 @@ namespace fightclub
 					std::string text;
 					while (std::getline(configFile, text))
 					{
-						std::size_t found = text.find(m_delimeter);
+						std::size_t found = text.find(pImpl->m_delimeter);
 						if (found != std::string::npos &&
 							text.substr(0, found) == wordToFind)
 						{

@@ -13,7 +13,7 @@ namespace fightclub
 			public:
 				static int Calculate(const characters::Character& character, const characters::Character& target, HitDirection hitDirection)
 				{
-					return character.getAttributes()->getDamage() - target.getEquipment()->getArmorValue(hitDirection);
+					return character.getAttributes()->getDamage() - target.getEquipment().getArmorValue(hitDirection);
 				}
 			};
 		}

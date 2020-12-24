@@ -9,6 +9,28 @@ namespace fightclub
 	{
 		namespace battle
 		{
+			struct Battle::Impl
+			{
+				characters::bots::IBotFactory* m_botFactory;
+				fighters::IFighterFactory* m_fighterFactory;
+				io::IMessageDisplayer* m_messageDisplayer;
+
+			public:
+				Impl(characters::bots::IBotFactory& botFactory, fighters::IFighterFactory& fighterFactory,
+					 io::IMessageDisplayer& messageDisplayer) : 
+					m_botFactory{&botFactory},
+					m_fighterFactory{ &fighterFactory },
+					m_messageDisplayer{ &messageDisplayer }
+				{
+				}
+			};
+
+			Battle::Battle(characters::bots::IBotFactory& botFactory, fighters::IFighterFactory& fighterFactory,
+				io::IMessageDisplayer& messageDisplayer) :
+				pImpl(std::make_unique<Impl>(botFactory, fighterFactory, messageDisplayer))
+			{
+			}
+
 			void FightPreparation(characters::Character& player, characters::Character& enemy)
 			{
 				player.restoreHp();
@@ -17,10 +39,10 @@ namespace fightclub
 
 			void Battle::fightWithBot(characters::Character& player)
 			{
-				auto bot{ m_botFactory->create(player) };
+				auto bot{ pImpl->m_botFactory->create(player) };
 
-				auto botFighter{ m_fighterFactory->create(bot) };
-				auto playerFighter{ m_fighterFactory->create(player) };
+				auto botFighter{ pImpl->m_fighterFactory->create(bot) };
+				auto playerFighter{ pImpl->m_fighterFactory->create(player) };
 
 				FightPreparation(player, bot);
 
@@ -43,7 +65,7 @@ namespace fightclub
 					}
 				}
 
-				m_messageDisplayer->display(playerWon ? "You win!\n" : "You lost!\n");
+				pImpl->m_messageDisplayer->display(playerWon ? "You win!\n" : "You lost!\n");
 			}
 		}
 	}

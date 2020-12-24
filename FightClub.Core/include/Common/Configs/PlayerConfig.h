@@ -15,18 +15,13 @@ namespace fightclub
 				class PlayerConfig : public IPlayerConfig
 				{
 				private:
-					std::unique_ptr<characters::Player> m_player;
-
-					io::savers::GameDataProcesser* m_gameDataProcesser;
-					characters::ICharacterFactory* m_characterFactory;
+					struct Impl;
+					std::unique_ptr<Impl> pImpl;
 
 				public:
-					PlayerConfig(io::savers::GameDataProcesser* gameDataProcesser,
-						characters::ICharacterFactory* characterFactory) :
-						m_gameDataProcesser{ gameDataProcesser },
-						m_characterFactory{ characterFactory }
-					{
-					}
+					PlayerConfig(io::savers::GameDataProcesser& gameDataProcesser,
+						characters::ICharacterFactory& characterFactory);
+					~PlayerConfig();
 
 					void initialize() override;
 					characters::Player* getCharacter() override;

@@ -2,6 +2,7 @@
 
 #include <boost/uuid/uuid.hpp>
 #include <string>
+#include <memory>
 
 namespace fightclub
 {
@@ -14,36 +15,20 @@ namespace fightclub
 				class Weapon
 				{
 				private:
-					boost::uuids::uuid m_id{};
-					std::string m_name{};
-					int m_damage{};
+					struct Impl;
+					std::unique_ptr<Impl> pImpl;
 
 				public:
-					Weapon(boost::uuids::uuid& uuid, std::string& name, int damage) :
-						m_id{ uuid },
-						m_name{ name },
-						m_damage{ damage }
-					{
-					}
+					Weapon(boost::uuids::uuid& uuid, std::string& name, int damage);
 
-					Weapon(Weapon& weapon) :
-						m_id{ weapon.m_id },
-						m_name{ weapon.m_name },
-						m_damage{ weapon.m_damage }
-					{
-					}
+					Weapon(Weapon& weapon);
 
-					Weapon(Weapon&& weapon) noexcept :
-						m_id{ std::move(weapon.m_id) },
-						m_name{ std::move(weapon.m_name) },
-						m_damage{ weapon.m_damage }
-					{
-					}
+					Weapon(Weapon&& weapon) noexcept;
 
-					virtual ~Weapon() noexcept = default;
-					int getDamage() const { return m_damage; }
-					const std::string& getName() const { return m_name; }
-					const boost::uuids::uuid& getId() const { return m_id; }
+					virtual ~Weapon() noexcept;
+					int getDamage() const;
+					const std::string& getName() const;
+					const boost::uuids::uuid& getId() const;
 				};
 			}
 		}

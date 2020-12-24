@@ -19,9 +19,28 @@ namespace fightclub
 		{
 			namespace armors
 			{
+				struct ArmorStorage::Impl
+				{
+					const common::configs::IConfig* m_confilg;
+
+					Impl(const common::configs::IConfig& config) :
+						m_confilg{ &config }
+					{
+					}
+
+					~Impl() = default;
+				};
+
+				ArmorStorage::ArmorStorage(const common::configs::IConfig& config) :
+					pImpl{ std::make_unique<Impl>(config) }
+				{
+				}
+
+				ArmorStorage::~ArmorStorage() = default;
+
 				std::unique_ptr<Armor> ArmorStorage::getOrDefault(const boost::uuids::uuid& id)
 				{
-					std::ifstream armorsFile{ m_confilg->get(common::configs::ConfigKeys::armorsFile) };
+					std::ifstream armorsFile{ pImpl->m_confilg->get(common::configs::ConfigKeys::armorsFile) };
 
 					if (!armorsFile.good())
 						return nullptr;
@@ -50,7 +69,7 @@ namespace fightclub
 
 				std::unique_ptr<Armor> ArmorStorage::getRandom(characterstuff::armors::ArmorType armorType)
 				{
-					std::ifstream armorsFile{ m_confilg->get(common::configs::ConfigKeys::armorsFile) };
+					std::ifstream armorsFile{ pImpl->m_confilg->get(common::configs::ConfigKeys::armorsFile) };
 
 					if (!armorsFile.good())
 						return nullptr;

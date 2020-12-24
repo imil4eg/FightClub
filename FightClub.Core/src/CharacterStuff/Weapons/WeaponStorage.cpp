@@ -20,9 +20,26 @@ namespace fightclub
 		{
 			namespace weapons
 			{
+				struct WeaponStorage::Impl
+				{
+					const common::configs::IConfig* m_config;
+
+					Impl(const common::configs::IConfig& config) :
+						m_config{ &config }
+					{
+					}
+				};
+
+				WeaponStorage::WeaponStorage(const common::configs::IConfig& config) :
+					pImpl{ std::make_unique<Impl>(config) }
+				{
+				}
+
+				WeaponStorage::~WeaponStorage() = default;
+
 				std::unique_ptr<Weapon> WeaponStorage::getRandomWeapon() const
 				{
-					std::ifstream input{ m_config->get(common::configs::ConfigKeys::weaponsFile) };
+					std::ifstream input{ pImpl->m_config->get(common::configs::ConfigKeys::weaponsFile) };
 
 					if (!input.good())
 						return nullptr;
@@ -47,7 +64,7 @@ namespace fightclub
 
 				std::unique_ptr<Weapon> WeaponStorage::getWeaponOrDefault(const boost::uuids::uuid& id) const
 				{
-					std::ifstream input{ m_config->get(common::configs::ConfigKeys::weaponsFile) };
+					std::ifstream input{ pImpl->m_config->get(common::configs::ConfigKeys::weaponsFile) };
 
 					if (!input.good())
 						return nullptr;

@@ -40,7 +40,7 @@
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
@@ -117,7 +117,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Program Files\boost\boost_1_74_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)\headers;$(ProjectDir)\include;C:\Program Files\boost\boost_1_74_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -132,6 +132,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(ProjectDir)\headers;$(ProjectDir)\include;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -146,19 +147,19 @@
     <ClInclude Include="include\Battle\Fighters\IFighterFactory.h" />
     <ClInclude Include="headers\Battle\HitDirection.h" />
     <ClInclude Include="headers\CharacterStuff\DynamicEquipment.h" />
-    <ClInclude Include="headers\CharacterStuff\Equipment.h" />
-    <ClInclude Include="headers\CharacterStuff\Inventory.h" />
+    <ClInclude Include="include\CharacterStuff\Equipment.h" />
+    <ClInclude Include="include\CharacterStuff\Inventory.h" />
     <ClInclude Include="headers\CharacterStuff\StaticEquipment.h" />
-    <ClInclude Include="headers\Characters\Character.h" />
-    <ClInclude Include="headers\Characters\CharacterType.h" />
+    <ClInclude Include="include\Characters\Character.h" />
+    <ClInclude Include="include\Characters\CharacterType.h" />
     <ClInclude Include="headers\Common\Configs\ConfigKeys.h" />
     <ClInclude Include="headers\Common\RandomGenerator.h" />
     <ClInclude Include="headers\IO\JsonAttributes.h" />
     <ClInclude Include="include\Battle\Battle.h" />
-    <ClInclude Include="headers\Battle\Fighters\BotFighter.h" />
+    <ClInclude Include="include\Battle\Fighters\BotFighter.h" />
     <ClInclude Include="include\Battle\IBattle.h" />
-    <ClInclude Include="headers\Battle\Fighters\Fighter.h" />
-    <ClInclude Include="headers\Battle\Fighters\PlayerFighter.h" />
+    <ClInclude Include="include\Battle\Fighters\Fighter.h" />
+    <ClInclude Include="include\Battle\Fighters\PlayerFighter.h" />
     <ClInclude Include="include\CharacterStuff\Armors\Armor.h" />
     <ClInclude Include="include\CharacterStuff\Armors\ArmorStorage.h" />
     <ClInclude Include="include\CharacterStuff\Armors\ArmorType.h" />
@@ -188,14 +189,22 @@
     <ClCompile Include="src\Battle\Battle.cpp" />
     <ClCompile Include="src\Battle\Fighters\BotFighter.cpp" />
     <ClCompile Include="src\Battle\Fighters\Fighter.cpp" />
+    <ClCompile Include="src\Battle\Fighters\FighterFactory.cpp" />
     <ClCompile Include="src\Battle\HitDirection.cpp" />
     <ClCompile Include="src\Battle\Fighters\PlayerFighter.cpp" />
+    <ClCompile Include="src\CharacterStuff\Armors\Armor.cpp" />
     <ClCompile Include="src\CharacterStuff\Armors\ArmorStorage.cpp" />
+    <ClCompile Include="src\CharacterStuff\Attributes.cpp" />
+    <ClCompile Include="src\CharacterStuff\AttributesFactory.cpp" />
     <ClCompile Include="src\CharacterStuff\Equipment.cpp" />
     <ClCompile Include="src\CharacterStuff\Inventory.cpp" />
+    <ClCompile Include="src\CharacterStuff\Weapons\Weapon.cpp" />
     <ClCompile Include="src\CharacterStuff\Weapons\WeaponStorage.cpp" />
+    <ClCompile Include="src\Characters\Bots\Bot.cpp" />
     <ClCompile Include="src\Characters\Bots\BotFactory.cpp" />
+    <ClCompile Include="src\Characters\Character.cpp" />
     <ClCompile Include="src\Characters\CharacterFactory.cpp" />
+    <ClCompile Include="src\Characters\Player.cpp" />
     <ClCompile Include="src\Common\Configs\Config.cpp" />
     <ClCompile Include="src\Common\Configs\ConfigKeys.cpp" />
     <ClCompile Include="src\Common\Configs\PlayerConfig.cpp" />
