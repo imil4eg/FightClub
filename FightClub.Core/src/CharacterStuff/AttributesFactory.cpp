@@ -15,9 +15,20 @@ namespace fightclub
 				const double m_bonusHPForStrengthMultiplier{ 0.5 };
 				const int m_defaultStamina{ 30 };
 				const int m_staminaPerLevelBonus{ 5 };
+
+				Impl() = default;
+
+				~Impl() = default;
 			};
 
-			std::unique_ptr<Attributes> AttributesFactory::create(const weapons::Weapon* const weapon, int level, int strength, int agility, characters::CharacterType characterType)
+			AttributesFactory::AttributesFactory() :
+				pImpl{ std::make_unique<Impl>() }
+			{
+			}
+
+			AttributesFactory::~AttributesFactory() = default;
+
+			std::unique_ptr<Attributes> AttributesFactory::create(const weapons::Weapon* const weapon, int level, int strength, int agility, characters::CharacterType characterType) 
 			{
 				int totalStrength = strength + (pImpl->m_levelAttributesBonus * level);
 				int totalAgility = agility + (pImpl->m_levelAttributesBonus * level);

@@ -42,7 +42,7 @@ namespace fightclub
 					{
 					}
 
-					~Impl();
+					~Impl() = default;
 				};
 
 				Weapon::Weapon(boost::uuids::uuid& uuid, std::string& name, int damage) :

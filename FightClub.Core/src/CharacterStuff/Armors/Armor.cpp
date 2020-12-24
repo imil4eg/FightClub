@@ -35,7 +35,7 @@ namespace fightclub
 					{
 					}
 
-					~Impl();
+					~Impl() = default;
 				};
 
 				Armor::Armor(boost::uuids::uuid id, const std::string& name, characterstuff::armors::ArmorType type, int armor,

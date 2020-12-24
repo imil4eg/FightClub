@@ -27,6 +27,8 @@ namespace fightclub
 					{
 					}
 
+					~Impl() = default;
+
 					void calculateAttributeValueToAdd(int& attributeValueToIncrease, int& attribueteValueToDecrease)
 					{
 						int possibleValueToExchange{ attribueteValueToDecrease - ((attribueteValueToDecrease < m_attributeDependOnTypeExchangeValue) ? m_minAttributeValue : m_attributeDependOnTypeExchangeValue) };
@@ -59,6 +61,8 @@ namespace fightclub
 					pImpl(std::make_unique<Impl>(attributeFactory, weaponStorage, armorStorage))
 				{
 				}
+
+				BotFactory::~BotFactory() = default;
 
 				Bot BotFactory::create(const Character& player)
 				{

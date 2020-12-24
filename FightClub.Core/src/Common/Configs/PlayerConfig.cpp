@@ -22,7 +22,7 @@ namespace fightclub
 					{
 					}
 
-					~Impl();
+					~Impl() = default;
 				};
 
 				PlayerConfig::PlayerConfig(io::savers::GameDataProcesser& gameDataProcesser,

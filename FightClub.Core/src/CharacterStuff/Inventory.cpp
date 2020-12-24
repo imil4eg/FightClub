@@ -21,7 +21,7 @@ namespace fightclub
 				{
 				}
 
-				~Impl();
+				~Impl() = default;
 
 				template<typename T>
 				T* getById(std::vector<std::unique_ptr<T>>& container, boost::uuids::uuid& itemId)

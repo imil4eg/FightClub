@@ -23,6 +23,8 @@ namespace fightclub
 					m_messageDisplayer{ &messageDisplayer }
 				{
 				}
+
+				~Impl() = default;
 			};
 
 			Battle::Battle(characters::bots::IBotFactory& botFactory, fighters::IFighterFactory& fighterFactory,
@@ -30,6 +32,8 @@ namespace fightclub
 				pImpl(std::make_unique<Impl>(botFactory, fighterFactory, messageDisplayer))
 			{
 			}
+
+			Battle::~Battle() = default;
 
 			void FightPreparation(characters::Character& player, characters::Character& enemy)
 			{

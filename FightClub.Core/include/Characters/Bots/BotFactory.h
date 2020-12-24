@@ -24,6 +24,8 @@ namespace fightclub
 						characterstuff::weapons::IWeaponStorage& weaponStorage,
 						characterstuff::armors::IArmorStorage& armorStorage);
 
+					~BotFactory();
+
 					Bot create(const Character& player) override;
 				};
 			}

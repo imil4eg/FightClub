@@ -10,14 +10,14 @@ namespace fightclub
 		{
 			struct Equipment::Impl
 			{
-				Impl();
+				Impl() = default;
 
 				int getArmorValue(const armors::Armor* armor) const
 				{
 					return armor == nullptr ? 0 : armor->getArmor();
 				}
 
-				~Impl();
+				~Impl() = default;
 			};
 
 			Equipment::Equipment() :

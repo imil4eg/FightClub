@@ -25,7 +25,7 @@ namespace fightclub
 				{
 				}
 
-				~Impl();
+				~Impl() = default;
 			};
 
 			Attributes::Attributes(int hp, int level, int damage, int strength, int agility, int stamina) :

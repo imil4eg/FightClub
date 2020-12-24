@@ -35,7 +35,7 @@ namespace fightclub
 				{
 				}
 
-				~Impl();
+				~Impl() = default;
 			};
 
 			Character::Character(std::unique_ptr<characterstuff::Attributes> attributes, std::unique_ptr<characterstuff::Equipment> equipment,

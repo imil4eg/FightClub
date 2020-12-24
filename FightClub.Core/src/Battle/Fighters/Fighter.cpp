@@ -22,7 +22,7 @@ namespace fightclub
 					{
 					}
 
-					~Impl();
+					~Impl() = default;
 				};
 
 				Fighter::Fighter(const io::IMessageDisplayer& messageDisplayer, const characters::Character& character, const std::string characterName) :

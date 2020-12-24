@@ -21,6 +21,8 @@ namespace fightclub
 				Battle(characters::bots::IBotFactory& botFactory, fighters::IFighterFactory& fighterFactory,
 					io::IMessageDisplayer& messageDisplayer);
 
+				~Battle();
+
 				void fightWithBot(characters::Character& player) override;
 			};
 		}

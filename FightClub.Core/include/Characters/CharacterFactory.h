@@ -15,8 +15,8 @@ namespace fightclub
 				characterstuff::IAttributesFactory* m_attributesFactory;
 
 			public:
-				CharacterFactory(characterstuff::IAttributesFactory* attributesFactory) :
-					m_attributesFactory{ attributesFactory }
+				CharacterFactory(characterstuff::IAttributesFactory& attributesFactory) :
+					m_attributesFactory{ &attributesFactory }
 				{
 				}
 

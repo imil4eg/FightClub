@@ -20,8 +20,13 @@ namespace fightclub
 					{
 					}
 					
-					~Impl();
+					~Impl() = default;
 				};
+
+				Config::Config(const std::string& configPath) :
+					pImpl(std::make_unique<Impl>(configPath))
+				{
+				}
 
 				Config::~Config() = default;
 
