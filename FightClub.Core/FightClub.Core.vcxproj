@@ -117,7 +117,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ProjectDir)\headers;$(ProjectDir)\include;C:\Program Files\boost\boost_1_74_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)\src\headers;$(ProjectDir)\include;C:\Program Files\boost\boost_1_74_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -132,7 +132,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ProjectDir)\headers;$(ProjectDir)\include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)\src\headers;$(ProjectDir)\include;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -142,19 +142,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="headers\Battle\DamageCalculator.h" />
+    <ClInclude Include="src\headers\Battle\DamageCalculator.h" />
     <ClInclude Include="include\Battle\Fighters\FighterFactory.h" />
     <ClInclude Include="include\Battle\Fighters\IFighterFactory.h" />
-    <ClInclude Include="headers\Battle\HitDirection.h" />
-    <ClInclude Include="headers\CharacterStuff\DynamicEquipment.h" />
+    <ClInclude Include="src\headers\Battle\HitDirection.h" />
+    <ClInclude Include="src\headers\CharacterStuff\DynamicEquipment.h" />
     <ClInclude Include="include\CharacterStuff\Equipment.h" />
     <ClInclude Include="include\CharacterStuff\Inventory.h" />
-    <ClInclude Include="headers\CharacterStuff\StaticEquipment.h" />
+    <ClInclude Include="src\headers\CharacterStuff\StaticEquipment.h" />
     <ClInclude Include="include\Characters\Character.h" />
     <ClInclude Include="include\Characters\CharacterType.h" />
-    <ClInclude Include="headers\Common\Configs\ConfigKeys.h" />
-    <ClInclude Include="headers\Common\RandomGenerator.h" />
-    <ClInclude Include="headers\IO\JsonAttributes.h" />
+    <ClInclude Include="src\headers\Common\Configs\ConfigKeys.h" />
+    <ClInclude Include="src\headers\Common\RandomGenerator.h" />
+    <ClInclude Include="src\headers\IO\JsonAttributes.h" />
     <ClInclude Include="include\Battle\Battle.h" />
     <ClInclude Include="include\Battle\Fighters\BotFighter.h" />
     <ClInclude Include="include\Battle\IBattle.h" />

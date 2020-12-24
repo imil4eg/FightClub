@@ -30,16 +30,7 @@
     <ClInclude Include="include\CharacterStuff\Armors\ArmorStorage.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="headers\IO\JsonAttributes.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="headers\Common\RandomGenerator.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="include\Common\Configs\IConfig.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="headers\Common\Configs\ConfigKeys.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\Common\Configs\Config.h">
@@ -57,22 +48,10 @@
     <ClInclude Include="include\CharacterStuff\IAttributesFactory.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="headers\Battle\HitDirection.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="headers\CharacterStuff\StaticEquipment.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="headers\CharacterStuff\DynamicEquipment.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="include\CharacterStuff\AttributesFactory.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\Characters\Player.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="headers\Battle\DamageCalculator.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\Characters\ICharacterFactory.h">
@@ -139,6 +118,27 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\CharacterStuff\Inventory.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\headers\Battle\DamageCalculator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\headers\Battle\HitDirection.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\headers\CharacterStuff\DynamicEquipment.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\headers\CharacterStuff\StaticEquipment.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\headers\Common\Configs\ConfigKeys.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\headers\Common\RandomGenerator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\headers\IO\JsonAttributes.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
