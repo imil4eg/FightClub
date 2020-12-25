@@ -66,6 +66,11 @@ namespace fightclub
 				const characterstuff::Attributes* Armor::getAttributes() { return pImpl->m_attributes.get(); }
 				characterstuff::armors::ArmorType Armor::getType() const { return pImpl->m_type; }
 				int Armor::getArmor() const { return pImpl->m_armor; }
+
+				std::string Armor::to_string() const
+				{
+					return pImpl->m_name + " defence: " + std::to_string(pImpl->m_armor);
+				}
 			}
 		}
 	}

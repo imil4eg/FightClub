@@ -31,7 +31,8 @@ namespace fightclub
 
 		private:
 			template<typename T>
-			void display(const std::vector<T>& elements, std::string itemName, std::function<void(T&)> displayFunc) const;
+			void display(const std::vector<T>& elements, std::string itemName, std::function<void(const T&)> displayFunc) const;
+			std::string armorNameOrEmptyText(const core::characterstuff::armors::Armor* armor) const;
 		};
 	}
 }

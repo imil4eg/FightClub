@@ -65,6 +65,11 @@ namespace fightclub
 				int Weapon::getDamage() const { return pImpl->m_damage; }
 				const std::string& Weapon::getName() const { return pImpl->m_name; }
 				const boost::uuids::uuid& Weapon::getId() const { return pImpl->m_id; }
+				
+				std::string Weapon::to_string() const 
+				{
+					return "Name: " + pImpl->m_name + " damage: " + std::to_string(pImpl->m_damage);
+				}
 			}
 		}
 	}

@@ -29,6 +29,8 @@ namespace fightclub
 					int getDamage() const;
 					const std::string& getName() const;
 					const boost::uuids::uuid& getId() const;
+					
+					std::string to_string() const;
 				};
 			}
 		}

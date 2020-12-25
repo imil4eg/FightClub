@@ -39,6 +39,8 @@ namespace fightclub
 					const characterstuff::Attributes* getAttributes();
 					characterstuff::armors::ArmorType getType() const;
 					int getArmor() const;
+
+					std::string to_string() const;
 				};
 			}
 		}

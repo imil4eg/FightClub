@@ -195,6 +195,7 @@
     <ClCompile Include="src\Battle\Fighters\PlayerFighter.cpp" />
     <ClCompile Include="src\CharacterStuff\Armors\Armor.cpp" />
     <ClCompile Include="src\CharacterStuff\Armors\ArmorStorage.cpp" />
+    <ClCompile Include="src\CharacterStuff\Armors\ArmorType.cpp" />
     <ClCompile Include="src\CharacterStuff\Attributes.cpp" />
     <ClCompile Include="src\CharacterStuff\AttributesFactory.cpp" />
     <ClCompile Include="src\CharacterStuff\Equipment.cpp" />

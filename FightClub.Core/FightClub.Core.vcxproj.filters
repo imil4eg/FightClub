@@ -221,5 +221,8 @@
     <ClCompile Include="src\CharacterStuff\Attributes.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\CharacterStuff\Armors\ArmorType.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

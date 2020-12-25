@@ -1,5 +1,7 @@
 #pragma once
 
+#include <string>
+
 namespace fightclub
 {
 	namespace core
@@ -16,6 +18,8 @@ namespace fightclub
 					legs,
 					max_equipment_types
 				};
+
+				std::string to_string(ArmorType type);
 			}
 		}
 	}

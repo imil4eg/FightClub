@@ -1,3 +1,5 @@
+#include <boost/algorithm/string.hpp>
+
 #include "CharacterStuff/Inventory.h"
 
 namespace fightclub
@@ -89,7 +91,7 @@ namespace fightclub
 			{
 				return pImpl->getBy<armors::Armor>(pImpl->m_armors, [name](std::unique_ptr<armors::Armor>& armor)
 					{
-						return armor->getName() == name;
+						return boost::iequals(armor->getName(), name);
 					});
 			}
 		}

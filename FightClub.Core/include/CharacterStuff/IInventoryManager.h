@@ -18,7 +18,7 @@ namespace fightclub
 				virtual ~IInventoryManager() = default;
 				
 				virtual void enterInventory(characters::Player& player) = 0;
-				virtual void displayArmors(const  std::vector<std::unique_ptr<characterstuff::armors::Armor>>& armors,
+				virtual void displayArmors(const std::vector<std::unique_ptr<characterstuff::armors::Armor>>& armors,
 										   characterstuff::armors::ArmorType armorType = characterstuff::armors::ArmorType::max_equipment_types) const = 0;
 				virtual void displayWeapons(const std::vector<std::unique_ptr<characterstuff::weapons::Weapon>>& weapons) const = 0;
 				virtual void displayCurrentEquipment(const characters::Character& character) const = 0;

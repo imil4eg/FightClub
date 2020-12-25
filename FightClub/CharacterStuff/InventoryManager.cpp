@@ -3,6 +3,7 @@
 
 #include "CharacterStuff/InventoryManager.h"
 #include "CharacterStuff/DynamicEquipment.h"
+#include "CharacterStuff/Armors/ArmorType.h"
 
 namespace fightclub
 {
@@ -25,7 +26,7 @@ namespace fightclub
 				{
 					displayArmors(player.getInventory().getArmors());
 				}
-				else if (command == "3" || boost::iequals(command, "equipment"))
+				else if (command == "3" || boost::iequals(command, "current equipment"))
 				{
 					displayCurrentEquipment(player);
 				}
@@ -58,6 +59,8 @@ namespace fightclub
 
 		void InventoryManager::displayCurrentEquipment(const core::characters::Character& character) const
 		{
+			std::cout << '\n';
+
 			auto* weapon{ character.getWeapon() };
 			std::cout << "Weapon: " << ((weapon == nullptr) ? "empty" : weapon->getName()) << '\n';
 
@@ -70,27 +73,27 @@ namespace fightclub
 			auto* boots{ character.getEquipment().getBoots() };
 			std::cout << "Boots: " << ((boots == nullptr) ? "empty" : boots->getName()) << '\n';
 
-			std::cout << "Total damage: " << ((weapon == nullptr) ? 0 : weapon->getDamage()) << "\n" << "Total armor: " << character.getEquipment().getTotalArmor();
+			std::cout << "Total damage: " << ((weapon == nullptr) ? 0 : weapon->getDamage()) << "\n" << "Total armor: " << character.getEquipment().getTotalArmor() << "\n\n";
 		}
 
 		void InventoryManager::displayArmors(const std::vector<std::unique_ptr<core::characterstuff::armors::Armor>>& armors, 
 			core::characterstuff::armors::ArmorType armorType) const
 		{
 			display<std::unique_ptr<core::characterstuff::armors::Armor>>(armors, "armors",
-				[armorType](std::unique_ptr<core::characterstuff::armors::Armor>& armor)
+				[armorType](const std::unique_ptr<core::characterstuff::armors::Armor>& armor)
 				{
-					if (armor->getType() == core::characterstuff::armors::ArmorType::max_equipment_types ||
+					if (armorType == core::characterstuff::armors::ArmorType::max_equipment_types ||
 						armor->getType() == armorType)
-						std::cout << &*armor << '\n';
+						std::cout << armor.get()->to_string() << '\n';
 				});
 		}
 
 		void InventoryManager::displayWeapons(const std::vector<std::unique_ptr<core::characterstuff::weapons::Weapon>>& weapons) const
 		{
 			display<std::unique_ptr<core::characterstuff::weapons::Weapon>>(weapons, "weapons",
-				[](std::unique_ptr<core::characterstuff::weapons::Weapon>& weapon)
+				[](const std::unique_ptr<core::characterstuff::weapons::Weapon>& weapon)
 				{
-					std::cout << &*weapon << '\n';
+					std::cout << weapon.get()->to_string() << '\n';
 				});
 		}
 
@@ -98,11 +101,15 @@ namespace fightclub
 		{
 			while (true)
 			{
+				std::cout << '\n';
+
 				const core::characterstuff::armors::Armor* currentArmor{ player.getEquipment().getArmor(armorType) };
 
-				std::cout << "Current " << armorType << " is " << *currentArmor << '\n';
+				std::cout << "Current " << core::characterstuff::armors::to_string(armorType) << " is " << armorNameOrEmptyText(currentArmor) << '\n';
 
-				std::cout << "Enter the name of " << armorType << " that you want to wear\nWrite clear to take off current " << armorType << " \nWrite exit if you want to leave this menu\n";
+				std::cout << "Enter the name of " << core::characterstuff::armors::to_string(armorType) << 
+							 " that you want to wear\nWrite clear to take off current " << core::characterstuff::armors::to_string(armorType) << 
+							 " \nWrite exit if you want to leave this menu\n";
 
 				displayArmors(player.getInventory().getArmors(), armorType);
 
@@ -126,6 +133,8 @@ namespace fightclub
 					std::cout << "Change from " << ((currentArmor == nullptr) ? "empty" : currentArmor->getName()) <<
 						" to " << player.getEquipment().getArmor(armorType)->getName() << ".\n";
 				}
+
+				std::cout << '\n';
 			}
 		}
 
@@ -161,54 +170,21 @@ namespace fightclub
 		}
 
 		template<typename T>
-		void InventoryManager::display(const std::vector<T>& elements, std::string itemName, std::function<void(T&)> displayFunc) const
+		void InventoryManager::display(const std::vector<T>& elements, std::string itemName, std::function<void(const T&)> displayFunc) const
 		{
-			std::cout << "Inventory contains " << elements.size() << " " << itemName << ":\n";
+			std::cout << "\nInventory contains " << std::to_string(elements.size()) << " " << itemName << ":\n";
 
-			for (auto& element : elements)
+			for (const T& element : elements)
 			{
 				displayFunc(element);
 			}
+
+			std::cout << '\n';
 		}
 
-		std::ostream& operator<<(std::ostream& out, const core::characterstuff::armors::Armor& armor)
+		std::string InventoryManager::armorNameOrEmptyText(const core::characterstuff::armors::Armor* armor) const
 		{
-			out << armor.getName() << " defence: " << armor.getName();
-
-			return out;
-		}
-
-		std::ostream& operator<<(std::ostream& out, const core::characterstuff::weapons::Weapon& weapon)
-		{
-			out << "Name: " << weapon.getName() << " damage: " << weapon.getDamage();
-
-			return out;
-		}
-
-		std::ostream& operator<<(std::ostream& out, core::characterstuff::armors::ArmorType type)
-		{
-			std::string armorTypeStr{};
-			switch (type)
-			{
-			case core::characterstuff::armors::ArmorType::head:
-				armorTypeStr = "helmet";
-				break;
-			case core::characterstuff::armors::ArmorType::body:
-				armorTypeStr = "cuirasse";
-				break;
-			case core::characterstuff::armors::ArmorType::hands:
-				armorTypeStr = "gloves";
-				break;
-			case core::characterstuff::armors::ArmorType::legs:
-				armorTypeStr = "boots";
-				break;
-			default:
-				throw std::exception("Not implemented armor type.");
-			}
-
-			out << armorTypeStr;
-
-			return out;
+			return armor == nullptr ? "empty" : armor->to_string();
 		}
 	}
 }
