@@ -84,7 +84,7 @@ namespace fightclub
 				{
 					if (armorType == core::characterstuff::armors::ArmorType::max_equipment_types ||
 						armor->getType() == armorType)
-						std::cout << armor.get()->to_string() << '\n';
+						std::cout << *armor.get() << '\n';
 				});
 		}
 
@@ -93,7 +93,7 @@ namespace fightclub
 			display<std::unique_ptr<core::characterstuff::weapons::Weapon>>(weapons, "weapons",
 				[](const std::unique_ptr<core::characterstuff::weapons::Weapon>& weapon)
 				{
-					std::cout << weapon.get()->to_string() << '\n';
+					std::cout << *weapon.get() << '\n';
 				});
 		}
 
@@ -105,10 +105,10 @@ namespace fightclub
 
 				const core::characterstuff::armors::Armor* currentArmor{ player.getEquipment().getArmor(armorType) };
 
-				std::cout << "Current " << core::characterstuff::armors::to_string(armorType) << " is " << armorNameOrEmptyText(currentArmor) << '\n';
+				std::cout << "Current " << armorType << " is " << ((currentArmor == nullptr) ? "empty" : currentArmor->getName()) << '\n';
 
-				std::cout << "Enter the name of " << core::characterstuff::armors::to_string(armorType) << 
-							 " that you want to wear\nWrite clear to take off current " << core::characterstuff::armors::to_string(armorType) << 
+				std::cout << "Enter the name of " << armorType << 
+							 " that you want to wear\nWrite clear to take off current " << armorType << 
 							 " \nWrite exit if you want to leave this menu\n";
 
 				displayArmors(player.getInventory().getArmors(), armorType);
@@ -180,11 +180,6 @@ namespace fightclub
 			}
 
 			std::cout << '\n';
-		}
-
-		std::string InventoryManager::armorNameOrEmptyText(const core::characterstuff::armors::Armor* armor) const
-		{
-			return armor == nullptr ? "empty" : armor->to_string();
 		}
 	}
 }

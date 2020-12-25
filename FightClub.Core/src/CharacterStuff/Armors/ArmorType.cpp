@@ -8,21 +8,30 @@ namespace fightclub
 		{
 			namespace armors
 			{
-				std::string to_string(ArmorType type)
+				std::ostream& operator<<(std::ostream& out, ArmorType type)
 				{
+					std::string result;
 					switch (type)
 					{
 					case core::characterstuff::armors::ArmorType::head:
-						return "helmet";
+						result = "helmet";
+						break;
 					case core::characterstuff::armors::ArmorType::body:
-						return "cuirasse";
+						result = "cuirasse";
+						break;
 					case core::characterstuff::armors::ArmorType::hands:
-						return "gloves";
+						result = "gloves";
+						break;
 					case core::characterstuff::armors::ArmorType::legs:
-						return "boots";
+						result = "boots";
+						break;
 					default:
 						throw std::exception("Not implemented armor type.");
 					}
+
+					out << result;
+
+					return out;
 				}
 			}
 		}

@@ -3,6 +3,7 @@
 #include <boost/uuid/uuid.hpp>
 #include <string>
 #include <memory>
+#include <iostream>
 
 namespace fightclub
 {
@@ -30,7 +31,7 @@ namespace fightclub
 					const std::string& getName() const;
 					const boost::uuids::uuid& getId() const;
 					
-					std::string to_string() const;
+					friend std::ostream& operator<<(std::ostream& out, const Weapon& weapon);
 				};
 			}
 		}

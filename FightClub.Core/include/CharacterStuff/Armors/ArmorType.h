@@ -1,6 +1,7 @@
 #pragma once
 
 #include <string>
+#include <iostream>
 
 namespace fightclub
 {
@@ -19,7 +20,7 @@ namespace fightclub
 					max_equipment_types
 				};
 
-				std::string to_string(ArmorType type);
+				std::ostream& operator<<(std::ostream& out, ArmorType type);
 			}
 		}
 	}

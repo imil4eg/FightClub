@@ -4,6 +4,7 @@
 #include <boost/uuid/uuid_generators.hpp>
 #include <string>
 #include <memory>
+#include <iostream>
 
 #include "CharacterStuff/Attributes.h"
 #include "CharacterStuff/Armors/ArmorType.h"
@@ -40,7 +41,7 @@ namespace fightclub
 					characterstuff::armors::ArmorType getType() const;
 					int getArmor() const;
 
-					std::string to_string() const;
+					friend std::ostream& operator<<(std::ostream& out, const Armor& armor);
 				};
 			}
 		}
