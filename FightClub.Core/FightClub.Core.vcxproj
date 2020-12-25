@@ -206,6 +206,7 @@
     <ClCompile Include="src\Characters\Bots\BotFactory.cpp" />
     <ClCompile Include="src\Characters\Character.cpp" />
     <ClCompile Include="src\Characters\CharacterFactory.cpp" />
+    <ClCompile Include="src\Characters\CharacterType.cpp" />
     <ClCompile Include="src\Characters\Player.cpp" />
     <ClCompile Include="src\Common\Configs\Config.cpp" />
     <ClCompile Include="src\Common\Configs\ConfigKeys.cpp" />

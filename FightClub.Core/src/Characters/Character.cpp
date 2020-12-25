@@ -60,6 +60,15 @@ namespace fightclub
 			characterstuff::Equipment& Character::getEquipment() const { return *pImpl->m_equipment.get(); }
 			CharacterType Character::getCharcterType() const { return pImpl->m_characterType; }
 			void Character::restoreHp() { pImpl->m_attributes->setHp(100); }
+
+			std::ostream& operator<<(std::ostream& out, const Character& character)
+			{
+				out << *character.getAttributes() << '\n' 
+					<< "Type: " << character.getCharcterType() << '\n'
+					<< "Total armor: " << character.getEquipment().getTotalArmor() << '\n';
+			
+				return out;
+			}
 		}
 	}
 }

@@ -42,6 +42,15 @@ namespace fightclub
 			int Attributes::getStrength() const { return pImpl->m_stength; }
 			int Attributes::getAgility() const { return pImpl->m_agility; }
 			int Attributes::getStamina() const { return pImpl->m_stamina; }
+
+			std::ostream& operator<<(std::ostream& out, const Attributes& attributes) 
+			{
+				out << "HP: " << attributes.getHp() << '\n' << "Level: " << attributes.getLevel() << '\n'
+					<< "Damage: " << attributes.getDamage() << '\n' << "Strength: " << attributes.getStrength() << '\n'
+					<< "Agility: " << attributes.getAgility() << '\n' << "Stamina: " << attributes.getStamina();
+
+				return out;
+			}
 		}
 	}
 }

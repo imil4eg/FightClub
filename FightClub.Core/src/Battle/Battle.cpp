@@ -1,3 +1,6 @@
+#include <string>
+#include <sstream>
+
 #include "Battle/Battle.h"
 #include "Characters/Player.h"
 #include "Characters/Character.h"
@@ -49,6 +52,10 @@ namespace fightclub
 				auto playerFighter{ pImpl->m_fighterFactory->create(player) };
 
 				FightPreparation(player, bot);
+
+				std::stringstream stream;
+				stream << player;
+				pImpl->m_messageDisplayer->display("You enemy attributes:\n" + stream.str());
 
 				bool playerWon{};
 				while (true)

@@ -25,6 +25,8 @@ namespace fightclub
 				int getStrength() const;
 				int getAgility() const;
 				int getStamina() const;
+
+				friend std::ostream& operator<<(std::ostream& out, const Attributes& attributes);
 			};
 		}
 	}

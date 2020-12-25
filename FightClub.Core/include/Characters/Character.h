@@ -1,6 +1,7 @@
 #pragma once
 
 #include <memory>
+#include <iostream>
 
 #include "CharacterType.h"
 #include "CharacterStuff/Attributes.h"
@@ -35,6 +36,8 @@ namespace fightclub
 				CharacterType getCharcterType() const;
 
 				void restoreHp();
+
+				friend std::ostream& operator<<(std::ostream& out, const Character& character);
 			};
 		}
 	}
