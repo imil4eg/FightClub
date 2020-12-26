@@ -40,8 +40,8 @@ namespace fightclub
 				{
 					int damage = battle::DamageCalculator::Calculate(this->getCharacter(), target.getCharacter(), hitDirection);
 
-					pImpl->m_messageDisplayer->display(pImpl->m_characterName + " hits " + target.getName() + hitDirection +
-						" on " + std::to_string(damage) + " damage.\n");
+					pImpl->m_messageDisplayer->display(pImpl->m_characterName + " hits " + target.getName() + " to " + hitDirection +
+						" no " + std::to_string(damage) + " damage.\n");
 
 					target.getCharacter().getAttributes()->setHp(target.getCharacter().getAttributes()->getHp() - damage);
 
