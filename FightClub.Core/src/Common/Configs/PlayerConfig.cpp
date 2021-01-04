@@ -46,6 +46,11 @@ namespace fightclub
 				void PlayerConfig::initialize()
 				{
 					pImpl->m_player = pImpl->m_gameDataProcesser->load();
+
+					if (pImpl->m_player == nullptr)
+					{
+						pImpl->m_player = pImpl->m_characterFactory->createDefaultPlayer();
+					}
 				}
 			}
 		}

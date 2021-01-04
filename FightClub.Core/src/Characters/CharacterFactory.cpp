@@ -13,7 +13,8 @@ namespace fightclub
 				auto attributes{ m_attributesFactory->create(nullptr, 1, initialAttributeValue, initialAttributeValue, CharacterType::strong) };
 				auto equipment{ std::make_unique<characterstuff::DynamicEquipment>() };
 
-				return std::make_unique<Player>(std::move(attributes), std::move(equipment), CharacterType::strong, std::move(nullptr));
+				return std::make_unique<Player>(std::move(attributes), std::move(equipment), CharacterType::strong, 
+											    std::make_unique<characterstuff::Inventory>());
 			}
 		}
 	}

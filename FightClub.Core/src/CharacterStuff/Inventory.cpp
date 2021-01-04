@@ -53,7 +53,7 @@ namespace fightclub
 			};
 
 			Inventory::Inventory() :
-				pImpl(std::make_unique<Impl>())
+				Inventory(std::vector<std::unique_ptr<armors::Armor>>(), std::vector<std::unique_ptr<weapons::Weapon>>())
 			{
 			}
 
