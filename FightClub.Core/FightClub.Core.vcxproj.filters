@@ -144,6 +144,9 @@
     <ClInclude Include="include\CharacterStuff\IInventoryManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\headers\CharacterStuff\AttributeConsts.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\CharacterStuff\Armors\ArmorStorage.cpp">

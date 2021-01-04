@@ -154,6 +154,7 @@
     <ClInclude Include="include\Characters\Character.h" />
     <ClInclude Include="include\Characters\CharacterType.h" />
     <ClInclude Include="include\Common\Configs\ConfigKeys.h" />
+    <ClInclude Include="src\headers\CharacterStuff\AttributeConsts.h" />
     <ClInclude Include="src\headers\Common\RandomGenerator.h" />
     <ClInclude Include="src\headers\IO\JsonAttributes.h" />
     <ClInclude Include="include\Battle\Battle.h" />
