@@ -1,4 +1,5 @@
 #include <boost/algorithm/string.hpp>
+#include <string>
 
 #include "Battle/Fighters/PlayerFighter.h"
 #include "Battle/DamageCalculator.h"
@@ -13,6 +14,10 @@ namespace fightclub
 			{
 				struct PlayerFighter::Impl
 				{
+					const std::string HeadText{ "Head" };
+					const std::string BodyText{ "Body" };
+					const std::string LegsText{ "Legs" };
+
 					const io::IInputProcesser* m_inputProcesser;
 					const io::IMessageDisplayer* m_messageDisplayer;
 
@@ -28,15 +33,15 @@ namespace fightclub
 						{
 							auto hitDirectionStr{ this->m_inputProcesser->getLine() };
 
-							if (boost::iequals(hitDirectionStr, "head"))
+							if (boost::iequals(hitDirectionStr, HeadText))
 							{
 								return battle::HitDirection::head;
 							}
-							else if (boost::iequals(hitDirectionStr, "body"))
+							else if (boost::iequals(hitDirectionStr, BodyText))
 							{
 								return battle::HitDirection::body;
 							}
-							else if (boost::iequals(hitDirectionStr, "legs"))
+							else if (boost::iequals(hitDirectionStr, LegsText))
 							{
 								return battle::HitDirection::legs;
 							}
@@ -65,7 +70,8 @@ namespace fightclub
 				{
 					this->getMessageDisplayer().display("Your turn!\n\n");
 
-					this->getMessageDisplayer().display("Choose where will you hit the opponen:\n1) Head\n2) Body\n3) Legs\n\n");
+					this->getMessageDisplayer().display("Choose where will you hit the opponen:\n1) " + pImpl->HeadText +
+								"\n2) " + pImpl->BodyText + "\n3) " + pImpl->LegsText + "\n\n");
 
 					battle::HitDirection hitDirection{ pImpl->askHitDirection() };
 
