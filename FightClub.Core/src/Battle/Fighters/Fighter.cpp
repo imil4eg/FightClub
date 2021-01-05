@@ -18,7 +18,7 @@ namespace fightclub
 					Impl(const io::IMessageDisplayer& messageDisplayer, const characters::Character& character, const std::string characterName) : 
 						m_messageDisplayer{&messageDisplayer},
 						m_character{ &character },
-						m_characterName{ characterName }
+						m_characterName{ characterName }	
 					{
 					}
 

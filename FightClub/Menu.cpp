@@ -10,6 +10,8 @@ namespace fightclub
 	void Menu::show() const
 	{
 		std::cout << "Welcome to the fight club, buddy!\n";
+		
+		auto* player{ m_playerConfig->getCharacter() };
 		while (true)
 		{
 			std::cout << "Please, enter the command\nCommands:\n1) Play\n2) Customize character\n3) Inventory\n4) Exit\n\n";
@@ -17,20 +19,19 @@ namespace fightclub
 
 			if (boost::iequals(commandStr, "play"))
 			{
-				auto player{ m_playerConfig->getCharacter() };
 				m_battle->fightWithBot(*player);
 			}
 			else if (boost::iequals(commandStr, "customize character"))
 			{
-
+				m_attributesManger->enterAttributesManager(*player);
 			}
 			else if (boost::iequals(commandStr, "inventory"))
 			{
-				m_inventoryManager->enterInventory(*m_playerConfig->getCharacter());
+				m_inventoryManager->enterInventory(*player);
 			}
 			else if (boost::iequals(commandStr, "exit"))
 			{
-				m_gameDataProcesser->save(*(m_playerConfig->getCharacter()));
+				m_gameDataProcesser->save(*player);
 				return;
 			}
 		}

@@ -152,13 +152,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="CharacterStuff\AttributesManager.cpp" />
     <ClCompile Include="CharacterStuff\InventoryManager.cpp" />
     <ClCompile Include="FightClub.cpp" />
+    <ClCompile Include="IO\CommandLineParser.cpp" />
     <ClCompile Include="Menu.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Headers\CharacterStuff\AttributesManager.h" />
     <ClInclude Include="Headers\CharacterStuff\InventoryManager.h" />
     <ClInclude Include="Headers\Common\Commands.h" />
+    <ClInclude Include="Headers\Common\IntHelper.h" />
+    <ClInclude Include="Headers\IO\CommandLineParser.h" />
+    <ClInclude Include="Headers\IO\ICommandLineParser.h" />
     <ClInclude Include="Headers\IO\InputProcesser.h" />
     <ClInclude Include="Headers\IO\MessageDisplayer.h" />
     <ClInclude Include="Headers\IMenu.h" />

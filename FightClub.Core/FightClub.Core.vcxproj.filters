@@ -147,6 +147,15 @@
     <ClInclude Include="src\headers\CharacterStuff\AttributeConsts.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="include\CharacterStuff\AttributeType.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CharacterStuff\BaseAttributesManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CharacterStuff\IAttributesManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\CharacterStuff\Armors\ArmorStorage.cpp">
@@ -228,6 +237,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Characters\CharacterType.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\CharacterStuff\BaseAttributesManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\CharacterStuff\AttributeType.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

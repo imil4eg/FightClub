@@ -31,7 +31,8 @@ namespace fightclub
 				virtual ~Character();
 
 				characterstuff::Attributes* getAttributes() const;
-			    characterstuff::Equipment& getEquipment() const;
+				void updateAttributes(std::unique_ptr<characterstuff::Attributes> attributes);
+				characterstuff::Equipment& getEquipment() const;
 				virtual const characterstuff::weapons::Weapon* const getWeapon() const = 0;
 				CharacterType getCharcterType() const;
 

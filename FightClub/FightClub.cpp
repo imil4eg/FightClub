@@ -13,11 +13,13 @@
 #include "CharacterStuff/AttributesFactory.h"
 #include "CharacterStuff/Weapons/WeaponStorage.h"
 #include "CharacterStuff/Armors/ArmorStorage.h"
+#include "CharacterStuff/AttributesManager.h"
 #include "Common/Configs/Config.h"
 #include "Common/Configs/PlayerConfig.h"
 #include "IO/MessageDisplayer.h"
 #include "IO/InputProcesser.h"
 #include "IO/Savers/JsonGameDataProcesser.h"
+#include "IO/CommandLineParser.h"
 
 int main()
 {
@@ -35,7 +37,9 @@ int main()
 	fightclub::core::common::configs::PlayerConfig playerConfig{ jsonGameDataProcesser, characterFactory };
 	fightclub::core::characters::bots::BotFactory botFactory{ attributesFactory, weaponStorage, armorStorage };
 	fightclub::core::battle::Battle battle{ botFactory, fighterFactory, messageDisplayer };
-	fightclub::Menu menu{ battle, playerConfig, jsonGameDataProcesser, inputProcesser, inventoryManager };
+	fightclub::io::CommandLineParser commandLineParser{};
+	fightclub::characterstuff::AttributesManager attributesManager{ inputProcesser, attributesFactory, commandLineParser };
+	fightclub::Menu menu{ battle, playerConfig, jsonGameDataProcesser, inputProcesser, inventoryManager, attributesManager };
 
 	srand(static_cast<unsigned int>(time(0)));
 

@@ -142,6 +142,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="include\CharacterStuff\AttributeType.h" />
+    <ClInclude Include="include\CharacterStuff\BaseAttributesManager.h" />
+    <ClInclude Include="include\CharacterStuff\IAttributesManager.h" />
     <ClInclude Include="include\CharacterStuff\IInventoryManager.h" />
     <ClInclude Include="src\headers\Battle\DamageCalculator.h" />
     <ClInclude Include="include\Battle\Fighters\FighterFactory.h" />
@@ -199,6 +202,8 @@
     <ClCompile Include="src\CharacterStuff\Armors\ArmorType.cpp" />
     <ClCompile Include="src\CharacterStuff\Attributes.cpp" />
     <ClCompile Include="src\CharacterStuff\AttributesFactory.cpp" />
+    <ClCompile Include="src\CharacterStuff\AttributeType.cpp" />
+    <ClCompile Include="src\CharacterStuff\BaseAttributesManager.cpp" />
     <ClCompile Include="src\CharacterStuff\Equipment.cpp" />
     <ClCompile Include="src\CharacterStuff\Inventory.cpp" />
     <ClCompile Include="src\CharacterStuff\Weapons\Weapon.cpp" />

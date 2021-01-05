@@ -57,6 +57,7 @@ namespace fightclub
 			Character::~Character() = default;
 
 			characterstuff::Attributes* Character::getAttributes() const { return pImpl->m_attributes.get(); }
+			void Character::updateAttributes(std::unique_ptr<characterstuff::Attributes> attributes) { pImpl->m_attributes = std::move(attributes); }
 			characterstuff::Equipment& Character::getEquipment() const { return *pImpl->m_equipment.get(); }
 			CharacterType Character::getCharcterType() const { return pImpl->m_characterType; }
 			void Character::restoreHp() { pImpl->m_attributes->setHp(100); }
