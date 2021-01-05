@@ -1,5 +1,6 @@
 #include "Battle/Fighters/Fighter.h"
 #include "Battle/DamageCalculator.h"
+#include "CharacterStuff/BodyPart.h"
 
 namespace fightclub
 {
@@ -36,7 +37,7 @@ namespace fightclub
 				const characters::Character& Fighter::getCharacter() const { return *pImpl->m_character; }
 				const std::string& Fighter::getName() const { return pImpl->m_characterName; }
 
-				void Fighter::hit(Fighter& target, battle::HitDirection hitDirection)
+				void Fighter::hit(Fighter& target, characterstuff::BodyPart hitDirection)
 				{
 					int damage = battle::DamageCalculator::Calculate(this->getCharacter(), target.getCharacter(), hitDirection);
 

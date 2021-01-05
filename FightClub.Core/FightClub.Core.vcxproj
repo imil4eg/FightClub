@@ -149,7 +149,7 @@
     <ClInclude Include="src\headers\Battle\DamageCalculator.h" />
     <ClInclude Include="include\Battle\Fighters\FighterFactory.h" />
     <ClInclude Include="include\Battle\Fighters\IFighterFactory.h" />
-    <ClInclude Include="include\Battle\HitDirection.h" />
+    <ClInclude Include="include\CharacterStuff\BodyPart.h" />
     <ClInclude Include="include\CharacterStuff\DynamicEquipment.h" />
     <ClInclude Include="include\CharacterStuff\Equipment.h" />
     <ClInclude Include="include\CharacterStuff\Inventory.h" />
@@ -195,7 +195,7 @@
     <ClCompile Include="src\Battle\Fighters\BotFighter.cpp" />
     <ClCompile Include="src\Battle\Fighters\Fighter.cpp" />
     <ClCompile Include="src\Battle\Fighters\FighterFactory.cpp" />
-    <ClCompile Include="src\Battle\HitDirection.cpp" />
+    <ClCompile Include="src\CharacterStuff\BodyPart.cpp" />
     <ClCompile Include="src\Battle\Fighters\PlayerFighter.cpp" />
     <ClCompile Include="src\CharacterStuff\Armors\Armor.cpp" />
     <ClCompile Include="src\CharacterStuff\Armors\ArmorStorage.cpp" />

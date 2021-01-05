@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Characters/Character.h"
+#include "CharacterStuff/BodyPart.h"
 
 namespace fightclub
 {
@@ -11,7 +12,7 @@ namespace fightclub
 			class DamageCalculator
 			{
 			public:
-				static int Calculate(const characters::Character& character, const characters::Character& target, HitDirection hitDirection)
+				static int Calculate(const characters::Character& character, const characters::Character& target, characterstuff::BodyPart hitDirection)
 				{
 					return character.getAttributes()->getDamage() - target.getEquipment().getArmorValue(hitDirection);
 				}

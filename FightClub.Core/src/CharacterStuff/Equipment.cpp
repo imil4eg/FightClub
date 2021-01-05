@@ -42,18 +42,18 @@ namespace fightclub
 				}
 			}
 
-			int Equipment::getArmorValue(battle::HitDirection hitDirection) const
+			int Equipment::getArmorValue(characterstuff::BodyPart hitDirection) const
 			{
 				const armors::Armor* armor;
 				switch (hitDirection)
 				{
-				case battle::HitDirection::head:
+				case characterstuff::BodyPart::head:
 					armor = this->getHelmet();
 					break;
-				case battle::HitDirection::body:
+				case characterstuff::BodyPart::body:
 					armor = this->getCuirasse();
 					break;
-				case battle::HitDirection::legs:
+				case characterstuff::BodyPart::legs:
 					armor = this->getBoots();
 					break;
 				default:

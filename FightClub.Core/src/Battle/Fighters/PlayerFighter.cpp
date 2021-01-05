@@ -3,6 +3,7 @@
 
 #include "Battle/Fighters/PlayerFighter.h"
 #include "Battle/DamageCalculator.h"
+#include "CharacterStuff/BodyPart.h"
 
 namespace fightclub
 {
@@ -27,7 +28,7 @@ namespace fightclub
 					{
 					}
 
-					battle::HitDirection askHitDirection()
+					characterstuff::BodyPart askBodyPart()
 					{
 						while (true)
 						{
@@ -35,15 +36,15 @@ namespace fightclub
 
 							if (boost::iequals(hitDirectionStr, HeadText))
 							{
-								return battle::HitDirection::head;
+								return characterstuff::BodyPart::head;
 							}
 							else if (boost::iequals(hitDirectionStr, BodyText))
 							{
-								return battle::HitDirection::body;
+								return characterstuff::BodyPart::body;
 							}
 							else if (boost::iequals(hitDirectionStr, LegsText))
 							{
-								return battle::HitDirection::legs;
+								return characterstuff::BodyPart::legs;
 							}
 							else
 							{
@@ -51,7 +52,7 @@ namespace fightclub
 							}
 						}
 
-						return battle::HitDirection::max_hit_direction;
+						return characterstuff::BodyPart::max_body_part;
 					}
 
 					~Impl() = default;
@@ -73,7 +74,7 @@ namespace fightclub
 					this->getMessageDisplayer().display("Choose where will you hit the opponen:\n1) " + pImpl->HeadText +
 								"\n2) " + pImpl->BodyText + "\n3) " + pImpl->LegsText + "\n\n");
 
-					battle::HitDirection hitDirection{ pImpl->askHitDirection() };
+					characterstuff::BodyPart hitDirection{ pImpl->askBodyPart() };
 
 					Fighter::hit(target, hitDirection);
 				}

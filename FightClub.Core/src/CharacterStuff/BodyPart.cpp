@@ -1,25 +1,25 @@
 #include <string>
 
-#include "Battle/HitDirection.h"
+#include "CharacterStuff/BodyPart.h"
 
 namespace fightclub
 {
 	namespace core
 	{
-		namespace battle
+		namespace characterstuff
 		{
-			std::string operator+ (std::string value, HitDirection hitDirection)
+			std::string operator+ (std::string value, BodyPart hitDirection)
 			{
 				std::string hitDirectionStr;
 				switch (hitDirection)
 				{
-				case fightclub::core::battle::HitDirection::head:
+				case characterstuff::BodyPart::head:
 					hitDirectionStr = "head";
 					break;
-				case fightclub::core::battle::HitDirection::body:
+				case characterstuff::BodyPart::body:
 					hitDirectionStr = "body";
 					break;
-				case fightclub::core::battle::HitDirection::legs:
+				case characterstuff::BodyPart::legs:
 					hitDirectionStr = "legs";
 					break;
 				default:

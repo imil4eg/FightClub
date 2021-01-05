@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Characters/Character.h"
+#include "CharacterStuff/BodyPart.h"
 #include "IO/IMessageDisplayer.h"
 
 namespace fightclub
@@ -27,7 +28,7 @@ namespace fightclub
 				public:
 					virtual ~Fighter();
 					virtual void playTurn(Fighter& target) = 0;
-					void hit(Fighter& target, battle::HitDirection hitDirection);
+					void hit(Fighter& target, characterstuff::BodyPart hitDirection);
 				};
 			}
 		}

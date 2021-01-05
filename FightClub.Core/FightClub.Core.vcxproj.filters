@@ -129,9 +129,6 @@
     <ClInclude Include="src\headers\IO\JsonAttributes.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\Battle\HitDirection.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="include\CharacterStuff\DynamicEquipment.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -154,6 +151,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\CharacterStuff\IAttributesManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CharacterStuff\BodyPart.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -192,9 +192,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Common\Configs\PlayerConfig.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Battle\HitDirection.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Battle\Fighters\BotFighter.cpp">
@@ -243,6 +240,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\CharacterStuff\AttributeType.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\CharacterStuff\BodyPart.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
