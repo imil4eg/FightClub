@@ -67,16 +67,23 @@ namespace fightclub
 
 				PlayerFighter::~PlayerFighter() = default;
 
-				void PlayerFighter::playTurn(Fighter& target)
+				void PlayerFighter::askDecisions()
 				{
 					this->getMessageDisplayer().display("Your turn!\n\n");
 
-					this->getMessageDisplayer().display("Choose where will you hit the opponen:\n1) " + pImpl->HeadText +
-								"\n2) " + pImpl->BodyText + "\n3) " + pImpl->LegsText + "\n\n");
+					this->getMessageDisplayer().display("Choose where will you hit the opponent:\n1) " + pImpl->HeadText +
+						"\n2) " + pImpl->BodyText + "\n3) " + pImpl->LegsText + "\n\n");
 
 					characterstuff::BodyPart hitDirection{ pImpl->askBodyPart() };
 
-					Fighter::hit(target, hitDirection);
+					this->setHitDirection(hitDirection);
+
+					this->getMessageDisplayer().display("Choose which part of your character will you protect:\n1) " + pImpl->HeadText +
+						"\n2) " + pImpl->BodyText + "\n3) " + pImpl->LegsText + "\n\n");
+
+					characterstuff::BodyPart protectDirection{ pImpl->askBodyPart() };
+
+					this->setProtectingPart(protectDirection);
 				}
 			}
 		}

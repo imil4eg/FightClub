@@ -19,7 +19,7 @@ namespace fightclub
 					{
 					}
 
-					void playTurn(Fighter& target) override;
+					void askDecisions() override;
 				};
 			}
 		}

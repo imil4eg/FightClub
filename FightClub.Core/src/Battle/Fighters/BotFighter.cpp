@@ -10,14 +10,19 @@ namespace fightclub
 		{
 			namespace fighters
 			{
-				void BotFighter::playTurn(Fighter& target)
+				void BotFighter::askDecisions()
 				{
 					this->getMessageDisplayer().display("Enemy turn!\n\n");
 
 					auto hitDirection{ static_cast<characterstuff::BodyPart>(
 						common::RandomGenerator::getBetween(0, static_cast<int>(characterstuff::BodyPart::max_body_part) - 1)) };
 
-					Fighter::hit(target, hitDirection);
+					this->setHitDirection(hitDirection);
+
+					auto protectingPart{ static_cast<characterstuff::BodyPart>(
+						common::RandomGenerator::getBetween(0, static_cast<int>(characterstuff::BodyPart::max_body_part) - 1)) };
+				
+					this->setProtectingPart(protectingPart);
 				}
 			}
 		}

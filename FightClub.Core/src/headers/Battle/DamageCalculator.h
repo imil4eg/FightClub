@@ -12,9 +12,19 @@ namespace fightclub
 			class DamageCalculator
 			{
 			public:
-				static int Calculate(const characters::Character& character, const characters::Character& target, characterstuff::BodyPart hitDirection)
+				static int Calculate(const characters::Character& character, const characters::Character& target, characterstuff::BodyPart hitDirection,
+									characterstuff::BodyPart enemyProtectingPart)
 				{
-					return character.getAttributes()->getDamage() - target.getEquipment().getArmorValue(hitDirection);
+					int totalDamage{ character.getAttributes()->getDamage() - target.getEquipment().getArmorValue(hitDirection) };
+
+					// If enemy correctly predicted hit direction then reduce 20% from damage.
+					if (hitDirection == enemyProtectingPart)
+					{
+						int twentyPercentFromDamage{ (totalDamage * 20) / 100 };
+						totalDamage -= twentyPercentFromDamage;
+					}
+
+					return totalDamage;
 				}
 			};
 		}

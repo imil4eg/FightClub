@@ -22,7 +22,7 @@ namespace fightclub
 								  characters::Character& player);
 					~PlayerFighter();
 
-					void playTurn(Fighter& target) override;
+					void askDecisions() override;
 				};
 			}
 		}

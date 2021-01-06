@@ -22,13 +22,13 @@ namespace fightclub
 					Fighter(const io::IMessageDisplayer& messageDisplayer, const characters::Character& character, const std::string characterName);
 
 					const io::IMessageDisplayer& getMessageDisplayer() const;
-					const characters::Character& getCharacter() const;
-					const std::string& getName() const;
+					void setProtectingPart(characterstuff::BodyPart bodyPart);
+					void setHitDirection(characterstuff::BodyPart hitDirection);
 
 				public:
 					virtual ~Fighter();
-					virtual void playTurn(Fighter& target) = 0;
-					void hit(Fighter& target, characterstuff::BodyPart hitDirection);
+					virtual void askDecisions() = 0;
+					void playTurn(Fighter& target);
 				};
 			}
 		}

@@ -60,6 +60,9 @@ namespace fightclub
 				bool playerWon{};
 				while (true)
 				{
+					playerFighter->askDecisions();
+					botFighter->askDecisions();
+
 					playerFighter->playTurn(*botFighter.get());
 
 					if (bot.getAttributes()->getHp() <= 0)
