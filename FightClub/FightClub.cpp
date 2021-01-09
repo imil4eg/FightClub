@@ -13,6 +13,7 @@
 #include "CharacterStuff/AttributesFactory.h"
 #include "CharacterStuff/Weapons/WeaponStorage.h"
 #include "CharacterStuff/Armors/ArmorStorage.h"
+#include "CharacterStuff/Abilities/AbilitiesStorage.h"
 #include "CharacterStuff/AttributesManager.h"
 #include "Common/Configs/Config.h"
 #include "Common/Configs/PlayerConfig.h"
@@ -32,7 +33,8 @@ int main()
 	fightclub::core::characterstuff::AttributesFactory attributesFactory{};
 	fightclub::core::characterstuff::weapons::WeaponStorage weaponStorage{ config };
 	fightclub::core::characterstuff::armors::ArmorStorage armorStorage{ config };
-	fightclub::core::io::savers::JsonGameDataProcesser jsonGameDataProcesser{ attributesFactory, weaponStorage, armorStorage, config };
+	fightclub::core::characterstuff::abilities::AbilitiesStorage abilitiesStorage{ config };
+	fightclub::core::io::savers::JsonGameDataProcesser jsonGameDataProcesser{ attributesFactory, weaponStorage, armorStorage, abilitiesStorage, config };
 	fightclub::core::characters::CharacterFactory characterFactory{ attributesFactory };
 	fightclub::core::common::configs::PlayerConfig playerConfig{ jsonGameDataProcesser, characterFactory };
 	fightclub::core::characters::bots::BotFactory botFactory{ attributesFactory, weaponStorage, armorStorage };

@@ -10,13 +10,16 @@ namespace fightclub
 			{
 				std::unique_ptr<characterstuff::Attributes> m_attributes;
 				std::unique_ptr<characterstuff::Equipment> m_equipment;
+				std::unique_ptr< abilitiesCointainer_t> m_abilitiesCointainer;
 				CharacterType m_characterType;
 
 				Impl(std::unique_ptr<characterstuff::Attributes> attributes,
 				     std::unique_ptr<characterstuff::Equipment> equipment,
+					 std::unique_ptr<abilitiesCointainer_t> abilitiesContainer,
 					 CharacterType characterType) : 
 					m_attributes{ std::move(attributes) },
 					m_equipment{std::move(equipment)},
+					m_abilitiesCointainer{std::move(abilitiesContainer)},
 					m_characterType{ characterType }
 				{
 				}
@@ -24,6 +27,7 @@ namespace fightclub
 				Impl(Impl&& impl) : 
 					m_attributes{ std::move(impl.m_attributes) },
 					m_equipment{std::move(impl.m_equipment)},
+					m_abilitiesCointainer{std::move(impl.m_abilitiesCointainer)},
 					m_characterType{ impl.m_characterType }
 				{
 				}
@@ -31,6 +35,7 @@ namespace fightclub
 				Impl(std::unique_ptr<Impl> impl) : 
 					m_attributes{ std::move(impl->m_attributes) },
 					m_equipment{std::move(impl->m_equipment)},
+					m_abilitiesCointainer{std::move(impl->m_abilitiesCointainer)},
 					m_characterType{ impl->m_characterType }
 				{
 				}
@@ -39,8 +44,8 @@ namespace fightclub
 			};
 
 			Character::Character(std::unique_ptr<characterstuff::Attributes> attributes, std::unique_ptr<characterstuff::Equipment> equipment,
-							     CharacterType characterType) :
-				pImpl(std::make_unique<Impl>(std::move(attributes), std::move(equipment), characterType))
+							     std::unique_ptr<abilitiesCointainer_t> abilitiesContainer, CharacterType characterType) :
+				pImpl(std::make_unique<Impl>(std::move(attributes), std::move(equipment), std::move(abilitiesContainer), characterType))
 			{
 			}
 
@@ -59,6 +64,7 @@ namespace fightclub
 			characterstuff::Attributes* Character::getAttributes() const { return pImpl->m_attributes.get(); }
 			void Character::updateAttributes(std::unique_ptr<characterstuff::Attributes> attributes) { pImpl->m_attributes = std::move(attributes); }
 			characterstuff::Equipment& Character::getEquipment() const { return *pImpl->m_equipment.get(); }
+			Character::abilitiesCointainer_t& Character::getAbilitiesContainer() const { return *pImpl->m_abilitiesCointainer; }
 			CharacterType Character::getCharcterType() const { return pImpl->m_characterType; }
 			void Character::restoreHp() { pImpl->m_attributes->setHp(100); }
 

@@ -10,9 +10,9 @@ namespace fightclub
 			{
 				std::unique_ptr<characterstuff::Inventory> m_inventory{};
 				const characterstuff::weapons::Weapon* m_weapon;
-
-				Impl(std::unique_ptr<characterstuff::Inventory> inventory,
-					 const characterstuff::weapons::Weapon* weapon) : 
+				
+				Impl(std::unique_ptr<characterstuff::Inventory> inventory, 
+					const characterstuff::weapons::Weapon* weapon) : 
 					m_inventory{std::move(inventory)},
 					m_weapon{ weapon }
 				{
@@ -23,8 +23,9 @@ namespace fightclub
 				std::unique_ptr<characterstuff::DynamicEquipment> equipment,
 				CharacterType characterType,
 				std::unique_ptr<characterstuff::Inventory> inventory,
+				std::unique_ptr<characterstuff::abilities::DynamicAbilitiesContainer> abilitiesContainer,
 				const characterstuff::weapons::Weapon* weapon) : 
-				Character{ std::move(attributes), std::move(equipment), characterType },
+				Character{ std::move(attributes), std::move(equipment), std::move(abilitiesContainer), characterType },
 				pImpl{std::make_unique<Impl>(std::move(inventory),weapon) }
 			{
 			}

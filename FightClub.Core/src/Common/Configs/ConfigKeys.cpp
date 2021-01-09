@@ -18,6 +18,8 @@ namespace fightclub
 						return "WeaponsFileDirectory";
 					case ConfigKeys::armorsFile:
 						return "ArmorsFileDirectory";
+					case ConfigKeys::abilitiesFile:
+						return "AbilitiesFileDirectory";
 					default:
 						throw std::exception("Specified config key not found.");
 					}

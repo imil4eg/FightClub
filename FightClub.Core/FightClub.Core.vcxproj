@@ -142,10 +142,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="include\CharacterStuff\Abilities\AbilitiesContainer.h" />
+    <ClInclude Include="include\CharacterStuff\Abilities\AbilitiesStorage.h" />
+    <ClInclude Include="include\CharacterStuff\Abilities\Ability.h" />
+    <ClInclude Include="include\CharacterStuff\Abilities\DynamicAbilitiesContainer.h" />
+    <ClInclude Include="include\CharacterStuff\Abilities\IAbilitiesManager.h" />
+    <ClInclude Include="include\CharacterStuff\Abilities\IAbilitiesStorage.h" />
     <ClInclude Include="include\CharacterStuff\AttributeType.h" />
     <ClInclude Include="include\CharacterStuff\BaseAttributesManager.h" />
     <ClInclude Include="include\CharacterStuff\IAttributesManager.h" />
     <ClInclude Include="include\CharacterStuff\IInventoryManager.h" />
+    <ClInclude Include="include\Exceptions\not_found_exception.h" />
     <ClInclude Include="src\headers\Battle\DamageCalculator.h" />
     <ClInclude Include="include\Battle\Fighters\FighterFactory.h" />
     <ClInclude Include="include\Battle\Fighters\IFighterFactory.h" />
@@ -195,6 +202,10 @@
     <ClCompile Include="src\Battle\Fighters\BotFighter.cpp" />
     <ClCompile Include="src\Battle\Fighters\Fighter.cpp" />
     <ClCompile Include="src\Battle\Fighters\FighterFactory.cpp" />
+    <ClCompile Include="src\CharacterStuff\Abilities\AbilitiesContainer.cpp" />
+    <ClCompile Include="src\CharacterStuff\Abilities\AbilitiesStorage.cpp" />
+    <ClCompile Include="src\CharacterStuff\Abilities\Ability.cpp" />
+    <ClCompile Include="src\CharacterStuff\Abilities\DynamicAbilitiesContainer.cpp" />
     <ClCompile Include="src\CharacterStuff\BodyPart.cpp" />
     <ClCompile Include="src\Battle\Fighters\PlayerFighter.cpp" />
     <ClCompile Include="src\CharacterStuff\Armors\Armor.cpp" />

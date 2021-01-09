@@ -4,6 +4,7 @@
 #include <fstream>
 
 #include "Characters/Player.h"
+#include "CharacterStuff/Abilities/DynamicAbilitiesContainer.h"
 #include "Common/Configs/ConfigKeys.h"
 #include "IO/Savers/JsonGameDataProcesser.h"
 #include "IO/JsonAttributes.h"
@@ -32,15 +33,18 @@ namespace fightclub
 					characterstuff::IAttributesFactory* m_attributesFactory;
 					characterstuff::weapons::IWeaponStorage* m_weaponStorage;
 					characterstuff::armors::IArmorStorage* m_armorStorage;
+					characterstuff::abilities::IAbilitiesStorage* m_abilitiesStorage;
 					common::configs::IConfig* m_config;
 
 					Impl(characterstuff::IAttributesFactory& attributeFactory,
 						characterstuff::weapons::IWeaponStorage& weaponStorage,
 						characterstuff::armors::IArmorStorage& armorStorage,
+						characterstuff::abilities::IAbilitiesStorage& abilitiesStorage,
 						common::configs::IConfig& config) : 
 						m_attributesFactory{&attributeFactory},
 						m_weaponStorage{&weaponStorage},
 						m_armorStorage{ &armorStorage },
+						m_abilitiesStorage{ &abilitiesStorage },
 						m_config{ &config }
 					{
 					}
@@ -112,13 +116,68 @@ namespace fightclub
 
 						return inventory;
 					}
+
+					void abilitiesToJson(json& json, const characterstuff::abilities::AbilitiesContainer& abilitiesContainer)
+					{
+						std::vector<boost::uuids::uuid> selectedAbilitiesIds;
+						for (auto& selectedAbility : abilitiesContainer.getSelected())
+						{
+							if (selectedAbility == nullptr)
+								continue;
+
+							selectedAbilitiesIds.push_back(selectedAbility->getId());
+						}
+
+						json[io::JsonAttributes::SelectedAbilities] = selectedAbilitiesIds;
+
+						std::vector<boost::uuids::uuid> characterAbilitiesIds;
+						for (auto& ability : abilitiesContainer.getAll())
+						{
+							characterAbilitiesIds.push_back(ability->getId());
+						}
+
+						json[io::JsonAttributes::Abilities] = characterAbilitiesIds;
+					}
+
+					std::unique_ptr<characterstuff::abilities::DynamicAbilitiesContainer> loadAbilities(json& saveFile)
+					{
+						std::vector<std::unique_ptr<characterstuff::abilities::Ability>> abilities;
+						if (saveFile.contains(io::JsonAttributes::Abilities))
+						{
+							for (auto& abilityIdJson : saveFile[io::JsonAttributes::Abilities].items())
+							{
+								auto abilityId{ 
+									boost::lexical_cast<boost::uuids::uuid>(
+										abilityIdJson.value()[io::JsonAttributes::Id].get<std::string>()) };
+								abilities.push_back(m_abilitiesStorage->getOrDefault(abilityId));
+							}
+						}
+
+						characterstuff::abilities::DynamicAbilitiesContainer::selectedAbilityIds_t selectedAbilities;
+						int abilityIdIndex{};
+						if (saveFile.contains(io::JsonAttributes::SelectedAbilities))
+						{
+							for (auto& selectedAbilityIdJson : saveFile[io::JsonAttributes::SelectedAbilities].items())
+							{
+								auto selectedAbilityId{
+									boost::lexical_cast<boost::uuids::uuid>(
+										selectedAbilityIdJson.value()[io::JsonAttributes::Id].get <std::string>()) };
+								selectedAbilities[abilityIdIndex] = selectedAbilityId;
+
+								++abilityIdIndex;
+							}
+						}
+
+						return std::make_unique<characterstuff::abilities::DynamicAbilitiesContainer>(std::move(abilities), selectedAbilities);
+					}
 				};
 
 				JsonGameDataProcesser::JsonGameDataProcesser(characterstuff::IAttributesFactory& attributeFactory,
 					characterstuff::weapons::IWeaponStorage& weaponStorage,
 					characterstuff::armors::IArmorStorage& armorStorage,
+					characterstuff::abilities::IAbilitiesStorage& abilitiesStorage,
 					common::configs::IConfig& config) :
-					pImpl(std::make_unique<Impl>(attributeFactory, weaponStorage, armorStorage, config))
+					pImpl(std::make_unique<Impl>(attributeFactory, weaponStorage, armorStorage, abilitiesStorage, config))
 				{
 				}
 
@@ -130,6 +189,7 @@ namespace fightclub
 
 					pImpl->characterToJson(j, player);
 					pImpl->inventoryToJson(j, player.getInventory());
+					pImpl->abilitiesToJson(j, player.getAbilitiesContainer());
 
 					std::ofstream outFile{ pImpl->m_config->get(common::configs::ConfigKeys::saveFile) };
 					outFile << std::setw(4) << j << std::endl;
@@ -163,7 +223,10 @@ namespace fightclub
 
 					auto equipment{ std::make_unique<characterstuff::DynamicEquipment>(head, cuirass, legs) };
 
-					return std::make_unique<characters::Player>(std::move(attributes), std::move(equipment), characterType, std::move(inventory), weapon);
+					auto abilities{ pImpl->loadAbilities(characterJson) };
+
+					return std::make_unique<characters::Player>(std::move(attributes), std::move(equipment), characterType, 
+						std::move(inventory), std::move(abilities), weapon);
 				}
 			}
 		}

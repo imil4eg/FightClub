@@ -15,6 +15,7 @@ namespace fightclub
 					saveFile,
 					weaponsFile,
 					armorsFile,
+					abilitiesFile,
 					max_config_keys
 				};
 

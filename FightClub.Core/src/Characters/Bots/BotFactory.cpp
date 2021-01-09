@@ -1,5 +1,6 @@
 #include "Characters/Bots/BotFactory.h"
 #include "Common/RandomGenerator.h"
+#include "CharacterStuff/Abilities/AbilitiesContainer.h"
 
 namespace fightclub
 {
@@ -81,8 +82,9 @@ namespace fightclub
 					auto cuirasse{ pImpl->m_armorStorage->getRandom(characterstuff::armors::ArmorType::body) };
 					auto boots{	   pImpl->m_armorStorage->getRandom(characterstuff::armors::ArmorType::legs) };
 					auto equipment{ std::make_unique<characterstuff::StaticEquipment>(std::move(head), std::move(cuirasse), std::move(boots)) };
+					auto abilitiesContainer{ std::make_unique<characterstuff::abilities::AbilitiesContainer>() };
 
-					return Bot{ std::move(botAttributes), std::move(equipment), botCharacterType, std::move(weapon) };
+					return Bot{ std::move(botAttributes), std::move(equipment), std::move(abilitiesContainer), botCharacterType, std::move(weapon) };
 				}
 			}
 		}
