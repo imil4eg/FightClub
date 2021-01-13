@@ -15,31 +15,37 @@ namespace fightclub
 					AbilityType m_type;
 					int m_cost;
 					int m_damage;
+					int m_duration;
 
-					Impl(std::string name, AbilityType type, int cost, int damage) :
-						m_name{ name }, m_type{ type }, m_cost{ cost }, m_damage{ damage }
+					Impl(std::string name, AbilityType type, int cost, int damage, int duration) :
+						m_name{ name },
+						m_type{ type },
+						m_cost{ cost },
+						m_damage{ damage },
+						m_duration{ duration }
 					{
 					}
 
-					Impl(boost::uuids::uuid&& id, std::string&& name, AbilityType type, int cost, int damage) :
+					Impl(boost::uuids::uuid&& id, std::string&& name, AbilityType type, int cost, int damage, int duration) :
 						m_id{std::move(id)},
 						m_name{std::move(name)},
 						m_type{type},
 						m_cost{ cost },
-						m_damage{ damage }
+						m_damage{ damage },
+						m_duration{duration}
 					{
 					}
 
 					~Impl() = default;
 				};
 
-				Ability::Ability(std::string name, AbilityType type, int cost, int damage) :
-					pImpl{ std::make_unique<Impl>(name, type, cost, damage) }
+				Ability::Ability(std::string name, AbilityType type, int cost, int damage, int duration) :
+					pImpl{ std::make_unique<Impl>(name, type, cost, damage, duration) }
 				{
 				}
 
-				Ability::Ability(boost::uuids::uuid&& id, std::string&& name, AbilityType type, int cost, int damage) :
-					pImpl{ std::make_unique<Impl>(std::move(id), std::move(name), type, cost, damage) }
+				Ability::Ability(boost::uuids::uuid&& id, std::string&& name, AbilityType type, int cost, int damage, int duration) :
+					pImpl{ std::make_unique<Impl>(std::move(id), std::move(name), type, cost, damage, duration) }
 				{
 				}
 
@@ -50,6 +56,7 @@ namespace fightclub
 				AbilityType Ability::getType() const { return pImpl->m_type; }
 				int Ability::getCost() const { return pImpl->m_cost; }
 				int Ability::getDamage() const { return pImpl->m_damage; }
+				int Ability::getDuration() const { return pImpl->m_duration; }
 			}
 		}
 	}

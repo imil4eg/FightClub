@@ -21,8 +21,8 @@ namespace fightclub
 					std::unique_ptr<Impl> pImpl;
 
 				public:
-					Ability(std::string name, AbilityType type, int cost, int damage);
-					Ability(boost::uuids::uuid&& id, std::string&& name, AbilityType type, int cost, int damage);
+					Ability(std::string name, AbilityType type, int cost, int damage, int duration);
+					Ability(boost::uuids::uuid&& id, std::string&& name, AbilityType type, int cost, int damage, int duration);
 					~Ability();
 
 					const std::string& getName() const;
@@ -30,6 +30,7 @@ namespace fightclub
 					AbilityType getType() const;
 					int getCost() const;
 					int getDamage() const;
+					int getDuration() const;
 				};
 			}
 		}
