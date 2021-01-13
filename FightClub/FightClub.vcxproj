@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -152,6 +152,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="CharacterStuff\AbilitiesManager.cpp" />
     <ClCompile Include="CharacterStuff\AttributesManager.cpp" />
     <ClCompile Include="CharacterStuff\InventoryManager.cpp" />
     <ClCompile Include="FightClub.cpp" />
@@ -159,10 +160,12 @@
     <ClCompile Include="Menu.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Headers\CharacterStuff\AbilitiesManager.h" />
     <ClInclude Include="Headers\CharacterStuff\AttributesManager.h" />
     <ClInclude Include="Headers\CharacterStuff\InventoryManager.h" />
     <ClInclude Include="Headers\Common\Commands.h" />
     <ClInclude Include="Headers\Common\IntHelper.h" />
+    <ClInclude Include="Headers\Exceptions\invalid_input_type.h" />
     <ClInclude Include="Headers\IO\CommandLineParser.h" />
     <ClInclude Include="Headers\IO\ICommandLineParser.h" />
     <ClInclude Include="Headers\IO\InputProcesser.h" />

@@ -14,7 +14,7 @@ namespace fightclub
 		auto* player{ m_playerConfig->getCharacter() };
 		while (true)
 		{
-			std::cout << "Please, enter the command\nCommands:\n1) Play\n2) Customize character\n3) Inventory\n4) Exit\n\n";
+			std::cout << "Please, enter the command\nCommands:\n1) Play\n2) Customize character\n3) Inventory\n4) Abilities\n5) Exit\n\n";
 			auto commandStr{ m_inputProcesser->getLine() };
 
 			if (boost::iequals(commandStr, "play"))
@@ -28,6 +28,10 @@ namespace fightclub
 			else if (boost::iequals(commandStr, "inventory"))
 			{
 				m_inventoryManager->enterInventory(*player);
+			}
+			else if (boost::iequals(commandStr, "abilities"))
+			{
+				m_abilitiesManager->enter(*player);
 			}
 			else if (boost::iequals(commandStr, "exit"))
 			{

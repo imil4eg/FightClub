@@ -14,6 +14,7 @@
 #include "CharacterStuff/Weapons/WeaponStorage.h"
 #include "CharacterStuff/Armors/ArmorStorage.h"
 #include "CharacterStuff/Abilities/AbilitiesStorage.h"
+#include "CharacterStuff/AbilitiesManager.h"
 #include "CharacterStuff/AttributesManager.h"
 #include "Common/Configs/Config.h"
 #include "Common/Configs/PlayerConfig.h"
@@ -41,8 +42,9 @@ int main()
 	fightclub::core::battle::Battle battle{ botFactory, fighterFactory, messageDisplayer };
 	fightclub::io::CommandLineParser commandLineParser{};
 	fightclub::characterstuff::AttributesManager attributesManager{ inputProcesser, attributesFactory, commandLineParser };
-	fightclub::Menu menu{ battle, playerConfig, jsonGameDataProcesser, inputProcesser, inventoryManager, attributesManager };
-
+	fightclub::characterstuff::AbilitiesManager abilitiesManager{ inputProcesser };
+	fightclub::Menu menu{ battle, playerConfig, jsonGameDataProcesser, inputProcesser, inventoryManager, attributesManager, abilitiesManager };
+	
 	srand(static_cast<unsigned int>(time(0)));
 
 	playerConfig.initialize();

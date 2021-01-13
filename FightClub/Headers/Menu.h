@@ -7,6 +7,7 @@
 #include "Common/Configs/IPlayerConfig.h"
 #include "CharacterStuff/IInventoryManager.h"
 #include "CharacterStuff/IAttributesManager.h"
+#include "CharacterStuff/Abilities/IAbilitiesManager.h"
 #include "IMenu.h"
 #include "IO/Savers/GameDataProcesser.h"
 #include "IO/IInputProcesser.h"
@@ -22,6 +23,7 @@ namespace fightclub
 		core::io::IInputProcesser* m_inputProcesser;
 		core::characterstuff::IInventoryManager* m_inventoryManager;
 		core::characterstuff::IAttributesManager* m_attributesManger;
+		core::characterstuff::abilities::IAbilitiesManager* m_abilitiesManager;
 
 	public:
 		Menu(core::battle::IBattle& battle,
@@ -29,13 +31,15 @@ namespace fightclub
 			core::io::savers::GameDataProcesser& gameDataProcesser,
 			core::io::IInputProcesser& inputProcesser,
 			core::characterstuff::IInventoryManager& inventoryManager,
-			core::characterstuff::IAttributesManager& attributesManager):
+			core::characterstuff::IAttributesManager& attributesManager,
+			core::characterstuff::abilities::IAbilitiesManager& abilitiesManager):
 			m_battle{ &battle },
 			m_playerConfig{ &playerConfig },
 			m_gameDataProcesser{ &gameDataProcesser },
 			m_inputProcesser{ &inputProcesser },
 			m_inventoryManager{&inventoryManager},
-			m_attributesManger{&attributesManager}
+			m_attributesManger{&attributesManager},
+			m_abilitiesManager{&abilitiesManager}
 		{
 		}
 
