@@ -9,29 +9,31 @@ namespace fightclub
 		{
 			namespace abilities
 			{
-				void DynamicAbilitiesContainer::replace(const std::string& oldAbilityName, const std::string& newAbilityName)
+				void DynamicAbilitiesContainer::replace(int oldAbilitySlotNumber, const std::string& newAbilityName)
 				{
 					auto newAbilityIt{ AbilitiesContainer::get(newAbilityName) };
 
-					if (newAbilityIt == AbilitiesContainer::getAll().end())
+					auto& allAbilitiesContainer{ AbilitiesContainer::getAllAbilitiesForEditing() };
+					if (newAbilityIt == allAbilitiesContainer.end())
 					{
 						throw exceptions::not_found_exception("Ability with name " + newAbilityName + " not found.");
 					}
 
-					auto& selectedAbilities{ AbilitiesContainer::getSelected() };
+					auto& selectedAbilities{ AbilitiesContainer::getSelectedForEditing() };
 
-					auto oldSelectedAbilityIt{ std::find_if(selectedAbilities.begin(), selectedAbilities.end(),
-						[&](const Ability* ability)
-						{
-							return ability->getName() == oldAbilityName;
-						}) };
-
-					if (oldSelectedAbilityIt == selectedAbilities.end())
+					if ((oldAbilitySlotNumber - 1) < 0 || (oldAbilitySlotNumber - 1) > selectedAbilities.size())
 					{
-						throw exceptions::not_found_exception("Ability with name " + oldAbilityName + " not found.");
+						throw std::out_of_range("Maximum size of abilities is " + std::to_string(selectedAbilities.size()) +
+							". Entered " + std::to_string(oldAbilitySlotNumber) + " is out of range.\n");
 					}
 
-					*oldSelectedAbilityIt = *newAbilityIt;
+					if (selectedAbilities[oldAbilitySlotNumber - 1] != nullptr)
+					{
+						allAbilitiesContainer.push_back(selectedAbilities[oldAbilitySlotNumber - 1]);
+					}
+
+					selectedAbilities[(oldAbilitySlotNumber - 1)] = *newAbilityIt;
+					allAbilitiesContainer.erase(newAbilityIt);
 				}
 			}
 		}

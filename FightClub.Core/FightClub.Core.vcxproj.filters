@@ -177,6 +177,9 @@
     <ClInclude Include="include\Exceptions\not_found_exception.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="include\CharacterStuff\Abilities\AbilityType.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\CharacterStuff\Armors\ArmorStorage.cpp">
@@ -276,6 +279,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\CharacterStuff\Abilities\AbilitiesStorage.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\CharacterStuff\Abilities\AbilityType.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

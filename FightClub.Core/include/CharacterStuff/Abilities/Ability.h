@@ -4,6 +4,8 @@
 #include <string>
 #include <memory>
 
+#include "AbilityType.h"
+
 namespace fightclub
 {
 	namespace core
@@ -14,26 +16,20 @@ namespace fightclub
 			{
 				class Ability
 				{
-				public:
-					enum class Type
-					{
-						boost,
-						attack,
-						trap,
-						max_type
-					};
-
 				private:
 					struct Impl;
 					std::unique_ptr<Impl> pImpl;
 
 				public:
-					Ability(std::string name, Type type, int cost, int damage);
-					Ability(boost::uuids::uuid&& id, std::string&& name, Type type, int cost, int damage);
+					Ability(std::string name, AbilityType type, int cost, int damage);
+					Ability(boost::uuids::uuid&& id, std::string&& name, AbilityType type, int cost, int damage);
 					~Ability();
 
 					const std::string& getName() const;
 					const boost::uuids::uuid& getId() const;
+					AbilityType getType() const;
+					int getCost() const;
+					int getDamage() const;
 				};
 			}
 		}

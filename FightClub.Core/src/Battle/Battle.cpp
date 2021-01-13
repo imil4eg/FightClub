@@ -54,7 +54,7 @@ namespace fightclub
 				FightPreparation(player, bot);
 
 				std::stringstream stream;
-				stream << player;
+				stream << bot;
 				pImpl->m_messageDisplayer->display("You enemy attributes:\n" + stream.str());
 
 				bool playerWon{};

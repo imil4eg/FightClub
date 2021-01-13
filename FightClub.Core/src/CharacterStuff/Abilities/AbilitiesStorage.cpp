@@ -57,7 +57,7 @@ namespace fightclub
 
 						auto id{ boost::lexical_cast<boost::uuids::uuid>(ability.value()[io::JsonAttributes::Id].get<std::string>()) };
 						auto name{ ability.value()[io::JsonAttributes::Name].get<std::string>() };
-						auto type{ static_cast<Ability::Type>(ability.value()[io::JsonAttributes::Type].get<int>()) };
+						auto type{ static_cast<AbilityType>(ability.value()[io::JsonAttributes::Type].get<int>()) };
 						auto cost{ ability.value()[io::JsonAttributes::Cost].get<int>() };
 						auto damage{ ability.value()[io::JsonAttributes::Damage].get<int>() };
 

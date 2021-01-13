@@ -16,25 +16,27 @@ namespace fightclub
 					std::vector<std::unique_ptr<Ability>> m_abilities;
 					std::vector<Ability*> m_abilitiesReferences;
 					selectedAbilities_t m_selectedAbilities;
-					int m_selectedAbilitiesCount;
-
+					
 					Impl(std::vector<std::unique_ptr<Ability>>&& abilities,
 						selectedAbilityIds_t& selectedAbilityIds) :
 						m_abilities{ std::move(abilities) },
 						m_abilitiesReferences{},
-						m_selectedAbilities{},
-						m_selectedAbilitiesCount{}
+						m_selectedAbilities{}
 					{
 						std::set<boost::uuids::uuid> abilityIdsSet(std::begin(selectedAbilityIds), std::end(selectedAbilityIds));
-						m_abilitiesReferences.reserve(abilities.size());
-						for (auto it{ abilities.begin() }; it != abilities.end(); ++it)
-						{
-							m_abilitiesReferences.push_back(it->get());
+						m_abilitiesReferences.reserve(m_abilities.size());
 						
+						int selectedAbilitiesCounter{};
+						for (auto it{ m_abilities.begin() }; it != m_abilities.end(); ++it)
+						{							
 							if (abilityIdsSet.find(it->get()->getId()) != abilityIdsSet.end())
 							{
-								m_selectedAbilities[m_selectedAbilitiesCount] = it->get();
-								++m_selectedAbilitiesCount;
+								m_selectedAbilities[selectedAbilitiesCounter] = it->get();
+								++selectedAbilitiesCounter;
+							}
+							else
+							{
+								m_abilitiesReferences.push_back(it->get());
 							}
 						}
 					}
@@ -42,8 +44,7 @@ namespace fightclub
 					Impl() : 
 						m_abilities{},
 						m_abilitiesReferences{},
-						m_selectedAbilities{},
-						m_selectedAbilitiesCount{}
+						m_selectedAbilities{}
 					{
 					}
 
@@ -87,9 +88,14 @@ namespace fightclub
 					return pImpl->m_selectedAbilities;
 				}
 
-				AbilitiesContainer::selectedAbilities_t& AbilitiesContainer::getSelected()
+				AbilitiesContainer::selectedAbilities_t& AbilitiesContainer::getSelectedForEditing()
 				{
 					return pImpl->m_selectedAbilities;
+				}
+
+				AbilitiesContainer::abilities_t& AbilitiesContainer::getAllAbilitiesForEditing()
+				{
+					return pImpl->m_abilitiesReferences;
 				}
 			}
 		}

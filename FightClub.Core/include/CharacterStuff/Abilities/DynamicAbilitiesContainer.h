@@ -28,7 +28,7 @@ namespace fightclub
 					{
 					}
 
-					void replace(const std::string& oldAbilityName, const std::string& newAbilityName);
+					void replace(int oldAbilitySlotNumber, const std::string& newAbilityName);
 				};
 			}
 		}

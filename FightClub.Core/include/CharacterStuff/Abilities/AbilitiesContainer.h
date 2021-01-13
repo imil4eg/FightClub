@@ -29,7 +29,8 @@ namespace fightclub
 
 				protected:
 					abilities_t::iterator get(const std::string& abilityName) const;
-					selectedAbilities_t& getSelected();
+					selectedAbilities_t& getSelectedForEditing();
+					abilities_t& getAllAbilitiesForEditing();
 
 				public:
 					AbilitiesContainer(std::vector<std::unique_ptr<Ability>>&& abilities, 

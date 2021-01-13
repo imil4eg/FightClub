@@ -119,21 +119,21 @@ namespace fightclub
 
 					void abilitiesToJson(json& json, const characterstuff::abilities::AbilitiesContainer& abilitiesContainer)
 					{
-						std::vector<boost::uuids::uuid> selectedAbilitiesIds;
+						std::vector<std::string> selectedAbilitiesIds;
 						for (auto& selectedAbility : abilitiesContainer.getSelected())
 						{
 							if (selectedAbility == nullptr)
 								continue;
 
-							selectedAbilitiesIds.push_back(selectedAbility->getId());
+							selectedAbilitiesIds.push_back(boost::lexical_cast<std::string>(selectedAbility->getId()));
 						}
 
 						json[io::JsonAttributes::SelectedAbilities] = selectedAbilitiesIds;
 
-						std::vector<boost::uuids::uuid> characterAbilitiesIds;
+						std::vector<std::string> characterAbilitiesIds;
 						for (auto& ability : abilitiesContainer.getAll())
 						{
-							characterAbilitiesIds.push_back(ability->getId());
+							characterAbilitiesIds.push_back(boost::lexical_cast<std::string>(ability->getId()));
 						}
 
 						json[io::JsonAttributes::Abilities] = characterAbilitiesIds;
@@ -148,7 +148,7 @@ namespace fightclub
 							{
 								auto abilityId{ 
 									boost::lexical_cast<boost::uuids::uuid>(
-										abilityIdJson.value()[io::JsonAttributes::Id].get<std::string>()) };
+										abilityIdJson.value().get<std::string>()) };
 								abilities.push_back(m_abilitiesStorage->getOrDefault(abilityId));
 							}
 						}
@@ -161,8 +161,9 @@ namespace fightclub
 							{
 								auto selectedAbilityId{
 									boost::lexical_cast<boost::uuids::uuid>(
-										selectedAbilityIdJson.value()[io::JsonAttributes::Id].get <std::string>()) };
+										selectedAbilityIdJson.value().get<std::string>()) };
 								selectedAbilities[abilityIdIndex] = selectedAbilityId;
+								abilities.push_back(m_abilitiesStorage->getOrDefault(selectedAbilityId));
 
 								++abilityIdIndex;
 							}
