@@ -60,8 +60,9 @@ namespace fightclub
 						auto type{ static_cast<AbilityType>(ability.value()[io::JsonAttributes::Type].get<int>()) };
 						auto cost{ ability.value()[io::JsonAttributes::Cost].get<int>() };
 						auto damage{ ability.value()[io::JsonAttributes::Damage].get<int>() };
+						auto duration{ ability.value()[io::JsonAttributes::Duration].get<int>() };
 
-						return std::make_unique<Ability>(std::move(id), std::move(name), type, cost, damage);
+						return std::make_unique<Ability>(std::move(id), std::move(name), type, cost, damage, duration);
 					}
 
 					return nullptr;

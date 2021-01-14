@@ -10,6 +10,7 @@
 #include "Characters/CharacterFactory.h"
 #include "Characters/Bots/BotFactory.h"
 #include "CharacterStuff/InventoryManager.h"
+#include "CharacterStuff/AbilitiesDisplayer.h"
 #include "CharacterStuff/AttributesFactory.h"
 #include "CharacterStuff/Weapons/WeaponStorage.h"
 #include "CharacterStuff/Armors/ArmorStorage.h"
@@ -42,7 +43,8 @@ int main()
 	fightclub::core::battle::Battle battle{ botFactory, fighterFactory, messageDisplayer };
 	fightclub::io::CommandLineParser commandLineParser{};
 	fightclub::characterstuff::AttributesManager attributesManager{ inputProcesser, attributesFactory, commandLineParser };
-	fightclub::characterstuff::AbilitiesManager abilitiesManager{ inputProcesser };
+	fightclub::characterstuff::AbilitiesDisplayer abilitiesDisplayer{};
+	fightclub::characterstuff::AbilitiesManager abilitiesManager{ inputProcesser, abilitiesDisplayer };
 	fightclub::Menu menu{ battle, playerConfig, jsonGameDataProcesser, inputProcesser, inventoryManager, attributesManager, abilitiesManager };
 	
 	srand(static_cast<unsigned int>(time(0)));

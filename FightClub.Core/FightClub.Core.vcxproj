@@ -147,6 +147,7 @@
     <ClInclude Include="include\CharacterStuff\Abilities\Ability.h" />
     <ClInclude Include="include\CharacterStuff\Abilities\AbilityType.h" />
     <ClInclude Include="include\CharacterStuff\Abilities\DynamicAbilitiesContainer.h" />
+    <ClInclude Include="include\CharacterStuff\Abilities\IAbilitiesDisplayer.h" />
     <ClInclude Include="include\CharacterStuff\Abilities\IAbilitiesManager.h" />
     <ClInclude Include="include\CharacterStuff\Abilities\IAbilitiesStorage.h" />
     <ClInclude Include="include\CharacterStuff\AttributeType.h" />

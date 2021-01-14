@@ -33,6 +33,9 @@
     <ClCompile Include="CharacterStuff\AbilitiesManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CharacterStuff\AbilitiesDisplayer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Headers\IO\InputProcesser.h">
@@ -69,6 +72,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Headers\Exceptions\invalid_input_type.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\CharacterStuff\AbilitiesDisplayer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

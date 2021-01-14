@@ -152,6 +152,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="CharacterStuff\AbilitiesDisplayer.cpp" />
     <ClCompile Include="CharacterStuff\AbilitiesManager.cpp" />
     <ClCompile Include="CharacterStuff\AttributesManager.cpp" />
     <ClCompile Include="CharacterStuff\InventoryManager.cpp" />
@@ -160,6 +161,7 @@
     <ClCompile Include="Menu.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Headers\CharacterStuff\AbilitiesDisplayer.h" />
     <ClInclude Include="Headers\CharacterStuff\AbilitiesManager.h" />
     <ClInclude Include="Headers\CharacterStuff\AttributesManager.h" />
     <ClInclude Include="Headers\CharacterStuff\InventoryManager.h" />

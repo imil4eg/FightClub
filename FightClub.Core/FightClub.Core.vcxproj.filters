@@ -180,6 +180,9 @@
     <ClInclude Include="include\CharacterStuff\Abilities\AbilityType.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="include\CharacterStuff\Abilities\IAbilitiesDisplayer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\CharacterStuff\Armors\ArmorStorage.cpp">

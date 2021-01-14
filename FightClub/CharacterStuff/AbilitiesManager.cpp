@@ -22,11 +22,11 @@ namespace fightclub
 
 				if (boost::iequals(command, m_allAbilitiesCommand))
 				{
-					displayAllAbilities(character.getAbilitiesContainer().getAll());
+					m_abilitiesDisplayer->showAll(character.getAbilitiesContainer());
 				}
 				else if (boost::iequals(command, m_selectedAbilitiesCommand))
 				{
-					displaySelectedAbilities(character.getAbilitiesContainer().getSelected());
+					m_abilitiesDisplayer->showSelected(character.getAbilitiesContainer());
 				}
 				else if (boost::iequals(command, m_editAbilitiesCommand))
 				{
@@ -49,11 +49,12 @@ namespace fightclub
 			{
 				try
 				{
-					displayAllAbilities(container.getAll());
+
+					m_abilitiesDisplayer->showAll(container);
 
 					std::cout << '\n';
 
-					displaySelectedAbilities(container.getSelected());
+					m_abilitiesDisplayer->showSelected(container);
 
 					std::cout << "\nEnter ability to change slot number or " <<  m_exitCommand << " to leave\n";
 					std::string oldAbilityName{ m_inputProcesser->getLine() };
@@ -80,55 +81,6 @@ namespace fightclub
 				{
 					std::cout << ex.what() << '\n';
 				}
-			}
-		}
-
-		void AbilitiesManager::displayAllAbilities(const abils::AbilitiesContainer::abilities_t& abilities) const
-		{
-			std::cout << "\nAbilities:\n";
-
-			displayAbilities<abils::AbilitiesContainer::abilities_t::const_iterator>(abilities.cbegin(), abilities.cend(),
-				[&](const abils::Ability* ability)
-				{
-					displayAbility(*ability);
-				});
-		}
-
-		void AbilitiesManager::displaySelectedAbilities(const abils::AbilitiesContainer::selectedAbilities_t& selectedAbilities) const
-		{
-			std::cout << "\nCurrent selected abilities:\n";
-
-			displayAbilities<abils::AbilitiesContainer::selectedAbilities_t::const_iterator>(selectedAbilities.cbegin(), selectedAbilities.cend(),
-				[&](const abils::Ability* ability)
-				{
-					if (ability == nullptr)
-						std::cout << "Empty slot";
-					else
-						displayAbility(*ability);
-				});
-		}
-
-		void AbilitiesManager::displayAbility(const abils::Ability& ability) const
-		{
-			std::cout << "Name: " + ability.getName() + " Type: " + abils::to_string(ability.getType()) +
-				" Cost: " + std::to_string(ability.getCost()) + " Damage: " + std::to_string(ability.getDamage());
-		}
-
-
-		template<class It>
-		void AbilitiesManager::displayAbilities(It begin, const It end, std::function<void(const abils::Ability*)> displayAbility) const
-		{			
-			int index{ 1 };
-			while (begin != end)
-			{
-				std::cout << index << ") ";
-
-				displayAbility(*begin);
-
-				std::cout << '\n';
-
-				++begin;
-				++index;
 			}
 		}
 	}

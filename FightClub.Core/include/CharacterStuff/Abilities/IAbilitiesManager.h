@@ -20,9 +20,6 @@ namespace fightclub
 
 					virtual void enter(characters::Character& character) = 0;
 					virtual void changeSelectedAbilities(AbilitiesContainer& container) const = 0;
-					virtual void displayAllAbilities(const std::vector<Ability*>& abilities) const = 0;
-					virtual void displaySelectedAbilities(const AbilitiesContainer::selectedAbilities_t& selectedAbilities) const = 0;
-					virtual void displayAbility(const Ability& ability) const = 0;
 				};
 			}
 		}

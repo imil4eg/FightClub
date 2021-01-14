@@ -15,6 +15,7 @@ namespace fightclub
 			const std::string& JsonAttributes::Weapons = "weapons";
 			const std::string& JsonAttributes::Abilities = "abilities";
 			const std::string& JsonAttributes::Cost = "cost";
+			const std::string& JsonAttributes::Duration = "duration";
 			const std::string& JsonAttributes::SelectedAbilities = "selectedAbilities";
 		}
 	}
