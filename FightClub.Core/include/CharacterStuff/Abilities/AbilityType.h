@@ -12,8 +12,8 @@ namespace fightclub
 			{
 				enum class AbilityType
 				{
-					boost,
-					attack,
+					damage_boost,
+					armor_boost,
 					trap,
 					max_type
 				};

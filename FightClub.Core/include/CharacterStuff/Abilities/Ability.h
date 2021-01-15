@@ -29,7 +29,7 @@ namespace fightclub
 					const boost::uuids::uuid& getId() const;
 					AbilityType getType() const;
 					int getCost() const;
-					int getDamage() const;
+					int getValue() const;
 					int getDuration() const;
 				};
 			}

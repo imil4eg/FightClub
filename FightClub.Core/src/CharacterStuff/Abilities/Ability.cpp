@@ -14,24 +14,24 @@ namespace fightclub
 					std::string m_name;
 					AbilityType m_type;
 					int m_cost;
-					int m_damage;
+					int m_value;
 					int m_duration;
 
-					Impl(std::string name, AbilityType type, int cost, int damage, int duration) :
+					Impl(std::string name, AbilityType type, int cost, int value, int duration) :
 						m_name{ name },
 						m_type{ type },
 						m_cost{ cost },
-						m_damage{ damage },
+						m_value{ value },
 						m_duration{ duration }
 					{
 					}
 
-					Impl(boost::uuids::uuid&& id, std::string&& name, AbilityType type, int cost, int damage, int duration) :
+					Impl(boost::uuids::uuid&& id, std::string&& name, AbilityType type, int cost, int value, int duration) :
 						m_id{std::move(id)},
 						m_name{std::move(name)},
 						m_type{type},
 						m_cost{ cost },
-						m_damage{ damage },
+						m_value{ value },
 						m_duration{duration}
 					{
 					}
@@ -55,7 +55,7 @@ namespace fightclub
 				const boost::uuids::uuid& Ability::getId() const { return pImpl->m_id; }
 				AbilityType Ability::getType() const { return pImpl->m_type; }
 				int Ability::getCost() const { return pImpl->m_cost; }
-				int Ability::getDamage() const { return pImpl->m_damage; }
+				int Ability::getValue() const { return pImpl->m_value; }
 				int Ability::getDuration() const { return pImpl->m_duration; }
 			}
 		}
