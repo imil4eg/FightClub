@@ -40,7 +40,8 @@ namespace fightclub
 		void AbilitiesDisplayer::show(const abils::Ability& ability) const
 		{
 			std::cout << "Name: " + ability.getName() + " Type: " + abils::to_string(ability.getType()) +
-				" Cost: " + std::to_string(ability.getCost()) + " Damage: " + std::to_string(ability.getDamage());
+				" Cost: " + std::to_string(ability.getCost()) + " Value: " + std::to_string(ability.getValue()) + 
+				" Duration: " + std::to_string(ability.getDuration());
 		}
 
 		template<class It>

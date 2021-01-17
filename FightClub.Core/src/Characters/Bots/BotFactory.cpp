@@ -18,13 +18,16 @@ namespace fightclub
 					characterstuff::IAttributesFactory* m_attributeFactory;
 					characterstuff::weapons::IWeaponStorage* m_weaponStorage;
 					characterstuff::armors::IArmorStorage* m_armorStorage;
+					characterstuff::abilities::IAbilitiesStorage* m_abilityStorage;
 
 					Impl(characterstuff::IAttributesFactory& attributeFactory,
 						characterstuff::weapons::IWeaponStorage& weaponStorage,
-						characterstuff::armors::IArmorStorage& armorStorage) : 
+						characterstuff::armors::IArmorStorage& armorStorage,
+						characterstuff::abilities::IAbilitiesStorage& abilityStorage) : 
 						m_attributeFactory{ &attributeFactory },
 						m_weaponStorage{ &weaponStorage },
-						m_armorStorage{ &armorStorage }
+						m_armorStorage{ &armorStorage },
+						m_abilityStorage{&abilityStorage}
 					{
 					}
 
@@ -54,12 +57,29 @@ namespace fightclub
 							throw std::out_of_range("Not implemented CharacterType.");
 						}
 					}
+					
+					std::unique_ptr<characterstuff::abilities::AbilitiesContainer> getAbilities()
+					{
+						// TODO: Add and other abilities for bot instead of only traps.
+
+						auto traps{ m_abilityStorage->get(characterstuff::abilities::AbilityType::trap) };
+
+						characterstuff::abilities::AbilitiesContainer::selectedAbilityIds_t selectedAbilitiesIds;
+
+						for (int i{ 0 }; i < selectedAbilitiesIds.size() && i < traps.size(); ++i)
+						{
+							selectedAbilitiesIds[i] = traps[i]->getId();
+						}
+
+						return std::make_unique<characterstuff::abilities::AbilitiesContainer>(std::move(traps), selectedAbilitiesIds);
+					}
 				};
 
 				BotFactory::BotFactory(characterstuff::IAttributesFactory& attributeFactory,
 					characterstuff::weapons::IWeaponStorage& weaponStorage,
-					characterstuff::armors::IArmorStorage& armorStorage) :
-					pImpl(std::make_unique<Impl>(attributeFactory, weaponStorage, armorStorage))
+					characterstuff::armors::IArmorStorage& armorStorage,
+					characterstuff::abilities::IAbilitiesStorage& abilityStorage) :
+					pImpl(std::make_unique<Impl>(attributeFactory, weaponStorage, armorStorage, abilityStorage))
 				{
 				}
 
@@ -82,7 +102,7 @@ namespace fightclub
 					auto cuirasse{ pImpl->m_armorStorage->getRandom(characterstuff::armors::ArmorType::body) };
 					auto boots{	   pImpl->m_armorStorage->getRandom(characterstuff::armors::ArmorType::legs) };
 					auto equipment{ std::make_unique<characterstuff::StaticEquipment>(std::move(head), std::move(cuirasse), std::move(boots)) };
-					auto abilitiesContainer{ std::make_unique<characterstuff::abilities::AbilitiesContainer>() };
+					auto abilitiesContainer{ pImpl->getAbilities() };
 
 					return Bot{ std::move(botAttributes), std::move(equipment), std::move(abilitiesContainer), botCharacterType, std::move(weapon) };
 				}

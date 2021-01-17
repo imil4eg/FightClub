@@ -3,6 +3,7 @@
 #include "CharacterStuff/IAttributesFactory.h"
 #include "CharacterStuff/Weapons/IWeaponStorage.h"
 #include "CharacterStuff/Armors/IArmorStorage.h"
+#include "CharacterStuff/Abilities/IAbilitiesStorage.h"
 #include "IBotFactory.h"
 
 namespace fightclub
@@ -22,7 +23,8 @@ namespace fightclub
 				public:
 					BotFactory(characterstuff::IAttributesFactory& attributeFactory,
 						characterstuff::weapons::IWeaponStorage& weaponStorage,
-						characterstuff::armors::IArmorStorage& armorStorage);
+						characterstuff::armors::IArmorStorage& armorStorage,
+						characterstuff::abilities::IAbilitiesStorage& abilityStorage);
 
 					~BotFactory();
 

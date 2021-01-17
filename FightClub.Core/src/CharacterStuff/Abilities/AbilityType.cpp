@@ -14,10 +14,10 @@ namespace fightclub
 				{
 					switch (type)
 					{
-					case fightclub::core::characterstuff::abilities::AbilityType::boost:
-						return "boost";
-					case fightclub::core::characterstuff::abilities::AbilityType::attack:
-						return "attack";
+					case fightclub::core::characterstuff::abilities::AbilityType::damage_boost:
+						return "damage boost";
+					case fightclub::core::characterstuff::abilities::AbilityType::armor_boost:
+						return "armor boost";
 					case fightclub::core::characterstuff::abilities::AbilityType::trap:
 						return "trap";
 					default:

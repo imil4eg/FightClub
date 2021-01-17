@@ -287,5 +287,8 @@
     <ClCompile Include="src\CharacterStuff\Abilities\AbilityType.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Battle\DamageCalculator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

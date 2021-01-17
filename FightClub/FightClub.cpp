@@ -31,7 +31,8 @@ int main()
 	fightclub::io::InputProcesser inputProcesser{};
 	fightclub::characterstuff::InventoryManager inventoryManager{inputProcesser};
 	fightclub::io::MessageDisplayer messageDisplayer{};
-	fightclub::core::battle::fighters::FighterFactory fighterFactory{messageDisplayer, inputProcesser};
+	fightclub::characterstuff::AbilitiesDisplayer abilitiesDisplayer{};
+	fightclub::core::battle::fighters::FighterFactory fighterFactory{messageDisplayer, inputProcesser, abilitiesDisplayer};
 	fightclub::core::characterstuff::AttributesFactory attributesFactory{};
 	fightclub::core::characterstuff::weapons::WeaponStorage weaponStorage{ config };
 	fightclub::core::characterstuff::armors::ArmorStorage armorStorage{ config };
@@ -39,11 +40,10 @@ int main()
 	fightclub::core::io::savers::JsonGameDataProcesser jsonGameDataProcesser{ attributesFactory, weaponStorage, armorStorage, abilitiesStorage, config };
 	fightclub::core::characters::CharacterFactory characterFactory{ attributesFactory };
 	fightclub::core::common::configs::PlayerConfig playerConfig{ jsonGameDataProcesser, characterFactory };
-	fightclub::core::characters::bots::BotFactory botFactory{ attributesFactory, weaponStorage, armorStorage };
+	fightclub::core::characters::bots::BotFactory botFactory{ attributesFactory, weaponStorage, armorStorage, abilitiesStorage };
 	fightclub::core::battle::Battle battle{ botFactory, fighterFactory, messageDisplayer };
 	fightclub::io::CommandLineParser commandLineParser{};
 	fightclub::characterstuff::AttributesManager attributesManager{ inputProcesser, attributesFactory, commandLineParser };
-	fightclub::characterstuff::AbilitiesDisplayer abilitiesDisplayer{};
 	fightclub::characterstuff::AbilitiesManager abilitiesManager{ inputProcesser, abilitiesDisplayer };
 	fightclub::Menu menu{ battle, playerConfig, jsonGameDataProcesser, inputProcesser, inventoryManager, attributesManager, abilitiesManager };
 	

@@ -201,6 +201,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Battle\Battle.cpp" />
+    <ClCompile Include="src\Battle\DamageCalculator.cpp" />
     <ClCompile Include="src\Battle\Fighters\BotFighter.cpp" />
     <ClCompile Include="src\Battle\Fighters\Fighter.cpp" />
     <ClCompile Include="src\Battle\Fighters\FighterFactory.cpp" />

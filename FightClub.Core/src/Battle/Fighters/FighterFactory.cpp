@@ -12,18 +12,22 @@ namespace fightclub
 				{
 					const io::IMessageDisplayer* m_messageDisplayer;
 					const io::IInputProcesser* m_inputProcesser;
+					const characterstuff::abilities::IAbilitiesDisplayer* m_abilitiesDisplayer;
 
-					Impl(const io::IMessageDisplayer& messageDisplayer, const io::IInputProcesser& inputProcesser) : 
+					Impl(const io::IMessageDisplayer& messageDisplayer, const io::IInputProcesser& inputProcesser,
+						 const characterstuff::abilities::IAbilitiesDisplayer& abilitiesDisplayer) : 
 						m_messageDisplayer{ &messageDisplayer },
-						m_inputProcesser{ &inputProcesser }
+						m_inputProcesser{ &inputProcesser },
+						m_abilitiesDisplayer{ &abilitiesDisplayer}
 					{
 					}
 
 					~Impl() = default;
 				};
 
-				FighterFactory::FighterFactory(const io::IMessageDisplayer& messageDisplayer, const io::IInputProcesser& inputProcesser) :
-					pImpl(std::make_unique<Impl>(messageDisplayer, inputProcesser))
+				FighterFactory::FighterFactory(const io::IMessageDisplayer& messageDisplayer, const io::IInputProcesser& inputProcesser, 
+					const characterstuff::abilities::IAbilitiesDisplayer& abilitiesDisplayer) :
+					pImpl(std::make_unique<Impl>(messageDisplayer, inputProcesser, abilitiesDisplayer))
 				{
 				}
 
@@ -33,7 +37,8 @@ namespace fightclub
 				{
 					if (typeid(character) == typeid(characters::Player))
 					{
-						return std::make_unique<PlayerFighter>(*pImpl->m_messageDisplayer, *pImpl->m_inputProcesser, character);
+						return std::make_unique<PlayerFighter>(*pImpl->m_messageDisplayer, *pImpl->m_inputProcesser, 
+															    *pImpl->m_abilitiesDisplayer, character);
 					}
 					else
 					{

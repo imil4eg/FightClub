@@ -41,6 +41,7 @@ namespace fightclub
 
 					const abilities_t& getAll() const;
 					const selectedAbilities_t& getSelected() const;
+					selectedAbilities_t::const_iterator find(const std::string& name) const;
 				};
 			}
 		}

@@ -1,6 +1,8 @@
 #pragma once
 
 #include "Fighter.h"
+#include "CharacterStuff/Abilities/Ability.h"
+#include "CharacterStuff/Abilities/IAbilitiesDisplayer.h"
 #include "IO/IInputProcesser.h"
 
 namespace fightclub
@@ -11,14 +13,17 @@ namespace fightclub
 		{
 			namespace fighters
 			{
+				namespace abils = characterstuff::abilities;
+
 				class PlayerFighter : public Fighter
 				{
-				private:
 					struct Impl;
 					std::unique_ptr<Impl> pImpl;
 
 				public:
-					PlayerFighter(const io::IMessageDisplayer& messageDisplayer, const io::IInputProcesser& inputProcesser, 
+					PlayerFighter(const io::IMessageDisplayer& messageDisplayer, 
+								  const io::IInputProcesser& inputProcesser, 
+								  const abils::IAbilitiesDisplayer& abilityDisplayer,
 								  characters::Character& player);
 					~PlayerFighter();
 

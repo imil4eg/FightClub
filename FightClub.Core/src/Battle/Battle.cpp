@@ -38,20 +38,12 @@ namespace fightclub
 
 			Battle::~Battle() = default;
 
-			void FightPreparation(characters::Character& player, characters::Character& enemy)
-			{
-				player.restoreHp();
-				enemy.restoreHp();
-			}
-
 			void Battle::fightWithBot(characters::Character& player)
 			{
 				auto bot{ pImpl->m_botFactory->create(player) };
 
 				auto botFighter{ pImpl->m_fighterFactory->create(bot) };
 				auto playerFighter{ pImpl->m_fighterFactory->create(player) };
-
-				FightPreparation(player, bot);
 
 				std::stringstream stream;
 				stream << bot;
@@ -65,7 +57,7 @@ namespace fightclub
 
 					playerFighter->playTurn(*botFighter.get());
 
-					if (bot.getAttributes()->getHp() <= 0)
+					if (botFighter->isDead())
 					{
 						playerWon = true;
 						break;
@@ -73,7 +65,7 @@ namespace fightclub
 
 					botFighter->playTurn(*playerFighter.get());
 
-					if (player.getAttributes()->getHp() <= 0)
+					if (playerFighter->isDead())
 					{
 						break;
 					}

@@ -97,6 +97,15 @@ namespace fightclub
 				{
 					return pImpl->m_abilitiesReferences;
 				}
+
+				AbilitiesContainer::selectedAbilities_t::const_iterator AbilitiesContainer::find(const std::string& name) const
+				{
+					return std::find_if(pImpl->m_selectedAbilities.begin(), pImpl->m_selectedAbilities.end(),
+						[&](const Ability* ability)
+						{
+							return ability != nullptr && ability->getName() == name;
+						});
+				}
 			}
 		}
 	}

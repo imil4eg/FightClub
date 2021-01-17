@@ -22,6 +22,7 @@ namespace fightclub
 					~AbilitiesStorage();
 
 					std::unique_ptr<Ability> getOrDefault(const boost::uuids::uuid& id) const override;
+					std::vector<std::unique_ptr<Ability>> get(AbilityType type) const override;
 				};
 			}
 		}

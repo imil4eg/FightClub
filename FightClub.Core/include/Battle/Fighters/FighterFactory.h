@@ -2,6 +2,7 @@
 
 #include "BotFighter.h"
 #include "Characters/Player.h"
+#include "CharacterStuff/Abilities/IAbilitiesDisplayer.h"
 #include "PlayerFighter.h"
 #include "IO/IMessageDisplayer.h"
 #include "IO/IInputProcesser.h"
@@ -22,7 +23,8 @@ namespace fightclub
 					std::unique_ptr<Impl> pImpl;
 
 				public:
-					FighterFactory(const io::IMessageDisplayer& messageDisplayer, const io::IInputProcesser& inputProcesser);
+					FighterFactory(const io::IMessageDisplayer& messageDisplayer, const io::IInputProcesser& inputProcesser, 
+						const characterstuff::abilities::IAbilitiesDisplayer& abilityDisplayer);
 					~FighterFactory();
 
 					std::unique_ptr<Fighter> create(characters::Character& character) const override;

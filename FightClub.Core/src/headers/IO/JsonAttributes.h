@@ -22,7 +22,7 @@ namespace fightclub
 				static const std::string& Cost;
 				static const std::string& Duration;
 				static const std::string& SelectedAbilities;
-
+				
 				JsonAttributes() = delete;
 			};
 		}

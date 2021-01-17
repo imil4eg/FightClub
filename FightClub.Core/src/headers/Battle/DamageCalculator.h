@@ -1,7 +1,12 @@
 #pragma once
 
+#include <numeric>
+
 #include "Characters/Character.h"
 #include "CharacterStuff/BodyPart.h"
+#include "CharacterStuff/Abilities/Ability.h"
+#include "CharacterStuff/Abilities/AbilityType.h"
+#include "Battle/Fighters/Fighter.h"
 
 namespace fightclub
 {
@@ -12,20 +17,14 @@ namespace fightclub
 			class DamageCalculator
 			{
 			public:
-				static int Calculate(const characters::Character& character, const characters::Character& target, characterstuff::BodyPart hitDirection,
-									characterstuff::BodyPart enemyProtectingPart)
-				{
-					int totalDamage{ character.getAttributes()->getDamage() - target.getEquipment().getArmorValue(hitDirection) };
+				static int Calculate(const characters::Character& character, const characters::Character& target,
+					characterstuff::BodyPart hitDirection,
+					characterstuff::BodyPart enemyProtectingPart,
+					std::vector<fighters::Fighter::buffWithDuration_t>& characterBuffs,
+					std::vector<fighters::Fighter::buffWithDuration_t>& enemyBuffs);
 
-					// If enemy correctly predicted hit direction then reduce 20% from damage.
-					if (hitDirection == enemyProtectingPart)
-					{
-						int twentyPercentFromDamage{ (totalDamage * 20) / 100 };
-						totalDamage -= twentyPercentFromDamage;
-					}
-
-					return totalDamage;
-				}
+			private:
+				static int calculateBuffs(std::vector<fighters::Fighter::buffWithDuration_t>& buffs, characterstuff::abilities::AbilityType type);
 			};
 		}
 	}
