@@ -1,4 +1,5 @@
 #include <string>
+#include <stdexcept>
 
 #include "CharacterStuff/BodyPart.h"
 
@@ -23,7 +24,7 @@ namespace fightclub
 					hitDirectionStr = "legs";
 					break;
 				default:
-					throw std::exception("Specified hit direction not found.");
+					throw std::runtime_error("Specified hit direction not found.");
 				}
 
 				return value + hitDirectionStr;

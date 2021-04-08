@@ -78,17 +78,17 @@ namespace fightclub
 
 					auto armorTypeInt{ static_cast<int>(armorType) };
 					std::vector<Armor> armors{};
-					for (auto& armor : armorsJson[io::JsonAttributes::Armors].items())
+					for (auto& armorJson : armorsJson[io::JsonAttributes::Armors].items())
 					{
-						if (armorTypeInt != armor.value()[io::JsonAttributes::Type].get<int>())
+						if (armorTypeInt != armorJson.value()[io::JsonAttributes::Type].get<int>())
 						{
 							continue;
 						}
 
-						auto id{ boost::lexical_cast<boost::uuids::uuid>(armor.value()[io::JsonAttributes::Id].get<std::string>()) };
-						auto name{ armor.value()[io::JsonAttributes::Name].get<std::string>() };
-						auto type{ static_cast<characterstuff::armors::ArmorType>(armor.value()[io::JsonAttributes::Type].get<int>()) };
-						auto armorValue{ armor.value()[io::JsonAttributes::Value].get<int>() };
+						auto id{ boost::lexical_cast<boost::uuids::uuid>(armorJson.value()[io::JsonAttributes::Id].get<std::string>()) };
+						auto name{ armorJson.value()[io::JsonAttributes::Name].get<std::string>() };
+						auto type{ static_cast<characterstuff::armors::ArmorType>(armorJson.value()[io::JsonAttributes::Type].get<int>()) };
+						auto armorValue{ armorJson.value()[io::JsonAttributes::Value].get<int>() };
 
 						Armor armor{ id, name, type, armorValue };
 						armors.push_back(armor);

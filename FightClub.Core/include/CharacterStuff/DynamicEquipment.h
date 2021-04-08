@@ -40,7 +40,7 @@ namespace fightclub
 						m_boots = armor;
 						break;
 					default:
-						throw std::exception("Specified armor type not implemented.");
+						throw std::runtime_error("Specified armor type not implemented.");
 					}
 				}
 			};

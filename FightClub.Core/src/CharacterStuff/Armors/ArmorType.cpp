@@ -26,7 +26,7 @@ namespace fightclub
 						result = "boots";
 						break;
 					default:
-						throw std::exception("Not implemented armor type.");
+						throw std::runtime_error("Not implemented armor type.");
 					}
 
 					out << result;

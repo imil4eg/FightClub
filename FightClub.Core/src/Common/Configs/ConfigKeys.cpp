@@ -1,3 +1,5 @@
+#include <stdexcept>
+
 #include "Common/Configs/ConfigKeys.h"
 
 namespace fightclub
@@ -21,7 +23,7 @@ namespace fightclub
 					case ConfigKeys::abilitiesFile:
 						return "AbilitiesFileDirectory";
 					default:
-						throw std::exception("Specified config key not found.");
+						throw std::runtime_error("Specified config key not found.");
 					}
 				}
 			}

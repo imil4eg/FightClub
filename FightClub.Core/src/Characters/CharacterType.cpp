@@ -17,7 +17,7 @@ namespace fightclub
 					out << "smooth";
 					break;
 				default:
-					throw std::exception("Not existing character type specified.");
+					throw std::runtime_error("Not existing character type specified.");
 				}
 
 				return out;

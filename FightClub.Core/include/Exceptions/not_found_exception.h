@@ -8,11 +8,11 @@ namespace fightclub
 	{
 		namespace exceptions
 		{
-			class not_found_exception : public std::exception
+			class not_found_exception : public std::runtime_error
 			{
 			public:
 				not_found_exception(const std::string& message) : 
-					std::exception(message.c_str())
+					std::runtime_error(message.c_str())
 				{
 				}
 			};

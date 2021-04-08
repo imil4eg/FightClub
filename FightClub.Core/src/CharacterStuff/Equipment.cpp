@@ -38,7 +38,7 @@ namespace fightclub
 				case characterstuff::armors::ArmorType::legs:
 					return this->getBoots();
 				default:
-					throw std::exception("Not implemented armor type");
+					throw std::runtime_error("Not implemented armor type");
 				}
 			}
 
