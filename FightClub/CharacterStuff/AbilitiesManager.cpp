@@ -2,7 +2,7 @@
 
 #include "CharacterStuff/AbilitiesManager.h"
 #include "CharacterStuff/Abilities/DynamicAbilitiesContainer.h"
-#include "Common\IntHelper.h"
+#include "Common/IntHelper.h"
 #include "Exceptions/invalid_input_type.h"
 
 namespace fightclub

@@ -8,13 +8,13 @@ namespace fightclub
 {
 	namespace characterstuff
 	{
-		void CharacterCustomizerMenu::show(const characters::Player& player)
+		void CharacterCustomizerMenu::show(const core::characters::Player& player)
 		{
 			while (true)
 			{
 				std::cout << "\nSelect the command:\n1) " << m_currentAttributesText << "\n2) " << m_changeAttributesText << "\n3) " << m_exitText << '\n';
 				io::MessageDisplayer::cmdLineBeggining();
-
+				
 				std::string command{};
 				std::getline(std::cin, command);
 

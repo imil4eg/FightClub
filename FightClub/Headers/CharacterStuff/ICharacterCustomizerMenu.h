@@ -10,7 +10,7 @@ namespace fightclub
 		{
 		public:
 			virtual ~ICharacterCustomizeMenu() = default;
-			virtual void show(const characters::Player& player) = 0;
+			virtual void show(const core::characters::Player& player) = 0;
 		};
 	}
 }

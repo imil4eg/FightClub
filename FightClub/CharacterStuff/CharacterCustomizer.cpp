@@ -6,7 +6,8 @@ namespace fightclub
 {
 	namespace characterstuff
 	{
-		void CharacterCustomizer::changeAttributes(Attributes& attributes)
+		void CharacterCustomizer::changeAttributes(
+			core::characterstuff::Attributes& attributes)
 		{
 			int freeAttributePoints = (attributes.getLevel() * m_attributePerLevel) - (attributes.getAgility() + attributes.getStrength());
 
@@ -21,7 +22,7 @@ namespace fightclub
 
 			while (true)
 			{
-				std::cout << "Enter attribute name and points counts to add."
+				std::cout << "Enter attribute name and points counts to add.";
 			}
 		}
 	}

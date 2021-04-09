@@ -16,7 +16,7 @@ namespace fightclub
 			const std::string m_exitText{ "Exit" };
 
 		public:
-			void show(const characters::Player& player) override;
+			void show(const core::characters::Player& player) override;
 		};
 	}
 }

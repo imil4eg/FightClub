@@ -17,6 +17,11 @@ namespace fightclub
 			{
 				std::cout << message << '\n';
 			}
+
+			static void cmdLineBeggining()
+			{
+				std::cout << "FightClub>";
+			}
 		};
 
 	}

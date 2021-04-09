@@ -9,7 +9,8 @@ namespace fightclub
 		class ICharacterCustomizer
 		{
 		public:
-			virtual void changeAttributes(Attributes& attributes) = 0;
+			virtual void changeAttributes(
+				core::characterstuff::Attributes& attributes) = 0;
 		};
 	}
 }

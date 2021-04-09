@@ -1,5 +1,7 @@
 #pragma once
 
+#include <functional>
+
 #include "Characters/Player.h"
 #include "CharacterStuff/Armors/Armor.h"
 #include "CharacterStuff/Weapons/Weapon.h"

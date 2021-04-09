@@ -12,7 +12,8 @@ namespace fightclub
 			const int m_attributePerLevel{10};
 
 		public:
-			void changeAttributes(Attributes& attributes) override;
+			void changeAttributes(
+				core::characterstuff::Attributes& attributes) override;
 		};
 	}
 }

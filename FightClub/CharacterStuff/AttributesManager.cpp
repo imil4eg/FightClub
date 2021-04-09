@@ -71,7 +71,7 @@ namespace fightclub
 					}
 					else
 					{
-						throw std::exception("Unrecognized command entered.");
+						throw std::runtime_error("Unrecognized command entered.");
 					}
 
 					auto type{ getAttributeTypeFromText(command) };
