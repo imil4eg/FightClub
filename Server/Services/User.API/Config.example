@@ -1,0 +1,14 @@
+{
+	"RabbitConnectionString": "amqp://guest:guest@localhost",
+	"RabbitQueue": "User",
+	"RabbitRPCQueue": "UserRPC",
+	"RabbitExchange": "User",
+	"RabbitQueueRoutingKey": "UserRPC",
+	"DbConnectionString": "DRIVER={ODBC Driver 17 for SQL Server};SERVER=tcp:localhost,1433;DATABASE=FightClubUserDB;UID=SA;PWD=;",
+	"DbTableName": "Users",
+	"JWTIssuer": "auth0",
+	"JWTType": "JWS",
+	"JWTPayloadClaimID": "sample",
+	"JWTClaim": "test",
+	"JWTKey": "secret"
+}

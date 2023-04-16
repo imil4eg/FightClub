@@ -1,0 +1,8 @@
+{
+	"RabbitConnectionString": "amqp://guest:guest@localhost",
+	"ApplicationExchange": "FightClubExchange",
+	"UserQueue": "User",
+	"UserRPCQueue": "UserRPC",
+	"CharacterQueue": "Character",
+	"CharacterRPCQueue": "CharacterRPC"
+}

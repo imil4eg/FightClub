@@ -1,0 +1,15 @@
+{
+	"RabbitConnectionString": "amqp://guest:guest@localhost",
+        "RabbitQueue": "Character",
+        "RabbitRPCQueue": "CharacterRPC",
+        "RabbitExchange": "Character",
+        "RabbitQueueRoutingKey": "CharacterRPC",
+        "DbConnectionString": "DRIVER={ODBC Driver 17 for SQL Server};SERVER=tcp:localhost,1433;DATABASE=FightClubCharacterDB;UID=SA;PWD=;",
+        "DbName": "FightClubCharacterDB",
+	"DbTableName": "Characters",
+	"JWTIssuer": "auth0",
+        "JWTType": "JWS",
+        "JWTPayloadClaimID": "sample",
+        "JWTClaim": "test",
+        "JWTKey": "secret"
+}

@@ -1,0 +1,28 @@
+{
+	"weapons": [{
+			"id": "e1191a7e-3a18-11eb-adc1-0242ac120002",
+			"name": "Brass knuckles with knife",
+			"damage": 10
+		},
+		{
+			"id": "0b1f9e2e-3a19-11eb-adc1-0242ac120002",
+			"name": "Claymore",
+			"damage": 30
+		},
+		{
+			"id": "0e74fa24-3a19-11eb-adc1-0242ac120002",
+			"name": "Knife",
+			"damage": 10
+		},
+		{
+			"id": "10fca5da-3a19-11eb-adc1-0242ac120002",
+			"name": "Poor brass knuckles",
+			"damage": 5
+		},
+		{
+			"id": "137cccf4-3a19-11eb-adc1-0242ac120002",
+			"name": "Rapier",
+			"damage": 25
+		}
+	]
+}	

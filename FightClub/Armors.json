@@ -1,0 +1,57 @@
+{
+	"armors": [{
+			"id": "a6dcb902-3a17-11eb-adc1-0242ac120002",
+			"name": "Average Fighter Hat",
+			"type": 0,
+			"value": 3
+		},
+		{
+			"id": "d5a252f6-3a17-11eb-adc1-0242ac120002",
+			"name": "Poor Man Hat",
+			"type": 0,
+			"value": 1
+		},
+		{
+			"id": "e71490c6-3a17-11eb-adc1-0242ac120002",
+			"name": "Rich Guy Hat",
+			"type": 0,
+			"value": 5
+		},
+		{
+			"id": "227cd858-3a18-11eb-adc1-0242ac120002",
+			"name": "Average Fighter Cuirasse",
+			"type": 1,
+			"value": 3
+		},
+		{
+			"id": "26ae59ce-3a18-11eb-adc1-0242ac120002",
+			"name": "Poor Man Cuirasse",
+			"type": 1,
+			"value": 1
+		},
+		{
+			"id": "2a90845e-3a18-11eb-adc1-0242ac120002",
+			"name": "Rich Guy Cuirasse",
+			"type": 1,
+			"value": 5
+		},
+		{
+			"id": "59ad41f0-3a18-11eb-adc1-0242ac120002",
+			"name": "Average Fighter Boots",
+			"type": 3,
+			"value": 3
+		},
+		{
+			"id": "5e58cd1e-3a18-11eb-adc1-0242ac120002",
+			"name": "Poor Man Boots",
+			"type": 3,
+			"value": 1
+		},
+		{
+			"id": "6a9a7622-3a18-11eb-adc1-0242ac120002",
+			"name": "Rich Guy Boots",
+			"type": 3,
+			"value": 5
+		}
+	]
+}
